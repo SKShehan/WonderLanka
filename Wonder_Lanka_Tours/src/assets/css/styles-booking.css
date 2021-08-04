@@ -1,0 +1,47 @@
+.bookingCard {
+  margin: auto;
+  background-color: cornflowerblue;
+  padding: 20px 20px 20px 20px;
+  color: white;
+  width: 450px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bookingDropdown {
+  background-color: white;
+  color: black;
+  width: 100%;
+  text-align: left;
+  border: none;
+  text-decoration: none;
+}
+
+.bookingDropdownItem {
+  background-color: white;
+  color: black;
+}
+
+.bookingDropdown:hover {
+  transform: none;
+}
+
+.submitBtn {
+  float: right;
+  margin-top: 40px;
+}
+
+.cancelBtn {
+  float: right;
+  margin-top: 40px;
+  margin-right: 10px;
+}
+
+.bookingBody {
+  padding: 0px 20px 0px 20px;
+}
+
+.textAreaItinerary {
+  height: 400px;
+}
