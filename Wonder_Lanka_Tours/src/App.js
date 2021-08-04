@@ -6,6 +6,7 @@ import NucleoIcons from "views/NucleoIcons.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
+import BookTour from "views/BookTour";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           path="/register-page"
           render={(props) => <RegisterPage {...props} />}
         />
+        <Route path="/book-tour" render={(props) => <BookTour {...props} />} />
         <Redirect to="/index" />
       </Switch>
     </BrowserRouter>
