@@ -38,12 +38,12 @@ function IndexHeader() {
         <div className="content-center">
           <Container>
             <div className="title-brand">
-              <h1 className="presentation-title">Paper Kit React</h1>
+              <h1 className="presentation-title">WonderLanka Tours</h1>
               <div className="fog-low">
                 <img
                   alt="..."
                   src={require("assets/img/fog-low.png").default}
-                />
+                /> 
               </div>
               <div className="fog-low right">
                 <img
@@ -53,7 +53,7 @@ function IndexHeader() {
               </div>
             </div>
             <h2 className="presentation-subtitle text-center">
-              Make your mark with a Free Bootstrap 4 (Reactstrap) UI Kit!
+              Make your tour a heave with Us!
             </h2>
           </Container>
         </div>
@@ -65,8 +65,8 @@ function IndexHeader() {
           }}
         />
         <h6 className="category category-absolute">
-          Designed and coded by{" "}
-          <a
+          Designed and coded by ITPG16
+          {/*<a
             href="https://www.creative-tim.com?ref=pkr-index-page"
             target="_blank"
           >
@@ -75,7 +75,7 @@ function IndexHeader() {
               className="creative-tim-logo"
               src={require("assets/img/creative-tim-white-slim2.png").default}
             />
-          </a>
+          </a>*/}
         </h6>
       </div>
     </>
