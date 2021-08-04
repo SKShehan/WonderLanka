@@ -53,7 +53,20 @@ function Index() {
       <IndexNavbar />
       <IndexHeader />
       <div className="main">
-
+        <form>
+            <fieldset>
+            <label for="full-name">Full Name</label>
+            <input type="text" name="name" id="full-name" placeholder="First and Last" required=""/>
+            <label for="email-address">Email Address</label>
+            <input type="email" name="replyto" id="email-address" placeholder="email@gmail.com" required=""/>
+            <label for="telephone">Telephone Number (Optional)</label>
+            <input type="telephone" name="telephone" id="telephone" placeholder="(+94)3333-55555"/>
+            <label for="complaint">Complaint</label>
+            <textarea rows="6" name="complaint" id="complaint" placeholder="" required=""/>
+            <input type="hidden" name="subject" id="email-subject" value="Complaint Form Submission"/>
+            <input type="submit" value="File Complaint"></input>
+            </fieldset>
+        </form>      
         <DemoFooter />
       </div>
     </>
