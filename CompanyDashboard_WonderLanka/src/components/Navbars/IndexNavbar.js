@@ -71,7 +71,7 @@ function IndexNavbar() {
             target="_blank"
             title="Coded by Creative Tim"
           >
-            Paper Kit React
+            WonderLanka Tours
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
