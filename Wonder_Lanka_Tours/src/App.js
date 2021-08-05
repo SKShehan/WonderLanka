@@ -8,7 +8,7 @@ import ProfilePage from "views/examples/ProfilePage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
 import BookTour from "views/BookTour";
 import MyTours from "views/MyTours";
-import EditBooking from "views/EditBooking";
+import ViewTour from "views/ViewTour";
 
 function App() {
   return (
@@ -33,10 +33,7 @@ function App() {
         />
         <Route path="/book-tour" render={(props) => <BookTour {...props} />} />
         <Route path="/my-tours" render={(props) => <MyTours {...props} />} />
-        <Route
-          path="/edit-booking"
-          render={(props) => <EditBooking {...props} />}
-        />
+        <Route path="/view-tour" render={(props) => <ViewTour {...props} />} />
         <Redirect to="/index" />
       </Switch>
     </BrowserRouter>
