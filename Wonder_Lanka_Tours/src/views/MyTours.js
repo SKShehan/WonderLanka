@@ -1,25 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-import {
-  Button,
-  Label,
-  Form,
-  Card,
-  Input,
-  Dropdown,
-  DropdownItem,
-  DropdownToggle,
-  DropdownMenu,
-} from "reactstrap";
-
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import TourComponent from "components/TourComponent";
 
 function BookTour() {
-  const [tourId, settourId] = useState(0);
   const [tours, settours] = useState([
     {
       id: "#1234567",
@@ -45,17 +32,8 @@ function BookTour() {
       date: "5/5/2021",
       status: "Canceled",
     },
-    {
-      id: "#1234561",
-      itinerary: "CHU BARAI",
-      date: "5/4/2021",
-      status: "In Progress",
-    },
   ]);
 
-  const count = () => {
-    return tourId++;
-  };
   document.documentElement.classList.remove("nav-open");
   useEffect(() => {
     document.body.classList.add("index");
@@ -71,6 +49,7 @@ function BookTour() {
         <div className="body-content">
           <h2 align="center"> My Tours</h2>
           <hr></hr>
+          <br></br>
           {tours.map((tour) => (
             <TourComponent tour={tour} key={tour.id}></TourComponent>
           ))}
