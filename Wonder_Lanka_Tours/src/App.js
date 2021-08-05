@@ -7,6 +7,7 @@ import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
 import BookTour from "views/BookTour";
+import MyTour from "views/MyTour";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           render={(props) => <RegisterPage {...props} />}
         />
         <Route path="/book-tour" render={(props) => <BookTour {...props} />} />
+        <Route path="/my-tour" render={(props) => <MyTour {...props} />} />
         <Redirect to="/index" />
       </Switch>
     </BrowserRouter>
