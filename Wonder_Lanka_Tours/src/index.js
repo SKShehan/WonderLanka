@@ -23,7 +23,7 @@ import App from "./App";
 import "bootstrap/scss/bootstrap.scss";
 import "assets/scss/paper-kit.scss?v=1.3.0";
 import "assets/demo/demo.css?v=1.3.0";
-import "assets/css/styles-booking.css";
+import "assets/css/styles-ttrm.css";
 // pages
 
 // others

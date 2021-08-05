@@ -10,26 +10,46 @@ function BookTour() {
   const [tours, settours] = useState([
     {
       id: "#1234567",
+      fullName: "John Cena",
+      country: "USA",
+      mobileNo: "69696969",
+      email: "johncena@gmail.com",
+      arrivalDate: "10/08/2021",
       itinerary: "MADA MULANE MURUGAYA",
-      date: "5/8/2021",
+      date: "05/08/2021",
       status: "In Progress",
     },
     {
       id: "#1234568",
+      fullName: "Dominic Torreto",
+      country: "USA",
+      mobileNo: "69696969",
+      email: "family@gmail.com",
+      arrivalDate: "10/05/2021",
       itinerary: "MARU HABAY",
-      date: "5/7/2021",
+      date: "05/07/2021",
       status: "Completed",
     },
     {
       id: "#1234569",
+      fullName: "Virat Kohli",
+      country: "India",
+      mobileNo: "69696969",
+      email: "anushka69@gmail.com",
+      arrivalDate: "10/06/2021",
       itinerary: "SES CAT OK D?",
-      date: "5/6/2021",
+      date: "05/06/2021",
       status: "Completed",
     },
     {
       id: "#1234560",
+      fullName: "Kim Jon Un",
+      country: "North Korea",
+      mobileNo: "69696969",
+      email: "president4ever@gmail.com",
+      arrivalDate: "10/05/2021",
       itinerary: "GGEZ",
-      date: "5/5/2021",
+      date: "05/05/2021",
       status: "Canceled",
     },
   ]);
@@ -46,7 +66,7 @@ function BookTour() {
       <ProfilePageHeader></ProfilePageHeader>
       <IndexNavbar></IndexNavbar>
       <div className="main">
-        <div className="body-content">
+        <div className="my-tour-content">
           <h2 align="center"> My Tours</h2>
           <hr></hr>
           <br></br>
