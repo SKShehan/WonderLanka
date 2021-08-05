@@ -70,5 +70,44 @@
 
 .body-content {
   justify-content: center;
-  padding: 20px 40px 20px 40px;
+  padding: 20px 80px 20px 80px;
+}
+
+.tour-card {
+  margin: auto;
+  padding: 10px 10px 10px 10px;
+  width: 90%;
+  border: 1px solid grey;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  transition: 15ms linear;
+}
+
+/*.tour-card:hover {
+  transform: scale(1.007);
+}*/
+
+.tour-label-title {
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.tour-label-info {
+  margin-left: 10px;
+  font-style: italic;
+  font-weight: 1000px;
+}
+
+.tour-btn {
+  float: right;
+  margin-left: 10px;
+}
+
+.tour-label-status {
+  font-weight: bold;
+  margin-left: 20px;
+  margin-top: 10px;
 }
