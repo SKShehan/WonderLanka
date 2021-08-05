@@ -8,6 +8,8 @@ import { useLocation } from "react-router-dom";
 
 import Datetime from "react-datetime";
 
+import { Row, Col } from "reactstrap";
+
 function EditBooking() {
   const location = useLocation();
   document.documentElement.classList.remove("nav-open");
@@ -45,6 +47,7 @@ function EditBooking() {
             <table width="100%" border="0px">
               <tr>
                 <td style={{ width: "50%", paddingRight: "10px" }}>
+                  <label>Full Name*</label>
                   <input
                     className="form-control"
                     placeholder="Full Name*"
@@ -53,6 +56,7 @@ function EditBooking() {
                   ></input>
                 </td>
                 <td style={{ paddingRight: "10px" }}>
+                  <label>Country*</label>
                   <input
                     className="form-control input-tour-edit"
                     style={{ width: "100%" }}
@@ -61,6 +65,7 @@ function EditBooking() {
                   ></input>
                 </td>
                 <td>
+                  <label>Mobile Number*</label>
                   <input
                     className="form-control"
                     style={{ width: "100%" }}
@@ -72,6 +77,7 @@ function EditBooking() {
               <br></br>
               <tr>
                 <td style={{ width: "50%", paddingRight: "10px" }}>
+                  <label>E-Mail Address*</label>
                   <input
                     className="form-control"
                     placeholder="E-Mail Address*"
@@ -80,6 +86,7 @@ function EditBooking() {
                   ></input>
                 </td>
                 <td style={{ paddingRight: "10px" }}>
+                  <label>Arrival Date*</label>
                   <Datetime
                     timeFormat={false}
                     inputProps={{ placeholder: "Arrival Date*" }}
