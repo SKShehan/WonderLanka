@@ -21,8 +21,15 @@ import React from "react";
 // reactstrap components
 
 // core components
+import {
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  Button
+} from "reactstrap";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import IndexHeader from "components/Headers/IndexHeader.js";
+import IndexHeader from "components/Headers/ComplaintHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
 // index sections
@@ -53,24 +60,42 @@ function Index() {
       <IndexNavbar />
       <IndexHeader />
       <div className="main">
-        <form>
-            <fieldset>
-            <label for="full-name">Full Name</label>
-            <input type="text" name="name" id="full-name" placeholder="First and Last" required=""/>
-            <label for="email-address">Email Address</label>
-            <input type="email" name="replyto" id="email-address" placeholder="email@gmail.com" required=""/>
-            <label for="telephone">Telephone Number (Optional)</label>
-            <input type="telephone" name="telephone" id="telephone" placeholder="(+94)3333-55555"/>
-            <label for="complaint">Complaint</label>
-            <textarea rows="6" name="complaint" id="complaint" placeholder="" required=""/>
-            <input type="hidden" name="subject" id="email-subject" value="Complaint Form Submission"/>
-            <input type="submit" value="File Complaint"></input>
-            </fieldset>
-        </form>      
-        <DemoFooter />
+      <form>
+      <FormGroup>
+        <Label for="Name">Name</Label>
+        <Input type="name" name="name" id="idName" placeholder="A.D. Amarasekara" />
+      </FormGroup>
+      <FormGroup>
+        <Label for="Email">Email address</Label>
+        <Input type="email" name="email" id="idEmail" placeholder="name@gmail.com" />
+      </FormGroup>
+      <FormGroup>
+        <Label for="contact">Contact No</Label>
+        <Input type="contact" name="contact" id="idContact" placeholder="(+94) 555-555-555" />
+      </FormGroup>
+      <FormGroup>
+        <Label for="typeSelect">Type of complaint</Label>
+        <Input type="select" name="select" id="typeSelect">
+          <option>There's no free WI-FI in my room?</option>
+          <option>here's no free Hot water in my room?</option>
+          <option>The attitudes and behaviours of your staff are unacceptable</option>
+          <option>I cancelled my hotel room booking just before i was supposed to check in. Why can't i get my money back?</option>
+          <option>That's not what it says (or looks like) on your website.</option>
+          <option>There's problem with the vehicle we hired.</option>
+        </Input>
+      </FormGroup>
+      <FormGroup>
+        <Label for="exampleText">Any other custom complaint</Label>
+        <Input type="textarea" name="text" id="idText" />
+      </FormGroup>
+      <Button color="primary" type="submit">
+        Submit
+      </Button>
+    </form>       
+      <DemoFooter />
       </div>
     </>
   );
 }
 
-export default Index;
+export default Index; 
