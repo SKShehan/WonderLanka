@@ -20,18 +20,18 @@
 import React from "react";
 
 // reactstrap components
-import { Container } from "reactstrap";
+import { Container, FormGroup, Label, Input } from "reactstrap";
 
 // core components
 
-function IndexHeader() {
+function ComplaintHeader() {
   return (
     <>
       <div
         className="page-header section-dark"
         style={{
           backgroundImage:
-            "url(" + require("assets/img/antoine-barres.jpg").default + ")",
+            "url(" + require("assets/img/customer-complaints.jpg").default + ")",
         }}
       >
         <div className="filter" />
@@ -39,7 +39,7 @@ function IndexHeader() {
           <Container>
             <div className="title-brand">
               <h1 className="presentation-title">WonderLanka Tours</h1>
-              <div className="fog-low">
+              {/*<div className="fog-low">
                 <img
                   alt="..."
                   src={require("assets/img/fog-low.png").default}
@@ -50,10 +50,10 @@ function IndexHeader() {
                   alt="..."
                   src={require("assets/img/fog-low.png").default}
                 />
-              </div>
+                </div>*/}
             </div>
             <h2 className="presentation-subtitle text-center">
-              Make your tour a heaven with Us!
+              Share your complaints and Feedbacks with us!
             </h2>
           </Container>
         </div>
@@ -82,6 +82,6 @@ function IndexHeader() {
   );
 }
 
-export default IndexHeader;
+export default ComplaintHeader;
 
 
