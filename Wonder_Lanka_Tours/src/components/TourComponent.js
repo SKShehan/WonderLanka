@@ -6,9 +6,9 @@ import { useHistory, useLocation } from "react-router-dom";
 function TourComponent({ tour }) {
   const [statusClass, setstatusclass] = useState();
   const history = useHistory();
-  const clickEdit = () => {
+  const clickSeeDetails = () => {
     history.push({
-      pathname: "/edit-booking",
+      pathname: "/view-tour",
       state: tour,
     });
   };
@@ -53,10 +53,12 @@ function TourComponent({ tour }) {
               <button className="btn btn-success tour-btn">
                 Give Feedback
               </button>
-              <button className="btn btn-danger tour-btn" onClick={clickEdit}>
-                Edit Details
+              <button
+                className="btn btn-info tour-btn"
+                onClick={clickSeeDetails}
+              >
+                See Details
               </button>
-              <button className="btn btn-info tour-btn">See Details</button>
               <label
                 className={"label " + statusClass + " mr-1 tour-label-status"}
               >

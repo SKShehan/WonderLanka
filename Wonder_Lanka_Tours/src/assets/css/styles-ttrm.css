@@ -119,9 +119,24 @@
 
 .btn-edit-booking {
   float: right;
-  width: 100%;
+  margin-left: 10px;
 }
 
 .edit-booking-form {
   justify-content: center;
+}
+
+.tour-det-label {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.tour-det-head {
+  font-weight: bold;
+}
+
+.tour-det-text {
+  margin-left: 10px;
+  font-style: italic;
+  font-weight: 1000px;
 }
