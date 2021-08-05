@@ -55,6 +55,9 @@ function BookTour() {
   React.useEffect(() => {
     document.body.classList.add("index");
     document.getElementById("card").classList.remove("card");
+    document.getElementById("itinerary").classList.remove("btn");
+    document.getElementById("insurance").classList.remove("btn");
+    document.getElementById("class").classList.remove("btn");
     return function cleanup() {
       document.body.classList.remove("index");
     };
@@ -113,7 +116,11 @@ function BookTour() {
               <br></br>
               <>Tour Itinerary</>
               <Dropdown isOpen={dropDownItinerary} toggle={toggleItinerary}>
-                <DropdownToggle className="bookingDropdown" caret>
+                <DropdownToggle
+                  id="itinerary"
+                  className="bookingDropdown"
+                  caret
+                >
                   {itinerary}
                 </DropdownToggle>
                 <DropdownMenu>
@@ -149,7 +156,11 @@ function BookTour() {
               {customize && <br></br>}
               <>Insurance Plan</>
               <Dropdown isOpen={dropDownInsurance} toggle={toggleInsurance}>
-                <DropdownToggle className="bookingDropdown" caret>
+                <DropdownToggle
+                  id="insurance"
+                  className="bookingDropdown"
+                  caret
+                >
                   {insurance}
                 </DropdownToggle>
                 <DropdownMenu>
@@ -167,7 +178,7 @@ function BookTour() {
               <br></br>
               <>Class</>
               <Dropdown isOpen={dropDownClass} toggle={toggleClass}>
-                <DropdownToggle className="bookingDropdown" caret>
+                <DropdownToggle id="class" className="bookingDropdown" caret>
                   {iclass}
                 </DropdownToggle>
                 <DropdownMenu>
