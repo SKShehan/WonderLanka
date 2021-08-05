@@ -1,10 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Card } from "reactstrap";
+import { useHistory, useLocation } from "react-router-dom";
 
 function TourComponent({ tour }) {
   const [statusClass, setstatusclass] = useState();
-
+  const history = useHistory();
+  const clickEdit = () => {
+    history.push({
+      pathname: "/edit-booking",
+      state: tour,
+    });
+  };
   const checkStatus = () => {
     if (tour.status === "In Progress") {
       setstatusclass("label-warning");
@@ -46,7 +53,9 @@ function TourComponent({ tour }) {
               <button className="btn btn-success tour-btn">
                 Give Feedback
               </button>
-              <button className="btn btn-danger tour-btn">Edit Details</button>
+              <button className="btn btn-danger tour-btn" onClick={clickEdit}>
+                Edit Details
+              </button>
               <button className="btn btn-info tour-btn">See Details</button>
               <label
                 className={"label " + statusClass + " mr-1 tour-label-status"}
