@@ -33,8 +33,7 @@
 }
 
 .submitBtn {
-  float: right;
-  margin-top: 40px;
+  width: 100%;
 }
 
 .cancelBtn {
@@ -139,4 +138,8 @@
   margin-left: 10px;
   font-style: italic;
   font-weight: 1000px;
+}
+
+.booking-div {
+  padding: 0px 200px 0px 200px;
 }

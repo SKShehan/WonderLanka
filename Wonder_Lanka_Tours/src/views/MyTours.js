@@ -14,7 +14,7 @@ function BookTour() {
       country: "USA",
       mobileNo: "69696969",
       email: "johncena@gmail.com",
-      arrivalDate: "10/08/2021",
+      arrivalDate: "2021-08-10",
       itinerary: "MADA MULANE MURUGAYA",
       insurance: "DANNA BROO",
       class: "SHEHAN ARE YOU HAPPY NOW?",

@@ -6,9 +6,7 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 
 import { useLocation } from "react-router-dom";
 
-import Datetime from "react-datetime";
-
-import { Row, Col } from "reactstrap";
+import { Row, Col, Input } from "reactstrap";
 
 function ViewTour() {
   const location = useLocation();
@@ -83,13 +81,13 @@ function ViewTour() {
                 </td>
                 <td style={{ paddingRight: "10px" }}>
                   <label>Arrival Date*</label>
-                  <Datetime
-                    timeFormat={false}
-                    inputProps={{
-                      placeholder: "Arrival Date*",
-                      disabled: !editing,
-                    }}
+                  <Input
+                    type="date"
+                    name="date"
+                    id="date"
+                    placeholder="Arrival Date"
                     value={location.state.arrivalDate}
+                    disabled={!editing}
                   />
                 </td>
                 <td></td>
@@ -224,7 +222,7 @@ function ViewTour() {
                   );
                 }}
               >
-                Maru Habay (DO NOT CLICK THIS!)
+                DO NOT CLICK THIS! (MARU HABAY)
               </button>
             </Col>
           </Row>
