@@ -11,7 +11,7 @@ function BookTour() {
     {
       id: "#1234567",
       fullName: "John Cena",
-      country: "USA",
+      country: "United States",
       mobileNo: "69696969",
       email: "johncena@gmail.com",
       arrivalDate: "2021-08-10",
