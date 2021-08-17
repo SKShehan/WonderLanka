@@ -10,6 +10,9 @@ import BookTour from "views/BookTour";
 import MyTours from "views/MyTours";
 import ViewTour from "views/ViewTour";
 import UserProfile from "views/UserProfile";
+import EditProfile from "views/EditProfile";
+import ChangePassword from "views/ChangePassword";
+import Unregister from "views/Unregister";
 
 function App() {
   return (
@@ -36,8 +39,20 @@ function App() {
         <Route path="/my-tours" render={(props) => <MyTours {...props} />} />
         <Route path="/view-tour" render={(props) => <ViewTour {...props} />} />
         <Route
+          path="/edit-profile"
+          render={(props) => <EditProfile {...props}></EditProfile>}
+        />
+        <Route
+          path="/change-password"
+          render={(props) => <ChangePassword {...props}></ChangePassword>}
+        />
+        <Route
           path="/user-profile"
           render={(props) => <UserProfile {...props} />}
+        />
+        <Route
+          path="/unregister"
+          render={(props) => <Unregister {...props} />}
         />
         <Redirect to="/index" />
       </Switch>

@@ -16,11 +16,14 @@ import {
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
+import { Link } from "react-router-dom";
 
 function UserProfile() {
   const [user, setuser] = useState({
+    username: "johncena",
+    password: "pass123",
     fullName: "John Cena",
-    country: "United States",
+    country: "United States of America",
     nic: "000000000",
     mobileNo: "+94772665133",
     email: "john69@gmail.com",
@@ -104,19 +107,27 @@ function UserProfile() {
 
                       <Row>
                         <Col>
-                          <a href="">Edit Profile</a>
+                          <Link to={{ pathname: "/edit-profile", state: user }}>
+                            Edit Profile
+                          </Link>
                         </Col>
                       </Row>
                       <br></br>
                       <Row>
                         <Col>
-                          <a href="">Change Passowrd</a>
+                          <Link
+                            to={{ pathname: "/change-password", state: user }}
+                          >
+                            Change Password
+                          </Link>
                         </Col>
                       </Row>
                       <br></br>
                       <Row>
                         <Col>
-                          <a href="">Unregister</a>
+                          <Link to={{ pathname: "/unregister", state: user }}>
+                            Unregsiter
+                          </Link>
                         </Col>
                       </Row>
                     </td>
