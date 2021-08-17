@@ -185,3 +185,15 @@
   color: aliceblue;
   font-size: large;
 }
+
+.chng-pwd-div {
+  padding: 0px 400px 0px 400px;
+}
+
+.unregister-div {
+  padding: 0px 300px 0px 300px;
+}
+
+.unregister-radio-div {
+  padding: 0px 22px 0px 22px;
+}
