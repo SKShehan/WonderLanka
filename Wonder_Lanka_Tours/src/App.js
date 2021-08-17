@@ -9,6 +9,7 @@ import RegisterPage from "views/examples/RegisterPage.js";
 import BookTour from "views/BookTour";
 import MyTours from "views/MyTours";
 import ViewTour from "views/ViewTour";
+import UserProfile from "views/UserProfile";
 
 function App() {
   return (
@@ -34,6 +35,10 @@ function App() {
         <Route path="/book-tour" render={(props) => <BookTour {...props} />} />
         <Route path="/my-tours" render={(props) => <MyTours {...props} />} />
         <Route path="/view-tour" render={(props) => <ViewTour {...props} />} />
+        <Route
+          path="/user-profile"
+          render={(props) => <UserProfile {...props} />}
+        />
         <Redirect to="/index" />
       </Switch>
     </BrowserRouter>
