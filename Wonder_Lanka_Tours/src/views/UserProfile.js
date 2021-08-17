@@ -23,7 +23,7 @@ function UserProfile() {
     username: "johncena",
     password: "pass123",
     fullName: "John Cena",
-    country: "United States",
+    country: "United States of America",
     nic: "000000000",
     mobileNo: "+94772665133",
     email: "john69@gmail.com",

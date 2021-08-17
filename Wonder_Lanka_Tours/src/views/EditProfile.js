@@ -10,7 +10,7 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 function BookTour() {
   const location = useLocation();
   const [fullName, setfullName] = useState("");
-  const [country, setcountry] = useState("");
+  const [country, setcountry] = useState();
   const [email, setemail] = useState("");
   const [mobileNo, setmobileNo] = useState("");
   const [dateOfBirth, setdateOfBirth] = useState("");
@@ -282,7 +282,7 @@ function BookTour() {
                         }}
                       >
                         {countryList.map((i) => (
-                          <option>{i}</option>
+                          <option value={i}>{i}</option>
                         ))}
                       </Input>
                     </FormGroup>
