@@ -143,3 +143,45 @@
 .booking-div {
   padding: 0px 200px 0px 200px;
 }
+
+.user-profile-div {
+  padding: 0px 200px 0px 200px;
+}
+
+.profile-card {
+  margin: auto;
+  width: 90%;
+  border: 1px solid rgb(207, 206, 206);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  transition: 15ms linear;
+}
+
+.profile-card-blue {
+  height: 100%;
+  background-color: blue;
+  border-radius: 4px;
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 50px;
+}
+
+.profile-col-one {
+  width: 40%;
+}
+
+.profile-img {
+  height: 80px;
+  width: 80px;
+}
+
+.profile-name {
+  color: aliceblue;
+  font-size: large;
+}
