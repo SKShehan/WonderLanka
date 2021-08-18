@@ -18,6 +18,9 @@ function ViewTour({ user }) {
   const [mobileNo, setmobileNo] = useState();
   const [email, setemail] = useState();
   const [arrivalDate, setarrivalDate] = useState();
+  const [assignedGuide, setassignedGuide] = useState("Not Yet Assigned");
+  const [assignedDriver, setassignedDriver] = useState("Not Yet Assigned");
+  const [assignedVehicle, setassignedVehicle] = useState("Not Yet Assigned");
 
   const onSubmit = (e) => {
     const updates = {
@@ -34,6 +37,30 @@ function ViewTour({ user }) {
       .then((res) => {
         console.log(res);
         alert(res.data);
+      });
+  };
+
+  const getAssignedGuide = () => {
+    axios
+      .get(`http://localhost:8070/assignedGuides/get/${location.state.tourId}`)
+      .then((res) => {
+        if (res.data) setassignedGuide(res.data.guideId);
+      });
+  };
+  const getAssignedVehcile = () => {
+    axios
+      .get(
+        `http://localhost:8070/assignedVehicles/get/${location.state.tourId}`
+      )
+      .then((res) => {
+        if (res.data) setassignedVehicle(res.data.vehicleId);
+      });
+  };
+  const getAssignedDriver = () => {
+    axios
+      .get(`http://localhost:8070/assignedDrivers/get/${location.state.tourId}`)
+      .then((res) => {
+        if (res.data) setassignedDriver(res.data.driverId);
       });
   };
   const countryList = [
@@ -250,6 +277,9 @@ function ViewTour({ user }) {
       setmobileNo(location.state.mobileNo);
       setemail(location.state.email);
       setarrivalDate(location.state.arrivalDate);
+      getAssignedGuide();
+      getAssignedDriver();
+      getAssignedVehcile();
     }
 
     document.body.classList.add("index");
@@ -457,19 +487,15 @@ function ViewTour({ user }) {
             <Row>
               <Col>
                 <label className="tour-det-head">Tour Guide :</label>
-                <label className="tour-det-text">
-                  {location.state.tourGuide}
-                </label>
+                <label className="tour-det-text">{assignedGuide}</label>
               </Col>
               <Col>
                 <label className="tour-det-head">Driver :</label>
-                <label className="tour-det-text">{location.state.driver}</label>
+                <label className="tour-det-text">{assignedDriver}</label>
               </Col>
               <Col>
                 <label className="tour-det-head">Vehicle :</label>
-                <label className="tour-det-text">
-                  {location.state.vehicle}
-                </label>
+                <label className="tour-det-text">{assignedVehicle}</label>
               </Col>
             </Row>
             <br></br>
