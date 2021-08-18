@@ -232,7 +232,6 @@ function BookTour() {
     setemail(location.state.email);
     setdateOfBirth(location.state.dob);
 
-    setcountry(countryList[0]);
     return function cleanup() {
       document.body.classList.remove("index");
     };

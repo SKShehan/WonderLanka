@@ -360,11 +360,13 @@ function ViewTour() {
           <Row>
             <Col>
               <label className="tour-det-head">Booking ID :</label>
-              <label className="tour-det-text">{location.state.id}</label>
+              <label className="tour-det-text">{location.state.tourId}</label>
             </Col>
             <Col>
               <label className="tour-det-head">Date :</label>
-              <label className="tour-det-text">{location.state.date}</label>
+              <label className="tour-det-text">
+                {location.state.bookingDate}
+              </label>
             </Col>
             <Col></Col>
           </Row>
@@ -384,7 +386,7 @@ function ViewTour() {
             </Col>
             <Col>
               <label className="tour-det-head">Class :</label>
-              <label className="tour-det-text">{location.state.class}</label>
+              <label className="tour-det-text">{location.state.iclass}</label>
             </Col>
           </Row>
           <br></br>
