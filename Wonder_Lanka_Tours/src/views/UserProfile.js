@@ -18,17 +18,7 @@ import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import { Link } from "react-router-dom";
 
-function UserProfile() {
-  const [user, setuser] = useState({
-    username: "johncena",
-    password: "pass123",
-    fullName: "John Cena",
-    country: "India",
-    nic: "000000000",
-    mobileNo: "+94772665133",
-    email: "john69@gmail.com",
-    dob: "1969-04-01",
-  });
+function UserProfile({ user }) {
   document.documentElement.classList.remove("nav-open");
 
   useEffect(() => {
@@ -107,7 +97,7 @@ function UserProfile() {
 
                       <Row>
                         <Col>
-                          <Link to={{ pathname: "/edit-profile", state: user }}>
+                          <Link to={{ pathname: "/edit-profile" }}>
                             Edit Profile
                           </Link>
                         </Col>
@@ -115,9 +105,7 @@ function UserProfile() {
                       <br></br>
                       <Row>
                         <Col>
-                          <Link
-                            to={{ pathname: "/change-password", state: user }}
-                          >
+                          <Link to={{ pathname: "/change-password" }}>
                             Change Password
                           </Link>
                         </Col>
@@ -125,7 +113,7 @@ function UserProfile() {
                       <br></br>
                       <Row>
                         <Col>
-                          <Link to={{ pathname: "/unregister", state: user }}>
+                          <Link to={{ pathname: "/unregister" }}>
                             Unregsiter
                           </Link>
                         </Col>

@@ -7,7 +7,7 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
-function BookTour() {
+function BookTour({ user }) {
   const location = useLocation();
   const [fullName, setfullName] = useState("");
   const [country, setcountry] = useState();
@@ -224,13 +224,13 @@ function BookTour() {
 
   useEffect(() => {
     document.body.classList.add("index");
-    setusername(location.state.username);
-    setfullName(location.state.fullName);
-    setcountry(location.state.country);
-    setnic(location.state.nic);
-    setmobileNo(location.state.mobileNo);
-    setemail(location.state.email);
-    setdateOfBirth(location.state.dob);
+    setusername(user.username);
+    setfullName(user.fullName);
+    setcountry(user.country);
+    setnic(user.nic);
+    setmobileNo(user.mobileNo);
+    setemail(user.email);
+    setdateOfBirth(user.dob);
 
     return function cleanup() {
       document.body.classList.remove("index");
