@@ -6,12 +6,12 @@ import{
 }
 from 'reactstrap'
 
-function AddItinerary(){
+function EditItinerary(){
 
     return(
 
         <div>
-            <br/><br/><h3 style = {{textAlign : 'center'}}>Insert Tour Itinerary Details</h3><br/><br/>
+            <br/><br/><h3 style = {{textAlign : 'center'}}>Edit Tour Itinerary Details</h3><br/><br/>
             <div className = {styles.FormContainer}>
             <form>
 
@@ -45,7 +45,6 @@ function AddItinerary(){
                 <Label for = "ItineraryPriceC">Itinerary Price for Children</Label><br/>
                 <Input type = "number" name = "ItineraryPriceC" placeholder = "Enter Itinerary Price for Children"/>
 
-                <Button color = "primary">Add Itinerary</Button>
             </form>    
             </div>
         </div>   
@@ -53,4 +52,4 @@ function AddItinerary(){
     );
 }
 
-export default AddItinerary;
+export default EditItinerary;
