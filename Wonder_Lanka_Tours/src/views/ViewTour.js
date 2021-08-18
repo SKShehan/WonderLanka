@@ -28,7 +28,7 @@ function ViewTour({ user }) {
       arrivalDate,
     };
     axios
-      .put(`http://localhost:9000/bookings/update/${location.state.tourId}`, {
+      .put(`http://localhost:8070/bookings/update/${location.state.tourId}`, {
         updates,
       })
       .then((res) => {
