@@ -197,3 +197,58 @@
 .unregister-radio-div {
   padding: 0px 22px 0px 22px;
 }
+
+.dashboard-content {
+  justify-content: center;
+  padding: 20px 200px 20px 200px;
+}
+
+.dashboard-card {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  background-color: white;
+  color: black;
+  font-size: x-large;
+  font-weight: bolder;
+  border: 1px solid silver;
+  border-radius: 10px;
+  height: 300px;
+  padding: 10px 10px 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  transition: color 0.15s ease-in-out, border 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.dashboard-card:hover {
+  color: blue;
+  border: 2px solid blue;
+  box-shadow: rgba(96, 128, 216, 0.932) 0px 1px 3px 0px,
+    rgba(96, 128, 216, 0.932) 0px 1px 2px 0px;
+}
+
+.dashboard-card-subtitle {
+  font-size: small;
+  font-weight: normal;
+}
+
+.loader {
+  margin: auto;
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid rgb(20, 40, 220); /* Blue */
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

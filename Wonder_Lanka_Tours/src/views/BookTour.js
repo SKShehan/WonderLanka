@@ -8,7 +8,7 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
-function BookTour() {
+function BookTour({ user }) {
   const [customize, setcustomize] = useState(false);
   const [itinerary, setitinerary] = useState("");
   const [customizedItinerary, setcustomizedItinerary] = useState("");
@@ -22,9 +22,9 @@ function BookTour() {
   const [noOfAdults, setnoOfAdults] = useState();
   const [noOfKids18, setnoOfKids18] = useState();
   const [noOfKids8, setnoOfKids8] = useState();
-  const [username, setusername] = useState("johncena");
+  const [username, setusername] = useState("");
   const [payment, setpayment] = useState(3000.0);
-  const [bookingDate, setbookingDate] = useState("2021-08-18");
+  const [bookingDate, setbookingDate] = useState();
 
   const countryList = [
     "Afghanistan",
@@ -290,11 +290,13 @@ function BookTour() {
 
   useEffect(() => {
     document.body.classList.add("index");
-
+    setusername(user.username);
     setcountry(countryList[0]);
     setitinerary(itineraryList[0]);
     setinsurance(insuranceList[0]);
     seticlass(classList[0]);
+    let today = new Date().toISOString().slice(0, 10);
+    setbookingDate(today);
     return function cleanup() {
       document.body.classList.remove("index");
     };
@@ -553,10 +555,7 @@ function BookTour() {
                 <Row>
                   <Col>
                     <FormGroup>
-                      <input
-                        className="btn btn-danger submitBtn"
-                        type="submit"
-                      />
+                      <input className="btn btn-info submitBtn" type="submit" />
                     </FormGroup>
                   </Col>
                 </Row>

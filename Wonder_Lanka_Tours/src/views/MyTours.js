@@ -7,23 +7,39 @@ import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import TourComponent from "components/TourComponent";
 
-function BookTour() {
-  const [username, setusername] = useState("johncena");
+function MyTours({ user }) {
   const [tours, settours] = useState([]);
 
   document.documentElement.classList.remove("nav-open");
   useEffect(() => {
-    axios.get(`http://localhost:9000/bookings/get/${username}`).then((res) => {
-      settours(res.data);
-    });
+    axios
+      .get(`http://localhost:9000/bookings/get/${user.username}`)
+      .then((res) => {
+        settours(res.data);
+      });
 
     document.body.classList.add("index");
     return function cleanup() {
       document.body.classList.remove("index");
     };
   }, []);
-  if (tours == null) {
-    return <div>loading...</div>;
+  if (!tours) {
+    return (
+      <>
+        <ProfilePageHeader></ProfilePageHeader>
+        <IndexNavbar></IndexNavbar>
+        <div className="main">
+          <div className="my-tour-content">
+            <h2 align="center"> My Tours</h2>
+            <hr></hr>
+            <br></br>
+            <div style={{ textAlign: "center" }}>Nothing to see here.</div>
+          </div>
+
+          <DemoFooter />
+        </div>
+      </>
+    );
   } else {
     return (
       <>
@@ -34,7 +50,7 @@ function BookTour() {
             <h2 align="center"> My Tours</h2>
             <hr></hr>
             <br></br>
-            {tours.map((tour) => (
+            {[...tours].reverse().map((tour) => (
               <TourComponent tour={tour} key={tour.tourId}></TourComponent>
             ))}
           </div>
@@ -46,4 +62,4 @@ function BookTour() {
   }
 }
 
-export default BookTour;
+export default MyTours;

@@ -7,7 +7,7 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
-function BookTour() {
+function BookTour({ user }) {
   const [reason, setreason] = useState("");
   const [password, setpassword] = useState("");
   const [other, setother] = useState(false);
