@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useState, useEffect } from "react";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
@@ -7,54 +8,42 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 import TourComponent from "components/TourComponent";
 
 function BookTour() {
-  const [tours, settours] = useState([
-    {
-      id: "#1234567",
-      fullName: "John Cena",
-      country: "United States",
-      mobileNo: "69696969",
-      email: "johncena@gmail.com",
-      arrivalDate: "2021-08-10",
-      itinerary: "MADA MULANE MURUGAYA",
-      insurance: "DANNA BROO",
-      class: "SHEHAN ARE YOU HAPPY NOW?",
-      noOfAdults: "4",
-      noOfKids18: "0",
-      noOfKids8: "1",
-      payment: "6969.69",
-      tourGuide: "GOTABAYA RAJAPAKSHA",
-      driver: "NAMAL RAJAPAKSHA",
-      vehicle: "SUDU VAN",
-      date: "05/08/2021",
-      status: "In Progress",
-    },
-  ]);
+  const [username, setusername] = useState("johncena");
+  const [tours, settours] = useState([]);
 
   document.documentElement.classList.remove("nav-open");
   useEffect(() => {
+    axios.get(`http://localhost:9000/bookings/get/${username}`).then((res) => {
+      settours(res.data);
+    });
+
     document.body.classList.add("index");
     return function cleanup() {
       document.body.classList.remove("index");
     };
-  });
-  return (
-    <>
-      <ProfilePageHeader></ProfilePageHeader>
-      <IndexNavbar></IndexNavbar>
-      <div className="main">
-        <div className="my-tour-content">
-          <h2 align="center"> My Tours</h2>
-          <hr></hr>
-          <br></br>
-          {tours.map((tour) => (
-            <TourComponent tour={tour} key={tour.id}></TourComponent>
-          ))}
-        </div>
+  }, []);
+  if (tours == null) {
+    return <div>loading...</div>;
+  } else {
+    return (
+      <>
+        <ProfilePageHeader></ProfilePageHeader>
+        <IndexNavbar></IndexNavbar>
+        <div className="main">
+          <div className="my-tour-content">
+            <h2 align="center"> My Tours</h2>
+            <hr></hr>
+            <br></br>
+            {tours.map((tour) => (
+              <TourComponent tour={tour} key={tour.tourId}></TourComponent>
+            ))}
+          </div>
 
-        <DemoFooter />
-      </div>
-    </>
-  );
+          <DemoFooter />
+        </div>
+      </>
+    );
+  }
 }
 
 export default BookTour;
