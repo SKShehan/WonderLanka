@@ -279,7 +279,7 @@ function BookTour({ user }) {
     console.log(bookingDetails);
 
     axios
-      .post("http://localhost:9000/bookings/add", { bookingDetails })
+      .post("http://localhost:8070/bookings/add", { bookingDetails })
       .then((res) => {
         console.log(res);
         alert(res.data);

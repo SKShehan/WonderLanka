@@ -13,7 +13,7 @@ function MyTours({ user }) {
   document.documentElement.classList.remove("nav-open");
   useEffect(() => {
     axios
-      .get(`http://localhost:9000/bookings/get/${user.username}`)
+      .get(`http://localhost:8070/bookings/get/${user.username}`)
       .then((res) => {
         settours(res.data);
       });
