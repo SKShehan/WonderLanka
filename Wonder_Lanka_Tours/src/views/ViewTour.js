@@ -7,7 +7,7 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 
 import { useLocation, useHistory } from "react-router-dom";
 
-import { Row, Col, Input } from "reactstrap";
+import { Row, Col, Input, Alert, Container } from "reactstrap";
 
 function ViewTour({ user }) {
   const location = useLocation();
@@ -21,6 +21,9 @@ function ViewTour({ user }) {
   const [assignedGuide, setassignedGuide] = useState("Not Yet Assigned");
   const [assignedDriver, setassignedDriver] = useState("Not Yet Assigned");
   const [assignedVehicle, setassignedVehicle] = useState("Not Yet Assigned");
+  const [alertDanger, setAlertDanger] = useState(false);
+  const [alertSuccess, setAlertSuccess] = useState(false);
+  const [alert, setalert] = useState("");
 
   const onSubmit = (e) => {
     const updates = {
@@ -36,7 +39,14 @@ function ViewTour({ user }) {
       })
       .then((res) => {
         console.log(res);
-        alert(res.data);
+        setalert(res.data);
+        setAlertDanger(false);
+        setAlertSuccess(true);
+      })
+      .catch((err) => {
+        setalert("Something went wrong!");
+        setAlertDanger(true);
+        setAlertSuccess(false);
       });
   };
 
@@ -303,7 +313,40 @@ function ViewTour({ user }) {
             <h2 align="center"> Tour Details</h2>
             <hr></hr>
             <br></br>
-
+            <Alert color="success" isOpen={alertSuccess}>
+              <Container>
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                  onClick={() => setAlertSuccess(false)}
+                >
+                  <i className="nc-icon nc-simple-remove" />
+                </button>
+                <span>{alert}</span>
+              </Container>
+            </Alert>
+            <Alert
+              className="alert-with-icon"
+              color="danger"
+              isOpen={alertDanger}
+            >
+              <Container>
+                <div className="alert-wrapper">
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                    onClick={() => setAlertDanger(false)}
+                  >
+                    <i className="nc-icon nc-simple-remove" />
+                  </button>
+                  <span>{alert}</span>
+                </div>
+              </Container>
+            </Alert>
             <form className="edit-booking-form">
               <label className="tour-det-label">Personal Details</label>
               <table width="100%" border="0px">
@@ -513,14 +556,13 @@ function ViewTour({ user }) {
               <Col>
                 <button
                   className="btn btn-info btn-edit-booking"
-                  style={{ width: "100%" }}
                   onClick={() => {
                     window.location.replace(
                       "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                     );
                   }}
                 >
-                  DO NOT CLICK THIS! (MARU HABAY)
+                  Generate Report
                 </button>
               </Col>
             </Row>

@@ -2,7 +2,16 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-import { Label, Input, FormGroup, Row, Col, Card } from "reactstrap";
+import {
+  Label,
+  Input,
+  FormGroup,
+  Row,
+  Col,
+  Card,
+  Alert,
+  Container,
+} from "reactstrap";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
@@ -12,6 +21,9 @@ function BookTour({ user }) {
   const [currentpwd, setcurrentpwd] = useState("");
   const [newpass, setnewpass] = useState("");
   const [renewpass, setrenewpass] = useState("");
+  const [alertDanger, setAlertDanger] = useState(false);
+  const [alertSuccess, setAlertSuccess] = useState(false);
+  const [alert, setalert] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -24,18 +36,27 @@ function BookTour({ user }) {
         axios
           .put(`http://localhost:8070/users/changepwd/${user.username}`, newpwd)
           .then((res) => {
-            alert(res.data);
             console.log(res);
             user.password = newpwd.password;
+            setalert(res.data);
+            setAlertDanger(false);
+            setAlertSuccess(true);
           })
           .catch((err) => {
             console.log(err);
+            setalert("Something went wrong!");
+            setAlertDanger(true);
+            setAlertSuccess(false);
           });
       } else {
-        alert("Please re-enter your new password correctly!");
+        setalert("Please re-enter your new password correctly!");
+        setAlertDanger(true);
+        setAlertSuccess(false);
       }
     } else {
-      alert("Please check your current passowrd!");
+      setalert("Please check your current passowrd!");
+      setAlertDanger(true);
+      setAlertSuccess(false);
     }
   };
 
@@ -59,8 +80,43 @@ function BookTour({ user }) {
           <h2 align="center">Change Password</h2>
           <hr></hr>
           <br></br>
+
           <>
             <div className="chng-pwd-div">
+              <Alert color="success" isOpen={alertSuccess}>
+                <Container>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                    onClick={() => setAlertSuccess(false)}
+                  >
+                    <i className="nc-icon nc-simple-remove" />
+                  </button>
+                  <span>{alert}</span>
+                </Container>
+              </Alert>
+              <Alert
+                className="alert-with-icon"
+                color="danger"
+                isOpen={alertDanger}
+              >
+                <Container>
+                  <div className="alert-wrapper">
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                      onClick={() => setAlertDanger(false)}
+                    >
+                      <i className="nc-icon nc-simple-remove" />
+                    </button>
+                    <span>{alert}</span>
+                  </div>
+                </Container>
+              </Alert>
               <form onSubmit={onSubmit}>
                 <Row>
                   <Col>

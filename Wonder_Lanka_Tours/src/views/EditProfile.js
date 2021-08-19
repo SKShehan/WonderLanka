@@ -2,7 +2,16 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Label, Input, FormGroup, Row, Col, Card } from "reactstrap";
+import {
+  Label,
+  Input,
+  FormGroup,
+  Row,
+  Col,
+  Card,
+  Alert,
+  Container,
+} from "reactstrap";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
@@ -17,6 +26,9 @@ function BookTour({ user }) {
   const [dateOfBirth, setdateOfBirth] = useState("");
   const [nic, setnic] = useState("");
   const [username, setusername] = useState("");
+  const [alertDanger, setAlertDanger] = useState(false);
+  const [alertSuccess, setAlertSuccess] = useState(false);
+  const [alert, setalert] = useState("");
 
   const countryList = [
     "Afghanistan",
@@ -232,11 +244,16 @@ function BookTour({ user }) {
       .put(`http://localhost:8070/users/update/${user.username}`, updates)
       .then((res) => {
         console.log(res);
-        alert(res.data);
         user.username = updates.username;
+        setalert(res.data);
+        setAlertDanger(false);
+        setAlertSuccess(true);
       })
       .catch((err) => {
         console.log(err);
+        setalert("Something went wrong!");
+        setAlertDanger(true);
+        setAlertSuccess(false);
       });
   };
 
@@ -269,6 +286,40 @@ function BookTour({ user }) {
           <br></br>
           <>
             <div className="booking-div">
+              <Alert color="success" isOpen={alertSuccess}>
+                <Container>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                    onClick={() => setAlertSuccess(false)}
+                  >
+                    <i className="nc-icon nc-simple-remove" />
+                  </button>
+                  <span>{alert}</span>
+                </Container>
+              </Alert>
+              <Alert
+                className="alert-with-icon"
+                color="danger"
+                isOpen={alertDanger}
+              >
+                <Container>
+                  <div className="alert-wrapper">
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                      onClick={() => setAlertDanger(false)}
+                    >
+                      <i className="nc-icon nc-simple-remove" />
+                    </button>
+                    <span>{alert}</span>
+                  </div>
+                </Container>
+              </Alert>
               <form onSubmit={onSubmit}>
                 <Row>
                   <Col>

@@ -1,7 +1,17 @@
 import React from "react";
+import axios from "axios";
 import { useState, useEffect } from "react";
 
-import { Label, Input, FormGroup, Row, Col, Card } from "reactstrap";
+import {
+  Label,
+  Input,
+  FormGroup,
+  Row,
+  Col,
+  Card,
+  Alert,
+  Container,
+} from "reactstrap";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
@@ -14,6 +24,8 @@ function BookTour({ user }) {
   const [reason1, setreason1] = useState(false);
   const [reason2, setreason2] = useState(false);
   const [reason3, setreason3] = useState(false);
+  const [alertDanger, setAlertDanger] = useState(false);
+  const [alert, setalert] = useState("");
 
   const selectReason1 = () => {
     setother(false);
@@ -43,8 +55,50 @@ function BookTour({ user }) {
     setother(true);
   };
 
+  const unregReason = () => {
+    const unreg = {
+      fullName: user.fullName,
+      unregisteredDate: new Date().toISOString().slice(0, 10),
+      reason,
+    };
+    axios
+      .post(`http://localhost:8070/unregUser/add`, unreg)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const deleteBookings = () => {
+    axios
+      .delete(`http://localhost:8070/bookings/delete/${user.username}`)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
+    if (password != user.password) {
+      setalert("Incorrect Password!");
+      setAlertDanger(true);
+    } else {
+      axios
+        .delete(`http://localhost:8070/users/delete/${user.username}`)
+        .then(() => {
+          unregReason();
+          deleteBookings();
+          alert("Successfull!");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   document.documentElement.classList.remove("nav-open");
@@ -69,6 +123,26 @@ function BookTour({ user }) {
           <br></br>
           <>
             <div className="unregister-div">
+              <Alert
+                className="alert-with-icon"
+                color="danger"
+                isOpen={alertDanger}
+              >
+                <Container>
+                  <div className="alert-wrapper">
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                      onClick={() => setAlertDanger(false)}
+                    >
+                      <i className="nc-icon nc-simple-remove" />
+                    </button>
+                    <span>{alert}</span>
+                  </div>
+                </Container>
+              </Alert>
               <form onSubmit={onSubmit}>
                 <Row>
                   <Col>
@@ -145,6 +219,7 @@ function BookTour({ user }) {
                           setreason(e.target.value);
                         }}
                         disabled={!other}
+                        required={other}
                       ></Input>
                     </FormGroup>
                   </Col>
