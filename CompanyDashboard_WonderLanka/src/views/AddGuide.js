@@ -11,7 +11,7 @@ function AddGuide(){
     return(
 
         <div>
-            <br/><br/><h3 style = {{textAlign : 'center'}}>Insert Tour Itinerary Details</h3><br/><br/>
+            <br/><br/><h3 style = {{textAlign : 'center'}}>Insert Tour Guide Details</h3><br/><br/>
             <div className = {styles.FormContainer}>
             <form>
 
