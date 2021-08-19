@@ -39,6 +39,11 @@ import SectionDark from "views/index-sections/SectionDark.js";
 import SectionLogin from "views/index-sections/SectionLogin.js";
 import SectionExamples from "views/index-sections/SectionExamples.js";
 import SectionDownload from "views/index-sections/SectionDownload.js";
+import AddItinerary from "./AddItinerary";
+import ViewItineraries from "./viewItineraries";
+import ItineraryManagement from "./ItineraryManagement";
+import CustomizedRequests from "./CustomizedRequests";
+import AddGuide from "./AddGuide";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -53,7 +58,7 @@ function Index() {
       <IndexNavbar />
       <IndexHeader />
       <div className="main">
-        <SectionButtons />
+     {/* <SectionButtons />
         <SectionNavbars />
         <SectionNavigation />
         <SectionProgress />
@@ -65,7 +70,10 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
-        <SectionDownload />
+        <SectionDownload /> 
+        <ItineraryManagement/> 
+        <CustomizedRequests/> */}
+        <AddGuide/>
         <DemoFooter />
       </div>
     </>

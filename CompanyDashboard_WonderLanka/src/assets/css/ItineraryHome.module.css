@@ -1,0 +1,15 @@
+.btn_itmng{
+    display: inline-block;
+    cursor: pointer;
+    margin: 10px;
+
+}
+
+.relative {
+    padding: 10px;
+    position: relative;
+   } 
+
+.itnBody{
+    padding-left: 20%;
+}   
