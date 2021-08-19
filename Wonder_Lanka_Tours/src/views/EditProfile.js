@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Label, Input, FormGroup, Row, Col, Card } from "reactstrap";
@@ -218,6 +219,25 @@ function BookTour({ user }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    const updates = {
+      username,
+      fullName,
+      email,
+      country,
+      mobileNo,
+      dateOfBirth,
+      nic,
+    };
+    axios
+      .put(`http://localhost:8070/users/update/${user.username}`, updates)
+      .then((res) => {
+        console.log(res);
+        alert(res.data);
+        user.username = updates.username;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   document.documentElement.classList.remove("nav-open");

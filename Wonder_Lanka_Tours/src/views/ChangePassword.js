@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useState, useEffect } from "react";
 
 import { Label, Input, FormGroup, Row, Col, Card } from "reactstrap";
@@ -9,11 +10,33 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 
 function BookTour({ user }) {
   const [currentpwd, setcurrentpwd] = useState("");
-  const [newpwd, setnewpwd] = useState("");
-  const [renewpwd, setrenewpwd] = useState("");
+  const [newpass, setnewpass] = useState("");
+  const [renewpass, setrenewpass] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if (currentpwd === user.password) {
+      if (renewpass === newpass) {
+        const newpwd = {
+          password: newpass,
+        };
+
+        axios
+          .put(`http://localhost:8070/users/changepwd/${user.username}`, newpwd)
+          .then((res) => {
+            alert(res.data);
+            console.log(res);
+            user.password = newpwd.password;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        alert("Please re-enter your new password correctly!");
+      }
+    } else {
+      alert("Please check your current passowrd!");
+    }
   };
 
   document.documentElement.classList.remove("nav-open");
@@ -65,9 +88,9 @@ function BookTour({ user }) {
                         type="password"
                         id="newpwd"
                         name="newpwd"
-                        value={newpwd}
+                        value={newpass}
                         onChange={(e) => {
-                          setnewpwd(e.target.value);
+                          setnewpass(e.target.value);
                         }}
                         required
                       ></Input>
@@ -83,9 +106,9 @@ function BookTour({ user }) {
                         type="password"
                         name="renewpwd"
                         id="renewpwd"
-                        value={renewpwd}
+                        value={renewpass}
                         onChange={(e) => {
-                          setrenewpwd(e.target.value);
+                          setrenewpass(e.target.value);
                         }}
                         required
                       />
