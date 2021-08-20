@@ -11,7 +11,7 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 function BookTour({ user }) {
   const [customize, setcustomize] = useState(false);
   const [itinerary, setitinerary] = useState("");
-  const [customizedItinerary, setcustomizedItinerary] = useState("");
+  const [customziedItinerary, setcustomizedItinerary] = useState("");
   const [insurance, setinsurance] = useState("");
   const [iclass, seticlass] = useState("");
   const [fullName, setfullName] = useState("");
@@ -267,6 +267,7 @@ function BookTour({ user }) {
       email,
       arrivalDate,
       itinerary,
+      customziedItinerary,
       insurance,
       iclass,
       noOfAdults,
@@ -441,7 +442,7 @@ function BookTour({ user }) {
                           name="customizedItinerary"
                           id="customizedItinerary"
                           placeholder="Write here..."
-                          value={customizedItinerary}
+                          value={customziedItinerary}
                           onChange={(e) => {
                             setcustomizedItinerary(e.target.value);
                           }}
