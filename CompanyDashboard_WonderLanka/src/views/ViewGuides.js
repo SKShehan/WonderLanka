@@ -14,6 +14,9 @@ import {
 } from "reactstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from 'react-router-dom';
+
+
 
 function ViewGuides() {
   const [guides, setguides] = useState([]);
@@ -54,6 +57,12 @@ function ViewGuides() {
       // cleanup
     };
   }, []);
+
+  let history = useHistory();
+
+  //const handleEdit = (guide) =>{
+   // history.push(`/edit-guide/${guide._id}`);
+//  }
   return (
     <div className={guideStyles.viewGuideDiv}>
       <Row>
@@ -110,7 +119,13 @@ function ViewGuides() {
             <td className={guideStyles.tbldata}>{guide.licenseID}</td>
             <td className={guideStyles.tbldata}>{guide.foreignLang}</td>
             <td className={guideStyles.tbldata}>
-              <button className={guideStyles.btnEdit}>Edit</button>
+              <button 
+              className={guideStyles.btnEdit}
+              onClick = {() =>{
+           //     handleEdit(guide);
+                   history.push(`/edit-guide/${guide._id}`);
+              }}
+              >Edit</button>
 
               <button
                 className={guideStyles.btnDelete}

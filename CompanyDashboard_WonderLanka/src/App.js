@@ -52,7 +52,7 @@ function App() {
         <Route path="/edit-itinerary" exact>
           <EditItinerary />
         </Route>
-        <Route path="/edit-guide" exact>
+        <Route path= "/edit-guide/:id" exact>
           <EditGuide />
         </Route>
         <Route path="/add-guide" exact>
@@ -64,6 +64,8 @@ function App() {
         <Route path="/view-guides" exact>
           <ViewGuides />
         </Route>
+
+        
 
         <Redirect to="/index" />
       </Switch>
