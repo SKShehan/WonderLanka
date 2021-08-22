@@ -1,4 +1,6 @@
 import styles from '../assets/css/AddItinerary.module.css'
+import { useState } from 'react';
+import axios from 'axios';
 import{
     Label,
     Input,
@@ -6,37 +8,92 @@ import{
 }
 from 'reactstrap'
 
+
+
+
+
 function AddGuide(){
+
+const [guideID , setGuideId] = useState("");
+const [fName , setFname] = useState("");
+const [lName , setLname] = useState("");
+const [email , setEmail] = useState("");
+const [telNo , setTelno] = useState("");
+const [licenseID , setLicenseId] = useState("");
+const [foreignLang , setForeignLang] = useState("");
+
+function sendData(e){
+    e.preventDefault();
+
+    const newGuide = {
+        guideID,
+        fName,
+        lName,
+        email,
+        telNo,
+        licenseID,
+        foreignLang
+    }
+
+
+axios.post("http://localhost:8070/guides/add" , newGuide ).then(()=>{
+    alert("Guide Added !");
+}).catch((err)=>{
+    alert(err);
+    })
+}
+
 
     return(
 
         <div>
             <br/><br/><h3 style = {{textAlign : 'center'}}>Insert Tour Guide Details</h3><br/><br/>
             <div className = {styles.FormContainer}>
-            <form>
+            <form onSubmit = {sendData}>
 
                 <Label for = "GuideID">Guide ID</Label><br/>
-                <Input type = 'text' name = "GuideID" placeholder = "Enter Guide ID"></Input><br/>
+                <Input type = 'text' name = "GuideID" placeholder = "Enter Guide ID" 
+                onChange = {(e) => {
+                        setGuideId(e.target.value);
+                }}></Input><br/>
 
                 <Label for = "FirstName">First Name</Label><br/>
-                <Input type = 'text' name = "FirstName" placeholder = "Enter First Name"></Input><br/>
+                <Input type = 'text' name = "FirstName" placeholder = "Enter First Name"
+                onChange = {(e) =>{
+                        setFname(e.target.value);
+                }}></Input><br/>
 
                 <Label for = "LastName">Last Name</Label><br/>
-                <Input type = 'text' name = "LastName" placeholder = "Enter Last Name"></Input><br/>
+                <Input type = 'text' name = "LastName" placeholder = "Enter Last Name"
+                onChange = {(e)=>{
+                        setLname(e.target.value);
+                }}></Input><br/>
 
                 <Label for = "Email">Email</Label><br/>
-                <Input type = "email" name = "Email" placeholder = "Enter Email"></Input><br/>
+                <Input type = "email" name = "Email" placeholder = "Enter Email"
+                onChange = {(e)=>{
+                        setEmail(e.target.value);
+                }}></Input><br/>
 
                 <Label for = "TelNo">Telephone number</Label><br/>
-                <Input type = "number" name = "TelNo" placeholder = "Enter Telephone Number"></Input><br/>
+                <Input type = "number" name = "TelNo" placeholder = "Enter Telephone Number"
+                onChange = {(e)=>{
+                        setTelno(e.target.value);
+                }}></Input><br/>
 
                 <Label for = "GuideLicense">Guide License ID</Label><br/>
-                <Input type = "text" name = "GuideLicense" placeholder = "Enter Guide License ID"/><br/>
+                <Input type = "text" name = "GuideLicense" placeholder = "Enter Guide License ID"
+                onChange= {(e)=>{
+                        setLicenseId(e.target.value);
+                }}/><br/>
 
                 <Label for = "ForeignLanguage">Main Foreign ForeignLanguage</Label><br/>
-                <Input type = "text" name = "ForeignLanguage" placeholder = "Enter Main Foreign Language"/> <br/>
+                <Input type = "text" name = "ForeignLanguage" placeholder = "Enter Main Foreign Language"
+                onChange = {(e)=>{
+                        setForeignLang(e.target.value);
+                }}/> <br/>
 
-                <Button color = "primary" style = {{float:'right' , margin : "5px" }}>Add Guide</Button>
+                <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}>Add Guide</Button>
 
             </form>    
             </div>

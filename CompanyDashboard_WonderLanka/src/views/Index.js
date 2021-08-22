@@ -44,6 +44,7 @@ import ViewItineraries from "./viewItineraries";
 import ItineraryManagement from "./ItineraryManagement";
 import CustomizedRequests from "./CustomizedRequests";
 import AddGuide from "./AddGuide";
+import ViewGuides from "./ViewGuides";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -73,7 +74,7 @@ function Index() {
         <SectionDownload /> 
         <ItineraryManagement/> 
         <CustomizedRequests/> */}
-        <AddGuide/>
+        <ViewGuides />
         <DemoFooter />
       </div>
     </>
