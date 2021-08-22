@@ -29,7 +29,7 @@ function BookTour({ user }) {
   const [alertDanger, setAlertDanger] = useState(false);
   const [alertSuccess, setAlertSuccess] = useState(false);
   const [alert, setalert] = useState("");
-
+  let usernameExists = false;
   const countryList = [
     "Afghanistan",
     "Albania",
@@ -229,7 +229,20 @@ function BookTour({ user }) {
     "Zimbabwe",
   ];
 
-  const onSubmit = (e) => {
+  const updateUsername = async () => {
+    if (user.username != username) {
+      await axios
+        .get(`http://localhost:8070/users/check/${username}`)
+        .then((res) => {
+          usernameExists = res.data;
+          console.log(res.data);
+        });
+    } else {
+      usernameExists = false;
+    }
+  };
+
+  const onSubmit = async (e) => {
     e.preventDefault();
     const updates = {
       username,
@@ -240,21 +253,29 @@ function BookTour({ user }) {
       dateOfBirth,
       nic,
     };
-    axios
-      .put(`http://localhost:8070/users/update/${user.username}`, updates)
-      .then((res) => {
-        console.log(res);
-        user.username = updates.username;
-        setalert(res.data);
-        setAlertDanger(false);
-        setAlertSuccess(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        setalert("Something went wrong!");
-        setAlertDanger(true);
-        setAlertSuccess(false);
-      });
+    await updateUsername();
+    console.log(usernameExists);
+    if (usernameExists === false) {
+      await axios
+        .put(`http://localhost:8070/users/update/${user.username}`, updates)
+        .then((res) => {
+          console.log(res);
+          user.username = updates.username;
+          setalert(res.data);
+          setAlertDanger(false);
+          setAlertSuccess(true);
+        })
+        .catch((err) => {
+          console.log(err);
+          setalert("Something went wrong!");
+          setAlertDanger(true);
+          setAlertSuccess(false);
+        });
+    } else {
+      setalert("Username already exists!");
+      setAlertDanger(true);
+      setAlertSuccess(false);
+    }
   };
 
   document.documentElement.classList.remove("nav-open");
