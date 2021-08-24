@@ -98,7 +98,7 @@ function ViewGuides() {
         </Col>
         <Col></Col>
       </Row>
-      <table width="100%" border="1px" className={guideStyles.tbldata}>
+      <table width="100%" border="2px" className={guideStyles.tbldata}>
         <tr>
           <th className={guideStyles.tbldata}>Guide ID</th>
           <th className={guideStyles.tbldata}>First Name</th>
