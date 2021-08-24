@@ -511,9 +511,7 @@ function BookTour({ user }) {
                   </Col>
                   <Col>
                     <FormGroup>
-                      <Label for="kids18">
-                        Number of Kids (Under Age of 18)*
-                      </Label>
+                      <Label for="kids18">Number of Kids (Under Age 18)*</Label>
                       <Input
                         type="text"
                         name="kids18"
@@ -529,9 +527,7 @@ function BookTour({ user }) {
                   </Col>
                   <Col>
                     <FormGroup>
-                      <Label for="kids8">
-                        Number of Kids (Under Age of 8)*
-                      </Label>
+                      <Label for="kids8">Number of Kids (Under Age 8)*</Label>
                       <Input
                         type="text"
                         name="kids8"
