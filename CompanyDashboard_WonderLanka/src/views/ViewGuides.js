@@ -63,6 +63,7 @@ function ViewGuides() {
   //const handleEdit = (guide) =>{
    // history.push(`/edit-guide/${guide._id}`);
 //  }
+
   return (
     <div className={guideStyles.viewGuideDiv}>
       <Row>
@@ -110,6 +111,7 @@ function ViewGuides() {
           <th className={guideStyles.tbldata}>Actions</th>
         </tr>
         {guides.map((guide) => (
+          
           <tr className={guideStyles.tbldata}>
             <td className={guideStyles.tbldata}>{guide.guideID}</td>
             <td className={guideStyles.tbldata}>{guide.fName}</td>

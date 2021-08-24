@@ -44,6 +44,7 @@ function EditGuide(){
 
     function onSubmit (e){
         e.preventDefault();
+
         const updateGuide = {
             guideID,
             fName,
@@ -53,10 +54,8 @@ function EditGuide(){
             licenseID,
             foreignLang
         }
-        axios.put(`http://localhost:8070/guides/update/${id}` , updateGuide ).then(()=>{
+        axios.put(`http://localhost:8070/guides/update/${id}` , updateGuide ).then(() =>{
             alert("Guide Updated!");
-        
-            
         }).catch((err) =>{
             console.log(err);
         })
