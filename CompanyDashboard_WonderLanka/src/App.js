@@ -49,7 +49,7 @@ function App() {
           <ViewItineraries />
         </Route>
 
-        <Route path="/edit-itinerary" exact>
+        <Route path="/edit-itinerary/:id" exact>
           <EditItinerary />
         </Route>
         <Route path= "/edit-guide/:id" exact>
