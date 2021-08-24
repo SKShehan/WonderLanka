@@ -74,7 +74,7 @@ function Index() {
         <SectionDownload /> 
         <ItineraryManagement/> 
         <CustomizedRequests/> */}
-        <ViewGuides />
+        <AddItinerary />
         <DemoFooter />
       </div>
     </>
