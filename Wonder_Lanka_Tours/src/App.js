@@ -47,28 +47,28 @@ function App() {
           path="/register-page"
           render={(props) => <RegisterPage {...props} />}
         />
-        <Route path="/book-tour">
+        <Route path="/book-tour" exact>
           <BookTour user={user}></BookTour>
         </Route>
-        <Route path="/my-tours">
+        <Route path="/my-tours" exact>
           <MyTours user={user}></MyTours>
         </Route>
-        <Route path="/view-tour">
+        <Route path="/view-tour" exact>
           <ViewTour user={user}></ViewTour>
         </Route>
-        <Route path="/edit-profile">
+        <Route path="/edit-profile" exact>
           <EditProfile user={user}></EditProfile>
         </Route>
-        <Route path="/change-password">
+        <Route path="/change-password" exact>
           <ChangePassword user={user}></ChangePassword>
         </Route>
-        <Route path="/user-profile">
+        <Route path="/user-profile" exact>
           <UserProfile user={user}></UserProfile>
         </Route>
-        <Route path="/unregister">
+        <Route path="/unregister" exact>
           <Unregister user={user}></Unregister>
         </Route>
-        <Route path="/user-dashboard">
+        <Route path="/user-dashboard" exact>
           <Dashboard user={user}></Dashboard>
         </Route>
         <Redirect to="/index" />
