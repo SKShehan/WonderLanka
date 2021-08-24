@@ -14,8 +14,8 @@ function AddItinerary(){
     const [itineraryDays , setitineraryDays] = useState("");
     const [itineraryName , setitineraryName] = useState("");
     const [itineraryDesc , setitineraryDesc] = useState("");
-    const [itineraryImage , setitineraryImage] = useState("");
-    const [itineraryCoverImage , setitineraryCoverImage] = useState("");
+    const [imgFile1 , setitineraryImage] = useState("");
+    const [imgFile2 , setitineraryCoverImage] = useState("");
     const [itineraryClass , setitineraryClass] = useState("");
     const [itineraryPriceAdult , setitineraryPriceAdult] = useState("");
     const [itineraryPriceChild , setitineraryPriceChild] = useState("");
@@ -35,8 +35,8 @@ function AddItinerary(){
         formData.append("itineraryDays" , itineraryDays);
         formData.append("itineraryName" , itineraryName);
         formData.append("itineraryDesc" , itineraryDesc);
-        formData.append("itineraryImage" , itineraryImage);
-        formData.append("itineraryCoverImage" , itineraryCoverImage);
+        formData.append("itineraryImage" , imgFile1);
+        formData.append("itineraryCoverImage" , imgFile2);
         formData.append("itineraryClass" , itineraryClass);
         formData.append("itineraryPriceAdult" , itineraryPriceAdult);
         formData.append("itineraryPriceChild" , itineraryPriceChild);
@@ -87,7 +87,7 @@ function AddItinerary(){
                 ></Input><br/>
                 <div className = "form-group">
                 <Label for = "ItineraryImage">Itinerary Image</Label><br/>
-                <Input type = "file" filename = "itineraryImage" accept = "image/*" accept = "image/*"
+                <Input type = "file" filename = "itineraryImage" accept = "image/*" className = "form-control-file"
                  onChange = {onChangeFile}
                 ></Input><br/>
                 </div>
