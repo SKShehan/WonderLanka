@@ -1,5 +1,5 @@
 import{Button} from 'reactstrap'
-import{ useHistory } from "react-router-dom"
+
 function CustomizedRequests(){
 
 
@@ -21,8 +21,8 @@ function CustomizedRequests(){
                         <tr>
                             <th scope = "row">1</th>
                             <td>T123</td>
-                            <td>Itinirary Description</td>
-
+                            <td>Itinerary Description</td>
+                                        
                             <td><Button color="info">Add Itinirary</Button></td>
                         </tr>
                     </tbody>    

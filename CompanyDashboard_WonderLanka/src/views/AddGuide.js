@@ -1,6 +1,8 @@
-import styles from '../assets/css/AddItinerary.module.css'
+import styles from '../assets/css/AddGuide.module.css'
 import { useState } from 'react';
 import axios from 'axios';
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
 import{
     Label,
     Input,
@@ -21,6 +23,7 @@ const [email , setEmail] = useState("");
 const [telNo , setTelno] = useState("");
 const [licenseID , setLicenseId] = useState("");
 const [foreignLang , setForeignLang] = useState("");
+const [message , setMessage] = useState("");
 
 function sendData(e){
     e.preventDefault();
@@ -37,7 +40,7 @@ function sendData(e){
 
 
 axios.post("http://localhost:8070/guides/add" , newGuide ).then(()=>{
-    alert("Guide Added !");
+    window.location.reload();
 }).catch((err)=>{
     alert(err);
     })
@@ -45,9 +48,11 @@ axios.post("http://localhost:8070/guides/add" , newGuide ).then(()=>{
 
 
     return(
-
-        <div>
-            <br/><br/><h3 style = {{textAlign : 'center'}}>Insert Tour Guide Details</h3><br/><br/>
+        <>
+        <IndexHeader />
+        <IndexNavbar />
+        <div style = {{paddingTop : "50px"}} className = {styles.body}>
+            <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert Tour Guide Details</h3><br/><br/>
             <div className = {styles.FormContainer}>
             <form onSubmit = {sendData}>
 
@@ -92,13 +97,17 @@ axios.post("http://localhost:8070/guides/add" , newGuide ).then(()=>{
                 onChange = {(e)=>{
                         setForeignLang(e.target.value);
                 }}/> <br/>
-
-                <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}>Add Guide</Button>
+                <span style = {{textAlign:"left" , color : "red"}}>{message}</span>
+                <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}
+                onClick = {() =>{
+                    setMessage("Guide Added!");
+                }}
+                >Add Guide</Button>
 
             </form>    
             </div>
         </div>   
-
+       </>     
     );
 }
 

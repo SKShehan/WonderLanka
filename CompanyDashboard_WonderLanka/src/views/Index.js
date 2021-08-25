@@ -45,6 +45,7 @@ import ItineraryManagement from "./ItineraryManagement";
 import CustomizedRequests from "./CustomizedRequests";
 import AddGuide from "./AddGuide";
 import ViewGuides from "./ViewGuides";
+import GuideManagement from "./GuideManagement";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -56,9 +57,10 @@ function Index() {
   });
   return (
     <>
-      <IndexNavbar />
-      <IndexHeader />
+
       <div className="main">
+        <IndexNavbar />
+        <IndexHeader/>
      {/* <SectionButtons />
         <SectionNavbars />
         <SectionNavigation />
@@ -71,10 +73,10 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
-        <SectionDownload /> 
-        <ItineraryManagement/> 
-        <CustomizedRequests/> */}
-        <ViewItineraries /> 
+        <SectionDownload /> */}
+        <GuideManagement/> 
+         
+        
         
         <DemoFooter />
       </div>

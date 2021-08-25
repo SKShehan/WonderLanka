@@ -1,31 +1,49 @@
 
-import styles from "../assets/css/ItineraryHome.module.css"
+import styles from "../assets/css/GuideHome.module.css"
 
+import { useHistory } from "react-router";
 function GuideManagement(){
+
+    let history = useHistory();
+
+    function handleClickAdd(){
+        history.push("/add-guide");
+    }
+
+    function handleClickView() {
+        history.push("/view-guides");
+    }
+
+    function handleClickAssign() {
+        history.push("/assign-guides");
+    }
+
+    function handleClickReport() {
+        history.push("/report-guides");
+    }
 
 
     return(
-        <div>
-            <h3><center>Guide Management</center></h3><br/><br/>
-            <div className = {styles.itnBody}>
-            <div className = {styles.relative}>
+        
+            <div style = {{paddingTop : "50px"}} className = {styles.body}>
+            <h3 className = {styles.header}><center>Guide Management</center></h3><br/><br/>
+
+            <div style = {{paddingTop : "50px"}} className = {styles.btn_group}>
             
-                <button className = {styles.btn_itmng} >Add Tour Guide</button>
+                <button className = {styles.btn_guidemng} onClick = {handleClickAdd} >Add Tour Guide</button>
             
         
-                <button className = {styles.btn_itmng} >View Tour Guides</button>
+                <button className = {styles.btn_guidemng} onClick = {handleClickView} >View Tour Guides</button>
              
     
-                <button className = {styles.btn_itmng}>Assign Tour Guides</button>
+                <button className = {styles.btn_guidemng} onClick = {handleClickAssign}>Assign Tour Guides</button>
         
             
-                <button className = {styles.btn_itmng}>Tour Guide Report</button>
+                <button className = {styles.btn_guidemng} onClick = {handleClickReport}>Tour Guide Report</button>
             
             </div>
-
-            </div>
-
-        </div>    
+        </div>
+        
     );
 }
 

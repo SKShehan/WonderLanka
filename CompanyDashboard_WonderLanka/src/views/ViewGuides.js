@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../assets/css/AddItinerary.module.css";
 import guideStyles from "../assets/css/ViewGuides.module.css";
+import IndexHeader from "components/Headers/IndexHeader";
+import IndexNavbar from "components/Navbars/IndexNavbar";
 import {
   Label,
   Input,
@@ -20,6 +22,7 @@ import { useHistory } from 'react-router-dom';
 
 function ViewGuides() {
   const [guides, setguides] = useState([]);
+  const [message , setMessage] = useState("");
 
   const deleteGuide = (guide) => {
     if (
@@ -31,7 +34,8 @@ function ViewGuides() {
         .delete(`http://localhost:8070/guides/delete/${guide.guideID}`)
         .then((res) => {
           console.log(res);
-          alert("Successful!");
+          window.location.reload();
+          
         })
         .catch((err) => {
           console.log(err);
@@ -133,6 +137,7 @@ function ViewGuides() {
                 className={guideStyles.btnDelete}
                 onClick={() => {
                   deleteGuide(guide);
+                  setMessage("Guide Deleted!");
                 }}
               >
                 Delete
@@ -141,8 +146,10 @@ function ViewGuides() {
           </tr>
         ))}
       </table>
+      <span style = {{textAlign:"left" , color : "red"}}>{message}</span>
     </div>
   );
 }
 
 export default ViewGuides;
+
