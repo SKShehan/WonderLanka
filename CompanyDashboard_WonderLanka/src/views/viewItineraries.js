@@ -1,6 +1,7 @@
 import{Button} from 'reactstrap'
 import{ useHistory } from "react-router-dom"
 import { useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 
 function ViewItineraries(){
@@ -9,12 +10,34 @@ function ViewItineraries(){
 
     const [itineraries , setItineraries] = useState([]);
 
-    axios.get("http://localhost:8070/itineraries/").then((res) =>{
-        setItineraries(res.data);
-        console.log(res.data);
-    }).catch((err) =>{
-        console.log(err);
-    })
+
+
+    useEffect(() => {
+        axios.get("http://localhost:8070/itineraries/").then((res) =>{
+            setItineraries(res.data);
+            console.log(res.data);
+        }).catch((err) =>{
+            console.log(err);
+        })
+    
+      }, []);
+
+    
+
+    function onDelete(itinerary)  {
+        if (
+            window.confirm(
+              "Itinerary " + itinerary.itineraryId + " will be removed from the database"
+            )
+        )
+        axios.delete(`http://localhost:8070/itineraries/delete/${itinerary._id}`).then((res) =>{
+            console.log(res);
+            alert("Deletion Succesful!");
+        }).catch((err) =>{
+            console.log(err);
+            alert("Error!");
+        })
+    }
  
 
     var number = 1;
@@ -60,8 +83,16 @@ function ViewItineraries(){
                                 onClick = {()=>{
                                     history.push(`/edit-itinerary/${itinerary._id}`);
                                 }}
-                                >Edit</Button><Button color="danger">Remove</Button></td>
+                                >Edit</Button>
+
+                                <Button color="danger" 
+                                onClick = {() =>{
+                                    onDelete(itinerary);
+                                }}
+                                    
                                
+                                >Remove</Button>
+                               </td>
                             </tr>
     
                         ))}

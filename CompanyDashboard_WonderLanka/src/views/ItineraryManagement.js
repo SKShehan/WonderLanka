@@ -14,27 +14,27 @@ function ItineraryManagement(){
     }
 
     return(
-        <div>
-            <h3><center>Itinerary Management</center></h3><br/><br/>
-            <div className = {styles.itnBody}>
-            <div className = {styles.relative}>
-            
-                <button className = {styles.btn_itmng} onClick = {handleClickAdd}>Add Itinerary</button>
+        <div style = {{paddingTop : "50px"}} className = {styles.body}>
+            <h3 className = {styles.header}><center>Itinerary Management</center></h3><br/><br/>
+
+            <div style = {{paddingTop : "50px"}} className = {styles.btn_group}>
+
+                <button className = {styles.btn_guidemng} onClick = {handleClickAdd}>Add Itinerary</button>
             
         
-                <button className = {styles.btn_itmng} onClick = {handleClickView}>View Tour Iteneraries</button>
+                <button className = {styles.btn_guidemng} onClick = {handleClickView}>View Tour Iteneraries</button>
              
     
-                <button className = {styles.btn_itmng}>Custom Itinerary Report</button>
+                <button className = {styles.btn_guidemng}>Custom Itinerary Report</button>
         
             
-                <button className = {styles.btn_itmng}>Custom Itinerary Requests</button>
+                <button className = {styles.btn_guidemng}>Custom Itinerary Requests</button>
             
             </div>
 
             </div>
 
-        </div>    
+           
     );
 }
 

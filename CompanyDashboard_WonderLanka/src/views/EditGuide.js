@@ -2,6 +2,8 @@ import styles from '../assets/css/AddItinerary.module.css'
 import { useState, useEffect} from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router';
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
 
 import{
     Label,
@@ -21,6 +23,7 @@ function EditGuide(){
     const [telNo , setTelno] = useState("");
     const [licenseID , setLicenseId] = useState("");
     const [foreignLang , setForeignLang] = useState("");
+    const [message , setMessage] = useState("");
 
     const {id} = useParams();
 
@@ -55,7 +58,8 @@ function EditGuide(){
             foreignLang
         }
         axios.put(`http://localhost:8070/guides/update/${id}` , updateGuide ).then(() =>{
-            alert("Guide Updated!");
+            window.location.reload();
+
         }).catch((err) =>{
             console.log(err);
         })
@@ -63,6 +67,8 @@ function EditGuide(){
     return(
 
         <div>
+            <IndexHeader />
+            <IndexNavbar />
             <br/><br/><h3 style = {{textAlign : 'center'}}>Edit Guide Details</h3><br/><br/>
             <div className = {styles.FormContainer}>
             <form onSubmit = {onSubmit}>
@@ -109,7 +115,12 @@ function EditGuide(){
                     setForeignLang(e.target.value);
                 }}/> <br/>
 
-                <Button type = "submit" color = "warning" style = {{float:'right' , margin : "5px" }} >Edit Guide</Button>
+                <span style = {{textAlign:"left" , color : "red"}}>{message}</span>
+                <Button type = "submit" color = "warning" style = {{float:'right' , margin : "5px" }} 
+                onClick = {() =>{
+                    setMessage("Guide Updated!");
+                }}
+                >Edit Guide</Button>
 
             </form>    
             </div>

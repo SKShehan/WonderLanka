@@ -1,6 +1,8 @@
 import styles from '../assets/css/AddItinerary.module.css'
 import axios from 'axios';
 import { useState , useEffect } from 'react';
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
 import{
     Label,
     Input,
@@ -47,14 +49,17 @@ function AddItinerary(){
 
         axios.post("http://localhost:8070/itineraries/add" , formData).then(()=>{
             alert("Itinerary Addded");
+            window.location.reload();
         }).catch((err) =>{
             console.log(err);
         })
     }
     return(
-
-        <div>
-            <br/><br/><h3 style = {{textAlign : 'center'}}>Insert Tour Itinerary Details</h3><br/><br/>
+        <>
+        <IndexNavbar />
+        <IndexHeader />
+        <div style = {{paddingTop : "50px"}} className = {styles.body}>
+            <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert Tour Itinerary Details</h3><br/><br/>
             <div className = {styles.FormContainer}>
             <form encType = "multipart/form-data" onClick = {sendData}>
 
@@ -121,11 +126,11 @@ function AddItinerary(){
                 }}
                 />
 
-                <Button color = "primary" type = "submit">Add Itinerary</Button>
+                <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}>Add Itinerary</Button>
             </form>    
             </div>
         </div>   
-
+      </>          
     );
 }
 
