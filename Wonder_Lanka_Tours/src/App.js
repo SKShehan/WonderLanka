@@ -20,11 +20,11 @@ function App() {
   const [user, setuser] = useState({
     username: "johncena",
     password: "pass123",
-    fullName: "John Cena",
-    country: "India",
+    fullName: "James Anderson",
+    country: "United Kingdom",
     nic: "000000000",
     mobileNo: "+94772665133",
-    email: "john69@gmail.com",
+    email: "james@gmail.com",
     dob: "1969-04-01",
   });
   return (
