@@ -261,6 +261,12 @@ function BookTour({ user }) {
         .then((res) => {
           console.log(res);
           user.username = updates.username;
+          user.fullName = updates.fullName;
+          user.email = updates.email;
+          user.country = updates.country;
+          user.mobileNo = updates.mobileNo;
+          user.dateOfBirth = updates.dateOfBirth;
+          user.nic = updates.nic;
           setalert(res.data);
           setAlertDanger(false);
           setAlertSuccess(true);
