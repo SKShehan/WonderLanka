@@ -3,6 +3,7 @@ import styles from "../assets/css/AddItinerary.module.css";
 import guideStyles from "../assets/css/ViewGuides.module.css";
 import IndexHeader from "components/Headers/IndexHeader";
 import IndexNavbar from "components/Navbars/IndexNavbar";
+import DemoFooter from "components/Footers/DemoFooter";
 import {
   Label,
   Input,
@@ -69,7 +70,11 @@ function ViewGuides() {
 //  }
 
   return (
+    <>
+    <IndexHeader />
+    <IndexNavbar />
     <div className={guideStyles.viewGuideDiv}>
+    <h3>Tour Guide Details</h3><br/><br/>
       <Row>
         <Col>
           <FormGroup>
@@ -148,6 +153,8 @@ function ViewGuides() {
       </table>
       <span style = {{textAlign:"left" , color : "red"}}>{message}</span>
     </div>
+    <DemoFooter />
+    </>
   );
 }
 

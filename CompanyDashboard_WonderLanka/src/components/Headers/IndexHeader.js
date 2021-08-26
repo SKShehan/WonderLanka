@@ -52,9 +52,9 @@ function IndexHeader() {
                 />
               </div>
             </div>
-            <h2 className="presentation-subtitle text-center">
-              Make your tour a heaven with Us!
-            </h2>
+            <h1 style = {{fontWeight :"bold" , fontSize:"30px"}} className="presentation-subtitle text-center">
+              Company Dashboard
+            </h1>
           </Container>
         </div>
         <div
