@@ -3,12 +3,14 @@ import { useState } from 'react';
 import axios from 'axios';
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
+import DemoFooter from 'components/Footers/DemoFooter';
 import{
     Label,
     Input,
     Button
 }
 from 'reactstrap'
+
 
 
 
@@ -107,6 +109,7 @@ axios.post("http://localhost:8070/guides/add" , newGuide ).then(()=>{
             </form>    
             </div>
         </div>   
+        <DemoFooter />
        </>     
     );
 }

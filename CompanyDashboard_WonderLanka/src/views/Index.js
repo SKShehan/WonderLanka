@@ -74,7 +74,7 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
         <SectionDownload /> */}
-        <GuideManagement/> 
+        <GuideManagement />
          
         
         

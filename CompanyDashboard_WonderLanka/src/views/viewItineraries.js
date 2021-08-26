@@ -2,6 +2,9 @@ import{Button} from 'reactstrap'
 import{ useHistory } from "react-router-dom"
 import { useState } from 'react';
 import { useEffect } from 'react';
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
+import DemoFooter from 'components/Footers/DemoFooter';
 import axios from 'axios';
 
 function ViewItineraries(){
@@ -9,6 +12,7 @@ function ViewItineraries(){
     let history = useHistory();
 
     const [itineraries , setItineraries] = useState([]);
+    const [message , setMessage] = useState("");
 
 
 
@@ -32,7 +36,9 @@ function ViewItineraries(){
         )
         axios.delete(`http://localhost:8070/itineraries/delete/${itinerary._id}`).then((res) =>{
             console.log(res);
-            alert("Deletion Succesful!");
+            window.location.reload();
+            setMessage("Itinerary Deleted!");
+            
         }).catch((err) =>{
             console.log(err);
             alert("Error!");
@@ -45,8 +51,10 @@ function ViewItineraries(){
     return(
         
         <div>
-            <h3>Tour Itinerary Details</h3><br/><br/>
-            <div className = "tableContainer">
+            <IndexNavbar />
+            <IndexHeader />
+            <h3 style ={{marginLeft:"40px"}}>Tour Itinerary Details</h3><br/><br/>
+            <div style = {{marginLeft:"20px"}}  className = "tableContainer">
                 <table className = "table table-striped">
                     <thead>
                         <th scope = "col">#</th>
@@ -79,14 +87,15 @@ function ViewItineraries(){
                                 <td>{itinerary.itineraryPriceAdult}</td>
                                 <td>{itinerary.itineraryPriceChild}</td>
 
-                                <td><Button color="warning" 
+                                <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
                                 onClick = {()=>{
                                     history.push(`/edit-itinerary/${itinerary._id}`);
                                 }}
                                 >Edit</Button>
 
-                                <Button color="danger" 
+                                <Button color="danger" style = {{padding: "5px 5px 5px 5px", width : "80px"}}
                                 onClick = {() =>{
+                                    
                                     onDelete(itinerary);
                                 }}
                                     
@@ -100,7 +109,9 @@ function ViewItineraries(){
 
 
                 </table>
-            </div>    
+            </div>   
+            <span style = {{textAlign:"left" , color : "red"}}>{message}</span> <br/><br/>
+            <DemoFooter />
         </div>    
     );
 
@@ -108,3 +119,4 @@ function ViewItineraries(){
 }
 
 export  default ViewItineraries;
+

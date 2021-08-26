@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useParams } from 'react-router';
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
+import DemoFooter from 'components/Footers/DemoFooter';
 
 import{
     Label,
@@ -124,6 +125,7 @@ function EditGuide(){
 
             </form>    
             </div>
+            <DemoFooter />
         </div>   
 
     );
