@@ -16,14 +16,16 @@ import {
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 function BookTour({ user }) {
   const [currentpwd, setcurrentpwd] = useState("");
   const [newpass, setnewpass] = useState("");
   const [renewpass, setrenewpass] = useState("");
   const [alertDanger, setAlertDanger] = useState(false);
-  const [alertSuccess, setAlertSuccess] = useState(false);
-  const [alert, setalert] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -38,25 +40,33 @@ function BookTour({ user }) {
           .then((res) => {
             console.log(res);
             user.password = newpwd.password;
-            setalert(res.data);
-            setAlertDanger(false);
-            setAlertSuccess(true);
+            toast.success(res.data, {
+              position: toast.POSITION.BOTTOM_RIGHT,
+              autoClose: 10000,
+              hideProgressBar: false,
+            });
           })
           .catch((err) => {
             console.log(err);
-            setalert("Something went wrong!");
-            setAlertDanger(true);
-            setAlertSuccess(false);
+            toast.error("Something went wrong!", {
+              position: toast.POSITION.BOTTOM_RIGHT,
+              autoClose: 10000,
+              hideProgressBar: false,
+            });
           });
       } else {
-        setalert("Please re-enter your new password correctly!");
-        setAlertDanger(true);
-        setAlertSuccess(false);
+        toast.error("Please re-enter your new password correctly!", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 10000,
+          hideProgressBar: false,
+        });
       }
     } else {
-      setalert("Please check your current passowrd!");
-      setAlertDanger(true);
-      setAlertSuccess(false);
+      toast.error("Please check your current passowrd!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 10000,
+        hideProgressBar: false,
+      });
     }
   };
 
@@ -83,40 +93,6 @@ function BookTour({ user }) {
 
           <>
             <div className="chng-pwd-div">
-              <Alert color="success" isOpen={alertSuccess}>
-                <Container>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="alert"
-                    aria-label="Close"
-                    onClick={() => setAlertSuccess(false)}
-                  >
-                    <i className="nc-icon nc-simple-remove" />
-                  </button>
-                  <span>{alert}</span>
-                </Container>
-              </Alert>
-              <Alert
-                className="alert-with-icon"
-                color="danger"
-                isOpen={alertDanger}
-              >
-                <Container>
-                  <div className="alert-wrapper">
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="alert"
-                      aria-label="Close"
-                      onClick={() => setAlertDanger(false)}
-                    >
-                      <i className="nc-icon nc-simple-remove" />
-                    </button>
-                    <span>{alert}</span>
-                  </div>
-                </Container>
-              </Alert>
               <form onSubmit={onSubmit}>
                 <Row>
                   <Col>

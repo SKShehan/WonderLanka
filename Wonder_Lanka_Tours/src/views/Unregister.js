@@ -17,6 +17,11 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
+
 function BookTour({ user }) {
   const [reason, setreason] = useState("");
   const [password, setpassword] = useState("");
@@ -24,8 +29,6 @@ function BookTour({ user }) {
   const [reason1, setreason1] = useState(false);
   const [reason2, setreason2] = useState(false);
   const [reason3, setreason3] = useState(false);
-  const [alertDanger, setAlertDanger] = useState(false);
-  const [alert, setalert] = useState("");
 
   const selectReason1 = () => {
     setother(false);
@@ -85,18 +88,30 @@ function BookTour({ user }) {
   const onSubmit = (e) => {
     e.preventDefault();
     if (password != user.password) {
-      setalert("Incorrect Password!");
-      setAlertDanger(true);
+      toast.error("Incorrect Password!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 10000,
+        hideProgressBar: false,
+      });
     } else {
       axios
         .delete(`http://localhost:8070/users/delete/${user.username}`)
         .then(() => {
           unregReason();
           deleteBookings();
-          alert("Successfull!");
+          toast.success("Successfull!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 10000,
+            hideProgressBar: false,
+          });
         })
         .catch((err) => {
           console.log(err);
+          toast.error("Something went wrong :(", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 10000,
+            hideProgressBar: false,
+          });
         });
     }
   };
@@ -123,26 +138,6 @@ function BookTour({ user }) {
           <br></br>
           <>
             <div className="unregister-div">
-              <Alert
-                className="alert-with-icon"
-                color="danger"
-                isOpen={alertDanger}
-              >
-                <Container>
-                  <div className="alert-wrapper">
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="alert"
-                      aria-label="Close"
-                      onClick={() => setAlertDanger(false)}
-                    >
-                      <i className="nc-icon nc-simple-remove" />
-                    </button>
-                    <span>{alert}</span>
-                  </div>
-                </Container>
-              </Alert>
               <form onSubmit={onSubmit}>
                 <Row>
                   <Col>
