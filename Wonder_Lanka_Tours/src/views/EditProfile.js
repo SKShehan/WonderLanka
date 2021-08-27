@@ -17,6 +17,11 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
+
 function BookTour({ user }) {
   const location = useLocation();
   const [fullName, setfullName] = useState("");
@@ -26,9 +31,6 @@ function BookTour({ user }) {
   const [dateOfBirth, setdateOfBirth] = useState("");
   const [nic, setnic] = useState("");
   const [username, setusername] = useState("");
-  const [alertDanger, setAlertDanger] = useState(false);
-  const [alertSuccess, setAlertSuccess] = useState(false);
-  const [alert, setalert] = useState("");
   let usernameExists = false;
   const countryList = [
     "Afghanistan",
@@ -267,20 +269,26 @@ function BookTour({ user }) {
           user.mobileNo = updates.mobileNo;
           user.dateOfBirth = updates.dateOfBirth;
           user.nic = updates.nic;
-          setalert(res.data);
-          setAlertDanger(false);
-          setAlertSuccess(true);
+          toast.success(res.data, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 10000,
+            hideProgressBar: false,
+          });
         })
         .catch((err) => {
           console.log(err);
-          setalert("Something went wrong!");
-          setAlertDanger(true);
-          setAlertSuccess(false);
+          toast.error("Something went wrong!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 10000,
+            hideProgressBar: false,
+          });
         });
     } else {
-      setalert("Username already exists!");
-      setAlertDanger(true);
-      setAlertSuccess(false);
+      toast.error("Username already exists!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 10000,
+        hideProgressBar: true,
+      });
     }
   };
 
@@ -313,40 +321,6 @@ function BookTour({ user }) {
           <br></br>
           <>
             <div className="booking-div">
-              <Alert color="success" isOpen={alertSuccess}>
-                <Container>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="alert"
-                    aria-label="Close"
-                    onClick={() => setAlertSuccess(false)}
-                  >
-                    <i className="nc-icon nc-simple-remove" />
-                  </button>
-                  <span>{alert}</span>
-                </Container>
-              </Alert>
-              <Alert
-                className="alert-with-icon"
-                color="danger"
-                isOpen={alertDanger}
-              >
-                <Container>
-                  <div className="alert-wrapper">
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="alert"
-                      aria-label="Close"
-                      onClick={() => setAlertDanger(false)}
-                    >
-                      <i className="nc-icon nc-simple-remove" />
-                    </button>
-                    <span>{alert}</span>
-                  </div>
-                </Container>
-              </Alert>
               <form onSubmit={onSubmit}>
                 <Row>
                   <Col>

@@ -8,6 +8,11 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 import { useLocation, useHistory } from "react-router-dom";
 
 import { Row, Col, Input, Alert, Container } from "reactstrap";
+import { jsPDF } from "jspdf";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 function ViewTour({ user }) {
   const location = useLocation();
@@ -21,9 +26,7 @@ function ViewTour({ user }) {
   const [assignedGuide, setassignedGuide] = useState("Not Yet Assigned");
   const [assignedDriver, setassignedDriver] = useState("Not Yet Assigned");
   const [assignedVehicle, setassignedVehicle] = useState("Not Yet Assigned");
-  const [alertDanger, setAlertDanger] = useState(false);
-  const [alertSuccess, setAlertSuccess] = useState(false);
-  const [alert, setalert] = useState("");
+  const doc = new jsPDF("l", "pt", "a4");
 
   const onSubmit = (e) => {
     const updates = {
@@ -39,14 +42,19 @@ function ViewTour({ user }) {
       })
       .then((res) => {
         console.log(res);
-        setalert(res.data);
-        setAlertDanger(false);
-        setAlertSuccess(true);
+        toast.success(res.data, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 10000,
+          hideProgressBar: false,
+        });
       })
       .catch((err) => {
-        setalert("Something went wrong!");
-        setAlertDanger(true);
-        setAlertSuccess(false);
+        console.log(err);
+        toast.error("Something went wrong!", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 10000,
+          hideProgressBar: false,
+        });
       });
   };
 
@@ -73,6 +81,16 @@ function ViewTour({ user }) {
         if (res.data) setassignedDriver(res.data.driverId);
       });
   };
+
+  const generatePDF = () => {
+    doc.html(document.getElementById("content"), {
+      callback: function (pdf) {
+        pdf.save("report.pdf");
+      },
+    });
+  };
+
+  const notify = (message) => {};
   const countryList = [
     "Afghanistan",
     "Albania",
@@ -309,44 +327,10 @@ function ViewTour({ user }) {
         <ProfilePageHeader></ProfilePageHeader>
         <IndexNavbar></IndexNavbar>
         <div className="main">
-          <div className="edit-booking-content">
+          <div className="edit-booking-content" id="content">
             <h2 align="center"> Tour Details</h2>
             <hr></hr>
             <br></br>
-            <Alert color="success" isOpen={alertSuccess}>
-              <Container>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="alert"
-                  aria-label="Close"
-                  onClick={() => setAlertSuccess(false)}
-                >
-                  <i className="nc-icon nc-simple-remove" />
-                </button>
-                <span>{alert}</span>
-              </Container>
-            </Alert>
-            <Alert
-              className="alert-with-icon"
-              color="danger"
-              isOpen={alertDanger}
-            >
-              <Container>
-                <div className="alert-wrapper">
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="alert"
-                    aria-label="Close"
-                    onClick={() => setAlertDanger(false)}
-                  >
-                    <i className="nc-icon nc-simple-remove" />
-                  </button>
-                  <span>{alert}</span>
-                </div>
-              </Container>
-            </Alert>
             <form className="edit-booking-form">
               <label className="tour-det-label">Personal Details</label>
               <table width="100%" border="0px">
@@ -556,11 +540,7 @@ function ViewTour({ user }) {
               <Col>
                 <button
                   className="btn btn-info btn-edit-booking"
-                  onClick={() => {
-                    window.location.replace(
-                      "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                    );
-                  }}
+                  onClick={generatePDF}
                 >
                   Generate Report
                 </button>

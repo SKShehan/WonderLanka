@@ -21,11 +21,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
+
 function ViewGuides() {
   const [guides, setguides] = useState([]);
-  const [alertDanger, setAlertDanger] = useState(false);
-  const [alertSuccess, setAlertSuccess] = useState(false);
-  const [alert, setalert] = useState("");
 
   const deleteGuide = (guide) => {
     if (
@@ -37,15 +39,19 @@ function ViewGuides() {
         .delete(`http://localhost:8070/guides/delete/${guide.guideID}`)
         .then((res) => {
           console.log(res);
-          setalert("Guide deleted!");
-          setAlertSuccess(true);
-          setAlertDanger(false);
+          toast.success("Guide deleted!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 10000,
+            hideProgressBar: false,
+          });
         })
         .catch((err) => {
           console.log(err);
-          setalert("Something went wrong :(");
-          setAlertSuccess(false);
-          setAlertDanger(true);
+          toast.error("Something went wrong :(", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 10000,
+            hideProgressBar: false,
+          });
         });
       let filteredGuides = guides.filter((gid) => gid !== guide);
       setguides(filteredGuides);
@@ -115,36 +121,6 @@ function ViewGuides() {
           </Col>
           <Col></Col>
         </Row>
-        <Alert color="success" isOpen={alertSuccess}>
-          <Container>
-            <button
-              type="button"
-              className="close"
-              data-dismiss="alert"
-              aria-label="Close"
-              onClick={() => setAlertSuccess(false)}
-            >
-              <i className="nc-icon nc-simple-remove" />
-            </button>
-            <span>{alert}</span>
-          </Container>
-        </Alert>
-        <Alert className="alert-with-icon" color="danger" isOpen={alertDanger}>
-          <Container>
-            <div className="alert-wrapper">
-              <button
-                type="button"
-                className="close"
-                data-dismiss="alert"
-                aria-label="Close"
-                onClick={() => setAlertDanger(false)}
-              >
-                <i className="nc-icon nc-simple-remove" />
-              </button>
-              <span>{alert}</span>
-            </div>
-          </Container>
-        </Alert>
         <table width="100%" border="2px" className={guideStyles.tbldata}>
           <tr>
             <th className={guideStyles.tbldata}>Guide ID</th>
