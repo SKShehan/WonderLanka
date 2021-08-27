@@ -287,7 +287,7 @@ function BookTour({ user }) {
       toast.error("Username already exists!", {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 10000,
-        hideProgressBar: true,
+        hideProgressBar: false,
       });
     }
   };
