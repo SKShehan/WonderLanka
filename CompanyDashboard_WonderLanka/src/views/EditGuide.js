@@ -6,6 +6,11 @@ import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
 
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 import{
     Label,
     Input,
@@ -60,9 +65,27 @@ function EditGuide(){
         }
         axios.put(`http://localhost:8070/guides/update/${id}` , updateGuide ).then(() =>{
             window.location.reload();
+            toast.success('Guide Edited!', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
 
         }).catch((err) =>{
             console.log(err);
+            toast.error('Something has gone wrong!', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
         })
     }
     return(
