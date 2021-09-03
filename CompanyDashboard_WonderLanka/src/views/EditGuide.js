@@ -5,19 +5,20 @@ import { useParams } from 'react-router';
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
-
-
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-toast.configure();
 import{
     Label,
     Input,
     Button
 }
 from 'reactstrap'
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { thisExpression } from '@babel/types';
+
+toast.configure();
+
+
 
 
 function EditGuide(){
@@ -64,7 +65,7 @@ function EditGuide(){
             foreignLang
         }
         axios.put(`http://localhost:8070/guides/update/${id}` , updateGuide ).then(() =>{
-            window.location.reload();
+            
             toast.success('Guide Edited!', {
                 position: "bottom-right",
                 autoClose: 5000,
@@ -74,6 +75,7 @@ function EditGuide(){
                 draggable: true,
                 progress: undefined,
                 });
+                
 
         }).catch((err) =>{
             console.log(err);
