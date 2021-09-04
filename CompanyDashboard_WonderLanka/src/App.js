@@ -18,6 +18,9 @@ import EditGuide from "views/EditGuide";
 import AddGuide from "views/AddGuide";
 import ViewGuides from "views/ViewGuides";
 import GuideManagement from "views/GuideManagement";
+import DriverUpdate from "views/DriverUpdate";
+import AddDriver from "views/AddDriver";
+import DriverDetails from "views/DriverDetails";
 
 
 
@@ -72,7 +75,10 @@ function App() {
         <Route path="/guide-management" exact>
           <GuideManagement />
         </Route>
-
+       
+        <Route path="/edit-driver/:id" component={DriverUpdate} />
+        <Route path ="/Add-Driver" component={AddDriver}/>
+        <Route path ="/View-Driver" component={DriverDetails}/>
 
         
 
