@@ -139,14 +139,14 @@ function EditItinerary(){
                 </Input>
 
                 <Label for = "ItineraryPriceA">Itinerary Price for Adults</Label><br/>
-                <Input type = "number" name = "ItineraryPriceA" placeholder = "Enter Itinerary Price for Adults" value = {itineraryPriceAdult} 
+                <Input type = "String" name = "ItineraryPriceA" placeholder = "Enter Itinerary Price for Adults" value = {itineraryPriceAdult} 
                 onChange = {(e) =>{
                     setItineraryPriceAdult(e.target.value);
                 }}
                 />
 
                 <Label for = "ItineraryPriceC">Itinerary Price for Children</Label><br/>
-                <Input type = "number" name = "ItineraryPriceC" placeholder = "Enter Itinerary Price for Children" value = {itineraryPriceChild}
+                <Input type = "String" name = "ItineraryPriceC" placeholder = "Enter Itinerary Price for Children" value = {itineraryPriceChild}
                 onChange = {(e)=>{
                     setItineraryPriceChild(e.target.value);
                 }}
