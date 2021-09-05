@@ -18,9 +18,10 @@ import EditGuide from "views/EditGuide";
 import AddGuide from "views/AddGuide";
 import ViewGuides from "views/ViewGuides";
 import GuideManagement from "views/GuideManagement";
-
-
-
+import Booktable from "views/booktable";
+import Bookingdetails from "views/bookingdetails";
+import Editbookings from "views/editbookings";
+import Cancelbookingform from "views/Cancelbookingform";
 function App() {
   return (
     <BrowserRouter>
@@ -73,7 +74,18 @@ function App() {
           <GuideManagement />
         </Route>
 
-
+      
+        <Route path="/booktable" exact>
+          <Booktable />
+        </Route>
+        <Route path="/edit/:id"  component={Editbookings}>
+        </Route>
+        <Route path="/post/:id" exact>
+        <Bookingdetails/>
+        </Route>
+      
+        <Route path="/add/:id" component={Cancelbookingform} >
+        </Route>
         
 
         <Redirect to="/index" />

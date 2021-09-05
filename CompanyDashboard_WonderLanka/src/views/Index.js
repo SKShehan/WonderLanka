@@ -46,6 +46,7 @@ import CustomizedRequests from "./CustomizedRequests";
 import AddGuide from "./AddGuide";
 import ViewGuides from "./ViewGuides";
 import GuideManagement from "./GuideManagement";
+import Home from "./booktable";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -73,8 +74,9 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
-        <SectionDownload /> */}
-        <GuideManagement />
+        <SectionDownload />
+        <GuideManagement /> */}
+        <Home/>
          
         
         
