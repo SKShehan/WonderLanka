@@ -46,7 +46,13 @@ import CustomizedRequests from "./CustomizedRequests";
 import AddGuide from "./AddGuide";
 import ViewGuides from "./ViewGuides";
 import GuideManagement from "./GuideManagement";
+
 import Home from "./booktable";
+
+import AddDriver from "./AddDriver";
+import DriverDetails from "./DriverDetails"
+import DriverManagement from "./DriverManagement";
+
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -60,9 +66,9 @@ function Index() {
     <>
 
       <div className="main">
-        <IndexNavbar />
+        {/*<IndexNavbar />
         <IndexHeader/>
-     {/* <SectionButtons />
+      <SectionButtons />
         <SectionNavbars />
         <SectionNavigation />
         <SectionProgress />
@@ -77,10 +83,22 @@ function Index() {
         <SectionDownload />
         <GuideManagement /> */}
         <Home/>
+
+        <SectionDownload /> 
+        <GuideManagement />
+
+        <AddDriver/>
+        <DriverDetails/>*/}
+        <DriverManagement/>
+     
+
+        
+
+
          
         
         
-        <DemoFooter />
+       <DemoFooter />
       </div>
     </>
   );

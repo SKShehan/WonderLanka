@@ -18,10 +18,19 @@ import EditGuide from "views/EditGuide";
 import AddGuide from "views/AddGuide";
 import ViewGuides from "views/ViewGuides";
 import GuideManagement from "views/GuideManagement";
+
 import Booktable from "views/booktable";
 import Bookingdetails from "views/bookingdetails";
 import Editbookings from "views/editbookings";
 import Cancelbookingform from "views/Cancelbookingform";
+
+import DriverUpdate from "views/DriverUpdate";
+import AddDriver from "views/AddDriver";
+import DriverDetails from "views/DriverDetails";
+
+
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -74,6 +83,7 @@ function App() {
           <GuideManagement />
         </Route>
 
+
       
         <Route path="/booktable" exact>
           <Booktable />
@@ -86,6 +96,13 @@ function App() {
       
         <Route path="/add/:id" component={Cancelbookingform} >
         </Route>
+
+       
+        <Route path="/edit-driver/:id" component={DriverUpdate} />
+        <Route path ="/Add-Driver" component={AddDriver}/>
+        <Route path ="/View-Driver" component={DriverDetails}/>
+
+
         
 
         <Redirect to="/index" />
