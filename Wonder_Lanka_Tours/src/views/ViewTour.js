@@ -28,6 +28,13 @@ function ViewTour({ user }) {
   const [assignedVehicle, setassignedVehicle] = useState("Not Yet Assigned");
   const doc = new jsPDF("l", "pt", "a4");
 
+  const clickGenerateReport = () => {
+    history.push({
+      pathname: "/booking-report",
+      state: location.state,
+    });
+  };
+
   const onSubmit = (e) => {
     const updates = {
       fullName,
@@ -540,7 +547,7 @@ function ViewTour({ user }) {
               <Col>
                 <button
                   className="btn btn-info btn-edit-booking"
-                  onClick={generatePDF}
+                  onClick={clickGenerateReport}
                 >
                   Generate Report
                 </button>
