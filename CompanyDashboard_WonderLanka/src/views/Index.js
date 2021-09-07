@@ -46,6 +46,12 @@ import CustomizedRequests from "./CustomizedRequests";
 import AddGuide from "./AddGuide";
 import ViewGuides from "./ViewGuides";
 import GuideManagement from "./GuideManagement";
+import HotelDetails from "./HotelDetails";
+import EditHotel from "./EditHotel";
+import AddHotel from "./AddHotel";
+import HotelHome from "./HotelHome";
+
+
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -73,8 +79,14 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
-        <SectionDownload /> */}
-        <GuideManagement />
+        <SectionDownload /> 
+     <GuideManagement /> 
+     <HotelDetails />
+     <EditHotels />*/}
+     
+     <HotelHome />
+   
+
          
         
         

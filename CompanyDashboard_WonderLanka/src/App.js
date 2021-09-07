@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
 
 import IndexHeader from "components/Headers/IndexHeader";
 import IndexNavbar from "components/Navbars/IndexNavbar";
@@ -19,9 +19,16 @@ import AddGuide from "views/AddGuide";
 import ViewGuides from "views/ViewGuides";
 import GuideManagement from "views/GuideManagement";
 
+import AddHotel from "views/AddHotel";
+import HotelDetails from "views/HotelDetails";
+import EditHotel from "views/EditHotel";
+import HotelHome from "views/HotelHome";
+
+
 
 
 function App() {
+
   return (
     <BrowserRouter>
       
@@ -43,6 +50,8 @@ function App() {
           path="/register-page"
           render={(props) => <RegisterPage {...props} />}
         />
+
+        
         <Route //Setting path for Add Itinerary view
           path="/add-itinerary"
           exact
@@ -73,8 +82,23 @@ function App() {
           <GuideManagement />
         </Route>
 
-
         
+        <Route //Setting path for hotels
+          path="/" exact >
+          <HotelHome />
+        </Route>
+
+        <Route path="/add" exact >
+          <AddHotel />
+        </Route>
+
+        <Route path="/edit/:id"  component={EditHotel}>
+        </Route>
+
+        <Route path="/get" exact >
+          <HotelDetails />
+        </Route>
+
 
         <Redirect to="/index" />
       </Switch>
