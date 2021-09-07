@@ -48,6 +48,12 @@ import ViewGuides from "./ViewGuides";
 import GuideManagement from "./GuideManagement";
 import Booktable from "./booktable";
 import BookingManagement from "./BookingManagement";
+import HotelDetails from "./HotelDetails";
+import EditHotel from "./EditHotel";
+import AddHotel from "./AddHotel";
+import HotelHome from "./HotelHome";
+
+
 
 import Home from "./booktable";
 

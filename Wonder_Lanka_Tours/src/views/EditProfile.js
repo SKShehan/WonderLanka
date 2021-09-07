@@ -244,6 +244,19 @@ function BookTour({ user }) {
     }
   };
 
+  const updateBookings = () => {
+    axios
+      .put(`http://localhost:8070/bookings/update/username/${user.username}`, {
+        username,
+      })
+      .then((res) => {
+        console.log("Success!");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const updates = {
@@ -261,6 +274,7 @@ function BookTour({ user }) {
       await axios
         .put(`http://localhost:8070/users/update/${user.username}`, updates)
         .then((res) => {
+          updateBookings();
           console.log(res);
           user.username = updates.username;
           user.fullName = updates.fullName;
@@ -274,6 +288,7 @@ function BookTour({ user }) {
             autoClose: 10000,
             hideProgressBar: false,
           });
+          console.log(user.username);
         })
         .catch((err) => {
           console.log(err);
