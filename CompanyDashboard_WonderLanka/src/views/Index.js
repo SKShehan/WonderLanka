@@ -46,6 +46,12 @@ import CustomizedRequests from "./CustomizedRequests";
 import AddGuide from "./AddGuide";
 import ViewGuides from "./ViewGuides";
 import GuideManagement from "./GuideManagement";
+import HotelDetails from "./HotelDetails";
+import EditHotel from "./EditHotel";
+import AddHotel from "./AddHotel";
+import HotelHome from "./HotelHome";
+
+
 
 import Home from "./booktable";
 
@@ -81,7 +87,7 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
         <SectionDownload />
-        <GuideManagement /> */}
+        <GuideManagement /> 
         <Home/>
 
         <SectionDownload /> 
