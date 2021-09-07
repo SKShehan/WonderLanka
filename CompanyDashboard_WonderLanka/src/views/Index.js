@@ -90,14 +90,14 @@ function Index() {
         <SectionExamples />
         <SectionDownload />
         <GuideManagement /> */}
-        <BookingManagement/>
+        <BookingManagement />
         <Home/>
 
         <SectionDownload /> 
         <GuideManagement />
 
         <AddDriver/>
-        <DriverDetails/>*/}
+        <DriverDetails/>
         <DriverManagement/>
      
 
