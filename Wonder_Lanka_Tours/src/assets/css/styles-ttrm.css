@@ -209,7 +209,7 @@
   text-align: center;
   flex-direction: column;
   background-color: white;
-  color: black;
+  color: rgb(0, 0, 0);
   font-size: x-large;
   font-weight: bolder;
   border: 1px solid silver;
@@ -217,6 +217,7 @@
   height: 300px;
   cursor: pointer;
   padding: 10px 10px 10px 10px;
+
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   transition: color 0.15s ease-in-out, border 0.15s ease-in-out,
@@ -252,4 +253,34 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.report-card {
+  margin: auto;
+
+  width: 600px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(0, 0, 0, 0.06) 0px 2px 3px 0px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+.report-logo {
+  height: 90px;
+  width: 90px;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+.report-title {
+  text-align: center;
+  font-weight: bold;
+}
+.report-download {
+  margin: auto;
+  width: 600px;
+}
+
+#report-cont {
+  padding: 20px 20px 20px 20px;
 }

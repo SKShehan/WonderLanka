@@ -6,7 +6,10 @@ import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
+toast.configure();
 function ViewItineraries(){
     
     let history = useHistory();
@@ -36,8 +39,17 @@ function ViewItineraries(){
         )
         axios.delete(`http://localhost:8070/itineraries/delete/${itinerary._id}`).then((res) =>{
             console.log(res);
-            window.location.reload();
+            
             setMessage("Itinerary Deleted!");
+            toast.error('Itinerary Deleted!', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
             
         }).catch((err) =>{
             console.log(err);
