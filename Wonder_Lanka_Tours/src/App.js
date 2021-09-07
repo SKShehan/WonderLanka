@@ -15,6 +15,7 @@ import EditProfile from "views/EditProfile";
 import ChangePassword from "views/ChangePassword";
 import Unregister from "views/Unregister";
 import Dashboard from "views/Dashboard";
+import BookingReport from "views/BookingReport";
 
 function App() {
   const [user, setuser] = useState({
@@ -70,6 +71,9 @@ function App() {
         </Route>
         <Route path="/user-dashboard" exact>
           <Dashboard user={user}></Dashboard>
+        </Route>
+        <Route path="/booking-report" exact>
+          <BookingReport user={user}></BookingReport>
         </Route>
         <Redirect to="/index" />
       </Switch>

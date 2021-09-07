@@ -53,6 +53,13 @@ import HotelHome from "./HotelHome";
 
 
 
+import Home from "./booktable";
+
+import AddDriver from "./AddDriver";
+import DriverDetails from "./DriverDetails"
+import DriverManagement from "./DriverManagement";
+
+
 function Index() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -65,9 +72,9 @@ function Index() {
     <>
 
       <div className="main">
-        <IndexNavbar />
+        {/*<IndexNavbar />
         <IndexHeader/>
-     {/* <SectionButtons />
+      <SectionButtons />
         <SectionNavbars />
         <SectionNavigation />
         <SectionProgress />
@@ -79,18 +86,25 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
+        <SectionDownload />
+        <GuideManagement /> 
+        <Home/>
+
         <SectionDownload /> 
-     <GuideManagement /> 
-     <HotelDetails />
-     <EditHotels />*/}
+        <GuideManagement />
+
+        <AddDriver/>
+        <DriverDetails/>*/}
+        <DriverManagement/>
      
-     <HotelHome />
-   
+
+        
+
 
          
         
         
-        <DemoFooter />
+       <DemoFooter />
       </div>
     </>
   );
