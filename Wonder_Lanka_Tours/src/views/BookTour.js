@@ -226,11 +226,9 @@ function BookTour({ user }) {
   ];
 
   const [itineraryList, setitineraryList] = useState([
-    "Tour Itinerary 1",
-    "Tour Itinerary 2",
-    "Tour Itinerary 3",
-    "Tour Itinerary 4",
-    "Customized",
+    {
+      itineraryName: "Customized",
+    },
   ]);
   const [insuranceList, setinsuranceList] = useState([
     "Insurance 1",
@@ -239,12 +237,14 @@ function BookTour({ user }) {
     "Insurance 4",
   ]);
 
-  const [classList, setclassList] = useState([
-    "Class 1",
-    "Class 2",
-    "Class 3",
-    "Class 4",
-  ]);
+  const [classList, setclassList] = useState(["Standard", "Deluxe"]);
+
+  const getItineraries = () => {
+    axios.get("http://localhost:8070/itineraries").then((res) => {
+      console.log(res.data);
+      setitineraryList([...res.data, ...itineraryList]);
+    });
+  };
 
   const selectItinerary = (itinerary) => {
     setitinerary(itinerary);
@@ -291,9 +291,10 @@ function BookTour({ user }) {
 
   useEffect(() => {
     document.body.classList.add("index");
+    getItineraries();
     setusername(user.username);
     setcountry(countryList[0]);
-    setitinerary(itineraryList[0]);
+    setitinerary(itineraryList[0].itineraryName);
     setinsurance(insuranceList[0]);
     seticlass(classList[0]);
     let today = new Date().toISOString().slice(0, 10);
@@ -426,7 +427,9 @@ function BookTour({ user }) {
                         }}
                         required
                       >
-                        {itineraryList.map((i) => (
+                        {[
+                          ...new Set(itineraryList.map((i) => i.itineraryName)),
+                        ].map((i) => (
                           <option>{i}</option>
                         ))}
                       </Input>
