@@ -131,7 +131,7 @@ handleSearchArea =(e) =>{
           {this.state.posts.map((posts) =>(
             <tr className={guideStyles.tbldata}>
       
-              <td  className={guideStyles.tbldata}><a href={`/add-cancelbooking/${posts._id}`} style={{textDecoration:'none',color:'rgba(5, 0, 0, 0.658)',fontWeight:'bold'}}>{posts.tourId}</a></td>
+              <td  className={guideStyles.tbldataa}><a href={`/add-cancelbooking/${posts._id}`} style={{textDecoration:'none',color:'rgba(5, 0, 0, 0.658)',fontWeight:'bold'}}>{posts.tourId}</a></td>
               <td  className={guideStyles.tbldata}>{posts.arrivalDate}</td>
               <td className={guideStyles.tbldata}>{posts.bookingDate}</td>
               <td className={guideStyles.tbldata}>{posts.iclass}</td>   

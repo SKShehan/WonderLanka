@@ -27,7 +27,9 @@ class Cancelbookingform extends Component {
       tourId:"",
       cancellationdate:"",
       reason:"",
-      amount:""
+      amount:"",
+      dateerror:"",
+      amounterror:""
     }
   }
   
@@ -41,10 +43,29 @@ class Cancelbookingform extends Component {
      })
   }
  
+  validate =() =>{
+    let dateerror = "";
+    let amounterror= "";
+    if(!this.state.cancellationdate){
+      dateerror = "date cannt be blank";
+    }
+    if(!this.state.amount){
+      amounterror = "amount cannt be blank";
+    }
+    if(dateerror||amounterror){
+      this.setState({dateerror,amounterror});
+      return false;
+    }
+    return true;
+  }
   onsubmit = (e) =>{
-     
+   
     e.preventDefault();
-    
+    const isValid = this.validate();
+    if(isValid){
+      console.log(this.state);
+    } 
+
     const {tourId,cancellationdate,reason,amount} = this.state;
     const data ={
        tourId:tourId,
@@ -61,11 +82,15 @@ class Cancelbookingform extends Component {
                 tourId:"",
                 cancellationdate:"",
                 reason:"",
-                amount:""    
+                amount:"" ,
+                dateerror:"" ,
+                amounterror:""  
               }
           )
-       }})
-       window.location = '/';
+       }
+       window.location = '/booktable';
+      })
+      
 }
 
 
@@ -96,9 +121,10 @@ componentDidMount(){
         <Label for="exampleEmail">Tour ID</Label>
         <Input type="text" value={this.state.tourId} onChange={this.handleInputChange} name="tourId" id="exampleEmail" placeholder="Enter Booking ID" />
         <br/>
-      
+        
         <Label for="examplePassword">Cancellation Date</Label>
         <Input type="text" value={this.state.cancellationdate} onChange={this.handleInputChange} name="cancellationdate" id="examplePassword" placeholder="Enter date" />
+        <div style={{color:'red'}}>{this.state.dateerror}</div>
         <br/>
       
         <Label for="exampleSelect">Reason</Label>
@@ -111,6 +137,7 @@ componentDidMount(){
       
         <Label for="examplePassword">Amount</Label>
         <Input type="number" value={this.state.amount} onChange={this.handleInputChange} name="amount" id="examplePassword" placeholder="Enter amount" />
+        <div style={{color:'red'}}>{this.state.amounterror}</div>
         <br/>
                 
         <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}

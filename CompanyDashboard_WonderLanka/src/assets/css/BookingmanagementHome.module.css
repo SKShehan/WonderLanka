@@ -5,9 +5,9 @@
     background-color: #00ccff;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 15px;
-    margin-left: 170px;
-    font-size: 15px;
+    padding: 16px;
+    margin-left: 230px;
+    font-size: 16px;
 
 }
 
@@ -27,7 +27,7 @@
 
     width: 100%;
     height: 90vh;
-    background-image: url('../img/Bookingmanagement.jpg') ;
+    background-image: url('../img/Bookingmanagement6.jpg') ;
     background-size: 100% 100%;
     
 }

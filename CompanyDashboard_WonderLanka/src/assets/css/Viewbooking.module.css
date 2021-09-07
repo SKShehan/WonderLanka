@@ -77,3 +77,16 @@ td.tbldata {
   font-weight: 501;
   font-size:13px;
 }
+
+td.tbldataa {
+  color: rgba(5, 0, 0, 0.658);
+  font-weight: 501;
+  font-size:13px;
+  
+}
+
+.tbldataa:hover {
+  background-color: rgb(47, 209, 169);
+  
+  
+}

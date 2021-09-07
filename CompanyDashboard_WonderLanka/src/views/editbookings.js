@@ -195,7 +195,7 @@ class Editbookings extends Component {
         <br/>
         <Label for="exampleEmail">User name</Label>
         <Input type="text" name="USername" value = {this.state.username} onChange={this.handleInputchange} id="exampleEmail"  />
-
+        <br/>
               <Button  onClick={this.onsubmit} type = "submit" color = "warning" style = {{float:'right' , margin : "5px" }} >Edit Booking</Button>
 
           </form>    

@@ -19,7 +19,7 @@ function BookingManagement(){
 
     return(
         
-            <div style = {{paddingTop : "50px"}} className = {styles.body}>
+            <div style = {{paddingTop : "30px"}} className = {styles.body}>
             <h3 className = {styles.header}><center>Booking Management</center></h3><br/><br/>
 
             <div style = {{paddingTop : "50px"}} className = {styles.btn_group}>
