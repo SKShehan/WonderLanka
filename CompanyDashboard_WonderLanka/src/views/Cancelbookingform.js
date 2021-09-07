@@ -1,22 +1,19 @@
-
+import styles from '../assets/css/AddBookingCancellation.module.css'
 import React,{Component} from "react";
 import './section.css';
 import axios from 'axios';
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
+import DemoFooter from 'components/Footers/DemoFooter';
 // reactstrap components
 
 
-import {
-  Button,
-  Card,
-  Form,
+import{
+  Label,
   Input,
-  Container,
-  Row,
-  Col,
-  FormGroup,
-  Label
-
-} from "reactstrap";
+  Button
+}
+from 'reactstrap'
 
 
 
@@ -87,71 +84,43 @@ componentDidMount(){
 
    
   render(){
-  return (
-    <div>
-    <>
-      <div
- 
- style={{
-   backgroundColor: '#def28d',
-  
- }}
- 
-      >
-        <br/>
-        
-        <center>
-      <p className="paragraph">Cancel Booking</p>
-        </center>
-        <br/>
-        <br/>
-        <Container>
-       
-      <Row>
-            <Col className="mx-auto" lg="18" md="7" style={{color:"black"}}>
-           
-      <Form>
-        
-      <FormGroup className="fonts">
+    return(
+      <>
+      <IndexHeader />
+      <IndexNavbar />
+      <div style = {{paddingTop : "50px"}} className = {styles.body}>
+          <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert Booking Cancellation Details</h3><br/><br/>
+          <div className = {styles.FormContainer}>
+          <form >
+          
         <Label for="exampleEmail">Tour ID</Label>
         <Input type="text" value={this.state.tourId} onChange={this.handleInputChange} name="tourId" id="exampleEmail" placeholder="Enter Booking ID" />
-      </FormGroup>
-      <FormGroup className="fonts">
+        <br/>
+      
         <Label for="examplePassword">Cancellation Date</Label>
         <Input type="text" value={this.state.cancellationdate} onChange={this.handleInputChange} name="cancellationdate" id="examplePassword" placeholder="Enter date" />
-      </FormGroup>
-      <FormGroup className="fonts">
+        <br/>
+      
         <Label for="exampleSelect">Reason</Label>
         <Input type="select" value={this.state.reason} onChange={this.handleInputChange} name="reason" id="exampleSelect">
           <option>Company Reason</option>
           <option>User Request</option>
         </Input>
-      </FormGroup>
+        <br/>
       
-      <FormGroup className="fonts">
+      
         <Label for="examplePassword">Amount</Label>
-        <Input type="text" value={this.state.amount} onChange={this.handleInputChange} name="amount" id="examplePassword" placeholder="Enter amount" />
-      </FormGroup>
-      
-      <br/>
-
-      <Button onClick={this.onsubmit} color="info" size="lg" block>Submit</Button>
-      <br/>
-      <Button   color="danger" size="lg" block>Generate Report</Button>
-     
-    </Form>
-               
-          
-    </Col>
-          </Row>
-        </Container>
+        <Input type="number" value={this.state.amount} onChange={this.handleInputChange} name="amount" id="examplePassword" placeholder="Enter amount" />
         <br/>
-        <br/>
-        <br/>
-      </div>{" "}
-    </>
-    
-    </div>
+                
+        <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}
+        onClick={this.onsubmit} 
+        >Submit</Button>
+          </form>    
+          </div>
+      </div>   
+      <DemoFooter />
+     </>     
   );
   }
   

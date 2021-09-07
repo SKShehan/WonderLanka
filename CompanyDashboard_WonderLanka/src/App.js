@@ -18,6 +18,7 @@ import EditGuide from "views/EditGuide";
 import AddGuide from "views/AddGuide";
 import ViewGuides from "views/ViewGuides";
 import GuideManagement from "views/GuideManagement";
+import BookingManagement from "views/BookingManagement";
 import Booktable from "views/booktable";
 import Bookingdetails from "views/bookingdetails";
 import Editbookings from "views/editbookings";
@@ -73,18 +74,19 @@ function App() {
         <Route path="/guide-management" exact>
           <GuideManagement />
         </Route>
+        <Route path="/booking-management" exact>
+          < BookingManagement/>
+        </Route>
 
       
         <Route path="/booktable" exact>
           <Booktable />
         </Route>
-        <Route path="/edit/:id"  component={Editbookings}>
+        <Route path="/edit-bookingmanagement/:id"  component={Editbookings}>
         </Route>
-        <Route path="/post/:id" exact>
-        <Bookingdetails/>
-        </Route>
+   
       
-        <Route path="/add/:id" component={Cancelbookingform} >
+        <Route path="/add-cancelbooking/:id" component={Cancelbookingform} >
         </Route>
         
 

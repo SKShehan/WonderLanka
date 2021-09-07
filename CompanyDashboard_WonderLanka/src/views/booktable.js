@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios' ;
-import './booktable.css';
-import { post } from 'jquery';
+import guideStyles from "../assets/css/Viewbooking.module.css";
 
+import { post } from 'jquery';
+import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 class Booktable extends Component {
 constructor(props){
@@ -65,6 +67,7 @@ handleSearchArea =(e) =>{
 
 }
 
+         
 
   render() {
     return (
@@ -100,58 +103,75 @@ handleSearchArea =(e) =>{
         <br/>
         <br/>
         <br/>
-     <table className="table">
-       <thead>
+        <table width="100%" border="2px" className={guideStyles.tbldata}>
          <tr>
            
-           <th scope ="col">#</th>
-           <th scope ="col">TourID</th>
-           <th scope ="col">Arrivaldate</th>
-           <th scope ="col">Bookingdate</th>
-           <th scope ="col">Class</th>
-           <th scope ="col">Email</th>
-           <th scope ="col">FullName</th>
-           <th scope ="col">Insurance</th>
-           <th scope ="col">Itinerary</th>
-           <th scope ="col">Adults</th>
-           <th scope ="col">Country</th>
-           <th scope ="col">Payment</th>
-           <th scope ="col">Action</th>
+          
+           <th style={{width: 50}} className ={guideStyles.tbldata}>TourID</th>
+           <th style={{width: 40}}className ={guideStyles.tbldata}>ArrivalDate</th>
+           <th style={{width: 40}}className ={guideStyles.tbldata}>BookingDate</th>
+           <th className ={guideStyles.tbldata}>Class</th>
+           <th style={{width: 30}}className ={guideStyles.tbldata}>Email</th>
+           <th style={{width: 30}}className ={guideStyles.tbldata}>MobileNo</th>
+           <th style={{width: 140}}className ={guideStyles.tbldata}>Itinerary</th>
+           <th className ={guideStyles.tbldata}>UserName</th>
+           <th className ={guideStyles.tbldata}>FullName</th>
+           <th className ={guideStyles.tbldata}>Insurance</th>
+           <th className ={guideStyles.tbldata}>Itinerary</th>
+           <th className ={guideStyles.tbldata}>Adults</th>
+           <th className ={guideStyles.tbldata}>kids18</th>
+           <th className ={guideStyles.tbldata}>Kids8</th>
+           <th style={{width: 50}}className ={guideStyles.tbldata}>Country</th>
+           <th className ={guideStyles.tbldata}>Payment</th>
+           <th className ={guideStyles.tbldata}>Action</th>
 
          </tr>
-       </thead>
-        <tbody className="hello">
-          {this.state.posts.map((posts,index) =>(
-            <tr key={index}>
-              <th scope ="row">{index+1}</th>
+      
+        
+          {this.state.posts.map((posts) =>(
+            <tr className={guideStyles.tbldata}>
+      
+              <td  className={guideStyles.tbldata}><a href={`/add-cancelbooking/${posts._id}`} style={{textDecoration:'none',color:'rgba(5, 0, 0, 0.658)',fontWeight:'bold'}}>{posts.tourId}</a></td>
+              <td  className={guideStyles.tbldata}>{posts.arrivalDate}</td>
+              <td className={guideStyles.tbldata}>{posts.bookingDate}</td>
+              <td className={guideStyles.tbldata}>{posts.iclass}</td>   
+              <td className={guideStyles.tbldata}>{posts.email}</td>
+              <td className={guideStyles.tbldata}>{posts.mobileNo}</td>   
+              <td className={guideStyles.tbldata}>{posts.itinerary}</td>  
+              <td className={guideStyles.tbldata}>{posts.username}</td>   
+              <td className={guideStyles.tbldata}>{posts.fullName}</td>  
+              <td className={guideStyles.tbldata}>{posts.insurance}</td>
+              <td className={guideStyles.tbldata}>{posts.itinerary}</td>
+              <td className={guideStyles.tbldata}>{posts.noOfAdults}</td>
+              <td className={guideStyles.tbldata}>{posts.noOfKids18}</td>
+              <td className={guideStyles.tbldata}>{posts.noOfKids8}</td>
+              <td style={{minwidth: 30}}className={guideStyles.tbldata}>{posts.country}</td>
+              <td className={guideStyles.tbldata}>{posts.payment}</td>
+              <td className={guideStyles.tbldata}>
+              <button
+                  className={guideStyles.btnEdit}
+              
+                >
+                  <a  style={{textDecoration:'none' ,color:'white',fontweight: 700}} href={`/edit-bookingmanagement/${posts._id}`}>
+
+                  Edit
+                  </a>
+                </button>
             
-              <td className="welcome"><a href={`/add/${posts._id}`} style={{textDecoration:'none',color:'rgba(5, 0, 0, 0.658)',fontWeight:'bold'}}>{posts.tourId}</a></td>
-              <td className="welcome">{posts.arrivalDate}</td>
-              <td className="welcome">{posts.bookingDate}</td>
-              <td className="welcome">{posts.iclass}</td>   
-              <td className="welcome">{posts.email}</td>
-              <td className="welcome">{posts.fullName}</td>  
-              <td className="welcome">{posts.insurance}</td>
-              <td className="welcome">{posts.itinerary}</td>
-              <td className="welcome">{posts.noOfAdults}</td>
-              <td className="welcome">{posts.country}</td>
-              <td className="welcome">{posts.payment}</td>
               
-           
+                <button
+                className={guideStyles.btnDelete}
+                  onClick={()=>this.onDelete(posts._id)}
+                >
+                  Delete
+                </button>
               
-              <td><a className="btn btn-warning" href={`/edit/${posts._id}`}>
-                &nbsp;Edit
-                </a>
-                &nbsp;
-                
-                <a className="btn btn-danger"  onClick={()=>this.onDelete(posts._id)}>
-                &nbsp;Delete
-                </a>
+              
                 </td>
               </tr>
           ))}
 
-        </tbody>
+        
         </table>
       </div>
       </div>
