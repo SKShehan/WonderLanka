@@ -74,9 +74,9 @@ function Index() {
     <>
 
       <div className="main">
-        {/*<IndexNavbar />
+        <IndexNavbar />
         <IndexHeader/>
-      <SectionButtons />
+      {/*<SectionButtons />
         <SectionNavbars />
         <SectionNavigation />
         <SectionProgress />
@@ -88,20 +88,9 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
-        <SectionDownload />
-        <GuideManagement /> */}
-        <BookingManagement/>
 
-    
-        <Home/>
-
-        <SectionDownload /> 
-        <GuideManagement />
-
-        <AddDriver/>
-        <DriverDetails/>*/}
-        <DriverManagement/>
-     
+        <SectionDownload /> */}
+        <ItineraryManagement />
 
         
 
