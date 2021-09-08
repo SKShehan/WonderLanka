@@ -62,9 +62,9 @@ function Index() {
     <>
 
       <div className="main">
-        {/*<IndexNavbar />
+        <IndexNavbar />
         <IndexHeader/>
-      <SectionButtons />
+      {/*<SectionButtons />
         <SectionNavbars />
         <SectionNavigation />
         <SectionProgress />

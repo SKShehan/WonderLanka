@@ -3,7 +3,7 @@ import {Card , CardImg , Button} from 'reactstrap'
 
 function ItineraryContainer(props){
 
-
+    
     function CloseItinerary(){
         props.onCancel();
     }
@@ -11,7 +11,7 @@ function ItineraryContainer(props){
     return(
         <div>
             <Card className = {styles.CardComponent}>
-                <CardImg top src = "" alt = "Itinerary"/>
+                <CardImg top src = {props.image} alt = "Itinerary"/>
                 <Button color = "primary" style = {{float : "right"}} onClick = {CloseItinerary}>Close</Button>
             </Card>    
         </div>
