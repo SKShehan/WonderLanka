@@ -50,29 +50,33 @@ function BookingReport({ user }) {
                     <Col>
                       {" "}
                       <img
-                        src={require("assets/img/logo-test.png").default}
+                        src={
+                          require("assets/img/wonder-lanka-logo.png").default
+                        }
                         className="report-logo"
                       />
                     </Col>
                   </Row>
                   <Row>
                     <Col>
-                      <h4 className="report-title">Wonder Lanka Tours</h4>
+                      <br></br>
+                      <p className="report-contact">
+                        100/77 City Gate, Temple Junction, Katana North,{" "}
+                        <br></br>Katana, Negombo 11500<br></br>
+                        Tel No. : +94 77 614 0895
+                      </p>
                     </Col>
                   </Row>
-                  <br></br>
                   <Row>
                     <Col>
-                      <label style={{ float: "right" }}>
+                      <label style={{ float: "right", fontSize: "x-small" }}>
                         <i>Date : {date}</i>
                       </label>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
+
                       <hr></hr>
                     </Col>
                   </Row>
+
                   <br></br>
                   <Row>
                     <Col>Tour Id : {location.state.tourId}</Col>
@@ -135,7 +139,7 @@ function BookingReport({ user }) {
                   <br></br>
                   <br></br>
                   <Row>
-                    <Col>Payment : USD &nbsp;{location.state.payment}</Col>
+                    <Col>Payment : LKR &nbsp;{location.state.payment}</Col>
                   </Row>
                   <br></br>
                 </div>

@@ -537,7 +537,7 @@ function ViewTour({ user }) {
               <Col>
                 <label className="tour-det-head">Payment :</label>
                 <label className="tour-det-text">
-                  USD&nbsp;
+                  LKR&nbsp;
                   {location.state.payment}
                 </label>
               </Col>
