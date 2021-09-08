@@ -387,6 +387,7 @@ function BookTour({ user }) {
                         name="mobileNo"
                         id="mobileNo"
                         placeholder="Mobile Number"
+                        pattern="[+0-9]+"
                         value={mobileNo}
                         onChange={(e) => {
                           setmobileNo(e.target.value);
@@ -403,6 +404,7 @@ function BookTour({ user }) {
                         name="email"
                         id="email"
                         placeholder="name@example.com"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                         value={email}
                         onChange={(e) => {
                           setemail(e.target.value);
@@ -519,6 +521,7 @@ function BookTour({ user }) {
                         name="adults"
                         id="adults"
                         placeholder="0"
+                        pattern="[0-9]+"
                         value={noOfAdults}
                         onChange={(e) => {
                           setnoOfAdults(e.target.value);
@@ -535,6 +538,7 @@ function BookTour({ user }) {
                         name="kids18"
                         id="kids18"
                         placeholder="0"
+                        pattern="[0-9]+"
                         value={noOfKids18}
                         onChange={(e) => {
                           setnoOfKids18(e.target.value);
@@ -551,6 +555,7 @@ function BookTour({ user }) {
                         name="kids8"
                         id="kids8"
                         placeholder="0"
+                        pattern="[0-9]+"
                         value={noOfKids8}
                         onChange={(e) => {
                           setnoOfKids8(e.target.value);

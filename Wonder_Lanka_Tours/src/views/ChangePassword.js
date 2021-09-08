@@ -115,12 +115,15 @@ function BookTour({ user }) {
                 <Row>
                   <Col>
                     <FormGroup>
-                      <Label for="newpwd">New Password*</Label>
+                      <Label for="newpwd">
+                        New Password (Must contain at least 8 characters)*
+                      </Label>
                       <Input
                         type="password"
                         id="newpwd"
                         name="newpwd"
                         value={newpass}
+                        pattern=".{8,}"
                         onChange={(e) => {
                           setnewpass(e.target.value);
                         }}
