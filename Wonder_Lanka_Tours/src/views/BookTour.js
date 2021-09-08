@@ -23,7 +23,7 @@ function BookTour({ user }) {
   const [noOfKids18, setnoOfKids18] = useState();
   const [noOfKids8, setnoOfKids8] = useState();
   const [username, setusername] = useState("");
-  const [payment, setpayment] = useState(3000.0);
+  let payment = 0;
   const [bookingDate, setbookingDate] = useState();
 
   const countryList = [
@@ -237,7 +237,7 @@ function BookTour({ user }) {
     "Insurance 4",
   ]);
 
-  const [classList, setclassList] = useState(["Standard", "Deluxe"]);
+  const [classList, setclassList] = useState(["Standard", "Deluxe", "Supreme"]);
 
   const getItineraries = () => {
     axios.get("http://localhost:8070/itineraries").then((res) => {
@@ -252,11 +252,26 @@ function BookTour({ user }) {
     else setcustomize(false);
   };
 
+  const calcPayment = () => {
+    for (var i = 0; i < itineraryList.length; i++) {
+      if (itineraryList[i].itineraryName === itinerary) {
+        if (itineraryList[i].itineraryClass === iclass) {
+          payment +=
+            itineraryList[i].itineraryPriceAdult * noOfAdults +
+            itineraryList[i].itineraryPriceChild * noOfKids18;
+          break;
+        }
+      }
+    }
+    console.log(payment);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (itinerary !== "Customized") {
       setcustomizedItinerary("");
+      calcPayment();
     }
 
     const bookingDetails = {
