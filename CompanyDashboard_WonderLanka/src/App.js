@@ -21,7 +21,8 @@ import GuideManagement from "views/GuideManagement";
 import DriverUpdate from "views/DriverUpdate";
 import AddDriver from "views/AddDriver";
 import DriverDetails from "views/DriverDetails";
-
+import DriverManagement from "views/DriverManagement";
+import ItineraryManagement from "views/ItineraryManagement";
 
 
 function App() {
@@ -72,15 +73,28 @@ function App() {
         <Route path="/view-guides" exact>
           <ViewGuides />
         </Route>
+       
+        <Route path="/edit-driver/:id" exact 
+          component={DriverUpdate} />
+        <Route path ="/Add-Driver" exact  
+          component={AddDriver}/>
+        <Route path ="/View-Driver" exact  
+          component={DriverDetails}/>
+
+        {/*Setting Management Function paths */}
+
         <Route path="/guide-management" exact>
           <GuideManagement />
         </Route>
-       
-        <Route path="/edit-driver/:id" component={DriverUpdate} />
-        <Route path ="/Add-Driver" component={AddDriver}/>
-        <Route path ="/View-Driver" component={DriverDetails}/>
 
-        
+        <Route path="/itinerary-management" exact>
+          <ItineraryManagement />
+        </Route>
+
+        <Route path="/driver-management" exact>
+          <DriverManagement />
+        </Route>
+
 
         <Redirect to="/index" />
       </Switch>

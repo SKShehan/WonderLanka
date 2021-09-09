@@ -8,7 +8,18 @@ import DemoFooter from 'components/Footers/DemoFooter';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-
+import {
+    Label,
+    Input,
+    Row,
+    Col,
+    InputGroup,
+    InputGroupAddon,
+    InputGroupText,
+    FormGroup,
+    Alert,
+    Container,
+  } from "reactstrap";
 toast.configure();
 function ViewItineraries(){
     
@@ -66,6 +77,41 @@ function ViewItineraries(){
             <IndexNavbar />
             <IndexHeader />
             <h3 style ={{marginLeft:"40px"}}>Tour Itinerary Details</h3><br/><br/>
+
+            <Row>
+          <Col>
+            <FormGroup>
+              <InputGroup style = {{marginLeft : "40px"}} className="form-group-no-border">
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText>
+                    <i className="nc-icon nc-zoom-split" />
+                  </InputGroupText>
+                </InputGroupAddon>
+                <Input placeholder="Search " type="text" />
+              </InputGroup>
+            </FormGroup>
+          </Col>
+          <Col>
+            <div>
+              <Label style = {{marginLeft : "40px"}} check>
+                <Input type="checkbox" />{" "}
+                <label style ={{marginRight : "40px"}}>Full Name</label>
+              </Label>
+
+              <Label check>
+                <Input type="checkbox" />{" "}
+                <label style ={{marginRight : "40px"}}>License ID</label>
+              </Label>
+
+              <Label check>
+                <Input type="checkbox" />{" "}
+                <label style ={{marginRight : "40px"}}>Guide ID</label>
+              </Label>
+            </div>
+          </Col>
+          <Col></Col>
+        </Row>
+
             <div style = {{marginLeft:"20px"}}  className = "tableContainer">
                 <table className = "table table-striped">
                     <thead>

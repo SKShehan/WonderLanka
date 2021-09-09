@@ -49,6 +49,7 @@ import GuideManagement from "./GuideManagement";
 import AddDriver from "./AddDriver";
 import DriverDetails from "./DriverDetails"
 import DriverManagement from "./DriverManagement";
+import Homepage from "./Homepage";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -77,7 +78,7 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
         <SectionDownload /> */}
-        <ItineraryManagement />
+        <Homepage />
         
 
          

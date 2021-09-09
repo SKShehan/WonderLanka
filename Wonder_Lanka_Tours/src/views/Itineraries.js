@@ -46,7 +46,7 @@ function Itineraries(){
     return(
         <div>   
             <div className = {styles.Packages}>
-                <h3>Our Tours</h3>
+                <h3 style = {{marginLeft : "30px" , marginTop : "30px" , fontWeight :"bold" , fontSize :"25px"}}>Our Tours</h3>
                 <br/><br/>
                 <div className = {styles.container} >
                 {itineraries.map((itinerary) =>(
@@ -54,13 +54,13 @@ function Itineraries(){
                     <Card style = {{width: '20rem' , margin : '50px'}}>
                     <CardImg  top src = {`http://localhost:8070/itineraries/getImage/${itinerary._id}`} alt = "TourImage" />
                     <CardBody>
-                        <CardTitle>{itinerary.itineraryName}</CardTitle>
-                        <CardText>
+                        <CardTitle style = {{fontWeight :"bold", fontSize : "18px"}}>{itinerary.itineraryName}</CardTitle><br />
+                        <CardText style = {{ fontSize : "17px" , fontWeight : "bolder"}}>
                         {itinerary.itineraryDesc}<br/><br/>
-                            <b>Itinerary Days  : {itinerary.itineraryDays} </b>
-                            <b>Itinerary Class : {itinerary.itineraryClass}</b>
-                            <b>Price Per Adult : {itinerary.itineraryPriceAdult}  </b> <br/>
-                            <b>Price per Child : {itinerary.itineraryPriceChild} </b>
+                            <b>Itinerary Days  :</b> {itinerary.itineraryDays} <br/>
+                            <b>Itinerary Class :</b> {itinerary.itineraryClass}<br/>
+                            <b>Price Per Adult : </b> {itinerary.itineraryPriceAdult}  <br/>
+                            <b>Price per Child : </b>{itinerary.itineraryPriceChild} 
 
                         </CardText>
 

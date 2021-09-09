@@ -1,63 +1,93 @@
-/*!
 
-=========================================================
-* Paper Kit React - v1.3.0
-=========================================================
+import styles from "../assets/css/Home.module.css"
+import { useHistory } from "react-router";
 
-* Product Page: https://www.creative-tim.com/product/paper-kit-react
+function Homepage(){
 
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/paper-kit-react/blob/main/LICENSE.md)
+  let history = useHistory();
 
-* Coded by Creative Tim
+    function handleClickItinerary(){
+        history.push("/itinerary-management");
+    }
 
-=========================================================
+    function handleClickGuide() {
+        history.push("/guide-management");
+    }
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    function handleClickBooking() {
+        history.push("/assign-guides");
+    }
 
-*/
-import React from "react";
+    function handleClickComp() {
+        history.push("/report-guides");
+    }
 
-// reactstrap components
+    function handleClickVehicle() {
+      history.push("/report-guides");
+    }
 
-// core components
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import IndexHeader from "components/Headers/IndexHeader.js";
-import DemoFooter from "components/Footers/DemoFooter.js";
+    function handleClickDriver() {
+      history.push("/driver-management");
+    }
 
-// index sections
-import SectionButtons from "views/index-sections/SectionButtons.js";
-import SectionNavbars from "views/index-sections/SectionNavbars.js";
-import SectionNavigation from "views/index-sections/SectionNavigation.js";
-import SectionProgress from "views/index-sections/SectionProgress.js";
-import SectionNotifications from "views/index-sections/SectionNotifications.js";
-import SectionTypography from "views/index-sections/SectionTypography.js";
-import SectionJavaScript from "views/index-sections/SectionJavaScript.js";
-import SectionCarousel from "views/index-sections/SectionCarousel.js";
-import SectionNucleoIcons from "views/index-sections/SectionNucleoIcons.js";
-import SectionDark from "views/index-sections/SectionDark.js";
-import SectionLogin from "views/index-sections/SectionLogin.js";
-import SectionExamples from "views/index-sections/SectionExamples.js";
-import SectionDownload from "views/index-sections/SectionDownload.js";
+    function handleClickInsurance() {
+      history.push("/report-guides");
+    }
 
-function Index() {
-  document.documentElement.classList.remove("nav-open");
-  React.useEffect(() => {
-    document.body.classList.add("index");
-    return function cleanup() {
-      document.body.classList.remove("index");
-    };
-  });
-  return (
-    <>
-      <IndexNavbar />
-      <IndexHeader />
-      <div className="main">
+   function handleClickHotel() {
+     history.push("/report-guides");
+    }
 
-        <DemoFooter />
-      </div>
-    </>
-  );
+
+    return(
+        
+            <div style = {{paddingTop : "50px"}} className = {styles.body}>
+            <h3 className = {styles.header}><center>Company Management</center></h3><br/><br/>
+
+            <div>
+              <table className = {styles.tb}>
+
+                <tr>
+                  <td>
+                      <button className = {styles.btn_guidemng} onClick = {handleClickItinerary} >Itinerary Management</button>
+                  </td>
+                    
+                  <td>
+                      <button className = {styles.btn_guidemng} onClick = {handleClickGuide} >Guide Management</button>
+                  </td>
+
+                  <td>
+                      <button className = {styles.btn_guidemng} onClick = {handleClickBooking}>Booking Management</button>
+                  </td>
+
+                  <td>
+                      <button className = {styles.btn_guidemng} onClick = {handleClickComp}>Complaint and Feedback Management</button>
+                  </td>
+
+                </tr>
+
+                <tr>
+                  <td>
+                      <button className = {styles.btn_guidemng} onClick = {handleClickVehicle} >Vehicle Management</button>
+                  </td>
+                    
+                  <td>
+                      <button className = {styles.btn_guidemng} onClick = {handleClickDriver} >Driver Management</button>
+                  </td>
+
+                  <td>
+                      <button className = {styles.btn_guidemng} onClick = {handleClickInsurance}>Insurance Management</button>
+                  </td>
+
+                  <td>
+                      <button className = {styles.btn_guidemng} onClick = {handleClickHotel}>Hotel and Restaraunt Management</button>
+                  </td>
+                </tr>  
+              </table>
+            </div>
+        </div>
+        
+    );
 }
 
-export default Index;
+export default Homepage;
