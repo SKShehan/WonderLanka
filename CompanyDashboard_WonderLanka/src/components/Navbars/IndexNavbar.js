@@ -31,6 +31,8 @@ import {
   Container,
 } from "reactstrap";
 
+import { Link } from "react-router-dom";
+
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
@@ -94,53 +96,65 @@ function IndexNavbar() {
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href="https://twitter.com/CreativeTim?ref=creativetim"
-                target="_blank"
-                title="Follow us on Twitter"
+                href="/booking-management"
+                title="Booking Management"
               >
-                <i className="fa fa-twitter" />
-                <p className="d-lg-none">Twitter</p>
+                Bookings
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href="https://www.facebook.com/CreativeTim?ref=creativetim"
-                target="_blank"
-                title="Like us on Facebook"
+                href="/itinerary-management"
+                title="Itinerary Management"
               >
-                <i className="fa fa-facebook-square" />
-                <p className="d-lg-none">Facebook</p>
+                Itineraries
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
-                target="_blank"
-                title="Follow us on Instagram"
+                href=""
+                title="Insurance Management"
               >
-                <i className="fa fa-instagram" />
-                <p className="d-lg-none">Instagram</p>
+                Insurance Plans
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href="https://www.github.com/CreativeTimOfficial/paper-kit-react?ref=creativetim"
-                target="_blank"
-                title="Star on GitHub"
+                href="/guide-management"
+                title="Guide Management"
               >
-                <i className="fa fa-github" />
-                <p className="d-lg-none">GitHub</p>
+                Guides
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
-                href="https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-index-navbar"
-                target="_blank"
+                data-placement="bottom"
+                href="/driver-management"
+                title="Driver Management"
               >
-                <i className="nc-icon nc-book-bookmark" /> Documentation
+                Drivers
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                data-placement="bottom"
+                href=""
+                title="Vehicle Management"
+              >
+                Vehicles
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink data-placement="bottom" href="" title="Hotel Management">
+                Hotels
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="" target="_blank">
+                <i className="nc-icon nc-circle-10" /> Log Out
               </NavLink>
             </NavItem>
           </Nav>
