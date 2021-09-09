@@ -45,11 +45,23 @@ import ItineraryManagement from "./ItineraryManagement";
 import CustomizedRequests from "./CustomizedRequests";
 import AddGuide from "./AddGuide";
 import ViewGuides from "./ViewGuides";
-import GuideManagement from "./GuideManagement";
+import GuideManagement from "./GuideManagement"
+import Booktable from "./booktable";
+import BookingManagement from "./BookingManagement";
+import HotelDetails from "./HotelDetails";
+import EditHotel from "./EditHotel";
+import AddHotel from "./AddHotel";
+import HotelHome from "./HotelHome";
+
+
+
+import Home from "./booktable";
+
 import AddDriver from "./AddDriver";
 import DriverDetails from "./DriverDetails"
 import DriverManagement from "./DriverManagement";
 import Homepage from "./Homepage";
+
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -77,9 +89,12 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
+
         <SectionDownload /> */}
-        <Homepage />
+        <ItineraryManagement />
+
         
+
 
          
         

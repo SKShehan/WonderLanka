@@ -19,7 +19,7 @@ import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import UserProfile from "./UserProfile";
 
-function BookTour() {
+function Dashboard() {
   const history = useHistory();
   document.documentElement.classList.remove("nav-open");
 
@@ -125,4 +125,4 @@ function BookTour() {
   );
 }
 
-export default BookTour;
+export default Dashboard;
