@@ -244,6 +244,19 @@ function BookTour({ user }) {
     }
   };
 
+  const updateBookings = () => {
+    axios
+      .put(`http://localhost:8070/bookings/update/username/${user.username}`, {
+        username,
+      })
+      .then((res) => {
+        console.log("Success!");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const updates = {
@@ -261,6 +274,7 @@ function BookTour({ user }) {
       await axios
         .put(`http://localhost:8070/users/update/${user.username}`, updates)
         .then((res) => {
+          updateBookings();
           console.log(res);
           user.username = updates.username;
           user.fullName = updates.fullName;
@@ -274,6 +288,7 @@ function BookTour({ user }) {
             autoClose: 10000,
             hideProgressBar: false,
           });
+          console.log(user.username);
         })
         .catch((err) => {
           console.log(err);
@@ -369,6 +384,7 @@ function BookTour({ user }) {
                         id="nic"
                         placeholder="NIC"
                         value={nic}
+                        pattern="[0-9]{9,15}"
                         onChange={(e) => {
                           setnic(e.target.value);
                         }}
@@ -400,6 +416,7 @@ function BookTour({ user }) {
                         name="mobileNo"
                         id="mobileNo"
                         placeholder="Mobile Number"
+                        pattern="[+0-9]+"
                         value={mobileNo}
                         onChange={(e) => {
                           setmobileNo(e.target.value);
@@ -418,6 +435,7 @@ function BookTour({ user }) {
                         name="username"
                         id="username"
                         placeholder="Username"
+                        pattern="[A-Za-z][A-Za-z0-9_.]+"
                         value={username}
                         onChange={(e) => {
                           setusername(e.target.value);
@@ -434,6 +452,7 @@ function BookTour({ user }) {
                         name="email"
                         id="email"
                         placeholder="name@example.com"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                         value={email}
                         onChange={(e) => {
                           setemail(e.target.value);

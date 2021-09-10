@@ -32,7 +32,14 @@ function ViewGuides() {
   const deleteGuide = (guide) => {
     if (
       window.confirm(
-        "Guide " + guide.guideID + " will be removed from the database"
+        "Guide " +
+          guide.guideID +
+          " (" +
+          guide.fName +
+          " " +
+          guide.lName +
+          ") " +
+          "will be removed from the database"
       )
     ) {
       axios

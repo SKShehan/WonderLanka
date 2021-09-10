@@ -28,6 +28,13 @@ function ViewTour({ user }) {
   const [assignedVehicle, setassignedVehicle] = useState("Not Yet Assigned");
   const doc = new jsPDF("l", "pt", "a4");
 
+  const clickGenerateReport = () => {
+    history.push({
+      pathname: "/booking-report",
+      state: location.state,
+    });
+  };
+
   const onSubmit = (e) => {
     const updates = {
       fullName,
@@ -372,6 +379,7 @@ function ViewTour({ user }) {
                       className="form-control"
                       style={{ width: "100%" }}
                       placeholder="Mobile Number*"
+                      pattern="[+0-9]+"
                       value={mobileNo}
                       onChange={(e) => {
                         setmobileNo(e.target.value);
@@ -389,6 +397,7 @@ function ViewTour({ user }) {
                       placeholder="E-Mail Address*"
                       style={{ width: "100%" }}
                       value={email}
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                       onChange={(e) => {
                         setemail(e.target.value);
                       }}
@@ -530,7 +539,7 @@ function ViewTour({ user }) {
               <Col>
                 <label className="tour-det-head">Payment :</label>
                 <label className="tour-det-text">
-                  USD&nbsp;
+                  LKR&nbsp;
                   {location.state.payment}
                 </label>
               </Col>
@@ -540,7 +549,7 @@ function ViewTour({ user }) {
               <Col>
                 <button
                   className="btn btn-info btn-edit-booking"
-                  onClick={generatePDF}
+                  onClick={clickGenerateReport}
                 >
                   Generate Report
                 </button>
