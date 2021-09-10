@@ -126,7 +126,7 @@ function MyComplaintsTable () {
 
   useEffect(() => {
     function getComplaints() {
-      axios.get("http://localhost:").then((res) => {
+      axios.get("http://localhost:8070/").then((res) => {
         console.log(res);
       }).catch((err) => {
         alert(err.message);

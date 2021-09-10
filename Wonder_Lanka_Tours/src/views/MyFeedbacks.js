@@ -40,7 +40,7 @@ function MyFeedbacks() {
     }
 
     console.log(newFeedback);
-    axios.post("http://", newFeedback).then(()=>{
+    axios.post("http://localhost:8070/", newFeedback).then(()=>{
       alert("Feedback Added");
     }).catch((err)=>{
       alert(err);
