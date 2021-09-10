@@ -94,9 +94,11 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
+
         <SectionDownload /> 
         <GuideManagement />
         
+
         
         
          */}

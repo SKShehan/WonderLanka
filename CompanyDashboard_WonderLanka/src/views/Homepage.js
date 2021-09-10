@@ -35,7 +35,7 @@ function Homepage(){
     }
 
    function handleClickHotel() {
-     history.push("/report-guides");
+     history.push("/hotel-management");
     }
 
 

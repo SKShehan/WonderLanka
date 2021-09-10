@@ -155,7 +155,7 @@ function App() {
 
         
         <Route //Setting path for hotels
-          path="/" exact >
+          path="/hotel-management" exact >
           <HotelHome />
         </Route>
 
