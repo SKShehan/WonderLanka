@@ -102,7 +102,7 @@ function MyFeedbackTable () {
 
   useEffect(() => {
     function getFeedbacks() {
-      axios.get("http://localhost:").then((res) => {
+      axios.get("http://localhost:8070/MyFeedbacks").then((res) => {
         console.log(res);
       }).catch((err) => {
         alert(err.message);
