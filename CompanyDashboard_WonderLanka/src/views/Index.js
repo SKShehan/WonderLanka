@@ -63,6 +63,11 @@ import DriverManagement from "./DriverManagement";
 import Homepage from "./Homepage";
 
 
+
+import VehicleDashboard from "./vehicleDashboard";
+import Editvehicle from "./editvehicle";
+import AssignVehicle from "./assignvehicle";
+
 function Index() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -90,16 +95,18 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
 
-        <SectionDownload /> */}
-        <Homepage />
-
+        <SectionDownload /> 
+        <GuideManagement />
         
 
-
-         
         
         
-       <DemoFooter />
+         */}
+ 
+ <VehicleDashboard/>
+ 
+        
+        <DemoFooter />
       </div>
     </>
   );

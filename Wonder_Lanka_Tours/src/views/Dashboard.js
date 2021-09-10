@@ -37,7 +37,7 @@ function Dashboard() {
     alert("Kohe yannada hutto");
   };
   const clickComplaintFeedaback = () => {
-    alert("Kohe yannada hutto");
+    alert("Yo");
   };
 
   useEffect(() => {
