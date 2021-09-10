@@ -91,7 +91,7 @@ function Index() {
         <SectionExamples />
 
         <SectionDownload /> */}
-        <ItineraryManagement />
+        <Homepage />
 
         
 
