@@ -47,6 +47,11 @@ import AddGuide from "./AddGuide";
 import ViewGuides from "./ViewGuides";
 import GuideManagement from "./GuideManagement";
 
+
+import VehicleDashboard from "./vehicleDashboard";
+import Editvehicle from "./editvehicle";
+import AssignVehicle from "./assignvehicle";
+
 function Index() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -73,10 +78,14 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
-        <SectionDownload /> */}
+        <SectionDownload /> 
         <GuideManagement />
-         
         
+        
+         */}
+ 
+ <VehicleDashboard/>
+ 
         
         <DemoFooter />
       </div>

@@ -19,7 +19,12 @@ import AddGuide from "views/AddGuide";
 import ViewGuides from "views/ViewGuides";
 import GuideManagement from "views/GuideManagement";
 
-
+import Addvehicle from "views/addvehicle";
+import Editvehicle from "views/editvehicle";
+import Vehiclelist from "views/vehiclelist";
+import Vtype from "views/vtype";
+import AssignVehicle from "views/assignvehicle";
+import ReportVehicle from "views/reportvehicle";
 
 function App() {
   return (
@@ -72,10 +77,23 @@ function App() {
         <Route path="/guide-management" exact>
           <GuideManagement />
         </Route>
-
-
         
-
+        {/* vehicle */}
+        <Route path="/add-vehicle" exact>
+          <Addvehicle />
+        </Route>
+        <Route path="/view-vehicles" exact>
+          <Vehiclelist />
+        </Route>
+        <Route path="/type-vehicles" exact>
+          <Vtype />
+        </Route>
+        <Route path="/edit-vehicle/:id" component={Editvehicle}/>
+          
+        <Route path="/assign-vehicles" component={AssignVehicle}/> 
+          
+        <Route path="/report-vehicles" component={ReportVehicle}/> 
+        
         <Redirect to="/index" />
       </Switch>
     </BrowserRouter>
