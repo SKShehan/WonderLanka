@@ -33,6 +33,12 @@ import DriverUpdate from "views/DriverUpdate";
 import AddDriver from "views/AddDriver";
 import DriverDetails from "views/DriverDetails";
 
+<<<<<<< Updated upstream
+=======
+import MyComplaints from "views/MyComplaints";
+import MyFeedbacks from "views/MyFeedbacks";
+
+>>>>>>> Stashed changes
 
 
 
@@ -77,6 +83,7 @@ function App() {
 
         <Route path="/edit-itinerary/:id" exact>
           <EditItinerary />
+<<<<<<< Updated upstream
         </Route>
         <Route path= "/edit-guide/:id" exact>
           <EditGuide />
@@ -122,6 +129,53 @@ function App() {
           <AddHotel />
         </Route>
 
+=======
+        </Route>
+        <Route path= "/edit-guide/:id" exact>
+          <EditGuide />
+        </Route>
+        <Route path="/add-guide" exact>
+          <AddGuide />
+        </Route>
+        <Route path="/view-guides" exact>
+          <ViewGuides />
+        </Route>
+        <Route path="/guide-management" exact>
+          <GuideManagement />
+        </Route>
+        <Route path="/booking-management" exact>
+          < BookingManagement/>
+        </Route>
+
+
+      
+        <Route path="/booktable" exact>
+          <Booktable />
+        </Route>
+        <Route path="/edit-bookingmanagement/:id"  component={Editbookings}>
+        </Route>
+   
+      
+        <Route path="/add-cancelbooking/:id" component={Cancelbookingform} >
+        </Route>
+
+       
+        <Route path="/edit-driver/:id" component={DriverUpdate} />
+        <Route path ="/Add-Driver" component={AddDriver}/>
+        <Route path ="/View-Driver" component={DriverDetails}/>
+
+
+        
+        <Route //Setting path for hotels
+          path="/" exact >
+          <HotelHome />
+        </Route>
+
+        <Route path="/add" exact >
+          <AddHotel />
+        </Route>
+
+>>>>>>> Stashed changes
         <Route path="/edit/:id"  component={EditHotel}>
         </Route>
 
@@ -130,6 +184,18 @@ function App() {
         </Route>
 
 
+<<<<<<< Updated upstream
+=======
+
+        <Route path="/my-complaints" exact>
+          <MyComplaints user={user}></MyComplaints>
+        </Route>
+        <Route path="/my-feedbacks" exact>
+          <MyFeedbacks user={user}></MyFeedbacks>
+        </Route>
+
+
+>>>>>>> Stashed changes
         <Redirect to="/index" />
       </Switch>
     </BrowserRouter>
