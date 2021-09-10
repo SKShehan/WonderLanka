@@ -33,12 +33,9 @@ import DriverUpdate from "views/DriverUpdate";
 import AddDriver from "views/AddDriver";
 import DriverDetails from "views/DriverDetails";
 
-<<<<<<< Updated upstream
-=======
 import MyComplaints from "views/MyComplaints";
 import MyFeedbacks from "views/MyFeedbacks";
 
->>>>>>> Stashed changes
 
 
 
@@ -83,7 +80,6 @@ function App() {
 
         <Route path="/edit-itinerary/:id" exact>
           <EditItinerary />
-<<<<<<< Updated upstream
         </Route>
         <Route path= "/edit-guide/:id" exact>
           <EditGuide />
@@ -129,8 +125,6 @@ function App() {
           <AddHotel />
         </Route>
 
-=======
-        </Route>
         <Route path= "/edit-guide/:id" exact>
           <EditGuide />
         </Route>
@@ -175,7 +169,6 @@ function App() {
           <AddHotel />
         </Route>
 
->>>>>>> Stashed changes
         <Route path="/edit/:id"  component={EditHotel}>
         </Route>
 
@@ -184,8 +177,6 @@ function App() {
         </Route>
 
 
-<<<<<<< Updated upstream
-=======
 
         <Route path="/my-complaints" exact>
           <MyComplaints user={user}></MyComplaints>
@@ -195,7 +186,6 @@ function App() {
         </Route>
 
 
->>>>>>> Stashed changes
         <Redirect to="/index" />
       </Switch>
     </BrowserRouter>

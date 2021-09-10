@@ -22,7 +22,7 @@ function MyComplaints() {
 
   React.useEffect(() => {
     document.body.classList.add("index");
-    
+
     return function cleanup() {
       document.body.classList.remove("index");
     };
