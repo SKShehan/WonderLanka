@@ -41,6 +41,7 @@ import Vehiclelist from "views/vehiclelist";
 import Vtype from "views/vtype";
 import AssignVehicle from "views/assignvehicle";
 import ReportVehicle from "views/reportvehicle";
+import VehicleDashboard from "views/vehicleDashboard";
 
 function App() {
 
@@ -122,6 +123,8 @@ function App() {
         <Route path="/assign-vehicles" component={AssignVehicle}/> 
           
         <Route path="/report-vehicles" component={ReportVehicle}/> 
+
+        <Route path = "/vehicle-management" component = {VehicleDashboard} />
         
 
         <Route path="/itinerary-management" exact>

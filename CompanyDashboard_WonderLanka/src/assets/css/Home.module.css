@@ -13,7 +13,7 @@
 
 .btn_guidemng:hover{
     background-color: #008fb3;
-
+    transform: scale(1.1);
 }
 
 

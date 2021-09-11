@@ -13,6 +13,10 @@ import{
 }
 from 'reactstrap'
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 
 
@@ -78,7 +82,16 @@ function EditItinerary(){
         formData.append("itineraryPriceChild" , itineraryPriceChild);
 
         axios.put(`http://localhost:8070/itineraries/update/${id}` , formData , {headers: {'Content-Type': 'multipart/form-data'}}).then(() =>{
-            alert("Itinerary Updated!");
+            toast.success('Itinerary Edited!', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+                
         }).catch((err) =>{
             console.log(formData);
             console.log(err);
