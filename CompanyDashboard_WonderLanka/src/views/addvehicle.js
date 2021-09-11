@@ -17,6 +17,10 @@ import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 export default class Addvehicle extends Component {
 
@@ -101,8 +105,16 @@ export default class Addvehicle extends Component {
 
           axios.post('http://localhost:8070/vehicles/add', vehicle)
       .then(res => console.log(res.data));
-
-    window.location = '/';
+      toast.success('Vehicle Added!', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+ //   window.location = '/';
       }
 
     render() {

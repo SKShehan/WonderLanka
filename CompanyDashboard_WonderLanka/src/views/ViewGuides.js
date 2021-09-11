@@ -28,6 +28,7 @@ toast.configure();
 
 function ViewGuides() {
   const [guides, setguides] = useState([]);
+  const [searchValue , setSearchValue] = useState("");
 
   const deleteGuide = (guide) => {
     if (
@@ -104,7 +105,9 @@ function ViewGuides() {
                     <i className="nc-icon nc-zoom-split" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input placeholder="Search " type="text" />
+                <Input placeholder="Search " type="text" onChange = {(e)=>{
+                  setSearchValue(e.target.value);
+                }} />
               </InputGroup>
             </FormGroup>
           </Col>
@@ -139,7 +142,14 @@ function ViewGuides() {
             <th className={guideStyles.tbldata}>Foreign Languages</th>
             <th className={guideStyles.tbldata}>Actions</th>
           </tr>
-          {guides.map((guide) => (
+          {guides.filter((val) =>{
+              if (searchValue === ''){
+                return val;
+              }
+              else if (val.fName.toLowerCase().includes(searchValue.toLowerCase())){
+                return val;
+              }
+          }).map((guide) => (
             <tr className={guideStyles.tbldata}>
               <td className={guideStyles.tbldata}>{guide.guideID}</td>
               <td className={guideStyles.tbldata}>{guide.fName}</td>
