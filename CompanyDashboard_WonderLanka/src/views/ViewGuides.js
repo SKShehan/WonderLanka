@@ -28,7 +28,10 @@ toast.configure();
 
 function ViewGuides() {
   const [guides, setguides] = useState([]);
-  const [searchValue , setSearchValue] = useState("");
+  const [checkFullName, setcheckFullName] = useState(true);
+  const [checkLicenseId, setcheckLicenseId] = useState(false);
+  const [checkGuideId, setcheckGuideId] = useState(false);
+  const [searchText, setsearchText] = useState("");
 
   const deleteGuide = (guide) => {
     if (
@@ -105,26 +108,49 @@ function ViewGuides() {
                     <i className="nc-icon nc-zoom-split" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input placeholder="Search " type="text" onChange = {(e)=>{
-                  setSearchValue(e.target.value);
-                }} />
+                <Input
+                  placeholder="Search "
+                  type="text"
+                  value={searchText}
+                  onChange={(e) => {
+                    setsearchText(e.target.value);
+                  }}
+                />
               </InputGroup>
             </FormGroup>
           </Col>
           <Col>
             <div>
               <Label check>
-                <Input type="checkbox" />{" "}
+                <Input
+                  type="checkbox"
+                  checked={checkFullName}
+                  onChange={() => {
+                    setcheckFullName(!checkFullName);
+                  }}
+                />{" "}
                 <label className={guideStyles.checkBoxLabel}>Full Name</label>
               </Label>
 
               <Label check>
-                <Input type="checkbox" />{" "}
+                <Input
+                  type="checkbox"
+                  checked={checkLicenseId}
+                  onChange={() => {
+                    setcheckLicenseId(!checkLicenseId);
+                  }}
+                />{" "}
                 <label className={guideStyles.checkBoxLabel}>License ID</label>
               </Label>
 
               <Label check>
-                <Input type="checkbox" />{" "}
+                <Input
+                  type="checkbox"
+                  checked={checkGuideId}
+                  onChange={() => {
+                    setcheckGuideId(!checkGuideId);
+                  }}
+                />{" "}
                 <label className={guideStyles.checkBoxLabel}>Guide ID</label>
               </Label>
             </div>
@@ -142,44 +168,70 @@ function ViewGuides() {
             <th className={guideStyles.tbldata}>Foreign Languages</th>
             <th className={guideStyles.tbldata}>Actions</th>
           </tr>
-          {guides.filter((val) =>{
-              if (searchValue === ''){
-                return val;
+          {guides
+            .filter((guide) => {
+              let fullName = guide.fName + " " + guide.lName;
+              if (searchText === "") {
+                return guide;
+              } else {
+                if (checkFullName) {
+                  if (
+                    fullName.toLowerCase().includes(searchText.toLowerCase())
+                  ) {
+                    return guide;
+                  }
+                }
+                if (checkLicenseId) {
+                  if (
+                    guide.licenseID
+                      .toLowerCase()
+                      .includes(searchText.toLowerCase())
+                  ) {
+                    return guide;
+                  }
+                }
+                if (checkGuideId) {
+                  if (
+                    guide.guideID
+                      .toLowerCase()
+                      .includes(searchText.toLowerCase())
+                  ) {
+                    return guide;
+                  }
+                }
               }
-              else if (val.fName.toLowerCase().includes(searchValue.toLowerCase())){
-                return val;
-              }
-          }).map((guide) => (
-            <tr className={guideStyles.tbldata}>
-              <td className={guideStyles.tbldata}>{guide.guideID}</td>
-              <td className={guideStyles.tbldata}>{guide.fName}</td>
-              <td className={guideStyles.tbldata}>{guide.lName}</td>
-              <td className={guideStyles.tbldata}>{guide.telNo}</td>
-              <td className={guideStyles.tbldata}>{guide.email}</td>
-              <td className={guideStyles.tbldata}>{guide.licenseID}</td>
-              <td className={guideStyles.tbldata}>{guide.foreignLang}</td>
-              <td className={guideStyles.tbldata}>
-                <button
-                  className={guideStyles.btnEdit}
-                  onClick={() => {
-                    //     handleEdit(guide);
-                    history.push(`/edit-guide/${guide._id}`);
-                  }}
-                >
-                  Edit
-                </button>
+            })
+            .map((guide) => (
+              <tr className={guideStyles.tbldata}>
+                <td className={guideStyles.tbldata}>{guide.guideID}</td>
+                <td className={guideStyles.tbldata}>{guide.fName}</td>
+                <td className={guideStyles.tbldata}>{guide.lName}</td>
+                <td className={guideStyles.tbldata}>{guide.telNo}</td>
+                <td className={guideStyles.tbldata}>{guide.email}</td>
+                <td className={guideStyles.tbldata}>{guide.licenseID}</td>
+                <td className={guideStyles.tbldata}>{guide.foreignLang}</td>
+                <td className={guideStyles.tbldata}>
+                  <button
+                    className={guideStyles.btnEdit}
+                    onClick={() => {
+                      //     handleEdit(guide);
+                      history.push(`/edit-guide/${guide._id}`);
+                    }}
+                  >
+                    Edit
+                  </button>
 
-                <button
-                  className={guideStyles.btnDelete}
-                  onClick={() => {
-                    deleteGuide(guide);
-                  }}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
+                  <button
+                    className={guideStyles.btnDelete}
+                    onClick={() => {
+                      deleteGuide(guide);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
         </table>
       </div>
       <DemoFooter />
