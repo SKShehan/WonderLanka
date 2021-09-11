@@ -2,7 +2,7 @@
     
     cursor: pointer;
     border-radius: 30px;
-    background-color: #48ec79;
+    background-color: #e7e554;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
     padding: 15px;
@@ -12,7 +12,7 @@
 }
 
 .btn_guidemng:hover{
-    background-color: #0c682f;
+    background-color: #fbfcfa;
 
 }
 
@@ -26,15 +26,15 @@
 .body{
 
     width: 100%;
-    height: 90vh;
-    background-image: url('../img/vehicle/33.jpg') ;
+    height: 130vh;
+    background-image: url('../img/vehicle/6.jpg') ;
     background-size: 100% 100%;
     
 }
 
 .header{
-    font-size: 40px;
-    color: white;
+    font-size: 100px;
+    color: rgb(250, 253, 251);
     font-weight: 500;
 }
 

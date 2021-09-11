@@ -11,6 +11,10 @@ import{
 }
 from 'reactstrap'
 
+import { useState } from 'react';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
@@ -45,6 +49,15 @@ export default class vtype extends Component {
 
         axios.post('http://localhost:8070/types/add', type)
         .then(res => console.log(res.data));
+        toast.success('Vehicle Added!', {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
 
         this.setState({
             vtype: ''
@@ -83,7 +96,7 @@ export default class vtype extends Component {
           </div>
           <br></br>
           <br></br>
-          <Button color = "success" type = "submit" style = {{float:'right' , margin : "5px" }}
+          <Button className = {styles.btn_guidemng} type = "submit" style = {{float:'left' , margin : "5px" }}
                 onClick = {() =>{
                    ;
                 }}

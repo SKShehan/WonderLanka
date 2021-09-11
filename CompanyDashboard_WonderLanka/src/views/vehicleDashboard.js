@@ -29,7 +29,8 @@ function VehicleDashboard(){
 
     return(
         
-            <div style = {{paddingTop : "50px"}} className = {styles.body}>
+            <div  
+            style = {{paddingTop : "50px"}} className = {styles.body}><br></br> <br></br><br></br> <br></br><br></br> <br></br>
             <h3 className = {styles.header}><center><b>Vehicle Management</b></center></h3><br/><br/>
 
            <br></br> <br></br>

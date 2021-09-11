@@ -105,7 +105,7 @@ export default class Addvehicle extends Component {
 
           axios.post('http://localhost:8070/vehicles/add', vehicle)
       .then(res => console.log(res.data));
-      toast.success('Vehicle Added!', {
+      toast.success('Vehicle Type Added!', {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -214,7 +214,7 @@ export default class Addvehicle extends Component {
 
          <br></br>
                 
-                <Button color = "success" type = "submit" style = {{float:'right' , margin : "5px" }}
+                <Button className = {styles.btn_guidemng} type = "submit" style = {{float:'left' , margin : "5px" }}
                 onClick = {() =>{
                   ;
                 }}
