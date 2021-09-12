@@ -1,5 +1,6 @@
 const router = require("express").Router();
 let Complaint  = require("../models/Complaint");
+const complaint = require("../models/Complaints");
 
 router.route("/add").post((req,res)=>{
 
@@ -27,7 +28,7 @@ router.route("/add").post((req,res)=>{
 
 router.route("/").get((req,res)=>{
     Complaint.find().then(()=>{
-        res.json(students)
+        res.json(complaint)
     }).catch((err)=>{
         console.log(err)
     })
@@ -51,12 +52,10 @@ router.route("/update/:id").put(async(req, res)=>{
 
     const update = await Complaint.findByIdAndUpdate(userId, updateComplaint).then(()=>{
         res.status(200).send({status: "Complaint updated", user: update})
-    })catch((err)=>{
+    }).catch((err)=>{
         console.log(err);
-        res.status(500).send{{status:}
-    })
-
-    
+        res.status(500).send({status: "Error with updating data"});
+    })   
 })
 
 module.exports = router;

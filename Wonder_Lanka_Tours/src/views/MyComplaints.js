@@ -7,16 +7,22 @@ import {
   FormGroup,
   Label,
   Input,
-  Button
+  Button,
+  Title,
+  Table,
+  TableRow,
+  rows,
+  TableCell,
+  TableHead,
+  TableBody
 } from "reactstrap";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import IndexHeader from "components/Headers/ComplaintHeader.js";
+import IndexHeader from "components/Headers/IndexHeader";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function MyComplaints() {
+ function MyComplaints() {
   //let [complaint, setComplaint] = useState(0)
   document.documentElement.classList.remove("nav-open");
 
@@ -48,7 +54,7 @@ function MyComplaints() {
     }
 
     console.log(newComplaint);
-    axios.post("http://", newComplaint).then(()=>{
+    axios.post("http://localhost:8070/", newComplaint).then(()=>{
       alert("Complaint Added")
       setName("");
       setEmail("");
@@ -117,11 +123,11 @@ function MyComplaints() {
   )
 }
 
-export default MyComplaints;
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function MyComplaintsTable () {
+ function MyComplaintsTable () {
   const [complaints, setComplaints] = useState([]);
 
   useEffect(() => {
@@ -163,4 +169,8 @@ function MyComplaintsTable () {
   )
 }
 
-export default MyComplaintsTable;
+export {
+  MyComplaints,
+  MyComplaintsTable
+}
+

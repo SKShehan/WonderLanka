@@ -6,11 +6,18 @@ import {
   FormGroup,
   Label,
   Input,
-  Button
+  Button,
+  Title,
+  Table,
+  TableRow,
+  rows,
+  TableCell,
+  TableHead,
+  TableBody
 } from "reactstrap";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import IndexHeader from "components/Headers/ComplaintHeader.js";
+import IndexHeader from "components/Headers/IndexHeader";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import MyFeedbacks from "./MyFeedbacks";
 
@@ -42,6 +49,8 @@ function MyFeedbacks() {
     console.log(newFeedback);
     axios.post("http://localhost:8070/", newFeedback).then(()=>{
       alert("Feedback Added");
+      setStat("");
+      setFeedback("");
     }).catch((err)=>{
       alert(err);
     })
@@ -86,14 +95,11 @@ function MyFeedbacks() {
       </Button>
 
       </form>
-
       
       </div>
     </>
   )
 }
-
-export default MyFeedbacks;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -142,4 +148,7 @@ function MyFeedbackTable () {
   )
 }
 
-export default MyFeedbackTable;
+export{
+  MyFeedbacks,
+  MyFeedbackTable
+} ;
