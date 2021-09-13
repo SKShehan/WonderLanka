@@ -154,7 +154,7 @@ function BookingReport({ user }) {
                   className="btn btn-info btn-edit-booking"
                   onClick={downloadPDF}
                 >
-                  Dwonload PDF
+                  Download PDF
                 </button>
               </Col>
             </Row>

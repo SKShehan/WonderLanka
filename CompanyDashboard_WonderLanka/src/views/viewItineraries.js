@@ -20,6 +20,7 @@ import {
     Alert,
     Container,
   } from "reactstrap";
+
 toast.configure();
 function ViewItineraries(){
     
@@ -27,8 +28,14 @@ function ViewItineraries(){
 
     const [itineraries , setItineraries] = useState([]);
     const [message , setMessage] = useState("");
+    const [searchVal , setSearchVal] = useState("");
+
+  
 
 
+
+
+    
 
     useEffect(() => {
         axios.get("http://localhost:8070/itineraries/").then((res) =>{
@@ -87,25 +94,28 @@ function ViewItineraries(){
                     <i className="nc-icon nc-zoom-split" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input placeholder="Search " type="text" />
+                <Input placeholder="Search " type="text" 
+                    onChange = {(e) =>{
+                                setSearchVal(e.target.value);
+                    }}/>
               </InputGroup>
             </FormGroup>
           </Col>
           <Col>
             <div>
               <Label style = {{marginLeft : "40px"}} check>
-                <Input type="checkbox" />{" "}
-                <label style ={{marginRight : "40px"}}>Full Name</label>
+                <Input type="checkbox"/>{" "} 
+                <label style ={{marginRight : "40px"}}>ID</label>
+              </Label>
+
+              <Label check>
+                <Input type="checkbox"/>{" "}
+                <label style ={{marginRight : "40px"}}>Name</label>
               </Label>
 
               <Label check>
                 <Input type="checkbox" />{" "}
-                <label style ={{marginRight : "40px"}}>License ID</label>
-              </Label>
-
-              <Label check>
-                <Input type="checkbox" />{" "}
-                <label style ={{marginRight : "40px"}}>Guide ID</label>
+                <label style ={{marginRight : "40px"}}>Class</label>
               </Label>
             </div>
           </Col>
@@ -131,7 +141,16 @@ function ViewItineraries(){
 
                     <tbody>
                         
-                        {itineraries.map((itinerary) =>(
+                        {itineraries.filter((val) =>{
+                          
+                          if(searchVal === ''){
+                            return val;
+                          }
+                          else if (val.itineraryName.toLowerCase().includes(searchVal.toLowerCase())){
+                            return val;
+                          }
+                        
+                        }).map((itinerary) =>(
                             
                             <tr>
                                 <th scope = "row">{number++}</th>

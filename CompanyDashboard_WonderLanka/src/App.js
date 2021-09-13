@@ -35,7 +35,13 @@ import DriverDetails from "views/DriverDetails";
 import DriverManagement from "views/DriverManagement";
 import ItineraryManagement from "views/ItineraryManagement";
 
-
+import Addvehicle from "views/addvehicle";
+import Editvehicle from "views/editvehicle";
+import Vehiclelist from "views/vehiclelist";
+import Vtype from "views/vtype";
+import AssignVehicle from "views/assignvehicle";
+import ReportVehicle from "views/reportvehicle";
+import VehicleDashboard from "views/vehicleDashboard";
 
 function App() {
 
@@ -101,6 +107,25 @@ function App() {
         <Route path="/guide-management" exact>
           <GuideManagement />
         </Route>
+        
+        {/* vehicle */}
+        <Route path="/add-vehicle" exact>
+          <Addvehicle />
+        </Route>
+        <Route path="/view-vehicles" exact>
+          <Vehiclelist />
+        </Route>
+        <Route path="/type-vehicles" exact>
+          <Vtype />
+        </Route>
+        <Route path="/edit-vehicle/:id" component={Editvehicle}/>
+          
+        <Route path="/assign-vehicles" component={AssignVehicle}/> 
+          
+        <Route path="/report-vehicles" component={ReportVehicle}/> 
+
+        <Route path = "/vehicle-management" component = {VehicleDashboard} />
+        
 
         <Route path="/itinerary-management" exact>
           <ItineraryManagement />
@@ -133,7 +158,7 @@ function App() {
 
         
         <Route //Setting path for hotels
-          path="/" exact >
+          path="/hotel-management" exact >
           <HotelHome />
         </Route>
 

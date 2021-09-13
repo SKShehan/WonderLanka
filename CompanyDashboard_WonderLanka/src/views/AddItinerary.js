@@ -109,7 +109,7 @@ function AddItinerary(){
                     setitineraryClass(e.target.value);
                 }}
                 >
-                    <option>Superior</option>
+                    <option>Deluxe</option>
                     <option>Standard</option>
                 </Input>
 
