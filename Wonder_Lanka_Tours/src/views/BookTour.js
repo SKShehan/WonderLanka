@@ -225,6 +225,18 @@ function BookTour({ user }) {
     "Zimbabwe",
   ];
 
+  const getGeoInfo = () => {
+    axios
+      .get("https://ipapi.co/json/")
+      .then((response) => {
+        let data = response.data;
+        setcountry(data.country_name);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const [itineraryList, setitineraryList] = useState([
     {
       itineraryName: "Customized",
@@ -306,9 +318,12 @@ function BookTour({ user }) {
 
   useEffect(() => {
     document.body.classList.add("index");
+
     getItineraries();
     setusername(user.username);
     setcountry(countryList[0]);
+    getGeoInfo();
+
     setitinerary(itineraryList[0].itineraryName);
     setinsurance(insuranceList[0]);
     seticlass(classList[0]);
@@ -382,11 +397,12 @@ function BookTour({ user }) {
                   <Col>
                     <FormGroup>
                       <Label for="mobileNo">Mobile Number*</Label>
+
                       <Input
                         type="text"
                         name="mobileNo"
                         id="mobileNo"
-                        placeholder="Mobile Number"
+                        placeholder="000-000-0000"
                         pattern="[+0-9]+"
                         value={mobileNo}
                         onChange={(e) => {
