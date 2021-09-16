@@ -2,6 +2,8 @@ const router = require("express").Router();
 const feedback = require("../models/Feedbacks");
 let Feedback  = require("../models/Feedbacks");
 
+///////////////////////////////////////Add Feedback/////////////////////////////////////////////////////////////////////////
+
 router.route("/add").post((req,res)=>{
 
     const stat = req.body.name;
@@ -19,6 +21,8 @@ router.route("/add").post((req,res)=>{
     })
 
 })
+
+//////////////////////////////////////////get feedbacks(retrieve)//////////////////////////////////////////////////////////
 
 router.route("/").get((req,res)=>{
     Feedback.find().then(()=>{
@@ -47,6 +51,22 @@ router.route("/update/:id").put(async(req, res)=>{
         console.log(err);
         res.status(500).send({status: "Error with updating data"});
     })   
+})
+
+///////////////////////////////////////////////////////Delete///////////////////////////////////////////////////////////////////
+
+http://localhost:8070/MyFeedbacksTable/delete/
+
+router.route("/delete/:id").delete(async(req, res) => {
+    let userId = req.params.id;
+
+    await Complaint.findByIdAndDelete(userId)
+    .then(() =>{
+        res.status(200).send({status: "Feedback deleted"});
+    }).catch((err)=>{
+        console.log(err.message);
+        res.status(500).send({status: "Eror with delete feedback", error: err.message})
+    })
 })
 
 module.exports = router;

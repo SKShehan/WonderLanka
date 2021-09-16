@@ -2,6 +2,8 @@ const router = require("express").Router();
 let Complaint  = require("../models/Complaint");
 const complaint = require("../models/Complaints");
 
+//////////////////////////////////////////////////////////Add Complaint(create)////////////////////////////////////////////////
+
 router.route("/add").post((req,res)=>{
 
     const name = req.body.name;
@@ -26,6 +28,8 @@ router.route("/add").post((req,res)=>{
 
 })
 
+/////////////////////////////////////////////////////////get complaints(retirieve)///////////////////////////////////////////////
+
 router.route("/").get((req,res)=>{
     Complaint.find().then(()=>{
         res.json(complaint)
@@ -34,9 +38,11 @@ router.route("/").get((req,res)=>{
     })
 })
 
-http://localhost:8070/MyComplaintsTable/update/
+
 
 /////////////////////////////////////////////////Update////////////////////////////////////////////////////////////
+
+http://localhost:8070/MyComplaintsTable/update/
 
 router.route("/update/:id").put(async(req, res)=>{
     let userId = req.params.id;
@@ -56,6 +62,23 @@ router.route("/update/:id").put(async(req, res)=>{
         console.log(err);
         res.status(500).send({status: "Error with updating data"});
     })   
+})
+
+
+///////////////////////////////////////////////////////Delete///////////////////////////////////////////////////////////////////
+
+http://localhost:8070/MyComplaintsTable/delete/
+
+router.route("/delete/:id").delete(async(req, res) => {
+    let userId = req.params.id;
+
+    await Complaint.findByIdAndDelete(userId)
+    .then(() =>{
+        res.status(200).send({status: "Complaint deleted"});
+    }).catch((err)=>{
+        console.log(err.message);
+        res.status(500).send({status: "Eror with delete complaint", error: err.message})
+    })
 })
 
 module.exports = router;

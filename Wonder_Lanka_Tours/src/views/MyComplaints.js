@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 // reactstrap components
 
 // core components
@@ -33,6 +34,8 @@ import DemoFooter from "components/Footers/DemoFooter.js";
       document.body.classList.remove("index");
     };
   });
+
+  const {handleSubmit, register} = useForm();
 
   //adding state
   const [name, setName] = useState("");
@@ -75,7 +78,7 @@ import DemoFooter from "components/Footers/DemoFooter.js";
       <IndexHeader />
 
       <div className="mainComlplaint">
-      <form onSubmit={sendData}>
+      <form onSubmit={sendData, handleSubmit(onSubmit)}>
 
       <FormGroup>
         <Label for="Name">Name</Label>
@@ -85,13 +88,24 @@ import DemoFooter from "components/Footers/DemoFooter.js";
       </FormGroup>
       <FormGroup>
         <Label for="Email">Email address</Label>
-        <Input type="email" name="email" id="idEmail" placeholder="name@gmail.com" onChange={(e)=>{
+        <Input type="email" name="email" id="idEmail" placeholder="name@gmail.com" ref={register({
+          required: "Email is Required.", 
+          pattern: { 
+            value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
+            message: "Please enter a valid email",
+          },
+        })} onChange={(e)=>{
           setEmail(e.target.value);
         }}/>
+        {errors?.email && <ErrorMessage message={errors.email,message}/>}
       </FormGroup>
       <FormGroup>
         <Label for="contact">Contact No</Label>
-        <Input type="contact" name="contact" id="idContact" placeholder="(+94) 555-555-555" onChange={(e)=>{
+        <Input type="contact" name="contact" id="idContact" placeholder="(+94) 555-555-555" ref={register({
+          pattern: {
+            value:"[0-9]{10}"
+          }
+        })} onChange={(e)=>{
           setContact(e.target.value);
         }}/>
       </FormGroup>
@@ -122,7 +136,6 @@ import DemoFooter from "components/Footers/DemoFooter.js";
     </>
   )
 }
-
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
