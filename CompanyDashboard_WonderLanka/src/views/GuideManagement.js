@@ -1,6 +1,7 @@
 
 import styles from "../assets/css/GuideHome.module.css"
-
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
 import { useHistory } from "react-router";
 function GuideManagement(){
 
@@ -24,6 +25,9 @@ function GuideManagement(){
 
 
     return(
+            <>
+            <IndexHeader />
+            <IndexNavbar />
         
             <div style = {{paddingTop : "50px"}} className = {styles.body}>
             <h3 className = {styles.header}><center>Guide Management</center></h3><br/><br/>
@@ -43,7 +47,7 @@ function GuideManagement(){
             
             </div>
         </div>
-        
+        </>
     );
 }
 

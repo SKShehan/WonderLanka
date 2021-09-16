@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 function Homepage(){
 
   let history = useHistory();
-
+  
     function handleClickItinerary(){
         history.push("/itinerary-management");
     }
@@ -23,7 +23,7 @@ function Homepage(){
     }
 
     function handleClickVehicle() {
-      history.push("/report-guides");
+      history.push("/vehicle-management");
     }
 
     function handleClickDriver() {
@@ -35,7 +35,7 @@ function Homepage(){
     }
 
    function handleClickHotel() {
-     history.push("/report-guides");
+     history.push("/hotel-management");
     }
 
 

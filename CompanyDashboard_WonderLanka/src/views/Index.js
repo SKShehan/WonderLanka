@@ -94,14 +94,16 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
+
         <SectionDownload /> 
         <GuideManagement />
         
+
         
         
          */}
  
- <VehicleDashboard/>
+ <Homepage/>
  
         
         <DemoFooter />

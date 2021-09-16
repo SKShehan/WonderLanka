@@ -5,10 +5,13 @@ import ItineraryContainer from 'components/ItineraryContainer';
 import BookTour from './BookTour';
 import Backdrop from 'components/ItineraryBackdrop';
 import styles from '../assets/css/Itinerary.module.css'
+import { useScrollToBottom} from 'react-scroll-to-bottom';
 import axios from 'axios';
         
 function Itineraries(){
     
+    const scrollBottom = useScrollToBottom(); 
+
     const [itineraries , setItineraries] = useState([]);
     const [itineraryCovImage , setCovImage] = useState (); 
     const [itineraryClass , setClass] = useState();
@@ -33,7 +36,7 @@ function Itineraries(){
 
 
     const [ItineraryisOpen , setItineraryOpen] = useState(false);
-    
+    const [scrolled , setScroll] = useState(false);
     function ViewItinerary(){
             setItineraryOpen(true);
              
@@ -66,7 +69,10 @@ function Itineraries(){
 
                         <Button color = "primary" onClick = {() =>{
                               setCovImage(`http://localhost:8070/itineraries/getCovImage/${itinerary._id}`)
+                              setScroll(true);
                               ViewItinerary();  
+                              
+                             
                         }} 
                         >View Itinerary</Button>
                         <Button color = "info" style = {{float : 'right'}} onClick = {() =>{
@@ -80,7 +86,7 @@ function Itineraries(){
                  
                 ))}
                 </div>
-                
+               
                 {ItineraryisOpen ? <ItineraryContainer onCancel = {ItineraryisClosed} image = {itineraryCovImage}  /> : null}
                 {ItineraryisOpen && <Backdrop onCancel = {ItineraryisClosed}/>}
                 {BookisClicked   && <BookTour itineraryClass = {itineraryClass} itineraryTitle = {itineraryTitle} />}

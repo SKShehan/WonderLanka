@@ -79,7 +79,19 @@ export default class Vehiclelist extends Component {
 
   deleteVehicle(id) {
     axios.delete('http://localhost:8070/vehicles/'+id)
-      .then(response => { console.log(response.data)});
+      .then(response => { console.log(response.data)}
+        
+        
+      );
+      toast.success('Vehicle Deleted!', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
 
     this.setState({
       vehicles: this.state.vehicles.filter(el => el._id !== id)

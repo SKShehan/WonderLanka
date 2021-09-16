@@ -15,6 +15,10 @@ import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 export default class Editvehicle extends Component {
   constructor(props) {
@@ -112,7 +116,16 @@ export default class Editvehicle extends Component {
     axios.post('http://localhost:8070/vehicles/update/' + this.props.match.params.id, vehicle)
       .then(res => console.log(res.data));
 
-    window.location = '/';
+   // window.location = '/';
+    toast.success('Vehicle Edited!', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
   }
 
   render() {
