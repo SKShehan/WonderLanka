@@ -96,16 +96,16 @@ function Index() {
         <SectionExamples />
 
         <SectionDownload /> 
-        <GuideManagement />
+      <GuideManagement />*/}
         
 
         
         
-         */}
+         
  
  <Homepage/>
  
-        
+       
         <DemoFooter />
       </div>
     </>
