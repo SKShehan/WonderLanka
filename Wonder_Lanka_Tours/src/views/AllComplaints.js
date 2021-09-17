@@ -1,30 +1,24 @@
 // reactstrap components
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 // core components
 import {
+  FormGroup,
+  Label,
   Input,
   Button
 } from "reactstrap";
 
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import IndexHeader from "components/Headers/IndexHeader";
-import DemoFooter from "components/Footers/DemoFooter.js";
-
 function AllComplaints () {
     const [complaints, setComplaints] = useState([]);
+    
     const [searchVal , setSearchVal] = useState("");
-
-    const updateComplaints = (id) => {
-
-    }
   
     useEffect(() => {
       function getComplaints() {
-        axios.get("http://localhost:8070/complaint").then((res) => {
+        axios.get("http://localhost:8070/complaint/").then((res) => {
           setComplaints(res.data);
           console.log(res);
         }).catch((err) => {
@@ -33,8 +27,8 @@ function AllComplaints () {
       }
       getComplaints();
     },[])
-  
-    function complaintDelete(complaint)  {
+    
+    /*function complaintDelete(complaint)  {
       if (
           window.confirm(
             "Complaint " + complaint.tourId + " will be removed from the database"
@@ -59,11 +53,36 @@ function AllComplaints () {
       })
     }
   
-    var number = 1;
-  
+    var number = 1;*/
     return (
+      <div style = {{marginLeft:"200px"}} className = "container">
+        <h3 style = {{marginLeft:"430px"}}>Complaint History</h3>
+        <Input placeholder="Search " type="text" 
+          onChange = {(e) =>{
+            setSearchVal(e.target.value);
+        }}/>
+        <table className = "table table-striped">
+          <thead>
+            <th scope = "col">TourID</th>
+            <th scope = "col">Name</th>
+            <th scope = "col">Email</th>
+            <th scope = "col">Contact</th>
+            <th scope = "col">Reason</th>
+            <th scope = "col">Complaint</th>
+          </thead>
+          <tbody>
+          
+            <td>{complaints.name}</td>
+            <td>{complaints.email}</td>
+            <td>{complaints.contact}</td>
+            <td>{complaints.select}</td>
+            <td>{complaints.complaint}</td>
+          
+          </tbody>  
+        </table>   
+      </div> 
     
-      <div className="container">
+      /*<div className="container">
         <IndexNavbar />
         <IndexHeader />
         <h3>Complaint History</h3>
@@ -75,9 +94,10 @@ function AllComplaints () {
           <table className = "table table-striped">
             <thead>
                 <th scope = "col">#</th>
-                <th scope = "col">Tour ID</th>
-                <th scope = "col">Customer ID</th>
-                <th scope = "col">Date</th>
+                <th scope = "col">Name</th>
+                <th scope = "col">Email</th>
+                <th scope = "col">Contact</th>
+                <th scope = "col">Reason</th>
                 <th scope = "col">Complaint</th>
   
             </thead>
@@ -93,14 +113,14 @@ function AllComplaints () {
                     return val;
                   }
                 
-                }).map((complaint) =>(
+                })complaint.map((complaint) =>(
                     
                     <tr>
                       <th scope = "row">{number++}</th>
-                      <td>{complaint.tourId}</td>
-                      <td>{complaint.customerID}</td>
-                      <td>{complaint.date}</td>
-                      <td>{complaint.customercomplaint}</td>
+                      <td>{complaints.tourId}</td>
+                      <td>{complaints.customerID}</td>
+                      <td>{complaints.date}</td>
+                      <td>{complaints.customercomplaint}</td>
   
   
                       <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
@@ -126,8 +146,9 @@ function AllComplaints () {
           </table>
           <DemoFooter />
         </div>
-      </div>
-    );
+      </div>*/
+    )
+                      
   }
   
   export {
