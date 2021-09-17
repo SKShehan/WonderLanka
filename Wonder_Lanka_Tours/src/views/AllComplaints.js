@@ -18,7 +18,7 @@ function AllComplaints () {
     const [complaints, setComplaints] = useState([]);
     const [searchVal , setSearchVal] = useState("");
 
-    const updateComplaints  = (id) => {
+    const updateComplaints = (id) => {
 
     }
   
