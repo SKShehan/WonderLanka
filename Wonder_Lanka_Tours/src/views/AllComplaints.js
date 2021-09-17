@@ -55,7 +55,7 @@ function AllComplaints () {
   
     var number = 1;*/
     return (
-      <div style = {{marginLeft:"200px"}} className = "container">
+      <div style = {{marginLeft:"100px"}} className = "container">
         <h3 style = {{marginLeft:"430px"}}>Complaint History</h3>
         <Input placeholder="Search " type="text" 
           onChange = {(e) =>{

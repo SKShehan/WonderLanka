@@ -69,6 +69,7 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
    <SectionDownload /> */}
+        <MyComplaints />
         <AllComplaints />
         <DemoFooter /> 
         

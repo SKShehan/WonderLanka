@@ -17,24 +17,15 @@ import {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 toast.configure(); 
 function MyComplaints() {
-  /*const [complaint, setComplaint] = useState([])
   document.documentElement.classList.remove("nav-open");
 
   React.useEffect(() => {
-    axios
-      .get("http://localhost:8070/ComplaintRoute")
-      .then((res) => {
-        setComplaint(res.data);
-        console.log(res.data);
-      }).catch((err)=>{
-        console.log(err);
-    })
     document.body.classList.add("index");
 
     return function cleanup() {
       document.body.classList.remove("index");
     };
-  }, []);*/
+  }, []);
 
   const {handleSubmit, register} = useForm();
 
