@@ -60,7 +60,13 @@ import Home from "./booktable";
 import AddDriver from "./AddDriver";
 import DriverDetails from "./DriverDetails"
 import DriverManagement from "./DriverManagement";
+import Homepage from "./Homepage";
 
+
+
+import VehicleDashboard from "./vehicleDashboard";
+import Editvehicle from "./editvehicle";
+import AssignVehicle from "./assignvehicle";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -74,9 +80,9 @@ function Index() {
     <>
 
       <div className="main">
-        {/*<IndexNavbar />
+        <IndexNavbar />
         <IndexHeader/>
-      <SectionButtons />
+      {/*<SectionButtons />
         <SectionNavbars />
         <SectionNavigation />
         <SectionProgress />
@@ -104,11 +110,14 @@ function Index() {
 
         
 
-
+        
+        
          
-        
-        
-       <DemoFooter />
+ 
+ <Homepage/>
+ 
+       
+        <DemoFooter />
       </div>
     </>
   );

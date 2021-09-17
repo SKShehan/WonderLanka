@@ -1,4 +1,4 @@
-import styles from '../assets/css/AddItinerary.module.css'
+import styles from '../assets/css/AddItinerary.module.css';
 import axios from 'axios';
 import { useState , useEffect } from 'react';
 import IndexHeader from 'components/Headers/IndexHeader';
@@ -16,8 +16,8 @@ function AddItinerary(){
     const [itineraryDays , setitineraryDays] = useState("");
     const [itineraryName , setitineraryName] = useState("");
     const [itineraryDesc , setitineraryDesc] = useState("");
-    const [imgFile1 , setitineraryImage] = useState("");
-    const [imgFile2 , setitineraryCoverImage] = useState("");
+    const [Filename1 , setitineraryImage] = useState("");
+    const [Filename2 , setitineraryCoverImage] = useState("");
     const [itineraryClass , setitineraryClass] = useState("");
     const [itineraryPriceAdult , setitineraryPriceAdult] = useState("");
     const [itineraryPriceChild , setitineraryPriceChild] = useState("");
@@ -37,8 +37,8 @@ function AddItinerary(){
         formData.append("itineraryDays" , itineraryDays);
         formData.append("itineraryName" , itineraryName);
         formData.append("itineraryDesc" , itineraryDesc);
-        formData.append("itineraryImage" , imgFile1);
-        formData.append("itineraryCoverImage" , imgFile2);
+        formData.append("itineraryImage" , Filename1);
+        formData.append("itineraryCoverImage" , Filename2);
         formData.append("itineraryClass" , itineraryClass);
         formData.append("itineraryPriceAdult" , itineraryPriceAdult);
         formData.append("itineraryPriceChild" , itineraryPriceChild);
@@ -47,10 +47,11 @@ function AddItinerary(){
 
 
 
-        axios.post("http://localhost:8070/itineraries/add" , formData).then(()=>{
+        axios.post("http://localhost:8070/itineraries/add" , formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(()=>{
             alert("Itinerary Addded");
             window.location.reload();
         }).catch((err) =>{
+            console.log(formData);
             console.log(err);
         })
     }
@@ -61,7 +62,7 @@ function AddItinerary(){
         <div style = {{paddingTop : "50px"}} className = {styles.body}>
             <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert Tour Itinerary Details</h3><br/><br/>
             <div className = {styles.FormContainer}>
-            <form encType = "multipart/form-data" onClick = {sendData}>
+            <form  onSubmit = {sendData} encType = "multipart/form-data">
 
                 <Label for = "ItineraryID">Itinerary ID</Label><br/>
                 <Input type = 'text' name = "ItineraryID" placeholder = "Enter Itinerary ID"
@@ -91,13 +92,13 @@ function AddItinerary(){
                 }}
                 ></Input><br/>
                 <div className = "form-group">
-                <Label for = "ItineraryImage">Itinerary Image</Label><br/>
+                <Label htmlFor = "ItineraryImage">Itinerary Image</Label><br/>
                 <Input type = "file" filename = "itineraryImage" accept = "image/*" className = "form-control-file"
                  onChange = {onChangeFile}
                 ></Input><br/>
                 </div>
 
-                <Label for = "CardImage">Image for Card</Label><br/>
+                <Label htmlFor = "ItineraryCoverImage">Image for Card</Label><br/>
                 <Input type = "file" filename = "itineraryCoverImage" accept = "image/*" className = "form-control-file"
                 onChange = {onChangeFile2}
                 /><br/>
@@ -108,7 +109,7 @@ function AddItinerary(){
                     setitineraryClass(e.target.value);
                 }}
                 >
-                    <option>Superior</option>
+                    <option>Deluxe</option>
                     <option>Standard</option>
                 </Input>
 

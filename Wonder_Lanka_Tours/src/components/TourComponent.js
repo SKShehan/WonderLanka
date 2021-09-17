@@ -41,7 +41,7 @@ function TourComponent({ tour }) {
                 <label className="tour-label-title">Payment :&nbsp; </label>
                 <label className="tour-label-info">
                   {" "}
-                  USD&nbsp;{tour.payment}
+                  LKR&nbsp;{tour.payment}
                 </label>
               </td>
             </tr>

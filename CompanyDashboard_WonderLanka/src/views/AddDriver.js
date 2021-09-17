@@ -47,6 +47,7 @@ export default function AddDriver() {
       alert(err)
     })
   }
+  
 
  
   
@@ -97,7 +98,7 @@ export default function AddDriver() {
 
                   <label for = "phonenumber"><h5>Phone Number</h5></label>
                  
-                    <Input placeholder="Enter Mobile Number" type="number" onChange={(e)=>{
+                    <Input placeholder="Enter Mobile Number" type="number" pattern="^\d{10}$" onChange={(e)=>{
                     setPhonenumber(e.target.value);
                      }}/>
                  
