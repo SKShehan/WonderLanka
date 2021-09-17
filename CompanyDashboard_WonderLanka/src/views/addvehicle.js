@@ -174,6 +174,7 @@ export default class Addvehicle extends Component {
         
           <label > <font color ="black"><b> Vehicle ID: </b> </font> </label>
           <input 
+              pattern="[0-9]{3}"
               type="text" 
               className="form-control"
               value={this.state.vid}
