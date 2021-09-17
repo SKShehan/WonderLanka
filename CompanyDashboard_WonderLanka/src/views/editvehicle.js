@@ -214,7 +214,7 @@ export default class Editvehicle extends Component {
 
          <br></br>
 
-         <Button className = {styles.btn_guidemng} type = "submit" style = {{float:'left' , margin : "5px" }}
+         <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}
                 onClick = {() =>{
                    ;
                 }}

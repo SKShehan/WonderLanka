@@ -47,8 +47,8 @@ const Vehicle = (props) => {
     <td className={guideStyles.tbldata}><b>{props.vehicle.vnumber}</b></td>
     <td className={guideStyles.tbldata}>
     
-    <Link to={"/edit-vehicle/"+props.vehicle._id}>  <Button color="primary" size="sm">EDIT</Button>{''} </Link>   
-             <a href="#" onClick={() => { props.deleteVehicle(props.vehicle._id) }}>   <Button color="danger" size="sm">DELETE</Button>{''}</a>
+    <Link to={"/edit-vehicle/"+props.vehicle._id}>  <Button color="warning" size="sm">EDIT</Button>{''} </Link>   
+             <a href="#" onClick={() => { props.deleteVehicle(props.vehicle._id) }}>   <Button color="danger" size="sm">Remove</Button>{''}</a>
        
     </td>
     </tr>
@@ -125,7 +125,8 @@ export default class Vehiclelist extends Component {
                     <i className="nc-icon nc-zoom-split" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input placeholder="Search " type="text" />
+                <Input placeholder="Search " type="text" 
+                />
               </InputGroup>
             </FormGroup>
           </Col>

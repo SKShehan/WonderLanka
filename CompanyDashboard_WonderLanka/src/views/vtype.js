@@ -49,6 +49,7 @@ export default class vtype extends Component {
 
         axios.post('http://localhost:8070/types/add', type)
         .then(res => console.log(res.data));
+        
         toast.success('Vehicle Added!', {
           position: "bottom-right",
           autoClose: 5000,
@@ -57,7 +58,8 @@ export default class vtype extends Component {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          });
+          }); 
+
 
         this.setState({
             vtype: ''
@@ -96,7 +98,7 @@ export default class vtype extends Component {
           </div>
           <br></br>
           <br></br>
-          <Button className = {styles.btn_guidemng} type = "submit" style = {{float:'left' , margin : "5px" }}
+          <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}
                 onClick = {() =>{
                    ;
                 }}

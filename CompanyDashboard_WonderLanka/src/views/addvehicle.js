@@ -6,10 +6,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from 'react';
 
 import styles from'../assets/css/AddVehicle.module.css';
+
 import{
   Label,
   Input,
-  Button
+  Button,
+  Form, FormGroup,  FormFeedback, FormText
 }
 from 'reactstrap'
 
@@ -41,8 +43,10 @@ export default class Addvehicle extends Component {
          vid: '',
          date: new Date(),
          vnumber: '',
-         types: []
+         types: [],
+         
      }
+    
      
     }
 
@@ -74,9 +78,7 @@ export default class Addvehicle extends Component {
       }
     
       onChangeVid(e) {
-        this.setState({
-          vid: e.target.value
-        });
+        this.setState({ vid: e.target.value   });
       }
     
       onChangeDate(date) {
@@ -91,15 +93,19 @@ export default class Addvehicle extends Component {
         });
       }
     
+      
+
       onSubmit(e) {
         e.preventDefault();
+        
 
         const vehicle = {
             vtype: this.state.vtype,
             vname: this.state.vname,
             vid: this.state.vid,
             date: this.state.date,
-            vnumber: this.state.vnumber
+            vnumber: this.state.vnumber,
+           
           }
           console.log(vehicle);
 
@@ -118,8 +124,10 @@ export default class Addvehicle extends Component {
       }
 
     render() {
+     
         return (
-          <>
+         
+         <>
          <IndexHeader />
         <IndexNavbar />
 
@@ -171,15 +179,20 @@ export default class Addvehicle extends Component {
         
 
         <div className="form-group">
-        
+        <FormGroup>
           <label > <font color ="black"><b> Vehicle ID: </b> </font> </label>
           <input 
               pattern="[0-9]{3}"
               type="text" 
+              pattern="[0-9]{3}"
               className="form-control"
               value={this.state.vid}
               onChange={this.onChangeVid}
-              />
+               />
+              
+             {/* <FormFeedback valid>Good! that is available</FormFeedback> */}
+              <FormText>vehicle ID can entered three numbers</FormText>
+              </FormGroup>
         </div>
 
         
@@ -215,12 +228,12 @@ export default class Addvehicle extends Component {
 
          <br></br>
                 
-                <Button className = {styles.btn_guidemng} type = "submit" style = {{float:'left' , margin : "5px" }}
+                <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}
                 onClick = {() =>{
                   ;
                 }}
                 >ADD Vehicle</Button>
-
+              
         
          </form>
          </div>
