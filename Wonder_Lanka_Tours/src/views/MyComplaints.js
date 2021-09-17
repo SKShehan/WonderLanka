@@ -1,10 +1,10 @@
+// reactstrap components
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import{ useHistory } from "react-router-dom"
-// reactstrap components
+
 
 // core components
 import {
@@ -21,16 +21,24 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 toast.configure(); 
 function MyComplaints() {
-  //let [complaint, setComplaint] = useState(0)
+  /*const [complaint, setComplaint] = useState([])
   document.documentElement.classList.remove("nav-open");
 
   React.useEffect(() => {
+    axios
+      .get("http://localhost:8070/ComplaintRoute")
+      .then((res) => {
+        setComplaint(res.data);
+        console.log(res.data);
+      }).catch((err)=>{
+        console.log(err);
+    })
     document.body.classList.add("index");
 
     return function cleanup() {
       document.body.classList.remove("index");
     };
-  });
+  }, []);*/
 
   const {handleSubmit, register} = useForm();
 
@@ -39,22 +47,23 @@ function MyComplaints() {
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
   const [select, setSelect] = useState("");
-  const [text, setComplaint] = useState("");
+  const [complaint, setComplaint] = useState("");
 
   function sendData(e){
     e.preventDefault();
-    alert("");
+    alert("Insert");
 
     const newComplaint = {
       name,
       email,
       contact,
       select,
-      text
+      complaint
     }
 
     console.log(newComplaint);
-    axios.post("http://localhost:8070/", newComplaint).then(()=>{
+
+    axios.post("http://localhost:8070/ComplaintRoute/addComplaint", newComplaint).then(()=>{
       alert("Complaint Added")
       setName("");
       setEmail("");
@@ -75,18 +84,17 @@ function MyComplaints() {
       <IndexNavbar />
       <IndexHeader />
 
-      <div className="mainComlplaint">
-      <form onSubmit={sendData, handleSubmit(onSubmit)}>
-
+      <div className="container">
+      <form onSubmit={sendData}>
       <FormGroup>
         <Label for="Name">Name</Label>
-        <Input type="name" name="name" id="idName" placeholder="A.D. Amarasekara" onChange={(e)=>{
+        <Input type="text" name="name" id="idName" placeholder="A.D. Amarasekara" onChange={(e)=>{
           setName(e.target.value);
         }}/>
       </FormGroup>
       <FormGroup>
         <Label for="Email">Email address</Label>
-        <Input type="email" name="email" id="idEmail" placeholder="name@gmail.com" ref={register({
+        <Input type="text" name="email" id="idEmail" placeholder="name@gmail.com" ref={register({
           required: "Email is Required.", 
           pattern: { 
             value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
@@ -95,11 +103,11 @@ function MyComplaints() {
         })} onChange={(e)=>{
           setEmail(e.target.value);
         }}/>
-        {errors?.email && <ErrorMessage message={errors.email,message}/>}
+        
       </FormGroup>
       <FormGroup>
         <Label for="contact">Contact No</Label>
-        <Input type="contact" name="contact" id="idContact" placeholder="(+94) 555-555-555" ref={register({
+        <Input type="number" name="contact" id="idContact" placeholder="(+94) 555-555-555" ref={register({
           pattern: {
             value:"[0-9]{10}"
           }
@@ -109,7 +117,7 @@ function MyComplaints() {
       </FormGroup>
       <FormGroup>
         <Label for="typeSelect">Type of complaint</Label>
-        <Input type="select" name="select" id="typeSelect" onChange={(e)=>{
+        <Input type="text" name="select" id="typeSelect" onChange={(e)=>{
           setSelect(e.target.value);
         }}>
           <option>There's no free WI-FI in my room?</option>
@@ -122,8 +130,8 @@ function MyComplaints() {
       </FormGroup>
       <FormGroup>
         <Label for="exampleText">Any other custom complaint</Label>
-        <Input type="textarea" name="text" id="idText" onChange={(e)=>{
-          setComplaints(e.target.value);
+        <Input type="text" name="complaint" id="idText" onChange={(e)=>{
+          setComplaint(e.target.value);
         }}/>
       </FormGroup>
       <Button color="primary" type="submit">
@@ -131,6 +139,7 @@ function MyComplaints() {
       </Button>
       </form>
       </div>
+      <DemoFooter />
     </>
   )
 }
@@ -138,14 +147,14 @@ function MyComplaints() {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function MyComplaintsTable () {
+/*function MyComplaintsTable () {
   const [complaints, setComplaint] = useState([]);
   const [searchVal , setSearchVal] = useState("");
 
 
   useEffect(() => {
     function getComplaints() {
-      axios.get("http://localhost:8070/MyComplaints").then((res) => {
+      axios.get("http://localhost:8070/ComplaintRoute/getComplaint").then((res) => {
         setComplaint(res.data);
         console.log(res);
       }).catch((err) => {
@@ -161,7 +170,7 @@ function MyComplaintsTable () {
           "Complaint " + complaint.tourId + " will be removed from the database"
         )
     )
-    axios.delete(`http://localhost:8070/itineraries/delete/${complaint._id}`).then((res) =>{
+    axios.delete(`http://localhost:8070/ComplaintRoute/deleteComplaint/${complaint._id}`).then((res) =>{
         console.log(res);
         
         toast.error('Complaint Deleted!', {
@@ -223,7 +232,7 @@ function MyComplaintsTable () {
 
                     <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
                       onClick = {()=>{
-                          history.push(`/edit-complaint/${complaint._id}`);
+                          //push(`/edit-complaint/${complaint._id}`);
                       }}
                       >Edit</Button>
 
@@ -247,10 +256,10 @@ function MyComplaintsTable () {
   
 
   );
-}
+}*/
 
 export {
   MyComplaints,
-  MyComplaintsTable
+  //MyComplaintsTable
 }
 

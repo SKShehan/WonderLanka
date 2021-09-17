@@ -118,33 +118,67 @@ function MyFeedbackTable () {
   },[])
 
   return (
-    <>
-    <br></br>
-      <Title>Feedback History</Title>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Tour ID</TableCell>
-            <TableCell>Customer ID</TableCell>
-            <TableCell>Date</TableCell>
-            <TableCell>Rating</TableCell>
-            <TableCell>Complaint</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.tid}>
-              <TableCell>{row.tid}</TableCell>
-              <TableCell>{row.cid}</TableCell>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.rating}</TableCell>
-              <TableCell>{row.feedback}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+
+    <div>
+    <Input placeholder="Search " type="text" 
+      onChange = {(e) =>{
+        setSearchVal(e.target.value);
+    }}/>
+    <div style = {{marginLeft:"20px"}}  className = "tableContainer">
+      <table className = "table table-striped">
+        <thead>
+            <th scope = "col">#</th>
+            <th scope = "col">Tour ID</th>
+            <th scope = "col">Customer ID</th>
+            <th scope = "col">Date</th>
+            <th scope = "col">Complaint</th>
+
+        </thead>
+
+        <tbody>
+            
+            {complaints.filter((val) =>{
+              
+              if(searchVal === ''){
+                return val;
+              }
+              else if (val.tourId.toLowerCase().includes(searchVal.toLowerCase())){
+                return val;
+              }
+            
+            }).map((complaint) =>(
+                
+                <tr>
+                  <th scope = "row">{number++}</th>
+                  <td>{complaint.tourId}</td>
+                  <td>{complaint.customerID}</td>
+                  <td>{complaint.date}</td>
+                  <td>{complaint.customercomplaint}</td>
+
+
+                  <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
+                    onClick = {()=>{
+                        //push(`/edit-complaint/${complaint._id}`);
+                    }}
+                    >Edit</Button>
+
+                    <Button color="danger" style = {{padding: "5px 5px 5px 5px", width : "80px"}}
+                    onClick = {() =>{
+                        
+                        complaintDelete(complaint);
+                    }}
+                  
+                    >Remove</Button>
+                  </td>
+
+                </tr>
+
+            ))}
+        </tbody>    
+      </table>
       <DemoFooter />
-      </>
+    </div>
+    </div>
   )
 }
 
