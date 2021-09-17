@@ -14,10 +14,6 @@ import {
   Button
 } from "reactstrap";
 
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import IndexHeader from "components/Headers/IndexHeader";
-import DemoFooter from "components/Footers/DemoFooter.js";
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 toast.configure(); 
 function MyComplaints() {
@@ -77,14 +73,10 @@ function MyComplaints() {
 
   }
 
-  
   return (
     <>
-      <h3>My Complaints</h3>
-      <IndexNavbar />
-      <IndexHeader />
-
       <div className="container">
+        <h3>MyComplaints</h3>
       <form onSubmit={sendData}>
       <FormGroup>
         <Label for="Name">Name</Label>
@@ -94,24 +86,14 @@ function MyComplaints() {
       </FormGroup>
       <FormGroup>
         <Label for="Email">Email address</Label>
-        <Input type="text" name="email" id="idEmail" placeholder="name@gmail.com" ref={register({
-          required: "Email is Required.", 
-          pattern: { 
-            value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
-            message: "Please enter a valid email",
-          },
-        })} onChange={(e)=>{
+        <Input type="text" name="email" id="idEmail" placeholder="name@gmail.com" onChange={(e)=>{
           setEmail(e.target.value);
         }}/>
         
       </FormGroup>
       <FormGroup>
         <Label for="contact">Contact No</Label>
-        <Input type="number" name="contact" id="idContact" placeholder="(+94) 555-555-555" ref={register({
-          pattern: {
-            value:"[0-9]{10}"
-          }
-        })} onChange={(e)=>{
+        <Input type="number" name="contact" id="idContact" placeholder="(+94) 555-555-555" onChange={(e)=>{
           setContact(e.target.value);
         }}/>
       </FormGroup>
@@ -139,7 +121,6 @@ function MyComplaints() {
       </Button>
       </form>
       </div>
-      <DemoFooter />
     </>
   )
 }
