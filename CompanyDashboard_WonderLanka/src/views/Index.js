@@ -67,6 +67,8 @@ import Homepage from "./Homepage";
 import VehicleDashboard from "./vehicleDashboard";
 import Editvehicle from "./editvehicle";
 import AssignVehicle from "./assignvehicle";
+import EmployeeDetails from "./EmployeeDetails";
+import EmployeeUpdate from "./EmployeeUpdate";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -104,6 +106,8 @@ function Index() {
          
  
  <Homepage/>
+ 
+
  
        
         <DemoFooter />

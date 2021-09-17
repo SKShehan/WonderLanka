@@ -42,6 +42,7 @@ import Vtype from "views/vtype";
 import AssignVehicle from "views/assignvehicle";
 import ReportVehicle from "views/reportvehicle";
 import VehicleDashboard from "views/vehicleDashboard";
+import EmployeeUpdate from "views/EmployeeUpdate";
 
 function App() {
 
@@ -173,6 +174,10 @@ function App() {
         <Route path="/get" exact >
           <HotelDetails />
         </Route>
+
+
+        <Route path="/edit-employee/:id" exact 
+          component={EmployeeUpdate} />
 
 
         <Redirect to="/index" />
