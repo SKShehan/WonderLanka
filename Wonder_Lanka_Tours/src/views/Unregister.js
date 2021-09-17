@@ -11,6 +11,7 @@ import {
   Card,
   Alert,
   Container,
+  Button,
 } from "reactstrap";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
@@ -116,6 +117,10 @@ function BookTour({ user }) {
     }
   };
 
+  const demo = () => {
+    setpassword("pass123");
+  };
+
   document.documentElement.classList.remove("nav-open");
 
   useEffect(() => {
@@ -138,6 +143,19 @@ function BookTour({ user }) {
           <br></br>
           <>
             <div className="unregister-div">
+              <Row>
+                <Col>
+                  <Button
+                    className="btn btn-danger"
+                    style={{
+                      float: "right",
+                    }}
+                    onClick={demo}
+                  >
+                    Demo
+                  </Button>
+                </Col>
+              </Row>
               <form onSubmit={onSubmit}>
                 <Row>
                   <Col>

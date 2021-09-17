@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-import { Label, Input, FormGroup, Row, Col, Card } from "reactstrap";
+import { Label, Input, FormGroup, Row, Col, Card, Button } from "reactstrap";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
@@ -225,6 +225,32 @@ function BookTour({ user }) {
     "Zimbabwe",
   ];
 
+  const demo = () => {
+    setfullName("James Anderson");
+    setcountry("United Kingdom");
+    setmobileNo("2028836088");
+    setemail("james@gmail.com");
+    setarrivalDate("2021-10-21");
+    setitinerary("Polonnaruwa");
+    seticlass("Standard");
+    setinsurance("Insurance 1");
+    setnoOfAdults(4);
+    setnoOfKids18(2);
+    setnoOfKids8(0);
+  };
+
+  const getGeoInfo = () => {
+    axios
+      .get("https://ipapi.co/json/")
+      .then((response) => {
+        let data = response.data;
+        setcountry(data.country_name);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const [itineraryList, setitineraryList] = useState([
     {
       itineraryName: "Customized",
@@ -306,9 +332,12 @@ function BookTour({ user }) {
 
   useEffect(() => {
     document.body.classList.add("index");
+
     getItineraries();
+    getGeoInfo();
     setusername(user.username);
     setcountry(countryList[0]);
+
     setitinerary(itineraryList[0].itineraryName);
     setinsurance(insuranceList[0]);
     seticlass(classList[0]);
@@ -331,6 +360,19 @@ function BookTour({ user }) {
           <br></br>
           <>
             <div className="booking-div">
+              <Row>
+                <Col>
+                  <Button
+                    className="btn btn-danger"
+                    style={{
+                      float: "right",
+                    }}
+                    onClick={demo}
+                  >
+                    Demo
+                  </Button>
+                </Col>
+              </Row>
               <form onSubmit={onSubmit}>
                 <Row>
                   <Col>
@@ -341,6 +383,7 @@ function BookTour({ user }) {
                     </FormGroup>
                   </Col>
                 </Row>
+
                 <Row>
                   <Col>
                     <FormGroup>
@@ -382,11 +425,12 @@ function BookTour({ user }) {
                   <Col>
                     <FormGroup>
                       <Label for="mobileNo">Mobile Number*</Label>
+
                       <Input
                         type="text"
                         name="mobileNo"
                         id="mobileNo"
-                        placeholder="Mobile Number"
+                        placeholder="000-000-0000"
                         pattern="[+0-9]+"
                         value={mobileNo}
                         onChange={(e) => {
