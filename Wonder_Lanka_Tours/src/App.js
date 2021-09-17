@@ -17,6 +17,8 @@ import Unregister from "views/Unregister";
 import Dashboard from "views/Dashboard";
 import BookingReport from "views/BookingReport";
 import { MyComplaints } from "views/MyComplaints";
+import { AllComplaints } from "views/AllComplaints";
+import updateComplaints from "views/UpdateComplaints";
 
 function App() {
   const [user, setuser] = useState({
@@ -79,6 +81,9 @@ function App() {
         </Route>
         <Route path="/my-complaint" exact>
           <MyComplaints user={user}></MyComplaints>
+        </Route>
+        <Route path="/all-complaint" exact>
+          <AllComplaints user={user}></AllComplaints>
         </Route>
         <Redirect to="/index" />
       </Switch>
