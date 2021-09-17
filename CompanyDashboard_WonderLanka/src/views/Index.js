@@ -89,8 +89,8 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
         <SectionDownload />
-        <GuideManagement /> */}
-        <BookingManagement />
+        <GuideManagement /> 
+        
         <Home/>
 
         <SectionDownload /> 
@@ -99,7 +99,8 @@ function Index() {
         <AddDriver/>
         <DriverDetails/>
         <DriverManagement/>
-     
+     */}
+      <BookingManagement />
 
         
 

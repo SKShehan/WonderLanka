@@ -14,7 +14,7 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.3",
     "react-toastify": "^8.0.0",
-    "reactstrap": "^8.9.0"
+    "reactstrap": "^8.10.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,8 +40,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ],
-
-    "proxy":"http://localhost:8070/posts"
+    "proxy": "http://localhost:8070/posts"
   },
   "optionalDependencies": {
     "jquery": "3.6.0",
