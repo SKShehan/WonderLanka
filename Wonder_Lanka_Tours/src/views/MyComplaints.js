@@ -47,7 +47,7 @@ function MyComplaints() {
 
   function sendData(e){
     e.preventDefault();
-    alert("Insert");
+    alert("Inserting Data");
 
     const newComplaint = {
       name,

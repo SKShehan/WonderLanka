@@ -69,7 +69,6 @@ function Index() {
         <SectionExamples />
    <SectionDownload /> */}
         <MyComplaints />
-
         <DemoFooter /> 
         
       </div>
