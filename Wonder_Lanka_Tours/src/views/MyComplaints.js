@@ -67,7 +67,7 @@ function MyComplaints() {
   return (
     <>
       <div className="container">
-        <h3>MyComplaints</h3>
+        <h3 style = {{marginLeft:"440px"}}>My Complaint</h3>
       <form onSubmit={sendData}>
       <FormGroup>
         <Label for="Name">Name</Label>
