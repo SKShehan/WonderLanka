@@ -84,7 +84,7 @@ function MyComplaints() {
       </FormGroup>
       <FormGroup>
         <Label for="contact">Contact No</Label>
-        <Input type="number" name="contact" id="idContact" placeholder="(+94) 555-555-555" onChange={(e)=>{
+        <Input type="number" name="contact" id="idContact" placeholder="94 76 564 9534" onChange={(e)=>{
           setContact(e.target.value);
         }}/>
       </FormGroup>

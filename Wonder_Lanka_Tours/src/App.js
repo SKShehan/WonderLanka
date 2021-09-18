@@ -81,7 +81,7 @@ function App() {
         <Route path="/my-complaint" exact>
           <MyComplaints user={user}></MyComplaints>
         </Route>
-        <Route path="/complaint/::id" exact>
+        <Route path="/complaint/" exact>
           <AllComplaints user={user}></AllComplaints>
         </Route>
         <Route path="/update-complaint" exact></Route>
