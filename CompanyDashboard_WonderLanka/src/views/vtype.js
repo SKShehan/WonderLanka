@@ -77,14 +77,15 @@ export default class vtype extends Component {
           
           
         <div style = {{paddingTop : "50px"}} className = {styles.body}>
-            <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}></h3><br/><br/><br/>
+            
+            <center><h1><b>Add New Vehicle Type</b></h1><br/><br/></center>
             <div className = {styles.FormContainer}>
           
           
           
           
 
-         <h3> <font color ="Black"><b>  CREATE NEW VEHICLE TYPE </b></font> </h3>
+           {/* <h3> <font color ="Black"><b>  CREATE NEW VEHICLE TYPE </b></font> </h3> */}
          <br></br>
           <form onSubmit={this.onSubmit}>
            <div className="form-group"> 

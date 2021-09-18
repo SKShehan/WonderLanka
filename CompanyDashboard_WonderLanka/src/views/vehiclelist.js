@@ -1,5 +1,5 @@
 
-import guideStyles from "../assets/css/ViewGuides.module.css";
+import vehicleStyles from "../assets/css/ViewVehicleList.module.css";
 
 
 import{Button} from 'reactstrap'
@@ -64,7 +64,7 @@ function Vehiclelist(){
         axios.delete(`http://localhost:8070/vehicles/${vehicle._id}`).then((res) =>{
             console.log(res);
             
-            setMessage("Vehicle Deleted!");
+           // setMessage("Vehicle Deleted!");
             toast.error('Vehicle Deleted!', {
                 position: "bottom-right",
                 autoClose: 5000,
@@ -130,15 +130,15 @@ function Vehiclelist(){
         </Row>
 
            <center>
-                <table width ="90%" border ="2px"className = {guideStyles.tbldata}>
+                <table width ="90%" border ="2px"className = {vehicleStyles.tbldata}>
                     <tr>
                        
-                        <th className={guideStyles.tbldata}>Vehicle Type</th>
-                     <th className={guideStyles.tbldata}>Vehicle Name</th>
-              <th className={guideStyles.tbldata}>Vehicle ID</th>
-              <th className={guideStyles.tbldata}>Date</th>
-              <th className={guideStyles.tbldata}>Vehicle Number</th>
-              <th className={guideStyles.tbldata}>Actions</th>
+                        <th className={vehicleStyles.tbldata}>Vehicle Type</th>
+                     <th className={vehicleStyles.tbldata}>Vehicle Name</th>
+              <th className={vehicleStyles.tbldata}>Vehicle ID</th>
+              <th className={vehicleStyles.tbldata}>Date</th>
+              <th className={vehicleStyles.tbldata}>Vehicle Number</th>
+              <th className={vehicleStyles.tbldata}>Actions</th>
                        
                     </tr>
 
@@ -163,27 +163,29 @@ function Vehiclelist(){
                           
                         
                         }).map((vehicle) =>(
+                         
                             
-                            <tr className={guideStyles.tbldata}>
+                            <tr className={vehicleStyles.tbldata}>
                                 
-                                <td className={guideStyles.tbldata}>{vehicle.vtype}</td>
-                                <td className={guideStyles.tbldata}>{vehicle.vname}</td>
-                                <td className={guideStyles.tbldata}>{vehicle.vid}</td>
-                                <td className={guideStyles.tbldata}>{vehicle.date.substring(0,10)}</td>
-                                <td className={guideStyles.tbldata}>{vehicle.vnumber}</td>
+                                <td className={vehicleStyles.tbldata}>{vehicle.vtype}</td>
+                                <td className={vehicleStyles.tbldata}>{vehicle.vname}</td>
+                                <td className={vehicleStyles.tbldata}>{vehicle.vid}</td>
+                                <td className={vehicleStyles.tbldata}>{vehicle.date.substring(0,10)}</td>
+                                <td className={vehicleStyles.tbldata}>{vehicle.vnumber}</td>
+                               
                                
                                 
-                                <td className={guideStyles.tbldata}>
-                                 
+                                <td className={vehicleStyles.tbldata}>
+                                
 
 								 <button 
-                                   className={guideStyles.btnEdit}
+                                   className={vehicleStyles.btnEdit}
                                 onClick = {()=>{
                                     history.push(`/edit-vehicle/${vehicle._id}`);
                                 }}
                                 >Edit</button>
 
-                                <button  className={guideStyles.btnDelete}
+                                <button  className={vehicleStyles.btnDelete}
                                 onClick = {() =>{
                                     
                                     onDelete(vehicle);
@@ -193,7 +195,7 @@ function Vehiclelist(){
                                 >Delete</button>
                                </td>
                             </tr>
-    
+                            
                         ))}
                     </tbody>    
 

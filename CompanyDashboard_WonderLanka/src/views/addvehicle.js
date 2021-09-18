@@ -134,7 +134,8 @@ export default class Addvehicle extends Component {
           
           
         <div style = {{paddingTop : "50px"}} className = {styles.body}>
-            <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert New Vehicle Deatils</h3><br/><br/>
+           {/* <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert New Vehicle Deatils</h3><br/><br/> */}
+           <center><h1><b>Insert New Vehicle Deatils</b></h1><br/><br/></center>
             <div className = {styles.FormContainer}>
                
         
