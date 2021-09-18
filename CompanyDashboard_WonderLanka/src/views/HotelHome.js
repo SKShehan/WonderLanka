@@ -15,13 +15,13 @@ export default class hotelHome extends Component{
   
               
               <button className = {styles.btn_guidemng}>
-                  <a href = "/get" style={{textDecoration:'none' ,color:"white" }}><b>VIEW HOTEL AND RESTAURANT</b></a>
+                  <a href = "/get-hotel" style={{textDecoration:'none' ,color:"white" }}><b>VIEW HOTEL AND RESTAURANT</b></a>
               </button>
 
            
             
               <button className = {styles.btn_guidemng}>
-                  <a href = "/add" style={{textDecoration:'none' ,color:"white" }}><b>ADD HOTEL</b></a>
+                  <a href = "/add-hotel" style={{textDecoration:'none' ,color:"white" }}><b>ADD HOTEL</b></a>
               </button>
 
              

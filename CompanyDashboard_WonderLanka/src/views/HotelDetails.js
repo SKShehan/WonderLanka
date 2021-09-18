@@ -124,7 +124,7 @@ onDelete = (id) =>{
                     <td>{posts.hotelTele}</td>
                     <td>{posts.description}</td> 
                     <td>
-                      <a className={hotelStyles.btnEdit} href={`/edit/${posts._id}`}>
+                      <a className={hotelStyles.btnEdit} href={`/edit-hotel/${posts._id}`}>
                         <i className="fas fa-edit"></i>&nbsp;Edit
                       </a>
                       &nbsp;&nbsp;&nbsp;

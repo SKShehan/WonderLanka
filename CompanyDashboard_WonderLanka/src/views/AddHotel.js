@@ -4,7 +4,11 @@ import styles from "../assets/css/AddHotel.module.css";
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
-import {Label, Input, Button}from 'reactstrap'
+import {
+    Label, 
+    Input, 
+    Button,
+    }from 'reactstrap'
 
 
 
@@ -29,6 +33,7 @@ handleInputChange = (e) =>{
         [name]:value
     })
 }
+
 
 onSubmit =(e) =>{
     e.preventDefault();
@@ -85,12 +90,14 @@ onSubmit =(e) =>{
                     onChange={this.handleInputChange} /><br/><br/>
 
 
-                <Label>Hotel Location </Label><br/>
-                <Input type="text"
+                <Label>Distric Of Hotel </Label><br/>
+              <Input type="text"
                     name="location"
                     placeholder="Enteer hotel Location"
                     value={this.state.location}
-                    onChange={this.handleInputChange} /><br/><br/>
+    onChange={this.handleInputChange} />
+               
+                <br/><br/>
 
 
                 <Label>Hotel Telephone </Label><br/>
@@ -102,7 +109,7 @@ onSubmit =(e) =>{
 
 
 
-                <Label>Description abou Hotel </Label><br/>
+                <Label>Description about Hotel </Label><br/>
                 <Input type="text"
                     name="description"
                     placeholder="Enteer Description"

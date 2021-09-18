@@ -89,13 +89,12 @@ function Index() {
         <SectionDownload />
         <GuideManagement /> 
         <Home/>
-
         <SectionDownload /> 
         <GuideManagement />
-
         <AddDriver/>
-        <DriverDetails/>*/}
-        <DriverManagement/>
+        <DriverDetails/>
+        <DriverManagement/>*/}
+        <HotelHome />
      
 
         

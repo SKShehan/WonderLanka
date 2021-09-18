@@ -116,14 +116,14 @@ function App() {
           <HotelHome />
         </Route>
 
-        <Route path="/add" exact >
+        <Route path="/add-hotel" exact >
           <AddHotel />
         </Route>
 
-        <Route path="/edit/:id"  component={EditHotel}>
+        <Route path="/edit-hotel/:id"  component={EditHotel}>
         </Route>
 
-        <Route path="/get" exact >
+        <Route path="/get-hotel" exact >
           <HotelDetails />
         </Route>
 
