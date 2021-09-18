@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-import { Label, Input, FormGroup, Row, Col, Card } from "reactstrap";
+import { Label, Input, FormGroup, Row, Col, Card, Button } from "reactstrap";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
@@ -23,7 +23,7 @@ function BookTour({ user }) {
   const [noOfKids18, setnoOfKids18] = useState();
   const [noOfKids8, setnoOfKids8] = useState();
   const [username, setusername] = useState("");
-  const [payment, setpayment] = useState(3000.0);
+  let payment = 0;
   const [bookingDate, setbookingDate] = useState();
 
   const countryList = [
@@ -225,12 +225,36 @@ function BookTour({ user }) {
     "Zimbabwe",
   ];
 
+  const demo = () => {
+    setfullName("James Anderson");
+    setcountry("United Kingdom");
+    setmobileNo("2028836088");
+    setemail("james@gmail.com");
+    setarrivalDate("2021-10-21");
+    setitinerary("Polonnaruwa");
+    seticlass("Standard");
+    setinsurance("Insurance 1");
+    setnoOfAdults(4);
+    setnoOfKids18(2);
+    setnoOfKids8(0);
+  };
+
+  const getGeoInfo = () => {
+    axios
+      .get("https://ipapi.co/json/")
+      .then((response) => {
+        let data = response.data;
+        setcountry(data.country_name);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const [itineraryList, setitineraryList] = useState([
-    "Tour Itinerary 1",
-    "Tour Itinerary 2",
-    "Tour Itinerary 3",
-    "Tour Itinerary 4",
-    "Customized",
+    {
+      itineraryName: "Customized",
+    },
   ]);
   const [insuranceList, setinsuranceList] = useState([
     "Insurance 1",
@@ -239,12 +263,14 @@ function BookTour({ user }) {
     "Insurance 4",
   ]);
 
-  const [classList, setclassList] = useState([
-    "Class 1",
-    "Class 2",
-    "Class 3",
-    "Class 4",
-  ]);
+  const [classList, setclassList] = useState(["Standard", "Deluxe", "Supreme"]);
+
+  const getItineraries = () => {
+    axios.get("http://localhost:8070/itineraries").then((res) => {
+      console.log(res.data);
+      setitineraryList([...res.data, ...itineraryList]);
+    });
+  };
 
   const selectItinerary = (itinerary) => {
     setitinerary(itinerary);
@@ -252,11 +278,26 @@ function BookTour({ user }) {
     else setcustomize(false);
   };
 
+  const calcPayment = () => {
+    for (var i = 0; i < itineraryList.length; i++) {
+      if (itineraryList[i].itineraryName === itinerary) {
+        if (itineraryList[i].itineraryClass === iclass) {
+          payment +=
+            itineraryList[i].itineraryPriceAdult * noOfAdults +
+            itineraryList[i].itineraryPriceChild * noOfKids18;
+          break;
+        }
+      }
+    }
+    console.log(payment);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (itinerary !== "Customized") {
       setcustomizedItinerary("");
+      calcPayment();
     }
 
     const bookingDetails = {
@@ -291,9 +332,13 @@ function BookTour({ user }) {
 
   useEffect(() => {
     document.body.classList.add("index");
+
+    getItineraries();
+    getGeoInfo();
     setusername(user.username);
     setcountry(countryList[0]);
-    setitinerary(itineraryList[0]);
+
+    setitinerary(itineraryList[0].itineraryName);
     setinsurance(insuranceList[0]);
     seticlass(classList[0]);
     let today = new Date().toISOString().slice(0, 10);
@@ -315,6 +360,19 @@ function BookTour({ user }) {
           <br></br>
           <>
             <div className="booking-div">
+              <Row>
+                <Col>
+                  <Button
+                    className="btn btn-danger"
+                    style={{
+                      float: "right",
+                    }}
+                    onClick={demo}
+                  >
+                    Demo
+                  </Button>
+                </Col>
+              </Row>
               <form onSubmit={onSubmit}>
                 <Row>
                   <Col>
@@ -325,6 +383,7 @@ function BookTour({ user }) {
                     </FormGroup>
                   </Col>
                 </Row>
+
                 <Row>
                   <Col>
                     <FormGroup>
@@ -366,11 +425,13 @@ function BookTour({ user }) {
                   <Col>
                     <FormGroup>
                       <Label for="mobileNo">Mobile Number*</Label>
+
                       <Input
                         type="text"
                         name="mobileNo"
                         id="mobileNo"
-                        placeholder="Mobile Number"
+                        placeholder="000-000-0000"
+                        pattern="[+0-9]+"
                         value={mobileNo}
                         onChange={(e) => {
                           setmobileNo(e.target.value);
@@ -387,6 +448,7 @@ function BookTour({ user }) {
                         name="email"
                         id="email"
                         placeholder="name@example.com"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                         value={email}
                         onChange={(e) => {
                           setemail(e.target.value);
@@ -426,7 +488,9 @@ function BookTour({ user }) {
                         }}
                         required
                       >
-                        {itineraryList.map((i) => (
+                        {[
+                          ...new Set(itineraryList.map((i) => i.itineraryName)),
+                        ].map((i) => (
                           <option>{i}</option>
                         ))}
                       </Input>
@@ -501,6 +565,7 @@ function BookTour({ user }) {
                         name="adults"
                         id="adults"
                         placeholder="0"
+                        pattern="[0-9]+"
                         value={noOfAdults}
                         onChange={(e) => {
                           setnoOfAdults(e.target.value);
@@ -517,6 +582,7 @@ function BookTour({ user }) {
                         name="kids18"
                         id="kids18"
                         placeholder="0"
+                        pattern="[0-9]+"
                         value={noOfKids18}
                         onChange={(e) => {
                           setnoOfKids18(e.target.value);
@@ -533,6 +599,7 @@ function BookTour({ user }) {
                         name="kids8"
                         id="kids8"
                         placeholder="0"
+                        pattern="[0-9]+"
                         value={noOfKids8}
                         onChange={(e) => {
                           setnoOfKids8(e.target.value);

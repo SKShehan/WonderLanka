@@ -46,6 +46,8 @@ import CustomizedRequests from "./CustomizedRequests";
 import AddGuide from "./AddGuide";
 import ViewGuides from "./ViewGuides";
 import GuideManagement from "./GuideManagement";
+import Booktable from "./booktable";
+import BookingManagement from "./BookingManagement";
 import HotelDetails from "./HotelDetails";
 import EditHotel from "./EditHotel";
 import AddHotel from "./AddHotel";
@@ -58,7 +60,15 @@ import Home from "./booktable";
 import AddDriver from "./AddDriver";
 import DriverDetails from "./DriverDetails"
 import DriverManagement from "./DriverManagement";
+import Homepage from "./Homepage";
 
+
+
+import VehicleDashboard from "./vehicleDashboard";
+import Editvehicle from "./editvehicle";
+import AssignVehicle from "./assignvehicle";
+import EmployeeDetails from "./EmployeeDetails";
+import EmployeeUpdate from "./EmployeeUpdate";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -72,9 +82,9 @@ function Index() {
     <>
 
       <div className="main">
-        {/*<IndexNavbar />
+        <IndexNavbar />
         <IndexHeader/>
-      <SectionButtons />
+      {/*<SectionButtons />
         <SectionNavbars />
         <SectionNavigation />
         <SectionProgress />
@@ -88,22 +98,30 @@ function Index() {
         <SectionExamples />
         <SectionDownload />
         <GuideManagement /> 
+        
         <Home/>
         <SectionDownload /> 
         <GuideManagement />
         <AddDriver/>
         <DriverDetails/>
-        <DriverManagement/>*/}
+        <DriverManagement/>
         <HotelHome />
      
+        <DriverManagement/>*/}
+      <BookingManagement />
 
         
 
-
+        
+        
          
-        
-        
-       <DemoFooter />
+ 
+ <Homepage/>
+ 
+
+ 
+       
+        <DemoFooter />
       </div>
     </>
   );

@@ -1,6 +1,8 @@
 import  { useHistory } from 'react-router-dom'
 import styles from "../assets/css/ItineraryHome.module.css"
-
+import IndexHeader from "components/Headers/IndexHeader";
+import IndexNavbar from "components/Navbars/IndexNavbar";
+import DemoFooter from "components/Footers/DemoFooter";
 function ItineraryManagement(){
 
     let history = useHistory();
@@ -14,6 +16,9 @@ function ItineraryManagement(){
     }
 
     return(
+        <>
+        <IndexNavbar />
+        <IndexHeader />
         <div style = {{paddingTop : "50px"}} className = {styles.body}>
             <h3 className = {styles.header}><center>Itinerary Management</center></h3><br/><br/>
 
@@ -33,8 +38,8 @@ function ItineraryManagement(){
             </div>
 
             </div>
-
-           
+            <DemoFooter />
+          </> 
     );
 }
 
