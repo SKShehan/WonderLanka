@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
 
-import styles from "../assets/css/VehicleHome.module.css"
+import styles from'../assets/css/AddVehicle.module.css';
+
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
+import DemoFooter from 'components/Footers/DemoFooter';
 
 function ReportVehicle(){
 
   return(
-
+     <>
+     <IndexHeader />
+        <IndexNavbar />
+        <div style = {{paddingTop : "50px"}} className = {styles.body}>
    
-       <div style = {{paddingTop : "250px"}} >
+       <div style = {{paddingTop : "800px"}} >
            
-            <h1 ><center><b><font  color ="red"> ERROR 404</font></b></center></h1><br/><br/>
+            
     </div>
-
+    </div>
+    
+    <DemoFooter />
+    </>
     );
 }
 export default ReportVehicle;
