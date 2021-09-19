@@ -8,6 +8,11 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
+
 function BookTour({ user }) {
   const [customize, setcustomize] = useState(false);
   const [itinerary, setitinerary] = useState("");
@@ -324,7 +329,11 @@ function BookTour({ user }) {
       .post("http://localhost:8070/bookings/add", { bookingDetails })
       .then((res) => {
         console.log(res);
-        alert(res.data);
+        toast.success(res.data, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 10000,
+          hideProgressBar: false,
+        });
       });
   };
 
