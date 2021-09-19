@@ -23,11 +23,11 @@ import {
   } from "reactstrap";
 
 toast.configure();
-function DriverDetails(){
+function EmployeeDetails(){
     
     let history = useHistory();
 
-    const [drivers , setDrivers] = useState([]);
+    const [employees , setEmployees] = useState([]);
     const [message , setMessage] = useState("");
     const [searchVal , setSearchVal] = useState("");
 
@@ -39,8 +39,8 @@ function DriverDetails(){
     
 
     useEffect(() => {
-        axios.get("http://localhost:8070/drivers/details").then((res) =>{
-            setDrivers(res.data);
+        axios.get("http://localhost:8070/employees/details").then((res) =>{
+            setEmployees(res.data);
             console.log(res.data);
         }).catch((err) =>{
             console.log(err);
@@ -50,17 +50,17 @@ function DriverDetails(){
 
     
 
-    function onDelete(driver)  {
+    function onDelete(employee)  {
         if (
             window.confirm(
-              "Driver " + driver.driverid + " will be removed from the database"
+              "Employee " + employee.employeeid + " will be removed from the database"
             )
         )
-        axios.delete(`http://localhost:8070/drivers/delete${driver._id}`).then((res) =>{
+        axios.delete(`http://localhost:8070/employees/delete${employee._id}`).then((res) =>{
             console.log(res);
             
-            setMessage("Driver Deleted!");
-            toast.error('Driver Deleted!', {
+            setMessage("Employee Deleted!");
+            toast.error('Employee Deleted!', {
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -85,7 +85,7 @@ function DriverDetails(){
             <IndexNavbar />
             <IndexHeader />
             
-            <center><h1>Driver Details</h1><br/><br/></center>
+            <center><h1>Employee Details</h1><br/><br/></center>
 
             <Row>
           <Col>
@@ -103,86 +103,56 @@ function DriverDetails(){
               </InputGroup>
             </FormGroup>
           </Col>
-          <Col>
-            <div>
-              <Label style = {{marginLeft : "70px"}} check>
-                <Input type="checkbox"/>{" "} 
-                <label style ={{marginRight : "40px"}}>Driver ID</label>
-              </Label>
-
-              <Label check>
-                <Input type="checkbox"/>{" "}
-                <label style ={{marginRight : "40px"}}>First Name</label>
-              </Label>
-
-              <Label check>
-                <Input type="checkbox" />{" "}
-                <label style ={{marginRight : "40px"}}>License ID</label>
-              </Label>
-            </div>
-          </Col>
-          <Col></Col>
+          
         </Row>
 
            <center>
                 <table width ="90%" border ="2px"className = {driverStyles.tbldata}>
                     <tr>
                        
-                        <th className={driverStyles.tbldata}>Driver ID</th>
-                        <th className={driverStyles.tbldata}>First Name</th>
-                        <th className={driverStyles.tbldata}>Last Name</th>
-                        <th className={driverStyles.tbldata}>Email</th>
-                        <th className={driverStyles.tbldata}>Phone Number</th>
-                        <th className={driverStyles.tbldata}>License ID</th>
-                        <th className={driverStyles.tbldata}>Languages</th>
+                        <th className={driverStyles.tbldata}>Employee Name</th>
+                        <th className={driverStyles.tbldata}>Employee Password</th>
+                        <th className={driverStyles.tbldata}>Employee Role</th>
                         <th className={driverStyles.tbldata}>Actions</th>
                        
                     </tr>
 
                     <tbody>
                         
-                        {drivers.filter((val) =>{
+                        {employees.filter((val) =>{
                           
                           if(searchVal === ''){
                             return val;
                           }
-                          else if (val.driverid.toLowerCase().includes(searchVal.toLowerCase())){
+                          else if (val.empname.toLowerCase().includes(searchVal.toLowerCase())){
                             return val;
                           }
-                          else if (val.firstname.toLowerCase().includes(searchVal.toLowerCase())){
-                            return val;
-                          }
-                          else if (val.licenseid.toLowerCase().includes(searchVal.toLowerCase())){
-                            return val;
-                          }
+                          
                           
 
                           
                         
-                        }).map((driver) =>(
+                        }).map((employee) =>(
                             
                             <tr className={driverStyles.tbldata}>
                                 
-                                <td className={driverStyles.tbldata}>{driver.driverid}</td>
-                                <td className={driverStyles.tbldata}>{driver.firstname}</td>
-                                <td className={driverStyles.tbldata}>{driver.lastname}</td>
-                                <td className={driverStyles.tbldata}>{driver.email}</td>
-                                <td className={driverStyles.tbldata}>{driver.phonenumber}</td>
-                                <td className={driverStyles.tbldata}>{driver.licenseid}</td>
-                                <td className={driverStyles.tbldata}>{driver.languages}</td>
+                                <td className={driverStyles.tbldata}>{employee.empname}</td>
+                                <td className={driverStyles.tbldata}>{employee.emppwd}</td>
+                                <td className={driverStyles.tbldata}>{employee.emprole}</td>
+                               
                                 
                                 <td className={driverStyles.tbldata}>
                                   <button 
                                    className={driverStyles.btnEdit}
                                 onClick = {()=>{
-                                    history.push(`/edit-driver/${driver._id}`);
+                                    history.push(`/edit-employee/${employee._id}`);
                                 }}
                                 >Edit</button>
 
                                 <button  className={driverStyles.btnDelete}
                                 onClick = {() =>{
                                     
-                                    onDelete(driver);
+                                    onDelete(employee);
                                 }}
                                     
                                
@@ -198,7 +168,7 @@ function DriverDetails(){
                 </center>
             
             <span style = {{textAlign:"left" , color : "red"}}>{message}</span> <br/><br/>
-            <DemoFooter />
+ 
            
         </div>   
     );
@@ -206,5 +176,5 @@ function DriverDetails(){
 
 }
 
-export  default DriverDetails;
+export  default EmployeeDetails;
 

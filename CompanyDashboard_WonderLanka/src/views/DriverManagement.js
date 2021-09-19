@@ -1,17 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import styles from "../assets/css/DriverHome.module.css";
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
 
-// reactstrap components
-import {
-  Button,
- 
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
 
-// core components
 
 function DriverManagement() {
     let history=useHistory();
@@ -22,54 +15,56 @@ function DriverManagement() {
         history.push("/View-Driver")
     }
   return (
-  
-      <div style = {{paddingTop : "50px"}} className = {styles.body}>
+        <>
+      <IndexHeader />
+      <IndexNavbar />
+      <div style = {{paddingTop : "50px"}} className = {styles.body2}>
       
       
        
         <center><h1 className={styles.header}>Driver Management </h1></center>
        
-        <div style = {{paddingTop : "50px"}} className = {styles.btn_group}>
-                    <Button
+        <div style = {{paddingTop : "50px"}} className = {styles.btn_group2}>
+                    <button
                     onClick={handleClick}
                     className={styles.btn_drivermng}
                    
                     type="button"
                     >
                     Add Driver
-                    </Button>
+                    </button>
 
-                    <Button
+                    <button
                     onClick={handleClick2}
                     className={styles.btn_drivermng}
                   
                     type="button"
                     >
                     View Drivers
-                    </Button>
+                    </button>
 
-                    <Button
+                    <button
                                         
                     className={styles.btn_drivermng}
                    
                     type="button"
                     >
                     Assign Drivers
-                    </Button>
+                    </button>
 
-                    <Button
+                    <button
                                         
                     className={styles.btn_drivermng}
                   
                     type="button"
                     >
                     Drivers Report
-                    </Button>
+                    </button>
                     </div>
                 
      
       </div>
-  
+  </>
   );
 }
 

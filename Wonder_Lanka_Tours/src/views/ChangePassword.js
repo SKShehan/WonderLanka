@@ -11,6 +11,7 @@ import {
   Card,
   Alert,
   Container,
+  Button,
 } from "reactstrap";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
@@ -21,7 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 
-function BookTour({ user }) {
+function ChangePassword({ user }) {
   const [currentpwd, setcurrentpwd] = useState("");
   const [newpass, setnewpass] = useState("");
   const [renewpass, setrenewpass] = useState("");
@@ -70,6 +71,12 @@ function BookTour({ user }) {
     }
   };
 
+  const demo = () => {
+    setcurrentpwd("pass123");
+    setnewpass("abc123");
+    setrenewpass("abc123");
+  };
+
   document.documentElement.classList.remove("nav-open");
 
   useEffect(() => {
@@ -93,6 +100,19 @@ function BookTour({ user }) {
 
           <>
             <div className="chng-pwd-div">
+              <Row>
+                <Col>
+                  <Button
+                    className="btn btn-danger"
+                    style={{
+                      float: "right",
+                    }}
+                    onClick={demo}
+                  >
+                    Demo
+                  </Button>
+                </Col>
+              </Row>
               <form onSubmit={onSubmit}>
                 <Row>
                   <Col>
@@ -123,7 +143,7 @@ function BookTour({ user }) {
                         id="newpwd"
                         name="newpwd"
                         value={newpass}
-                        pattern=".{8,}"
+                        pattern=".{6,}"
                         onChange={(e) => {
                           setnewpass(e.target.value);
                         }}
@@ -172,4 +192,4 @@ function BookTour({ user }) {
   );
 }
 
-export default BookTour;
+export default ChangePassword;
