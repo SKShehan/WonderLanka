@@ -28,12 +28,10 @@ toast.configure();
 
 function ViewGuides() {
   const [guides, setguides] = useState([]);
-
   const [checkFullName, setcheckFullName] = useState(true);
   const [checkLicenseId, setcheckLicenseId] = useState(false);
   const [checkGuideId, setcheckGuideId] = useState(false);
   const [searchText, setsearchText] = useState("");
-
 
   const deleteGuide = (guide) => {
     if (
@@ -110,7 +108,6 @@ function ViewGuides() {
                     <i className="nc-icon nc-zoom-split" />
                   </InputGroupText>
                 </InputGroupAddon>
-
                 <Input
                   placeholder="Search "
                   type="text"
@@ -119,7 +116,6 @@ function ViewGuides() {
                     setsearchText(e.target.value);
                   }}
                 />
-
               </InputGroup>
             </FormGroup>
           </Col>
@@ -172,7 +168,6 @@ function ViewGuides() {
             <th className={guideStyles.tbldata}>Foreign Languages</th>
             <th className={guideStyles.tbldata}>Actions</th>
           </tr>
-
           {guides
             .filter((guide) => {
               let fullName = guide.fName + " " + guide.lName;
@@ -225,7 +220,6 @@ function ViewGuides() {
                   >
                     Edit
                   </button>
-
 
                   <button
                     className={guideStyles.btnDelete}
