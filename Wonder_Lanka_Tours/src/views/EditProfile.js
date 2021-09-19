@@ -22,7 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 
-function BookTour({ user }) {
+function EditProfile({ user }) {
   const location = useLocation();
   const [fullName, setfullName] = useState("");
   const [country, setcountry] = useState();
@@ -484,4 +484,4 @@ function BookTour({ user }) {
   );
 }
 
-export default BookTour;
+export default EditProfile;

@@ -19,7 +19,7 @@ import BookingReport from "views/BookingReport";
 
 function App() {
   const [user, setuser] = useState({
-    username: "johncena",
+    username: "james",
     password: "pass123",
     fullName: "James Anderson",
     country: "United Kingdom",
