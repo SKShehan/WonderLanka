@@ -68,6 +68,10 @@ import VehicleDashboard from "./vehicleDashboard";
 import Editvehicle from "./editvehicle";
 import AssignVehicle from "./assignvehicle";
 
+import AssignGuide from "./AssignGuideBookings";
+
+import Assign from "./AssignGuide"
+
 function Index() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -103,7 +107,7 @@ function Index() {
         
          */}
  
- <Homepage/>
+ <GuideManagement />
  
         
         <DemoFooter />
