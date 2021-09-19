@@ -45,7 +45,7 @@ import ItineraryManagement from "./ItineraryManagement";
 import CustomizedRequests from "./CustomizedRequests";
 import AddGuide from "./AddGuide";
 import ViewGuides from "./ViewGuides";
-import GuideManagement from "./GuideManagement"
+import GuideManagement from "./GuideManagement";
 import Booktable from "./booktable";
 import BookingManagement from "./BookingManagement";
 import HotelDetails from "./HotelDetails";
@@ -67,6 +67,14 @@ import Homepage from "./Homepage";
 import VehicleDashboard from "./vehicleDashboard";
 import Editvehicle from "./editvehicle";
 import AssignVehicle from "./assignvehicle";
+import EmployeeDetails from "./EmployeeDetails";
+import EmployeeUpdate from "./EmployeeUpdate";
+
+import AssignGuide from "./AssignGuideBookings";
+
+import Assign from "./AssignGuide"
+
+
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -94,18 +102,31 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
+        <SectionDownload />
+        <GuideManagement /> 
+        
+        <Home/>
 
         <SectionDownload /> 
         <GuideManagement />
+
+        <AddDriver/>
+        <DriverDetails/>
+        <DriverManagement/>
+     */}
+      <BookingManagement />
+
         
 
         
         
-         */}
+         
  
- <Homepage/>
+ <GuideManagement />
  
-        
+
+ 
+       
         <DemoFooter />
       </div>
     </>

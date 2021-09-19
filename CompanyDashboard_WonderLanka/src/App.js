@@ -13,12 +13,16 @@ import RegisterPage from "views/examples/RegisterPage.js";
 import AddItinerary from "views/AddItinerary";
 import ViewItineraries from "views/viewItineraries";
 import EditItinerary from "views/EditItinerary";
+import CustomizedRequests from "views/CustomizedRequests";
+import ItinerarySend from "views/ItinerarySend";
 
 import EditGuide from "views/EditGuide";
 import AddGuide from "views/AddGuide";
 import ViewGuides from "views/ViewGuides";
 import GuideManagement from "views/GuideManagement";
 import BookingManagement from "views/BookingManagement";
+import Assign from "views/AssignGuide";
+import AssignGuide from "views/AssignGuideBookings";
 
 import AddHotel from "views/AddHotel";
 import HotelDetails from "views/HotelDetails";
@@ -42,6 +46,7 @@ import Vtype from "views/vtype";
 import AssignVehicle from "views/assignvehicle";
 import ReportVehicle from "views/reportvehicle";
 import VehicleDashboard from "views/vehicleDashboard";
+import EmployeeUpdate from "views/EmployeeUpdate";
 
 function App() {
 
@@ -82,6 +87,17 @@ function App() {
           <ViewItineraries />
         </Route>
 
+        <Route
+          path = "/sendItinerary/:username"
+          exact
+        >
+          <ItinerarySend />
+        </Route>
+
+        <Route path = "/CustomizedReq" exact>
+          <CustomizedRequests />
+        </Route>  
+
         <Route path="/edit-itinerary/:id" exact>
           <EditItinerary />
         </Route>
@@ -94,6 +110,11 @@ function App() {
         <Route path="/view-guides" exact>
           <ViewGuides />
         </Route>
+        <Route path = "/assign-guide/:username" exact>
+          <Assign />
+        </Route>  
+
+        
        
         <Route path="/edit-driver/:id" exact 
           component={DriverUpdate} />
@@ -154,6 +175,7 @@ function App() {
         <Route path="/edit-driver/:id" component={DriverUpdate} />
         <Route path ="/Add-Driver" component={AddDriver}/>
         <Route path ="/View-Driver" component={DriverDetails}/>
+      
 
 
         
@@ -172,6 +194,10 @@ function App() {
         <Route path="/get" exact >
           <HotelDetails />
         </Route>
+
+
+        <Route path="/edit-employee/:id" exact 
+          component={EmployeeUpdate} />
 
 
         <Redirect to="/index" />

@@ -1,10 +1,5 @@
-
-import vehicleStyles from "../assets/css/ViewVehicleList.module.css";
-
-
+import driverStyles from "../assets/css/DriverDetails.module.css";
 import{Button} from 'reactstrap'
-
-
 import{ useHistory } from "react-router-dom"
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -28,11 +23,11 @@ import {
   } from "reactstrap";
 
 toast.configure();
-function Vehiclelist(){
+function EmployeeDetails(){
     
     let history = useHistory();
 
-    const [vehicles , setVehicles] = useState([]);
+    const [employees , setEmployees] = useState([]);
     const [message , setMessage] = useState("");
     const [searchVal , setSearchVal] = useState("");
 
@@ -44,8 +39,8 @@ function Vehiclelist(){
     
 
     useEffect(() => {
-        axios.get("http://localhost:8070/vehicles/").then((res) =>{
-            setVehicles(res.data);
+        axios.get("http://localhost:8070/employees/details").then((res) =>{
+            setEmployees(res.data);
             console.log(res.data);
         }).catch((err) =>{
             console.log(err);
@@ -55,17 +50,17 @@ function Vehiclelist(){
 
     
 
-    function onDelete(vehicle)  {
+    function onDelete(employee)  {
         if (
             window.confirm(
-              "Vehicle " + vehicle.vid + " will be removed from the database"
+              "Employee " + employee.employeeid + " will be removed from the database"
             )
         )
-        axios.delete(`http://localhost:8070/vehicles/${vehicle._id}`).then((res) =>{
+        axios.delete(`http://localhost:8070/employees/delete${employee._id}`).then((res) =>{
             console.log(res);
             
-           // setMessage("Vehicle Deleted!");
-            toast.error('Vehicle Deleted!', {
+            setMessage("Employee Deleted!");
+            toast.error('Employee Deleted!', {
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -90,7 +85,7 @@ function Vehiclelist(){
             <IndexNavbar />
             <IndexHeader />
             
-            <center><h1>Company Vehicle Details</h1><br/><br/></center>
+            <center><h1>Employee Details</h1><br/><br/></center>
 
             <Row>
           <Col>
@@ -108,94 +103,63 @@ function Vehiclelist(){
               </InputGroup>
             </FormGroup>
           </Col>
-          <Col>
-            <div>
-              <Label style = {{marginLeft : "70px"}} check>
-                <Input type="checkbox"/>{" "} 
-                <label style ={{marginRight : "40px"}}>Vehicle ID</label>
-              </Label>
-
-              <Label check>
-                <Input type="checkbox"/>{" "}
-                <label style ={{marginRight : "40px"}}>Vehicle Type</label>
-              </Label>
-
-              <Label check>
-                <Input type="checkbox" />{" "}
-                <label style ={{marginRight : "40px"}}>Vehicle Name</label>
-              </Label>
-            </div>
-          </Col>
-          <Col></Col>
+          
         </Row>
 
            <center>
-                <table width ="90%" border ="2px"className = {vehicleStyles.tbldata}>
+                <table width ="90%" border ="2px"className = {driverStyles.tbldata}>
                     <tr>
                        
-                        <th className={vehicleStyles.tbldata}>Vehicle Type</th>
-                     <th className={vehicleStyles.tbldata}>Vehicle Name</th>
-              <th className={vehicleStyles.tbldata}>Vehicle ID</th>
-              <th className={vehicleStyles.tbldata}>Date</th>
-              <th className={vehicleStyles.tbldata}>Vehicle Number</th>
-              <th className={vehicleStyles.tbldata}>Actions</th>
+                        <th className={driverStyles.tbldata}>Employee Name</th>
+                        <th className={driverStyles.tbldata}>Employee Password</th>
+                        <th className={driverStyles.tbldata}>Employee Role</th>
+                        <th className={driverStyles.tbldata}>Actions</th>
                        
                     </tr>
 
                     <tbody>
                         
-                        {vehicles.filter((val) =>{
+                        {employees.filter((val) =>{
                           
                           if(searchVal === ''){
                             return val;
                           }
-                        //  else if (val.vid.toLowerCase().includes(searchVal.toLowerCase())){
-                           // return val;
-                         // }
-                          else if (val.vtype.toLowerCase().includes(searchVal.toLowerCase())){
+                          else if (val.empname.toLowerCase().includes(searchVal.toLowerCase())){
                             return val;
                           }
-                          else if (val.vname.toLowerCase().includes(searchVal.toLowerCase())){
-                            return val;
-                          }
+                          
                           
 
                           
                         
-                        }).map((vehicle) =>(
-                         
+                        }).map((employee) =>(
                             
-                            <tr className={vehicleStyles.tbldata}>
+                            <tr className={driverStyles.tbldata}>
                                 
-                                <td className={vehicleStyles.tbldata}>{vehicle.vtype}</td>
-                                <td className={vehicleStyles.tbldata}>{vehicle.vname}</td>
-                                <td className={vehicleStyles.tbldata}>{vehicle.vid}</td>
-                                <td className={vehicleStyles.tbldata}>{vehicle.date.substring(0,10)}</td>
-                                <td className={vehicleStyles.tbldata}>{vehicle.vnumber}</td>
-                               
+                                <td className={driverStyles.tbldata}>{employee.empname}</td>
+                                <td className={driverStyles.tbldata}>{employee.emppwd}</td>
+                                <td className={driverStyles.tbldata}>{employee.emprole}</td>
                                
                                 
-                                <td className={vehicleStyles.tbldata}>
-                                
-
-								 <button 
-                                   className={vehicleStyles.btnEdit}
+                                <td className={driverStyles.tbldata}>
+                                  <button 
+                                   className={driverStyles.btnEdit}
                                 onClick = {()=>{
-                                    history.push(`/edit-vehicle/${vehicle._id}`);
+                                    history.push(`/edit-employee/${employee._id}`);
                                 }}
                                 >Edit</button>
 
-                                <button  className={vehicleStyles.btnDelete}
+                                <button  className={driverStyles.btnDelete}
                                 onClick = {() =>{
                                     
-                                    onDelete(vehicle);
+                                    onDelete(employee);
                                 }}
                                     
                                
                                 >Delete</button>
                                </td>
                             </tr>
-                            
+    
                         ))}
                     </tbody>    
 
@@ -204,7 +168,7 @@ function Vehiclelist(){
                 </center>
             
             <span style = {{textAlign:"left" , color : "red"}}>{message}</span> <br/><br/>
-            <DemoFooter />
+ 
            
         </div>   
     );
@@ -212,5 +176,5 @@ function Vehiclelist(){
 
 }
 
-export  default Vehiclelist;
+export  default EmployeeDetails;
 

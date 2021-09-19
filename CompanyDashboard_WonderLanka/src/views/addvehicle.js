@@ -6,10 +6,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from 'react';
 
 import styles from'../assets/css/AddVehicle.module.css';
+
 import{
   Label,
   Input,
-  Button
+  Button,
+  Form, FormGroup,  FormFeedback, FormText
 }
 from 'reactstrap'
 
@@ -41,8 +43,10 @@ export default class Addvehicle extends Component {
          vid: '',
          date: new Date(),
          vnumber: '',
-         types: []
+         types: [],
+         
      }
+    
      
     }
 
@@ -74,9 +78,7 @@ export default class Addvehicle extends Component {
       }
     
       onChangeVid(e) {
-        this.setState({
-          vid: e.target.value
-        });
+        this.setState({ vid: e.target.value   });
       }
     
       onChangeDate(date) {
@@ -91,21 +93,25 @@ export default class Addvehicle extends Component {
         });
       }
     
+      
+
       onSubmit(e) {
         e.preventDefault();
+        
 
         const vehicle = {
             vtype: this.state.vtype,
             vname: this.state.vname,
             vid: this.state.vid,
             date: this.state.date,
-            vnumber: this.state.vnumber
+            vnumber: this.state.vnumber,
+           
           }
           console.log(vehicle);
 
           axios.post('http://localhost:8070/vehicles/add', vehicle)
       .then(res => console.log(res.data));
-      toast.success('Vehicle Added!', {
+      toast.success('Vehicle Type Added!', {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -118,15 +124,18 @@ export default class Addvehicle extends Component {
       }
 
     render() {
+     
         return (
-          <>
+         
+         <>
          <IndexHeader />
         <IndexNavbar />
 
           
           
         <div style = {{paddingTop : "50px"}} className = {styles.body}>
-            <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert New Vehicle Deatils</h3><br/><br/>
+           {/* <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert New Vehicle Deatils</h3><br/><br/> */}
+           <center><h1><b>Insert New Vehicle Deatils</b></h1><br/><br/></center>
             <div className = {styles.FormContainer}>
                
         
@@ -171,14 +180,20 @@ export default class Addvehicle extends Component {
         
 
         <div className="form-group">
-        
+        <FormGroup>
           <label > <font color ="black"><b> Vehicle ID: </b> </font> </label>
           <input 
+              pattern="[0-9]{3}"
               type="text" 
+              pattern="[0-9]{3}"
               className="form-control"
               value={this.state.vid}
               onChange={this.onChangeVid}
-              />
+               />
+              
+             {/* <FormFeedback valid>Good! that is available</FormFeedback> */}
+              <FormText>vehicle ID can entered three numbers</FormText>
+              </FormGroup>
         </div>
 
         
@@ -214,12 +229,12 @@ export default class Addvehicle extends Component {
 
          <br></br>
                 
-                <Button color = "success" type = "submit" style = {{float:'right' , margin : "5px" }}
+                <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}
                 onClick = {() =>{
                   ;
                 }}
                 >ADD Vehicle</Button>
-
+              
         
          </form>
          </div>
