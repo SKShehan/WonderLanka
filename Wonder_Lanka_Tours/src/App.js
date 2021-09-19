@@ -84,7 +84,9 @@ function App() {
         <Route path="/complaint/" exact>
           <AllComplaints user={user}></AllComplaints>
         </Route>
-        <Route path="/update-complaint" exact></Route>
+        <Route path="/update-complaint" exact>
+          <updateComplaint user={user}></updateComplaint>
+        </Route>
         <Redirect to="/index" />
       </Switch>
     </BrowserRouter>

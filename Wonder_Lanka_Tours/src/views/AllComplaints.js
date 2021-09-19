@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from 'react-toastify';
+import { useHistory } from "react-router-dom";
 
 // core components
 import {
@@ -21,24 +22,35 @@ function AllComplaints () {
           setComplaints(res.data);
           console.log(res);
         }).catch((err) => {
+          alert("Something went wrong :(");
           alert(err.message);
-        })
-      }
-      getComplaints();
-    },[])
-
-    const updateComplaint = (id) => {
-      axios.put("http://localhost:8070/complaint/updateComplaint", {
-
         });
-    };
+      };
+      getComplaints();
+    },[]);
+
+    let history = useHistory();
 
     
-    function complaintDelete(id)  {
-      axios.delete(`http://localhost:8070/deleteComplaint/${id}`).then((res) =>{
+    const complaintDelete = (complaint) => {
+      
+      if (
+        window.confirm(
+          "Complaint " +
+            complaint.tourID +
+            " (" +
+            complaint.name +
+            " " +
+            complaint.email +
+            ") " +
+            "will be removed from the database"
+        )
+      )
+
+      axios.delete(`http://localhost:8070/ComplaintRoute/deleteComplaint/${complaint.tourID}`)
+      .then((res) =>{
           console.log(res);
-          
-          toast.error('Complaint Deleted!', {
+          toast.success("Complaint Deleted!", {
               position: "bottom-right",
               autoClose: 5000,
               hideProgressBar: false,
@@ -51,7 +63,12 @@ function AllComplaints () {
       }).catch((err) =>{
           console.log(err);
           alert(err);
-      })
+          toast.error("Something went wrong :(", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 10000,
+            hideProgressBar: false,
+          });
+      });
     }
   
     var number = 1;
@@ -83,7 +100,7 @@ function AllComplaints () {
                     <td>{complaint.complaint}</td>
                     <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "60px" , marginBottom : "8px"}}
                           onClick = {()=>{
-                            <a href="/updateComplaints.js">Link</a>
+                            history.push(`/update-complaint/${complaint._id}`);
                           }}
                           >Edit</Button>
     
@@ -100,72 +117,6 @@ function AllComplaints () {
               </div>
               ))}    
         </div> 
-      
-        /*<div className="container">
-          <IndexNavbar />
-          <IndexHeader />
-          <h3>Complaint History</h3>
-          <Input placeholder="Search " type="text" 
-            onChange = {(e) =>{
-              setSearchVal(e.target.value);
-          }}/>
-          <div style = {{marginLeft:"20px"}}  className = "tableContainer">
-            <table className = "table table-striped">
-              <thead>
-                  <th scope = "col">#</th>
-                  <th scope = "col">Name</th>
-                  <th scope = "col">Email</th>
-                  <th scope = "col">Contact</th>
-                  <th scope = "col">Reason</th>
-                  <th scope = "col">Complaint</th>
-    
-              </thead>
-    
-              <tbody>
-                  
-                  {complaints.filter((val) =>{
-                    
-                    if(searchVal === ''){
-                      return val;
-                    }
-                    else if (val.tourId.toLowerCase().includes(searchVal.toLowerCase())){
-                      return val;
-                    }
-                  
-                  })complaint.map((complaint) =>(
-                      
-                      <tr>
-                        <th scope = "row">{number++}</th>
-                        <td>{complaints.tourId}</td>
-                        <td>{complaints.customerID}</td>
-                        <td>{complaints.date}</td>
-                        <td>{complaints.customercomplaint}</td>
-    
-    
-                        <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
-                          onClick = {()=>{
-                              //push(`/edit-complaint/${complaint._id}`);
-                              
-                          }}
-                          >Edit</Button>
-    
-                          <Button color="danger" style = {{padding: "5px 5px 5px 5px", width : "80px"}}
-                          onClick = {() =>{
-                              
-                              complaintDelete(complaint);
-                          }}
-                        
-                          >Remove</Button>
-                        </td>
-    
-                      </tr>
-    
-                  ))}
-              </tbody>    
-            </table>
-            <DemoFooter />
-          </div>
-        </div>*/
       )
                       
   }

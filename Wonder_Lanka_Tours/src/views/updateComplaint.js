@@ -13,6 +13,7 @@ import {
   Input,
   Button
 } from "reactstrap";
+import { useParams } from "react-router";
 
 toast.configure(); 
 
@@ -34,11 +35,29 @@ function updateComplaint() {
   const [select, setSelect] = useState("");
   const [complaint, setComplaint] = useState("");
 
+  const {id} = useParams();
+
+  useEffect(()=>{
+    axios.get(`http://localhost:8070/ComplaintRoute/getComplaint/${id}`)
+    .then(()=>{
+      console.log(res.data);
+      setName(res.data.name);
+      setEmail(res.data.email);
+      setContact(res.data.contact);
+      setSelect(res.data.select);
+      setComplaint(res.data.complaint);
+
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }, []);
+
   function sendNewData(e){
     e.preventDefault();
     alert("Inserting New Data");
 
-    const newComplaint = {
+    const updateComplaint = {
+      tourID,
       name,
       email,
       contact,
@@ -48,16 +67,29 @@ function updateComplaint() {
 
     console.log(newComplaint);
 
-    axios.post("http://localhost:8070/complaint/addComplaint", newComplaint).then(()=>{
-      alert("New Complaint Added")
-      setnName("");
-      setnEmail("");
-      setnContact("");
-      setnSelect("");
-      setnComplaint("");
+    axios.post(`http://localhost:8070/ComplaintRoute/updateComplaint/${id}`, updateComplaint).then(()=>{
+      toast.success('Complaint Edited!', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
 
     }).catch((err)=>{
       alert(err);
+      console.log(err);
+      toast.error('Something has gone wrong!', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
     })
 
   }
