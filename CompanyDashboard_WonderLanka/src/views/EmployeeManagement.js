@@ -43,14 +43,7 @@ function EmployeeManagement() {
 
                   
 
-                    <button
-                                        
-                    className={styles.btn_empmng}
-                  
-                    type="button"
-                    >
-                 Employees Report
-                    </button>
+                 
                     </div>
                 
      
