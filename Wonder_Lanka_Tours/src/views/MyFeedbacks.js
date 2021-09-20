@@ -5,6 +5,12 @@ import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 // core components
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import IndexHeader from "components/Headers/IndexHeader.js";
+import DemoFooter from "components/Footers/DemoFooter.js";
+import { AllFeedbacks } from "./AllFeedbacks";
+
+// core components
 import {
   FormGroup,
   Label,
@@ -53,6 +59,8 @@ function MyFeedbacks() {
 
   return (
     <>
+    <IndexNavbar />
+      <IndexHeader />
     <div className="container">
     
       <form onSubmit={sendData}>
@@ -94,7 +102,9 @@ function MyFeedbacks() {
           Submit
         </Button>
       </form>
+      <AllFeedbacks/>
     </div>
+    <DemoFooter /> 
     </>
   )
 }

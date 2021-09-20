@@ -44,6 +44,7 @@ import { MyComplaints } from "./MyComplaints";
 import { AllComplaints } from "./AllComplaints";
 import { MyFeedbacks } from "./MyFeedbacks";
 import { AllFeedbacks } from "./AllFeedbacks";
+import { ContactUS } from "./ContactUs";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -72,12 +73,13 @@ function Index() {
         <SectionExamples />
    <SectionDownload /> */}
 
-        <MyFeedbacks/>
-        <AllFeedbacks/>
+        {/*<MyFeedbacks/>
+        <AllFeedbacks/>*/}
 
-          {/*<MyComplaints/>
-          <AllComplaints/>*/}
-        
+        {/*<MyComplaints/>
+        <AllComplaints/>*/}
+
+
         <DemoFooter /> 
         
       </div>

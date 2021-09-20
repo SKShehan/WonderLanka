@@ -115,8 +115,13 @@ function IndexNavbar() {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink data-placement="bottom" href="" title="Feedback">
+              <NavLink data-placement="bottom" href="/my-feedback" title="Feedback">
                 Feedback
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink data-placement="bottom" href="/my-complaint" title="Complaint">
+                complaint
               </NavLink>
             </NavItem>
             <NavItem>
@@ -126,6 +131,15 @@ function IndexNavbar() {
                 title="User Profile"
               >
                 User Profile
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                data-placement="bottom"
+                href="/contact-us"
+                title="Contact Us"
+              >
+                Contact Us
               </NavLink>
             </NavItem>
             <NavItem>

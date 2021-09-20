@@ -20,6 +20,7 @@ import { MyComplaints } from "views/MyComplaints";
 import { AllComplaints } from "views/AllComplaints";
 import { MyFeedbacks } from "views/MyFeedbacks";
 import { AllFeedbacks } from "views/AllFeedbacks";
+import { ContactUS } from "views/ContactUs";
 
 function App() {
   const [user, setuser] = useState({
@@ -98,6 +99,10 @@ function App() {
         </Route>
         <Route path="/feedback/" exact>
           <AllFeedbacks user={user}></AllFeedbacks>
+        </Route>
+
+        <Route path="/contact-us" exact>
+          <ContactUS user={user}></ContactUS>
         </Route>
 
 
