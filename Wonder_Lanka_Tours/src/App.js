@@ -18,6 +18,7 @@ import Dashboard from "views/Dashboard";
 import BookingReport from "views/BookingReport";
 import { MyComplaints } from "views/MyComplaints";
 import { AllComplaints } from "views/AllComplaints";
+import Itineraries from "views/Itineraries";
 
 function App() {
   const [user, setuser] = useState({
@@ -86,6 +87,9 @@ function App() {
         </Route>
         <Route path="/update-complaint" exact>
           <updateComplaint user={user}></updateComplaint>
+        </Route>
+        <Route path = "/view-itineraries" exact>
+          <Itineraries />
         </Route>
         <Redirect to="/index" />
       </Switch>
