@@ -39,7 +39,7 @@ import DriverDetails from "views/DriverDetails";
 import DriverManagement from "views/DriverManagement";
 import ItineraryManagement from "views/ItineraryManagement";
 import  AssignD from "views/AssignDriver";
-import AssignDriver from "views/AssignDriverBooking";
+import AssignDriver from "views/AssignDriverBookings";
 
 import Addvehicle from "views/addvehicle";
 import Editvehicle from "views/editvehicle";
