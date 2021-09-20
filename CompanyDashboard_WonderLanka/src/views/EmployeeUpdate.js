@@ -37,6 +37,7 @@ export default class EmployeeUpdate extends Component {
   componentDidMount() {
     axios.get('http://localhost:8070/employees/'+this.props.match.params.id)
       .then(response => {
+        console.log(response.data);
         this.setState({
           empname:response.data.empname,
           emppwd: response.data.emppwd,
@@ -101,11 +102,7 @@ export default class EmployeeUpdate extends Component {
   render() {
     return (
 
-        <div
-        
-      
-        
-        >
+        <div>
           <IndexHeader />
             <IndexNavbar />
             <div style = {{paddingTop :"50px"}} className ={styles.body}>   
@@ -149,7 +146,7 @@ export default class EmployeeUpdate extends Component {
 
         <div>
           <label>Employee Role: </label>
-          <select
+              <select>
               type="select" 
               className="form-control"
               value={this.state.emprole}
@@ -157,7 +154,11 @@ export default class EmployeeUpdate extends Component {
               >
                <option>General Manager</option> 
                <option>Assets Manager</option>
-              </select>
+
+             
+
+           </select>     
+
         </div>
 
        

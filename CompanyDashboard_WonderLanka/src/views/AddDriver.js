@@ -57,12 +57,7 @@ export default function AddDriver() {
     <IndexNavbar />
       <div style = {{paddingTop :"50px"}} className ={styles.body}>
       <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert Driver Details</h3><br/><br/>
-      <div className = {styles.FormContainer}>
-      
-        
-         
-            
-             
+      <div className = {styles.FormContainer}>    
                 
                 
                 <form onSubmit={sendData} >
