@@ -49,6 +49,7 @@ import AddInsurence from "views/AddInsurence";
 import EditInsurenceForm from "views/EditInsurenceForm";
 import Editinsurence from "views/Editinsurence";
 import DeleteInsurence from "views/DeleteInsurence";
+import InsuranceReport from "views/InsuranceReport";
 
 function App() {
   return (
@@ -176,6 +177,10 @@ function App() {
 
         <Route path="/edit-form-insurence/:id" exact>
           <EditInsurenceForm />
+        </Route>
+
+        <Route path="/report-insurance" exact>
+          <InsuranceReport />
         </Route>
 
         <Route //Setting path for hotels

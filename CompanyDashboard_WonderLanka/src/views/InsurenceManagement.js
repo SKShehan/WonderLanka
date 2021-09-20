@@ -21,7 +21,7 @@ function InsurenceManagement(){
     }
 
     function handleClickReport() {
-        history.push("/report-insurence");
+        history.push("/report-insurance");
     }
 
 
@@ -32,17 +32,17 @@ function InsurenceManagement(){
         <IndexNavbar />
         
             <div style = {{paddingTop : "50px"}} className = {styles.body}>
-            <h3 className = {styles.header}><center>Insurence Management</center></h3><br/><br/>
+            <h3 className = {styles.header}><center>Insurance Management</center></h3><br/><br/>
 
             <div style = {{paddingTop : "50px"}} className = {styles.btn_group}>
             
-                <button className = {styles.btn_insurencemng} onClick = {handleClickAdd} >Add Insurence Planes</button>
+                <button className = {styles.btn_insurencemng} onClick = {handleClickAdd} >Add Insurance Planes</button>
             
         
-                <button className = {styles.btn_insurencemng} onClick = {handleClickEdit} >Edit Insurence Planes</button>
+                <button className = {styles.btn_insurencemng} onClick = {handleClickEdit} >Edit Insurance Planes</button>
              
     
-                <button className = {styles.btn_insurencemng} onClick = {handleClickDelete}>Delete Insurence Plans</button>
+                <button className = {styles.btn_insurencemng} onClick = {handleClickDelete}>Delete Insurance Plans</button>
         
             
                 <button className = {styles.btn_insurencemng} onClick = {handleClickReport}>Genarate Report</button>

@@ -38,7 +38,7 @@ function EditInsurenceForm(){
 
         console.log(res.data);
         setInsurenceId(res.data.InsurenceID);
-        setInsurenceName(res.data.InsurenceName);s
+        setInsurenceName(res.data.InsurenceName);
         setInsurencePrice(res.data.InsurencePrice); 
         setInsurenceCoverage(res.data.InsurenceCoverage);
         setInsurenceAccidentType(res.set.InsurenceAccidentType);    
@@ -94,23 +94,24 @@ function EditInsurenceForm(){
         <div>
             <IndexHeader />
             <IndexNavbar />
-            <br/><br/><h3 style = {{textAlign : 'center'}}>Edit Insurence Plan Details</h3><br/><br/>
+            <div style = {{paddingTop : "50px"}} className = {styles.body}>
+            <br/><br/><h3 style = {{textAlign : 'center'}}>Edit Insurance Plan Details</h3><br/><br/>
             <div className = {styles.FormContainer}>
             <form onSubmit = {onSubmit}>
 
-                <Label for = "InsurenceID">Insurence Plan ID</Label><br/>
+                <Label for = "InsurenceID">Insurance Plan ID</Label><br/>
                 <Input type = 'text' name = "InsurenceID" placeholder = "Enter The New ID" value = {InsurenceID}
                 onChange = {(e) =>{
                     setInsurenceId(e.target.value);
                 }}></Input><br/>
 
-                <Label for = "InsurenceName">Insurence Plan Name</Label><br/>
+                <Label for = "InsurenceName">Insurance Plan Name</Label><br/>
                 <Input type = 'text' name = "InsurenceName" placeholder = "Enter The New Package Name" value = {InsurenceName}
                 onChange = {(e)=>{
                     setInsurenceName(e.target.value);
                 }}></Input><br/>
 
-                <Label for = "InsurencePrice">Insurence Plan Price</Label><br/>
+                <Label for = "InsurencePrice">Insurance Plan Price</Label><br/>
                 <Input type = 'text' name = "InsurencePrice" placeholder = "Enter The New Price" value = {InsurencePrice} 
                 onChange = {(e)=>{
                     setInsurencePrice(e.target.value);
@@ -128,7 +129,7 @@ function EditInsurenceForm(){
                     setInsurenceAccidentType(e.target.value);
                 }}></Input><br/>
 
-                <Label for = "InsurenceDetails">Email</Label><br/>
+                <Label for = "InsurenceDetails">Insurance Description</Label><br/>
                 <Input type = "text" name = "InsurenceDetails" placeholder = "Enter The New Description" value = {InsurenceDetails}
                 onChange = {(e) =>{
                     setInsurenceDetails(e.target.value);
@@ -142,6 +143,7 @@ function EditInsurenceForm(){
                 >Edit Plan</Button>
 
             </form>    
+            </div>
             </div>
             <DemoFooter />
         </div>   

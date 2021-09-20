@@ -80,7 +80,7 @@ function DeleteInsurence() {
       <IndexHeader />
 
       
-      <h3 style={{ marginLeft: "40px" }}>Insurence Plan Details</h3>
+      <h3 style={{ marginLeft: "40px" }}>Insurance Plan Details</h3>
       <h5 style ={{marginLeft:"40px"}}>Search or Select the Plans Below to Delete</h5>
       <br/>
       <br />
@@ -117,12 +117,12 @@ function DeleteInsurence() {
         <table className="table table-striped">
           <thead>
             <th scope="col">#</th>
-            <th scope="col">Insurence Plan ID</th>
-            <th scope="col">Insurence Plan Name</th>
-            <th scope="col">Insurence PLan Price</th>
-            <th scope="col">Insurence Plan Coverage</th>
-            <th scope="col">Insurence Plan Accident types</th>
-            <th scope="col">Insurence PLan Description</th>
+            <th scope="col">Insurance Plan ID</th>
+            <th scope="col">Insurance Plan Name</th>
+            <th scope="col">Insurance PLan Price</th>
+            <th scope="col">Insurance Plan Coverage</th>
+            <th scope="col">Insurance Plan Accident types</th>
+            <th scope="col">Insurance PLan Description</th>
             <th scope="col">Action</th>
           </thead>
 

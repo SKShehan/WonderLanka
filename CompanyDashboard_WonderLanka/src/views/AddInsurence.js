@@ -54,23 +54,23 @@ axios.post("http://localhost:8070/insurences/add-package" , newInsurence ).then(
         <IndexHeader />
         <IndexNavbar />
         <div style = {{paddingTop : "50px"}} className = {styles.body}>
-            <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert Insurence Plan Details</h3><br/><br/>
+            <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert Insurance Plan Details</h3><br/><br/>
             <div className = {styles.FormContainer}>
             <form onSubmit = {sendData}>
 
-                <Label for = "InsurenceID">Insurence Plan ID</Label><br/>
+                <Label for = "InsurenceID">Insurance Plan ID</Label><br/>
                 <Input type = 'text' name = "InsurenceID" placeholder = "Enter Plan ID" 
                 onChange = {(e) => {
                     setInsurenceId(e.target.value);
                 }}></Input><br/>
 
-                <Label for = "InsurenceName">Insurence Plan Name</Label><br/>
+                <Label for = "InsurenceName">Insurance Plan Name</Label><br/>
                 <Input type = 'text' name = "InsurenceName" placeholder = "Enter Plan Name"
                 onChange = {(e) =>{
                     setInsurenceName(e.target.value);
                 }}></Input><br/>
 
-                <Label for = "InsurencePrice">Insurence Plan Price</Label><br/>
+                <Label for = "InsurencePrice">Insurance Plan Price</Label><br/>
                 <Input type = 'text' name = "InsurencePrice" placeholder = "Enter The Price"
                 onChange = {(e)=>{
                     setInsurencePrice(e.target.value);
@@ -89,7 +89,7 @@ axios.post("http://localhost:8070/insurences/add-package" , newInsurence ).then(
                 }}></Input><br/>
 
 
-                <Label for = "InsurenceDetails">Insurence Plan Description</Label><br/>
+                <Label for = "InsurenceDetails">Insurance Plan Description</Label><br/>
                 <Input type = "text" name = "InsurenceDetails" 
                 onChange = {(e)=>{
                     setInsurenceDetails(e.target.value);

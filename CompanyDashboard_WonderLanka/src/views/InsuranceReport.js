@@ -22,18 +22,17 @@ import {
   } from "reactstrap";
 
 toast.configure();
-function Editinsurence(){
+function InsuranceReport(){
     
     let history = useHistory();
 
     const [planes , setinsurencePlans] = useState([]);
-    const [message , setMessage] = useState("");
     const [searchVal , setSearchVal] = useState("");
 
 
 
     useEffect(() => {
-        axios.get('http://localhost:8070/insurences/').then((res) =>{
+        axios.get('http://localhost:8070/insurences/report').then((res) =>{
           setinsurencePlans(res.data);
             console.log(res.data);
         }).catch((err) =>{
@@ -50,8 +49,8 @@ function Editinsurence(){
         <div>
             <IndexNavbar />
             <IndexHeader />
-            <h3 style ={{marginLeft:"40px"}}>Insurance Plan Details</h3>
-            <h5 style ={{marginLeft:"40px"}}>Search or Select the Plans Below to Edit</h5><br/><br/>
+            <h3 style ={{marginLeft:"40px"}}>Insurance Plan Report</h3>
+            <h5 style ={{marginLeft:"40px"}}>Search by the Customer or Insurance Packages</h5><br/><br/>
 
             <Row>
           <Col>
@@ -80,13 +79,11 @@ function Editinsurence(){
                 <table className = "table table-striped">
                     <thead>
                         <th scope = "col">#</th>
-                        <th scope = "col">Insurance Plan ID</th>
+                        <th scope = "col">Customer Name</th>
                         <th scope = "col">Insurance Plan Name</th>
-                        <th scope = "col">Insurance PLan Price</th>
-                        <th scope = "col">Insurance Plan Coverage</th>
-                        <th scope = "col">Insurance Plan Accident types</th>
-                        <th scope = "col">Insurance PLan Description</th>
-                        <th scope = "col">Action</th>
+                        <th scope = "col">No Of Adultes</th>
+                        <th scope = "col">No of Kids(Under 18) </th>
+                        <th scope = "col">No of Kids(Under 8)</th>
 
                     </thead>
 
@@ -97,32 +94,22 @@ function Editinsurence(){
                           if(searchVal === ''){
                             return val;
                           }
-                          else if (val.InsurenceID.toLowerCase().includes(searchVal.toLowerCase())){
+                          else if (val.fullName.toLowerCase().includes(searchVal.toLowerCase())){
                             return val;
                           }
-                          else if (val.InsurenceName.toLowerCase().includes(searchVal.toLowerCase())){
+                          else if (val.insurance.toLowerCase().includes(searchVal.toLowerCase())){
                             return val;
                           }
                         
-                        }).map((Insurence) =>(
+                        }).map((Booking) =>(
                             
                             <tr>
                                 <th scope = "row">{number++}</th>
-                                <td>{Insurence.InsurenceID}</td>
-                                <td>{Insurence.InsurenceName}</td>
-                                <td>{Insurence.InsurencePrice}</td>
-                                <td>{Insurence.InsurenceCoverage}</td>
-                                <td>{Insurence.InsurenceAccidentType}</td>
-                                <td>{Insurence.InsurenceDetails}</td>
-                               
-
-                                <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
-                                onClick = {()=>{
-                                    history.push(`/edit-form-insurence/${Insurence._id}`);
-                                }}
-                                >Edit</Button>
-
-                               </td>
+                                <td>{Booking.fullName}</td>
+                                <td>{Booking.insurance}</td>
+                                <td>{Booking.noOfAdults}</td>
+                                <td>{Booking.noOfKids18}</td>
+                                <td>{Booking.noOfKids8}</td>
                             </tr>
     
                         ))}
@@ -131,7 +118,6 @@ function Editinsurence(){
 
                 </table>
             </div>   
-            <span style = {{textAlign:"left" , color : "red"}}>{message}</span> <br/><br/>
             <DemoFooter />
         </div>    
     );
@@ -139,5 +125,5 @@ function Editinsurence(){
 
 }
 
-export  default Editinsurence;
+export  default InsuranceReport;
 
