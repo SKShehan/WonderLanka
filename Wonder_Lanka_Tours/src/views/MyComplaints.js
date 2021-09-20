@@ -4,6 +4,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import validator from 'validator';
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
@@ -33,6 +34,17 @@ function MyComplaints() {
   }, []);
 
   const {handleSubmit, register} = useForm();
+  const [emailError, setEmailError] = useState('');
+
+  const validateEmail = (e) => {
+    var email = e.target.value;
+  
+    if (validator.isEmail(email)) {
+      setEmailError('Valid Email');
+    } else {
+      setEmailError('Enter valid Email!');
+    }
+  }
 
   //adding state
   const [name, setName] = useState("");
@@ -84,9 +96,13 @@ function MyComplaints() {
       <FormGroup>
         <Label for="Email">Email address</Label>
         <Input type="text" name="email" id="idEmail" placeholder="name@gmail.com" onChange={(e)=>{
+          validateEmail(e);
           setEmail(e.target.value);
-        }}/>
-        
+        }}></Input>
+        <span style={{
+          fontWeight: 'bold',
+          color: 'red',
+        }}>{emailError}</span>
       </FormGroup>
       <FormGroup>
         <Label for="contact">Contact No</Label>
@@ -108,7 +124,7 @@ function MyComplaints() {
         </Input>
       </FormGroup>
       <FormGroup>
-        <Label for="exampleText">Any other custom complaint</Label>
+        <Label for="exampleText">Custom complaints</Label>
         <Input type="text" name="complaint" id="idText" onChange={(e)=>{
           setComplaint(e.target.value);
         }}/>

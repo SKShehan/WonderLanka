@@ -4,12 +4,12 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import validator from 'validator';
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
-
 
 // core components
 import {
@@ -30,6 +30,19 @@ function ContactUS () {
       document.body.classList.remove("index");
     };
   }, []);
+
+
+  const [emailError, setEmailError] = useState('');
+
+  const validateEmail = (e) => {
+    var email = e.target.value;
+  
+    if (validator.isEmail(email)) {
+      setEmailError('Valid Email');
+    } else {
+      setEmailError('Enter valid Email!');
+    }
+  }
 
   //adding state
   const [fname, setfName] = useState("");
@@ -84,9 +97,13 @@ function ContactUS () {
       <FormGroup>
         <Label for="Email">Email address</Label>
         <Input type="text" name="email" id="idEmail" placeholder="name@gmail.com" onChange={(e)=>{
+          validateEmail(e);
           setEmail(e.target.value);
-        }}/>
-        
+        }}></Input>
+        <span style={{
+          fontWeight: 'bold',
+          color: 'red',
+        }}>{emailError}</span>
       </FormGroup>
       <FormGroup>
         <Label for="contact">Contact No</Label>
