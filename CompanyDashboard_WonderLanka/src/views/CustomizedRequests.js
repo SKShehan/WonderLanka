@@ -4,7 +4,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 
-
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
+import DemoFooter from 'components/Footers/DemoFooter';
 
 
 
@@ -23,7 +25,9 @@ function CustomizedRequests(){
     })
     var number = 1;
     return(
-        
+        <>
+        <IndexHeader />
+        <IndexNavbar />
         <div>
             <h3>Customized Itinerary Requests</h3><br/><br/>
             <div className = "tableContainer">
@@ -57,6 +61,8 @@ function CustomizedRequests(){
                 </table>
             </div>    
         </div>    
+        <DemoFooter />
+        </>
     );
 
 
