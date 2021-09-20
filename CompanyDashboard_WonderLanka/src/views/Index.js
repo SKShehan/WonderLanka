@@ -75,6 +75,8 @@ import AssignGuide from "./AssignGuideBookings";
 import Assign from "./AssignGuide"
 import EmployeeManagement from "./EmployeeManagement";
 import AddEmployee from "./AddEmployee";
+import AssignDriver from "./AssignDriver";
+import AssignDriverBooking from "./AssignDriverBooking"
 
 
 
@@ -117,8 +119,9 @@ function Index() {
         <DriverManagement/>
      
       <BookingManagement />
-      <Homepage/>*/}
-      <EmployeeManagement/>
+      <Homepage/>
+      <EmployeeManagement/>*/}
+      <AssignDriverBooking/>
 
         
      
