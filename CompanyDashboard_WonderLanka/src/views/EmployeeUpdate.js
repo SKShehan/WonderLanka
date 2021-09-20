@@ -150,11 +150,14 @@ export default class EmployeeUpdate extends Component {
         <div>
           <label>Employee Role: </label>
           <input 
-              type="text" 
+              type="select" 
               className="form-control"
               value={this.state.emprole}
               onChange={this.onChangeEmployeeRole}
-              />
+              >
+               <option>General Manager</option> 
+               <option>Assets Manager</option>
+           </input>     
         </div>
 
        

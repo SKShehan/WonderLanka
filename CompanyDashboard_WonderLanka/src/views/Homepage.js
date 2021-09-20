@@ -38,6 +38,10 @@ function Homepage(){
      history.push("/hotel-management");
     }
 
+    function handleClickEmployee(){
+      history.push("/employee-management");
+    }
+
 
     return(
         
@@ -84,6 +88,8 @@ function Homepage(){
                   </td>
                 </tr>  
               </table>
+
+              <button className = {styles.btn_guidemng} onClick = {handleClickEmployee}>Employee Management</button>
             </div>
         </div>
         

@@ -50,7 +50,7 @@ import VehicleDashboard from "views/vehicleDashboard";
 import EmployeeUpdate from "views/EmployeeUpdate";
 import EmployeeDetails from "views/EmployeeDetails";
 import AddEmployee from "views/AddEmployee";
-
+import EmployeeManagement from "views/EmployeeManagement";
 function App() {
 
   return (
@@ -207,8 +207,11 @@ function App() {
           component={EmployeeUpdate} />
 
 
-<Route path ="/View-Employee" component={EmployeeDetails}/>
-<Route path ="/Add-Employee" component={AddEmployee}/>
+        <Route path ="/View-Employee" component={EmployeeDetails}/>
+        <Route path ="/Add-Employee" component={AddEmployee}/>
+        <Route path = "/employee-management" exact> 
+          <EmployeeManagement />
+        </Route>
 
 
 
