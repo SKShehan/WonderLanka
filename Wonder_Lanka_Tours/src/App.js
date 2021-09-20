@@ -21,6 +21,7 @@ import { AllComplaints } from "views/AllComplaints";
 import { MyFeedbacks } from "views/MyFeedbacks";
 import { AllFeedbacks } from "views/AllFeedbacks";
 import { ContactUS } from "views/ContactUs";
+import Itineraries from "views/Itineraries";
 
 function App() {
   const [user, setuser] = useState({
@@ -34,7 +35,7 @@ function App() {
     dob: "1969-04-01",
   });
   return (
-    
+
     <BrowserRouter>
       <Switch>
         <Route path="/index" render={(props) => <Index {...props} />} />
@@ -105,7 +106,9 @@ function App() {
           <ContactUS user={user}></ContactUS>
         </Route>
 
-
+        <Route path = "/view-itineraries" exact>
+          <Itineraries />
+        </Route>
         <Redirect to="/index" />
       </Switch>
     </BrowserRouter>

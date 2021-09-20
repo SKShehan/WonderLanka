@@ -38,6 +38,7 @@ import AddDriver from "views/AddDriver";
 import DriverDetails from "views/DriverDetails";
 import DriverManagement from "views/DriverManagement";
 import ItineraryManagement from "views/ItineraryManagement";
+import  AssignD from "views/AssignDriver";
 
 import Addvehicle from "views/addvehicle";
 import Editvehicle from "views/editvehicle";
@@ -47,7 +48,9 @@ import AssignVehicle from "views/assignvehicle";
 import ReportVehicle from "views/reportvehicle";
 import VehicleDashboard from "views/vehicleDashboard";
 import EmployeeUpdate from "views/EmployeeUpdate";
-
+import EmployeeDetails from "views/EmployeeDetails";
+import AddEmployee from "views/AddEmployee";
+import EmployeeManagement from "views/EmployeeManagement";
 function App() {
 
   return (
@@ -122,6 +125,10 @@ function App() {
           component={AddDriver}/>
         <Route path ="/View-Driver" exact  
           component={DriverDetails}/>
+
+          <Route path="/assign-driver/:username" exact>
+            < AssignD/>
+            </Route>
 
         {/*Setting Management Function paths */}
 
@@ -198,6 +205,14 @@ function App() {
 
         <Route path="/edit-employee/:id" exact 
           component={EmployeeUpdate} />
+
+
+        <Route path ="/View-Employee" component={EmployeeDetails}/>
+        <Route path ="/Add-Employee" component={AddEmployee}/>
+        <Route path = "/employee-management" exact> 
+          <EmployeeManagement />
+        </Route>
+
 
 
         <Redirect to="/index" />
