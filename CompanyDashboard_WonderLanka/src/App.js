@@ -39,6 +39,7 @@ import DriverDetails from "views/DriverDetails";
 import DriverManagement from "views/DriverManagement";
 import ItineraryManagement from "views/ItineraryManagement";
 import  AssignD from "views/AssignDriver";
+import AssignDriver from "views/AssignDriverBooking";
 
 import Addvehicle from "views/addvehicle";
 import Editvehicle from "views/editvehicle";
@@ -182,6 +183,7 @@ function App() {
         <Route path="/edit-driver/:id" component={DriverUpdate} />
         <Route path ="/Add-Driver" component={AddDriver}/>
         <Route path ="/View-Driver" component={DriverDetails}/>
+        <Route path="/Assign-Driver" component={AssignDriver}/>
       
 
 

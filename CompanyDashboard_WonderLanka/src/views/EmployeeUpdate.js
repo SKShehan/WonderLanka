@@ -149,7 +149,7 @@ export default class EmployeeUpdate extends Component {
 
         <div>
           <label>Employee Role: </label>
-          <input 
+          <select
               type="select" 
               className="form-control"
               value={this.state.emprole}
@@ -157,7 +157,7 @@ export default class EmployeeUpdate extends Component {
               >
                <option>General Manager</option> 
                <option>Assets Manager</option>
-           </input>     
+              </select>
         </div>
 
        
