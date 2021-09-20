@@ -71,8 +71,13 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
    <SectionDownload /> */}
+
         <MyFeedbacks/>
         <AllFeedbacks/>
+
+          {/*<MyComplaints/>
+          <AllComplaints/>*/}
+        
         <DemoFooter /> 
         
       </div>

@@ -41,6 +41,8 @@ function AllFeedbacks () {
                 <tbody>
                   <div>
                     <th scope = "row">{number++}</th>
+                    <th scope = "col"> Name </th>
+                    <td>{feedback.name}</td>
                     <th scope = "col"> Satisfactory </th>
                     <td>{feedback.stat}</td>
                     <th scope = "col"> Feedback </th>

@@ -24,7 +24,10 @@ function MyFeedbacks() {
     };
   }, []);
 
+  const {handleSubmit, register} = useForm();
+
   //adding state
+  const [name, setName] = useState("");
   const [stat, setStat] = useState("");
   const [feedback, setFeedback] = useState("");
 
@@ -32,13 +35,15 @@ function MyFeedbacks() {
     e.preventDefault();
 
     const newFeedback = {
+      name,
       stat,
       feedback
     }
 
     console.log(newFeedback);
-    axios.post("http://localhost:8070/", newFeedback).then(()=>{
+    axios.post("http://localhost:8070/feedback/addFeedback", newFeedback).then(()=>{
       alert("Feedback Added");
+      setName("");
       setStat("");
       setFeedback("");
     }).catch((err)=>{
@@ -57,24 +62,31 @@ function MyFeedbacks() {
           <p style={{textAlign:"center"}}>Please complete the following form and help us improve our customer experience</p>
         </FormGroup>
         <FormGroup>
+        <Label for="name">Name</Label>
+          <Input type="text" name="name" id="name" placeholder="A.D Kure" onChange={(e)=>{
+            setName(e.target.value);
+          }}/>  
+        </FormGroup>
+        <FormGroup>
         <div id="satisfactor" >
-          <input type="radio" value="vsatis" name="VerySatisfied" onChange={(e)=>{
+          
+          Very Satisfied <input type="text" value="" placeholder="Yes" name="VerySatisfied" onChange={(e)=>{
             setStat(e.target.value);
-          }}/> Very Satisfied
-          <input type="radio" value="satis" name="Satisfied" onChange={(e)=>{
+          }}/> 
+          Satisfied <input type="text" value="" name="Satisfied" onChange={(e)=>{
             setStat(e.target.value);
-          }}/> Satisfied
-          <input type="radio" value="neu" name="Neutral" onChange={(e)=>{
+          }}/> 
+          Neutral <input type="text" value="" name="Neutral" onChange={(e)=>{
             setStat(e.target.value);
-          }}/> Neutral
-          <input type="radio" value="unsatis" name="Unsatisfied" onChange={(e)=>{
+          }}/> 
+          Unsatisfied <input type="text" value="" name="Unsatisfied" onChange={(e)=>{
             setStat(e.target.value);
-          }}/> Unsatisfied
+          }}/> 
         </div>
         </FormGroup>
         <FormGroup>
         <Label for="feedback">Give us your feedback here</Label>
-          <Input type="feedback" name="feedback" id="feedbackContent" placeholder="type here" onChange={(e)=>{
+          <Input type="text" name="feedback" id="feedbackContent" placeholder="type here" onChange={(e)=>{
             setFeedback(e.target.value);
           }}/>  
         </FormGroup>
