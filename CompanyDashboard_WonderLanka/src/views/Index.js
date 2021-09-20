@@ -73,6 +73,8 @@ import EmployeeUpdate from "./EmployeeUpdate";
 import AssignGuide from "./AssignGuideBookings";
 
 import Assign from "./AssignGuide"
+import EmployeeManagement from "./EmployeeManagement";
+import AddEmployee from "./AddEmployee";
 
 
 
@@ -113,16 +115,17 @@ function Index() {
         <AddDriver/>
         <DriverDetails/>
         <DriverManagement/>
-     */}
+     
       <BookingManagement />
+      <Homepage/>*/}
+      <EmployeeManagement/>
 
         
-
+     
         
         
          
- 
- <GuideManagement />
+
  
 
  

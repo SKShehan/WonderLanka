@@ -47,6 +47,8 @@ import AssignVehicle from "views/assignvehicle";
 import ReportVehicle from "views/reportvehicle";
 import VehicleDashboard from "views/vehicleDashboard";
 import EmployeeUpdate from "views/EmployeeUpdate";
+import EmployeeDetails from "views/EmployeeDetails";
+import AddEmployee from "views/AddEmployee";
 
 function App() {
 
@@ -198,6 +200,11 @@ function App() {
 
         <Route path="/edit-employee/:id" exact 
           component={EmployeeUpdate} />
+
+
+<Route path ="/View-Employee" component={EmployeeDetails}/>
+<Route path ="/Add-Employee" component={AddEmployee}/>
+
 
 
         <Redirect to="/index" />
