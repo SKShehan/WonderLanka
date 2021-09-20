@@ -1,9 +1,9 @@
-.btn_vehiclesty{
+.btn_empmng{
     
     cursor: pointer;
     border-radius: 30px;
     background-color: #00ccff;
-    color: black;
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
     padding: 15px;
     margin-left: 50px;
@@ -11,8 +11,8 @@
 
 }
 
-.btn_vehicleback:hover{
-    background-color: #fbfcfa;
+.btn_empmng:hover{
+    background-color: #008fb3;
 
 }
 
@@ -26,15 +26,15 @@
 .body{
 
     width: 100%;
-    height: 100vh;
-    background-image: url('../img/vehicle/6.jpg') ;
+    height: 90vh;
+    background-image: url('../img/driver.jpg') ;
     background-size: 100% 100%;
     
 }
 
 .header{
-    font-size: 100px;
-    color: rgb(250, 253, 251);
+    font-size: 40px;
+    color: white;
     font-weight: 500;
 }
 

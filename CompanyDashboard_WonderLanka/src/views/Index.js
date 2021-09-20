@@ -67,6 +67,18 @@ import Homepage from "./Homepage";
 import VehicleDashboard from "./vehicleDashboard";
 import Editvehicle from "./editvehicle";
 import AssignVehicle from "./assignvehicle";
+import EmployeeDetails from "./EmployeeDetails";
+import EmployeeUpdate from "./EmployeeUpdate";
+
+import AssignGuide from "./AssignGuideBookings";
+
+import Assign from "./AssignGuide"
+import EmployeeManagement from "./EmployeeManagement";
+import AddEmployee from "./AddEmployee";
+import AssignDriver from "./AssignDriver";
+import AssignDriverBooking from "./AssignDriverBooking"
+
+
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -98,23 +110,24 @@ function Index() {
         <GuideManagement /> 
         
         <Home/>
-
         <SectionDownload /> 
         <GuideManagement />
-
         <AddDriver/>
         <DriverDetails/>
         <DriverManagement/>
-     */}
-      
+     
+      <BookingManagement />
+      */}
+     <Homepage />
 
         
-
+     
         
         
          
+
  
- <Homepage/>
+
  
        
         <DemoFooter />

@@ -22,7 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 
-function BookTour({ user }) {
+function ChangePassword({ user }) {
   const [currentpwd, setcurrentpwd] = useState("");
   const [newpass, setnewpass] = useState("");
   const [renewpass, setrenewpass] = useState("");
@@ -192,4 +192,4 @@ function BookTour({ user }) {
   );
 }
 
-export default BookTour;
+export default ChangePassword;

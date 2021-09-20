@@ -3,12 +3,17 @@ import axios from 'axios';
 import { useState , useEffect } from 'react';
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
+import { Toast } from 'reactstrap';
+import "react-toastify/dist/ReactToastify.css";
 import{
     Label,
     Input,
     Button
 }
 from 'reactstrap'
+import { toast } from 'react-toastify';
+
+toast.configure();
 
 function AddItinerary(){
 
@@ -48,8 +53,18 @@ function AddItinerary(){
 
 
         axios.post("http://localhost:8070/itineraries/add" , formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(()=>{
-            alert("Itinerary Addded");
-            window.location.reload();
+            
+            
+            toast.success('Itinerary Added!', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+                e.target.reset();
         }).catch((err) =>{
             console.log(formData);
             console.log(err);
@@ -65,28 +80,28 @@ function AddItinerary(){
             <form  onSubmit = {sendData} encType = "multipart/form-data">
 
                 <Label for = "ItineraryID">Itinerary ID</Label><br/>
-                <Input type = 'text' name = "ItineraryID" placeholder = "Enter Itinerary ID"
+                <Input type = 'text' name = "ItineraryID" placeholder = "Enter Itinerary ID" required
                 onChange = {(e) =>{
                     setitineraryId(e.target.value);
                 }}
                 ></Input><br/>
 
                 <Label for = "ItineraryName">Itinerary Name</Label><br/>
-                <Input type = 'text' name = "ItineraryName" placeholder = "Enter Itinerary Name"
+                <Input type = 'text' name = "ItineraryName" placeholder = "Enter Itinerary Name" required
                 onChange = {(e) =>{
                     setitineraryName(e.target.value);
                 }}
                 ></Input><br/>
 
                 <Label for = "ItineraryDays">Itinerary Days</Label><br/>
-                <Input type = 'number' name = "ItineraryDays" placeholder = "Enter Duration of the Itinerary"
+                <Input type = 'number' name = "ItineraryDays" placeholder = "Enter Duration of the Itinerary" required
                 onChange = {(e)=>{
                     setitineraryDays(e.target.value);
                 }}
                 ></Input><br/>
 
                 <Label for = "ItineraryDescription">Itinerary Description</Label><br/>
-                <Input type = "text" name = "ItineraryDescription" placeholder = "Enter Itinerary Description"
+                <Input type = "text" name = "ItineraryDescription" placeholder = "Enter Itinerary Description" required
                 onChange = {(e) =>{
                     setitineraryDesc(e.target.value);
                 }}
@@ -114,14 +129,14 @@ function AddItinerary(){
                 </Input>
 
                 <Label for = "ItineraryPriceA">Itinerary Price for Adults</Label><br/>
-                <Input type = "number" name = "ItineraryPriceA" placeholder = "Enter Itinerary Price for Adults" 
+                <Input type = "number" name = "ItineraryPriceA" placeholder = "Enter Itinerary Price for Adults"  required
                 onChange = {(e) =>{
                     setitineraryPriceAdult(e.target.value);
                 }}
                 />
 
                 <Label for = "ItineraryPriceC">Itinerary Price for Children</Label><br/>
-                <Input type = "number" name = "ItineraryPriceC" placeholder = "Enter Itinerary Price for Children"
+                <Input type = "number" name = "ItineraryPriceC" placeholder = "Enter Itinerary Price for Children" required
                 onChange = {(e) =>{
                     setitineraryPriceChild(e.target.value);
                 }}

@@ -137,7 +137,8 @@ export default class Editvehicle extends Component {
       <div>
             <IndexHeader />
             <IndexNavbar />
-            <br/><br/><h3 style = {{textAlign : 'center'}}><b>Edit Vehicle Details</b></h3><br/><br/>
+            {/* <br/><br/><h2 style = {{textAlign : 'center'}}><b>Edit Vehicle Details</b></h2><br/><br/> */}
+            <br/><center><h1><b>Edit Vehicle Details</b></h1><br/><br/></center>
             <div className = {styles.FormContainer}>
       <br></br>
       
@@ -214,7 +215,7 @@ export default class Editvehicle extends Component {
 
          <br></br>
 
-         <Button color = "success" type = "submit" style = {{float:'right' , margin : "5px" }}
+         <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}
                 onClick = {() =>{
                    ;
                 }}
