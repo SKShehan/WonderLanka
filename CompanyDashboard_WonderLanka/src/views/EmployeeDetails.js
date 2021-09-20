@@ -110,7 +110,7 @@ function EmployeeDetails(){
                 <table width ="90%" border ="2px"className = {driverStyles.tbldata}>
                     <tr>
                        
-                        <th className={driverStyles.tbldata}>Employee Name</th>
+                        <th className={driverStyles.tbldata}>Employee User Name</th>
                         <th className={driverStyles.tbldata}>Employee Password</th>
                         <th className={driverStyles.tbldata}>Employee Role</th>
                         <th className={driverStyles.tbldata}>Actions</th>
