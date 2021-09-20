@@ -15,7 +15,7 @@ function Homepage(){
     }
 
     function handleClickBooking() {
-        history.push("/assign-guides");
+        history.push("/booking-management");
     }
 
     function handleClickComp() {

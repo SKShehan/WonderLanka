@@ -1,6 +1,6 @@
 
 import React,{Component} from "react";
-import styles from '../assets/css/AddBookingCancellation.module.css'
+import editbook from '../assets/css/EditBooking.module.css'
 import axios from 'axios';
 // reactstrap components
 
@@ -133,7 +133,7 @@ class Editbookings extends Component {
 
       <div>
           <br/><br/><h3 style = {{textAlign : 'center'}}>Edit Tour Booking Details</h3><br/><br/>
-          <div className = {styles.FormContainer}>
+          <div className = {editbook.FormContainer}>
           <form >
 
               <Label for = "exampleEmail">Tour ID</Label><br/>

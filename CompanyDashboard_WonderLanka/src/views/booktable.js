@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios' ;
 import guideStyles from "../assets/css/Viewbooking.module.css";
-
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
+import DemoFooter from 'components/Footers/DemoFooter';
 import { post } from 'jquery';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
@@ -71,22 +73,19 @@ handleSearchArea =(e) =>{
 
   render() {
     return (
-      <div
-      style={{
-        backgroundColor: 'white',
-        width: '100%',
-        height: '100%',
-      }}
-    >
-      
       <div>
-        <br/>
+       <IndexHeader/>
+       <IndexNavbar/>
+      
+     
+      <div>
+     
         <br/>
         <br/>
         <center>
         <p className="paragraph">Booking Details</p>
         </center>
-        <div style={{position:'absolute' ,left:'83%' ,width:'14%'}}>
+        <div style={{position:'absolute' ,left:'85%' ,width:'14%'}}>
         <div className="row">
         <div className="col-lg-12 mt-2 mb-2 ">
           <input 
@@ -101,8 +100,7 @@ handleSearchArea =(e) =>{
         <br/>
         <br/>
         <br/>
-        <br/>
-        <br/>
+        
         <table width="100%" border="2px" className={guideStyles.tbldata}>
          <tr>
            
@@ -174,6 +172,13 @@ handleSearchArea =(e) =>{
         
         </table>
       </div>
+      
+      <br/>
+      <br/>
+      <br/>
+      
+      
+      <DemoFooter/>
       </div>
     )
 

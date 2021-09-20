@@ -106,7 +106,7 @@ function Index() {
         <DriverDetails/>
         <DriverManagement/>
      */}
-      <BookingManagement />
+      
 
         
 
