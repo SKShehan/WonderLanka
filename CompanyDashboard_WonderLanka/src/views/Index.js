@@ -73,6 +73,10 @@ import EmployeeUpdate from "./EmployeeUpdate";
 import AssignGuide from "./AssignGuideBookings";
 
 import Assign from "./AssignGuide"
+import EmployeeManagement from "./EmployeeManagement";
+import AddEmployee from "./AddEmployee";
+
+
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -111,16 +115,17 @@ function Index() {
         <AddDriver/>
         <DriverDetails/>
         <DriverManagement/>
-     */}
+     
       <BookingManagement />
+      <Homepage/>*/}
+      <EmployeeManagement/>
 
         
-
+     
         
         
          
- 
- <GuideManagement />
+
  
 
  

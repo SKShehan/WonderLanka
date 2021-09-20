@@ -18,9 +18,6 @@ import { thisExpression } from '@babel/types';
 
 toast.configure();
 
-
-
-
 function EditGuide(){
 
     const [guideID , setGuideId] = useState("");
@@ -45,7 +42,6 @@ function EditGuide(){
         setTelno(res.data.telNo);
         setLicenseId(res.data.licenseID);
         setForeignLang(res.data.foreignLang);
-
 
         }).catch((err)=>{
         console.log(err);

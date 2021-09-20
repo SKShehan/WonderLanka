@@ -16,6 +16,8 @@ import ChangePassword from "views/ChangePassword";
 import Unregister from "views/Unregister";
 import Dashboard from "views/Dashboard";
 import BookingReport from "views/BookingReport";
+import { MyComplaints } from "views/MyComplaints";
+import { AllComplaints } from "views/AllComplaints";
 
 function App() {
   const [user, setuser] = useState({
@@ -29,6 +31,7 @@ function App() {
     dob: "1969-04-01",
   });
   return (
+    
     <BrowserRouter>
       <Switch>
         <Route path="/index" render={(props) => <Index {...props} />} />
@@ -74,6 +77,15 @@ function App() {
         </Route>
         <Route path="/booking-report" exact>
           <BookingReport user={user}></BookingReport>
+        </Route>
+        <Route path="/my-complaint" exact>
+          <MyComplaints user={user}></MyComplaints>
+        </Route>
+        <Route path="/complaint/" exact>
+          <AllComplaints user={user}></AllComplaints>
+        </Route>
+        <Route path="/update-complaint" exact>
+          <updateComplaint user={user}></updateComplaint>
         </Route>
         <Redirect to="/index" />
       </Switch>

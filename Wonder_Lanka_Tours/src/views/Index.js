@@ -40,6 +40,8 @@ import SectionLogin from "views/index-sections/SectionLogin.js";
 import SectionExamples from "views/index-sections/SectionExamples.js";
 import SectionDownload from "views/index-sections/SectionDownload.js";
 import Itineraries from "./Itineraries";
+import { MyComplaints } from "./MyComplaints";
+import { AllComplaints } from "./AllComplaints";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -67,7 +69,8 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
    <SectionDownload /> */}
-        <Itineraries/>
+        <MyComplaints />
+        <AllComplaints />
         <DemoFooter /> 
         
       </div>
