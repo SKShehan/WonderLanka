@@ -16,7 +16,7 @@ function GuideManagement(){
     }
 
     function handleClickAssign() {
-        history.push("/assign-guides");
+        history.push("/assign-guide-booking");
     }
 
     function handleClickReport() {

@@ -4,7 +4,11 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { useParams } from "react-router";
 
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import IndexHeader from "components/Headers/IndexHeader.js";
+import DemoFooter from "components/Footers/DemoFooter.js";
 
 // core components
 import {
@@ -13,7 +17,7 @@ import {
   Input,
   Button
 } from "reactstrap";
-import { useParams } from "react-router";
+
 
 toast.configure(); 
 
@@ -39,7 +43,7 @@ function updateComplaint() {
 
   useEffect(()=>{
     axios.get(`http://localhost:8070/ComplaintRoute/getComplaint/${id}`)
-    .then(()=>{
+    .then((res)=>{
       console.log(res.data);
       setName(res.data.name);
       setEmail(res.data.email);
@@ -77,6 +81,7 @@ function updateComplaint() {
         draggable: true,
         progress: undefined,
         });
+        e.target.reset();
 
     }).catch((err)=>{
       alert(err);
@@ -91,11 +96,12 @@ function updateComplaint() {
         progress: undefined,
         });
     })
-
   }
 
   return(
     <>
+    <IndexNavbar />
+      <IndexHeader />
     <div className="container">
       <h3 style = {{marginLeft:"440px"}}>My Complaint</h3>
     <form onSubmit={sendNewData}>
@@ -141,6 +147,7 @@ function updateComplaint() {
       Submit
     </Button>
     </form>
+    <DemoFooter /> 
     </div>
   </>
   )

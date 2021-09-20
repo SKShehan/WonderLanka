@@ -96,7 +96,7 @@ axios.post("http://localhost:8070/guides/add" , newGuide ).then(()=>{
                 }}></Input><br/>
 
                 <Label for = "TelNo">Telephone number</Label><br/>
-                <Input type = "tel" name = "TelNo" placeholder = "Enter Telephone Number" pattern = "[0-9]{10}" title = "Enter a 10 digit phone number starting with 0"  required
+                <Input type = "text" name = "TelNo" placeholder = "Enter Telephone Number" pattern = "[0-9]{10}" title = "Enter a 10 digit phone number starting with 0"  required
                 onChange = {(e)=>{
                         setTelno(e.target.value);
                 }}></Input><br/>

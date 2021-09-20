@@ -52,6 +52,7 @@ import EmployeeUpdate from "views/EmployeeUpdate";
 import EmployeeDetails from "views/EmployeeDetails";
 import AddEmployee from "views/AddEmployee";
 import EmployeeManagement from "views/EmployeeManagement";
+import Homepage from "views/Homepage";
 function App() {
 
   return (
@@ -76,6 +77,12 @@ function App() {
           render={(props) => <RegisterPage {...props} />}
         />
 
+        <Route 
+          path = "/Homepage"
+          exact 
+        >
+          <Homepage />
+        </Route>  
         
         <Route //Setting path for Add Itinerary view
           path="/add-itinerary"
@@ -116,6 +123,10 @@ function App() {
         </Route>
         <Route path = "/assign-guide/:username" exact>
           <Assign />
+        </Route>  
+
+        <Route path = "/assign-guide-booking" exact>
+          <AssignGuide />
         </Route>  
 
         
@@ -205,8 +216,9 @@ function App() {
         </Route>
 
 
-        <Route path="/edit-employee/:id" exact 
-          component={EmployeeUpdate} />
+        <Route path="/edit-employee/:id" component = {EmployeeUpdate} />
+        
+          
 
 
         <Route path ="/View-Employee" component={EmployeeDetails}/>

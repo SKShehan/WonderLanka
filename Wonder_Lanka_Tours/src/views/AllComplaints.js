@@ -13,7 +13,6 @@ import {
 
 function AllComplaints () {
     const [complaints, setComplaints] = useState([]);
-    
     const [searchVal , setSearchVal] = useState("");
   
     useEffect(() => {

@@ -69,7 +69,7 @@ function IndexNavbar() {
         <div className="navbar-translate">
           <NavbarBrand
             data-placement="bottom"
-            href="/index"
+            href="/Homepage"
             target="_blank"
             title="Coded by Creative Tim"
           >
@@ -141,14 +141,14 @@ function IndexNavbar() {
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href=""
+                href="/vehicle-management"
                 title="Vehicle Management"
               >
                 Vehicles
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink data-placement="bottom" href="" title="Hotel Management">
+              <NavLink data-placement="bottom" href="/hotel-management" title="Hotel Management">
                 Hotels
               </NavLink>
             </NavItem>
