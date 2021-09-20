@@ -18,6 +18,8 @@ import Dashboard from "views/Dashboard";
 import BookingReport from "views/BookingReport";
 import { MyComplaints } from "views/MyComplaints";
 import { AllComplaints } from "views/AllComplaints";
+import { MyFeedbacks } from "views/MyFeedbacks";
+import { AllFeedbacks } from "views/AllFeedbacks";
 
 function App() {
   const [user, setuser] = useState({
@@ -78,6 +80,8 @@ function App() {
         <Route path="/booking-report" exact>
           <BookingReport user={user}></BookingReport>
         </Route>
+
+
         <Route path="/my-complaint" exact>
           <MyComplaints user={user}></MyComplaints>
         </Route>
@@ -87,6 +91,16 @@ function App() {
         <Route path="/update-complaint" exact>
           <updateComplaint user={user}></updateComplaint>
         </Route>
+
+
+        <Route path="/my-feedback" exact>
+          <MyFeedbacks user={user}></MyFeedbacks>
+        </Route>
+        <Route path="/feedback/" exact>
+          <AllFeedbacks user={user}></AllFeedbacks>
+        </Route>
+
+
         <Redirect to="/index" />
       </Switch>
     </BrowserRouter>
