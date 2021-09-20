@@ -89,7 +89,7 @@ function App() {
         <Route path="/complaint/" exact>
           <AllComplaints user={user}></AllComplaints>
         </Route>
-        <Route path="/update-complaint" exact>
+        <Route path="/update-complaint/:id" exact>
           <updateComplaint user={user}></updateComplaint>
         </Route>
 
