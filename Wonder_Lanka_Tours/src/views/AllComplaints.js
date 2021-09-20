@@ -116,8 +116,7 @@ function AllComplaints () {
               </div>
               ))}    
         </div> 
-      )
-                      
+      )                 
   }
   
   export {
