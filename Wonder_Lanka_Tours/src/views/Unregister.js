@@ -23,7 +23,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 
-function BookTour({ user }) {
+function Unregister({ user }) {
   const [reason, setreason] = useState("");
   const [password, setpassword] = useState("");
   const [other, setother] = useState(false);
@@ -284,4 +284,4 @@ function BookTour({ user }) {
   );
 }
 
-export default BookTour;
+export default Unregister;

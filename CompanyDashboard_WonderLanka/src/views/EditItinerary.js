@@ -91,6 +91,7 @@ function EditItinerary(){
                 draggable: true,
                 progress: undefined,
                 });
+                e.target.reset();
                 
         }).catch((err) =>{
             console.log(formData);

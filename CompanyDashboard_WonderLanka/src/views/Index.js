@@ -70,6 +70,12 @@ import AssignVehicle from "./assignvehicle";
 import EmployeeDetails from "./EmployeeDetails";
 import EmployeeUpdate from "./EmployeeUpdate";
 
+import AssignGuide from "./AssignGuideBookings";
+
+import Assign from "./AssignGuide"
+
+
+
 function Index() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -116,7 +122,7 @@ function Index() {
         
          
  
- <Homepage/>
+ <GuideManagement />
  
 
  
