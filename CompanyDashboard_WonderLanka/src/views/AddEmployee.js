@@ -66,12 +66,16 @@ export default function AddEmployee() {
                              }} />
                          
         
-                          <label for = "emprole"><h5>Employee Role</h5></label>
-                          
                             
-                            <Input placeholder="Select the Role" type="text" onChange={(e)=>{
-                            setRole(e.target.value);
-                             }} />
+                            <Label for = "EmployeeRole">Select Employee Role</Label><br/>
+                            <Input type = "select" name = "EmployeeRole"
+                            onChange = {(e) =>{
+                              setRole(e.target.value);
+                            }}
+                            >
+                                <option>General Manager</option>
+                                <option>Assets Manager</option>
+                            </Input>
                          
         
                          

@@ -117,8 +117,8 @@ function Index() {
         <DriverManagement/>
      
       <BookingManagement />
-      <Homepage/>*/}
-      <EmployeeManagement/>
+      */}
+     <Homepage />
 
         
      
