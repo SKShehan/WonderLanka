@@ -110,18 +110,15 @@ function Index() {
         <GuideManagement /> 
         
         <Home/>
-
         <SectionDownload /> 
         <GuideManagement />
-
         <AddDriver/>
         <DriverDetails/>
         <DriverManagement/>
      
       <BookingManagement />
-      <Homepage/>
-      <EmployeeManagement/>*/}
-      <AssignDriverBooking/>
+      */}
+     <Homepage />
 
         
      
