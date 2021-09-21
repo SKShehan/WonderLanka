@@ -76,21 +76,10 @@ function MyFeedbacks() {
           }}/>  
         </FormGroup>
         <FormGroup>
-        <div id="satisfactor" >
-          
-          Very Satisfied <input type="text" value="" placeholder="Yes" name="VerySatisfied" onChange={(e)=>{
+        <Label for="feedback">How much satisfied?</Label>
+        <Input type="text" name="satisfactory" id="stat" placeholder="Very Satisfied/ Satisfied/ Neutral/ Unsatisfied" onChange={(e)=>{
             setStat(e.target.value);
           }}/> 
-          Satisfied <input type="text" value="" name="Satisfied" onChange={(e)=>{
-            setStat(e.target.value);
-          }}/> 
-          Neutral <input type="text" value="" name="Neutral" onChange={(e)=>{
-            setStat(e.target.value);
-          }}/> 
-          Unsatisfied <input type="text" value="" name="Unsatisfied" onChange={(e)=>{
-            setStat(e.target.value);
-          }}/> 
-        </div>
         </FormGroup>
         <FormGroup>
         <Label for="feedback">Give us your feedback here</Label>
