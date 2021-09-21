@@ -36,7 +36,6 @@ function AllComplaints () {
       if (
         window.confirm(
           "Complaint " +
-            complaint.tourID +
             " (" +
             complaint.name +
             " " +
@@ -46,7 +45,7 @@ function AllComplaints () {
         )
       )
 
-      axios.delete(`http://localhost:8070/ComplaintRoute/deleteComplaint/${complaint.tourID}`)
+      axios.delete(`http://localhost:8070/complaint/deleteComplaint/${complaint.name}`)
       .then((res) =>{
           console.log(res);
           toast.success("Complaint Deleted!", {
@@ -120,7 +119,7 @@ function AllComplaints () {
     
                           <Button color="danger" style = {{padding: "5px 5px 5px 5px", width : "70px", marginBottom : "8px"}}
                           onClick = {() =>
-                                complaintDelete(complaint._id)
+                                complaintDelete(complaint)
                           }
                         
                           >Remove</Button>
