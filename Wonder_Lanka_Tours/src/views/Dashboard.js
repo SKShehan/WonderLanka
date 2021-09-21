@@ -34,10 +34,14 @@ function Dashboard() {
     });
   };
   const clickTourItineraries = () => {
-    alert("Kohe yannada hutto");
+    history.push({
+      pathname: "view-itineraries",
+    })
   };
   const clickComplaintFeedaback = () => {
-    alert("Yo");
+    history.push({
+      pathname: "/my-complaint",
+    })
   };
 
   useEffect(() => {

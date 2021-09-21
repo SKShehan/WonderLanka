@@ -16,10 +16,16 @@ import ChangePassword from "views/ChangePassword";
 import Unregister from "views/Unregister";
 import Dashboard from "views/Dashboard";
 import BookingReport from "views/BookingReport";
+import { MyComplaints } from "views/MyComplaints";
+import { AllComplaints } from "views/AllComplaints";
+import { MyFeedbacks } from "views/MyFeedbacks";
+import { AllFeedbacks } from "views/AllFeedbacks";
+import { ContactUS } from "views/ContactUs";
+import Itineraries from "views/Itineraries";
 
 function App() {
   const [user, setuser] = useState({
-    username: "johncena",
+    username: "james",
     password: "pass123",
     fullName: "James Anderson",
     country: "United Kingdom",
@@ -29,6 +35,7 @@ function App() {
     dob: "1969-04-01",
   });
   return (
+
     <BrowserRouter>
       <Switch>
         <Route path="/index" render={(props) => <Index {...props} />} />
@@ -74,6 +81,33 @@ function App() {
         </Route>
         <Route path="/booking-report" exact>
           <BookingReport user={user}></BookingReport>
+        </Route>
+
+
+        <Route path="/my-complaint" exact>
+          <MyComplaints user={user}></MyComplaints>
+        </Route>
+        <Route path="/complaint/" exact>
+          <AllComplaints user={user}></AllComplaints>
+        </Route>
+        <Route path="/update-complaint/:id" exact>
+          <updateComplaint user={user}></updateComplaint>
+        </Route>
+
+
+        <Route path="/my-feedback" exact>
+          <MyFeedbacks user={user}></MyFeedbacks>
+        </Route>
+        <Route path="/feedback/" exact>
+          <AllFeedbacks user={user}></AllFeedbacks>
+        </Route>
+
+        <Route path="/contact-us" exact>
+          <ContactUS user={user}></ContactUS>
+        </Route>
+
+        <Route path = "/view-itineraries" exact>
+          <Itineraries />
         </Route>
         <Redirect to="/index" />
       </Switch>

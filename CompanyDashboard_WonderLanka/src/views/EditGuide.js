@@ -18,9 +18,6 @@ import { thisExpression } from '@babel/types';
 
 toast.configure();
 
-
-
-
 function EditGuide(){
 
     const [guideID , setGuideId] = useState("");
@@ -46,7 +43,6 @@ function EditGuide(){
         setLicenseId(res.data.licenseID);
         setForeignLang(res.data.foreignLang);
 
-
         }).catch((err)=>{
         console.log(err);
         })
@@ -66,7 +62,7 @@ function EditGuide(){
         }
         axios.put(`http://localhost:8070/guides/update/${id}` , updateGuide ).then(() =>{
             
-            toast.success('Guide Edited!', {
+            toast.success('Guide Updated!', {
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -75,6 +71,7 @@ function EditGuide(){
                 draggable: true,
                 progress: undefined,
                 });
+                e.target.reset();
                 
 
         }).catch((err) =>{
@@ -118,19 +115,19 @@ function EditGuide(){
                 }}></Input><br/>
 
                 <Label for = "Email">Email</Label><br/>
-                <Input type = "email" name = "Email" value = {email}
+                <Input type = "email" name = "Email" value = {email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title = "Enter a valid email"
                 onChange = {(e) =>{
                     setEmail(e.target.value);
                 }}></Input><br/>
 
                 <Label for = "TelNo">Telephone number</Label><br/>
-                <Input type = "number" name = "TelNo" value = {telNo}
+                <Input type = "number" name = "TelNo" value = {telNo} pattern = "[0-9]{10}" title = "Enter a 10 digit phone number starting with 0"
                 onChange = {(e)=>{
                     setTelno(e.target.value);
                 }}></Input><br/>
 
                 <Label for = "GuideLicense">Guide License ID</Label><br/>
-                <Input type = "text" name = "GuideLicense" value = {licenseID}
+                <Input type = "text" name = "GuideLicense" value = {licenseID} pattern="[A-Za-z]{3}-[0-9]{3}" title = "Enter a valid Guide License ID, EX : GTR-123" 
                 onChange = {(e) =>{
                     setLicenseId(e.target.value);
                 }}/><br/>
@@ -141,11 +138,9 @@ function EditGuide(){
                     setForeignLang(e.target.value);
                 }}/> <br/>
 
-                <span style = {{textAlign:"left" , color : "red"}}>{message}</span>
+                
                 <Button type = "submit" color = "warning" style = {{float:'right' , margin : "5px" }} 
-                onClick = {() =>{
-                    setMessage("Guide Updated!");
-                }}
+
                 >Edit Guide</Button>
 
             </form>    

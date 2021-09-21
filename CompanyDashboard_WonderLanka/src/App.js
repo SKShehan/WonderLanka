@@ -13,12 +13,16 @@ import RegisterPage from "views/examples/RegisterPage.js";
 import AddItinerary from "views/AddItinerary";
 import ViewItineraries from "views/viewItineraries";
 import EditItinerary from "views/EditItinerary";
+import CustomizedRequests from "views/CustomizedRequests";
+import ItinerarySend from "views/ItinerarySend";
 
 import EditGuide from "views/EditGuide";
 import AddGuide from "views/AddGuide";
 import ViewGuides from "views/ViewGuides";
 import GuideManagement from "views/GuideManagement";
 import BookingManagement from "views/BookingManagement";
+import Assign from "views/AssignGuide";
+import AssignGuide from "views/AssignGuideBookings";
 
 import AddHotel from "views/AddHotel";
 import HotelDetails from "views/HotelDetails";
@@ -34,6 +38,8 @@ import AddDriver from "views/AddDriver";
 import DriverDetails from "views/DriverDetails";
 import DriverManagement from "views/DriverManagement";
 import ItineraryManagement from "views/ItineraryManagement";
+import  AssignD from "views/AssignDriver";
+import AssignDriver from "views/AssignDriverBookings";
 
 import Addvehicle from "views/addvehicle";
 import Editvehicle from "views/editvehicle";
@@ -50,6 +56,10 @@ import EditInsurenceForm from "views/EditInsurenceForm";
 import Editinsurence from "views/Editinsurence";
 import DeleteInsurence from "views/DeleteInsurence";
 import InsuranceReport from "views/InsuranceReport";
+import EmployeeDetails from "views/EmployeeDetails";
+import AddEmployee from "views/AddEmployee";
+import EmployeeManagement from "views/EmployeeManagement";
+import Homepage from "views/Homepage";
 
 function App() {
   return (
@@ -73,6 +83,13 @@ function App() {
           render={(props) => <RegisterPage {...props} />}
         />
 
+        <Route
+          path = "/Homepage"
+          exact
+        >
+          <Homepage />
+        </Route>
+
         <Route //Setting path for Add Itinerary view
           path="/add-itinerary"
           exact
@@ -87,6 +104,17 @@ function App() {
           <ViewItineraries />
         </Route>
 
+        <Route
+          path = "/sendItinerary/:username"
+          exact
+        >
+          <ItinerarySend />
+        </Route>
+
+        <Route path = "/CustomizedReq" exact>
+          <CustomizedRequests />
+        </Route>
+
         <Route path="/edit-itinerary/:id" exact>
           <EditItinerary />
         </Route>
@@ -99,10 +127,26 @@ function App() {
         <Route path="/view-guides" exact>
           <ViewGuides />
         </Route>
+        <Route path = "/assign-guide/:username" exact>
+          <Assign />
+        </Route>
 
-        <Route path="/edit-driver/:id" exact component={DriverUpdate} />
-        <Route path="/Add-Driver" exact component={AddDriver} />
-        <Route path="/View-Driver" exact component={DriverDetails} />
+        <Route path = "/assign-guide-booking" exact>
+          <AssignGuide />
+        </Route>
+
+
+
+        <Route path="/edit-driver/:id" exact
+          component={DriverUpdate} />
+        <Route path ="/Add-Driver" exact
+          component={AddDriver}/>
+        <Route path ="/View-Driver" exact
+          component={DriverDetails}/>
+
+          <Route path="/assign-driver/:username" exact>
+            < AssignD/>
+            </Route>
 
         {/*Setting Management Function paths */}
 
@@ -179,6 +223,12 @@ function App() {
           <EditInsurenceForm />
         </Route>
 
+        <Route path="/edit-driver/:id" component={DriverUpdate} />
+        <Route path ="/Add-Driver" component={AddDriver}/>
+        <Route path ="/View-Driver" component={DriverDetails}/>
+        <Route path="/Assign-Driver" component={AssignDriver}/>
+
+
         <Route path="/report-insurance" exact>
           <InsuranceReport />
         </Route>
@@ -200,7 +250,19 @@ function App() {
           <HotelDetails />
         </Route>
 
-        <Route path="/edit-employee/:id" exact component={EmployeeUpdate} />
+
+        <Route path="/edit-employee/:id" component = {EmployeeUpdate} />
+
+
+
+
+        <Route path ="/View-Employee" component={EmployeeDetails}/>
+        <Route path ="/Add-Employee" component={AddEmployee}/>
+        <Route path = "/employee-management" exact>
+          <EmployeeManagement />
+        </Route>
+
+
 
         <Redirect to="/index" />
       </Switch>

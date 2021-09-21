@@ -70,6 +70,16 @@ import AssignVehicle from "./assignvehicle";
 import EmployeeDetails from "./EmployeeDetails";
 import EmployeeUpdate from "./EmployeeUpdate";
 
+import AssignGuide from "./AssignGuideBookings";
+
+import Assign from "./AssignGuide"
+import EmployeeManagement from "./EmployeeManagement";
+import AddEmployee from "./AddEmployee";
+import AssignDriver from "./AssignDriver";
+import AssignDriverBooking from "./AssignDriverBookings"
+
+
+
 function Index() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -107,16 +117,25 @@ function Index() {
         <AddDriver/>
         <DriverDetails/>
         <DriverManagement/>
-     */}
+     
       <BookingManagement />
 
-        
+      <Homepage/>
+      <EmployeeManagement/>
+      <AssignDriverBooking/>*/}
+ 
+      <Homepage />
 
+     
+
+
+
+      
+     
         
         
          
- 
- <Homepage/>
+
  
 
  

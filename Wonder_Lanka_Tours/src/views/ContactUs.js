@@ -10,7 +10,6 @@ import validator from 'validator';
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
-import { AllComplaints } from "./AllComplaints";
 
 // core components
 import {
@@ -20,10 +19,9 @@ import {
   Button
 } from "reactstrap";
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-toast.configure(); 
-function MyComplaints() {
-  document.documentElement.classList.remove("nav-open");
+toast.configure();
+function ContactUS () {
+    document.documentElement.classList.remove("nav-open");
 
   React.useEffect(() => {
     document.body.classList.add("index");
@@ -33,7 +31,7 @@ function MyComplaints() {
     };
   }, []);
 
-  const {handleSubmit, register} = useForm();
+
   const [emailError, setEmailError] = useState('');
 
   const validateEmail = (e) => {
@@ -47,37 +45,36 @@ function MyComplaints() {
   }
 
   //adding state
-  const [name, setName] = useState("");
+  const [fname, setfName] = useState("");
+  const [lname, setlName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
-  const [select, setSelect] = useState("");
-  const [complaint, setComplaint] = useState("");
+  const [message, setMessage] = useState("");
 
   function sendData(e){
     e.preventDefault();
 
-    const newComplaint = {
-      name,
+    const newMessage = {
+      fname,
+      lname,
       email,
       contact,
-      select,
-      complaint
+      message
     }
 
-    console.log(newComplaint);
+    console.log(newMessage);
 
-    axios.post("http://localhost:8070/complaint/addComplaint", newComplaint).then(()=>{
-      alert("Complaint Added")
-      setName("");
+    axios.post("http://localhost:8070/contactus/addMessage", newMessage).then(()=>{
+      alert("Message Sent")
+      setfName("");
+      setlName("");
       setEmail("");
       setContact("");
-      setSelect("");
-      setComplaint("");
+      setMessage("");
 
     }).catch((err)=>{
       alert(err);
     })
-
   }
 
   return (
@@ -85,12 +82,16 @@ function MyComplaints() {
     <IndexNavbar />
       <IndexHeader />
       <div className="container">
-        <h3 style = {{marginLeft:"440px"}}>My Complaint</h3>
+        <h3 style = {{marginLeft:"440px"}}>Contact Us</h3>
       <form onSubmit={sendData}>
       <FormGroup>
-        <Label for="Name">Name</Label>
-        <Input type="text" name="name" id="idName" placeholder="A.D. Amarasekara" onChange={(e)=>{
-          setName(e.target.value);
+        <Label for="Name">First Name</Label>
+        <Input type="text" name="fname" id="idfName" placeholder="Amaya" onChange={(e)=>{
+          setfName(e.target.value);
+        }}/>
+        <Label for="Name">Last Name</Label>
+        <Input type="text" name="lname" id="idlName" placeholder="Amarasekara" onChange={(e)=>{
+          setlName(e.target.value);
         }}/>
       </FormGroup>
       <FormGroup>
@@ -111,36 +112,22 @@ function MyComplaints() {
         }}/>
       </FormGroup>
       <FormGroup>
-        <Label for="typeSelect">Type of complaint</Label>
-        <Input type="text" name="select" id="typeSelect" onChange={(e)=>{
-          setSelect(e.target.value);
-        }}>
-          <option>There's no free WI-FI in my room?</option>
-          <option>here's no free Hot water in my room?</option>
-          <option>The attitudes and behaviours of your staff are unacceptable</option>
-          <option>I cancelled my hotel room booking just before i was supposed to check in. Why can't i get my money back?</option>
-          <option>That's not what it says (or looks like) on your website.</option>
-          <option>There's problem with the vehicle we hired.</option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Label for="exampleText">Custom complaints</Label>
+        <Label for="message">Message</Label>
         <Input type="text" name="complaint" id="idText" onChange={(e)=>{
-          setComplaint(e.target.value);
+          setMessage(e.target.value);
         }}/>
       </FormGroup>
       <Button color="primary" type="submit">
-        Submit
+        Send
       </Button>
       </form>
-      <AllComplaints/>
       </div>
       <DemoFooter /> 
     </>
   )
+
 }
 
 export {
-  MyComplaints
+    ContactUS
 }
-

@@ -94,53 +94,57 @@ function IndexNavbar() {
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href="https://twitter.com/CreativeTim?ref=creativetim"
-                target="_blank"
-                title="Follow us on Twitter"
+                href="/user-dashboard"
+                title="Dashboard"
               >
-                <i className="fa fa-twitter" />
-                <p className="d-lg-none">Twitter</p>
+                Dashboard
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink data-placement="bottom" href="" title="Itineraries">
+                Itineraries
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href="https://www.facebook.com/CreativeTim?ref=creativetim"
-                target="_blank"
-                title="Like us on Facebook"
+                href="/my-tours"
+                title="My Tours"
               >
-                <i className="fa fa-facebook-square" />
-                <p className="d-lg-none">Facebook</p>
+                My Tours
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink data-placement="bottom" href="/my-feedback" title="Feedback">
+                Feedback
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink data-placement="bottom" href="/my-complaint" title="Complaint">
+                complaint
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
-                target="_blank"
-                title="Follow us on Instagram"
+                href="/user-profile"
+                title="User Profile"
               >
-                <i className="fa fa-instagram" />
-                <p className="d-lg-none">Instagram</p>
+                User Profile
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href="https://www.github.com/CreativeTimOfficial/paper-kit-react?ref=creativetim"
-                target="_blank"
-                title="Star on GitHub"
+                href="/contact-us"
+                title="Contact Us"
               >
-                <i className="fa fa-github" />
-                <p className="d-lg-none">GitHub</p>
+                Contact Us
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                href="https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-index-navbar"
-                target="_blank"
-              >
-                <i className="nc-icon nc-book-bookmark" /> Contact Us
+              <NavLink href="" target="_blank">
+                <i className="nc-icon nc-circle-10" /> Log Out
               </NavLink>
             </NavItem>
           </Nav>

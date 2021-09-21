@@ -1,185 +1,216 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
+import vehicleStyles from "../assets/css/ViewVehicleList.module.css";
+
+
+import{Button} from 'reactstrap'
+
+
+import{ useHistory } from "react-router-dom"
+import { useState } from 'react';
+import { useEffect } from 'react';
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
+import DemoFooter from 'components/Footers/DemoFooter';
 import axios from 'axios';
-
-import { Button } from 'reactstrap';
-import { Table } from 'reactstrap';
-
-import {
-  Label,
-  Input,
-  Row,
-  Col,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  FormGroup,
-  Alert,
-  Container,
-} from "reactstrap";
-
-import guideStyles from "../assets/css/ViewGuides.module.css";
-import IndexHeader from "components/Headers/IndexHeader";
-import IndexNavbar from "components/Navbars/IndexNavbar";
-import DemoFooter from "components/Footers/DemoFooter";
-
-import { useState, useEffect } from "react";
-
-import { useHistory } from "react-router-dom";
-
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import {
+    Label,
+    Input,
+    Row,
+    Col,
+    InputGroup,
+    InputGroupAddon,
+    InputGroupText,
+    FormGroup,
+    Alert,
+    Container,
+  } from "reactstrap";
 
 toast.configure();
+function Vehiclelist(){
+    
+    let history = useHistory();
 
+    const [vehicles , setVehicles] = useState([]);
+    const [message , setMessage] = useState("");
+    const [searchVal , setSearchVal] = useState("");
 
-
-const Vehicle = (props) => {
-  return (
   
-    
-        
-    <tr className={guideStyles.tbldata}>
-    <td className={guideStyles.tbldata}><b>{props.vehicle.vtype}</b></td>
-    <td className={guideStyles.tbldata}><b>{props.vehicle.vname}</b></td>
-    <td className={guideStyles.tbldata}><b>{props.vehicle.vid}</b></td>
-    <td className={guideStyles.tbldata}><b>{props.vehicle.date.substring(0,10)}</b></td>
-    <td className={guideStyles.tbldata}><b>{props.vehicle.vnumber}</b></td>
-    <td className={guideStyles.tbldata}>
-    
-    <Link to={"/edit-vehicle/"+props.vehicle._id}>  <Button color="primary" size="sm">EDIT</Button>{''} </Link>   
-             <a href="#" onClick={() => { props.deleteVehicle(props.vehicle._id) }}>   <Button color="danger" size="sm">DELETE</Button>{''}</a>
-       
-    </td>
-    </tr>
+
+
+
 
     
-  
-);
-}
 
-export default class Vehiclelist extends Component {
-  constructor(props) {
-    super(props);
+    useEffect(() => {
+        axios.get("http://localhost:8070/vehicles/").then((res) =>{
+            setVehicles(res.data);
+            console.log(res.data);
+        }).catch((err) =>{
+            console.log(err);
+        })
+    
+      }, []);
 
-    this.deleteVehicle = this.deleteVehicle.bind(this)
+    
 
-    this.state = {vehicles: []};
-  }
+    function onDelete(vehicle)  {
+        if (
+            window.confirm(
+              "Vehicle " + vehicle.vid + " will be removed from the database"
+            )
+        )
+        axios.delete(`http://localhost:8070/vehicles/${vehicle._id}`).then((res) =>{
+            console.log(res);
+            
+           // setMessage("Vehicle Deleted!");
+            toast.error('Vehicle Deleted!', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+            
+        }).catch((err) =>{
+            console.log(err);
+            alert("Error!");
+        })
+    }
+ 
 
-  componentDidMount() {
-    axios.get('http://localhost:8070/vehicles/')
-      .then(response => {
-        this.setState({ vehicles: response.data })
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }
-
-  deleteVehicle(id) {
-    axios.delete('http://localhost:8070/vehicles/'+id)
-      .then(response => { console.log(response.data)}
+    var number = 1;
+    
+    return(
         
-        
-      );
-      toast.success('Vehicle Deleted!', {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });
+        <div>
+            <IndexNavbar />
+            <IndexHeader />
+            
+            <center><h1>Company Vehicle Details</h1><br/><br/></center>
 
-    this.setState({
-      vehicles: this.state.vehicles.filter(el => el._id !== id)
-    })
-  }
-
-  vehicleList() {
-    return this.state.vehicles.map(currentvehicle => {
-      return <Vehicle vehicle={currentvehicle} deleteVehicle={this.deleteVehicle} key={currentvehicle._id}/>;
-    })
-  }
-
-  render() {
-    return (
-      <>
-
-      
-      
-        <IndexHeader />
-      <IndexNavbar />
-      <div className={guideStyles.viewGuideDiv} color="black">
-        <h3><b>Company Vehicle Details</b></h3>
-        <br />
-        <br />
-        <Row>
+            <Row>
           <Col>
             <FormGroup>
-              <InputGroup className="form-group-no-border">
+              <InputGroup style = {{marginLeft : "70px"}} className="form-group-no-border">
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText>
                     <i className="nc-icon nc-zoom-split" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input placeholder="Search " type="text" />
+                <Input placeholder="Search " type="text" 
+                    onChange = {(e) =>{
+                                setSearchVal(e.target.value);
+                    }}/>
               </InputGroup>
             </FormGroup>
           </Col>
           <Col>
             <div>
+              <Label style = {{marginLeft : "70px"}} check>
+                <Input type="checkbox"/>{" "} 
+                <label style ={{marginRight : "40px"}}>Vehicle ID</label>
+              </Label>
+
               <Label check>
-                <Input type="checkbox" />{" "}
-                <label className={guideStyles.checkBoxLabel}>Vehicle Type</label>
+                <Input type="checkbox"/>{" "}
+                <label style ={{marginRight : "40px"}}>Vehicle Type</label>
               </Label>
 
               <Label check>
                 <Input type="checkbox" />{" "}
-                <label className={guideStyles.checkBoxLabel}>Vehicle ID</label>
-              </Label>
-
-              <Label check>
-                <Input type="checkbox" />{" "}
-                <label className={guideStyles.checkBoxLabel}>Vehicle Number</label>
+                <label style ={{marginRight : "40px"}}>Vehicle Name</label>
               </Label>
             </div>
           </Col>
           <Col></Col>
         </Row>
 
-        <Table width="100%" border="2px" className={guideStyles.tbldata}>
-          <thead className="thead-light">
-            <tr>
-              <th className={guideStyles.tbldata}>Vehicle Type</th>
-              <th className={guideStyles.tbldata}>Vehicle Name</th>
-              <th className={guideStyles.tbldata}>Vehicle ID</th>
-              <th className={guideStyles.tbldata}>Date</th>
-              <th className={guideStyles.tbldata}>Vehicle Number</th>
-              <th className={guideStyles.tbldata}>Actions</th>
-              
-            </tr>
-          </thead>
-          
-          <tbody>
-            { this.vehicleList() } 
-          </tbody>
-          
-        </Table>
+           <center>
+                <table width ="90%" border ="2px"className = {vehicleStyles.tbldata}>
+                    <tr>
+                       
+                        <th className={vehicleStyles.tbldata}>Vehicle Type</th>
+                     <th className={vehicleStyles.tbldata}>Vehicle Name</th>
+              <th className={vehicleStyles.tbldata}>Vehicle ID</th>
+              <th className={vehicleStyles.tbldata}>Date</th>
+              <th className={vehicleStyles.tbldata}>Vehicle Number</th>
+              <th className={vehicleStyles.tbldata}>Actions</th>
+                       
+                    </tr>
 
-       
-        
-        </div>
-        
-        <DemoFooter />
-       
-         
-      
-      </>
+                    <tbody>
+                        
+                        {vehicles.filter((val) =>{
+                          
+                          if(searchVal === ''){
+                            return val;
+                          }
+                        //  else if (val.vid.toLowerCase().includes(searchVal.toLowerCase())){
+                           // return val;
+                         // }
+                          else if (val.vtype.toLowerCase().includes(searchVal.toLowerCase())){
+                            return val;
+                          }
+                          else if (val.vname.toLowerCase().includes(searchVal.toLowerCase())){
+                            return val;
+                          }
+                          
 
-      
-    )
-  }
+                          
+                        
+                        }).map((vehicle) =>(
+                         
+                            
+                            <tr className={vehicleStyles.tbldata}>
+                                
+                                <td className={vehicleStyles.tbldata}>{vehicle.vtype}</td>
+                                <td className={vehicleStyles.tbldata}>{vehicle.vname}</td>
+                                <td className={vehicleStyles.tbldata}>{vehicle.vid}</td>
+                                <td className={vehicleStyles.tbldata}>{vehicle.date.substring(0,10)}</td>
+                                <td className={vehicleStyles.tbldata}>{vehicle.vnumber}</td>
+                               
+                               
+                                
+                                <td className={vehicleStyles.tbldata}>
+                                
+
+								 <button 
+                                   className={vehicleStyles.btnEdit}
+                                onClick = {()=>{
+                                    history.push(`/edit-vehicle/${vehicle._id}`);
+                                }}
+                                >Edit</button>
+
+                                <button  className={vehicleStyles.btnDelete}
+                                onClick = {() =>{
+                                    
+                                    onDelete(vehicle);
+                                }}
+                                    
+                               
+                                >Delete</button>
+                               </td>
+                            </tr>
+                            
+                        ))}
+                    </tbody>    
+
+
+                </table>
+                </center>
+            
+            <span style = {{textAlign:"left" , color : "red"}}>{message}</span> <br/><br/>
+            <DemoFooter />
+           
+        </div>   
+    );
+
+
 }
+
+export  default Vehiclelist;
+
