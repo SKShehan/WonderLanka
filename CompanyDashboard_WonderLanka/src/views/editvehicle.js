@@ -7,6 +7,8 @@ import styles from'../assets/css/AddVehicle.module.css';
 import{
   Label,
   Input,
+  FormGroup,
+  FormText,
   Button
 }
 from 'reactstrap'
@@ -176,13 +178,18 @@ export default class Editvehicle extends Component {
         
 
         <div className="form-group">
+        <FormGroup>
         <label> <font color ="black"><b> Vehicle ID: </b> </font> </label>
           <input 
+              pattern="[0-9]{3}"
               type="text" 
               className="form-control"
               value={this.state.vid}
               onChange={this.onChangeVid}
               />
+              {/* <FormFeedback valid>Good! that is available</FormFeedback> */}
+              <FormText>vehicle ID Should be three numbers</FormText>
+              </FormGroup>
         </div>
 
         

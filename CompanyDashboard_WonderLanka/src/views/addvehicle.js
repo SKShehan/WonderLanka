@@ -185,14 +185,14 @@ export default class Addvehicle extends Component {
           <input 
               pattern="[0-9]{3}"
               type="text" 
-              pattern="[0-9]{3}"
+              
               className="form-control"
               value={this.state.vid}
               onChange={this.onChangeVid}
                />
               
              {/* <FormFeedback valid>Good! that is available</FormFeedback> */}
-              <FormText>vehicle ID can entered three numbers</FormText>
+              <FormText>vehicle ID Should be three numbers</FormText>
               </FormGroup>
         </div>
 
