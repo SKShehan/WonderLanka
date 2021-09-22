@@ -161,20 +161,17 @@ function App() {
 
         <Route path="/driver-management" exact>
           <DriverManagement />
-        </Route>  
+        </Route> 
+
+
         <Route path="/booking-management" exact>
           < BookingManagement/>
         </Route>
-
-
-      
         <Route path="/booktable" exact>
           <Booktable />
         </Route>
         <Route path="/edit-bookingmanagement/:id"  component={Editbookings}>
         </Route>
-   
-      
         <Route path="/add-cancelbooking/:id" component={Cancelbookingform} >
         </Route>
 

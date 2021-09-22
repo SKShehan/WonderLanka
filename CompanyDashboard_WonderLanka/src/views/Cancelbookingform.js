@@ -5,6 +5,7 @@ import axios from 'axios';
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
+
 // reactstrap components
 
 
@@ -14,6 +15,7 @@ import{
   Button
 }
 from 'reactstrap'
+import PDF from './BookingReport';
 
 
 
@@ -29,7 +31,8 @@ class Cancelbookingform extends Component {
       reason:"",
       amount:"",
       dateerror:"",
-      amounterror:""
+      amounterror:"",
+      postSubmitted:false
     }
   }
   
@@ -79,16 +82,11 @@ class Cancelbookingform extends Component {
       if(res.data.success){
          this.setState(
               {
-                tourId:"",
-                cancellationdate:"",
-                reason:"",
-                amount:"" ,
-                dateerror:"" ,
-                amounterror:""  
+               postSubmitted:true
               }
           )
        }
-       window.location = '/booktable';
+       
       })
       
 }
@@ -111,8 +109,11 @@ componentDidMount(){
   render(){
     return(
       <>
+
+      
       <IndexHeader />
       <IndexNavbar />
+      { !this.state.postSubmitted ?(
       <div style = {{paddingTop : "50px"}} className = {styles.body}>
           <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert Booking Cancellation Details</h3><br/><br/>
           <div className = {styles.FormContainer}>
@@ -145,7 +146,10 @@ componentDidMount(){
         >Submit</Button>
           </form>    
           </div>
-      </div>   
+      </div>): (
+          <PDF  tourId={this.state.tourId} cancellationdate={this.state.cancellationdate} reason={this.state.reason} amount={this.state.amount} />
+      )
+  }
       <DemoFooter />
      </>     
   );

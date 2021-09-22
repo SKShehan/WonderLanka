@@ -194,7 +194,7 @@ class Editbookings extends Component {
         <Input type="text" name="mobileNo" value = {this.state.mobileNo} onChange={this.handleInputchange} id="exampleEmail"  />
         <br/>
         <Label for="exampleEmail">User name</Label>
-        <Input type="text" name="USername" value = {this.state.username} onChange={this.handleInputchange} id="exampleEmail"  />
+        <Input type="text" name="username" value = {this.state.username} onChange={this.handleInputchange} id="exampleEmail"  />
         <br/>
               <Button  onClick={this.onsubmit} type = "submit" color = "warning" style = {{float:'right' , margin : "5px" }} >Edit Booking</Button>
 

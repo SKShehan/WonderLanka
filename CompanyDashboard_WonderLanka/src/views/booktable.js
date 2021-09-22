@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios' ;
-import guideStyles from "../assets/css/Viewbooking.module.css";
+import styles from "../assets/css/Viewbooking.module.css";
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
@@ -101,53 +101,53 @@ handleSearchArea =(e) =>{
         <br/>
         <br/>
         
-        <table width="100%" border="2px" className={guideStyles.tbldata}>
+        <table width="100%" border="2px" className={styles.tbldata}>
          <tr>
            
           
-           <th style={{width: 50}} className ={guideStyles.tbldata}>TourID</th>
-           <th style={{width: 40}}className ={guideStyles.tbldata}>ArrivalDate</th>
-           <th style={{width: 40}}className ={guideStyles.tbldata}>BookingDate</th>
-           <th className ={guideStyles.tbldata}>Class</th>
-           <th style={{width: 30}}className ={guideStyles.tbldata}>Email</th>
-           <th style={{width: 30}}className ={guideStyles.tbldata}>MobileNo</th>
-           <th style={{width: 140}}className ={guideStyles.tbldata}>Itinerary</th>
-           <th className ={guideStyles.tbldata}>UserName</th>
-           <th className ={guideStyles.tbldata}>FullName</th>
-           <th className ={guideStyles.tbldata}>Insurance</th>
-           <th className ={guideStyles.tbldata}>Itinerary</th>
-           <th className ={guideStyles.tbldata}>Adults</th>
-           <th className ={guideStyles.tbldata}>kids18</th>
-           <th className ={guideStyles.tbldata}>Kids8</th>
-           <th style={{width: 50}}className ={guideStyles.tbldata}>Country</th>
-           <th className ={guideStyles.tbldata}>Payment</th>
-           <th className ={guideStyles.tbldata}>Action</th>
+           <th style={{width: 50}} className ={styles.tbldata}>TourID</th>
+           <th style={{width: 40}}className ={styles.tbldata}>ArrivalDate</th>
+           <th style={{width: 40}}className ={styles.tbldata}>BookingDate</th>
+           <th className ={styles.tbldata}>Class</th>
+           <th style={{width: 30}}className ={styles.tbldata}>Email</th>
+           <th style={{width: 30}}className ={styles.tbldata}>MobileNo</th>
+           <th style={{width: 140}}className ={styles.tbldata}>Itinerary</th>
+           <th className ={styles.tbldata}>UserName</th>
+           <th className ={styles.tbldata}>FullName</th>
+           <th className ={styles.tbldata}>Insurance</th>
+           <th className ={styles.tbldata}>Itinerary</th>
+           <th className ={styles.tbldata}>Adults</th>
+           <th className ={styles.tbldata}>kids18</th>
+           <th className ={styles.tbldata}>Kids8</th>
+           <th style={{width: 50}}className ={styles.tbldata}>Country</th>
+           <th className ={styles.tbldata}>Payment</th>
+           <th className ={styles.tbldata}>Action</th>
 
          </tr>
       
         
           {this.state.posts.map((posts) =>(
-            <tr className={guideStyles.tbldata}>
+            <tr className={styles.tbldata}>
       
-              <td  className={guideStyles.tbldataa}><a href={`/add-cancelbooking/${posts._id}`} style={{textDecoration:'none',color:'rgba(5, 0, 0, 0.658)',fontWeight:'bold'}}>{posts.tourId}</a></td>
-              <td  className={guideStyles.tbldata}>{posts.arrivalDate}</td>
-              <td className={guideStyles.tbldata}>{posts.bookingDate}</td>
-              <td className={guideStyles.tbldata}>{posts.iclass}</td>   
-              <td className={guideStyles.tbldata}>{posts.email}</td>
-              <td className={guideStyles.tbldata}>{posts.mobileNo}</td>   
-              <td className={guideStyles.tbldata}>{posts.itinerary}</td>  
-              <td className={guideStyles.tbldata}>{posts.username}</td>   
-              <td className={guideStyles.tbldata}>{posts.fullName}</td>  
-              <td className={guideStyles.tbldata}>{posts.insurance}</td>
-              <td className={guideStyles.tbldata}>{posts.itinerary}</td>
-              <td className={guideStyles.tbldata}>{posts.noOfAdults}</td>
-              <td className={guideStyles.tbldata}>{posts.noOfKids18}</td>
-              <td className={guideStyles.tbldata}>{posts.noOfKids8}</td>
-              <td style={{minwidth: 30}}className={guideStyles.tbldata}>{posts.country}</td>
-              <td className={guideStyles.tbldata}>{posts.payment}</td>
-              <td className={guideStyles.tbldata}>
+              <td  className={styles.tbldataa}><a href={`/add-cancelbooking/${posts._id}`} style={{textDecoration:'none',color:'rgba(5, 0, 0, 0.658)',fontWeight:'bold'}}>{posts.tourId}</a></td>
+              <td  className={styles.tbldata}>{posts.arrivalDate}</td>
+              <td className={styles.tbldata}>{posts.bookingDate}</td>
+              <td className={styles.tbldata}>{posts.iclass}</td>   
+              <td className={styles.tbldata}>{posts.email}</td>
+              <td className={styles.tbldata}>{posts.mobileNo}</td>   
+              <td className={styles.tbldata}>{posts.itinerary}</td>  
+              <td className={styles.tbldata}>{posts.username}</td>   
+              <td className={styles.tbldata}>{posts.fullName}</td>  
+              <td className={styles.tbldata}>{posts.insurance}</td>
+              <td className={styles.tbldata}>{posts.itinerary}</td>
+              <td className={styles.tbldata}>{posts.noOfAdults}</td>
+              <td className={styles.tbldata}>{posts.noOfKids18}</td>
+              <td className={styles.tbldata}>{posts.noOfKids8}</td>
+              <td style={{minwidth: 30}}className={styles.tbldata}>{posts.country}</td>
+              <td className={styles.tbldata}>{posts.payment}</td>
+              <td className={styles.tbldata}>
               <button
-                  className={guideStyles.btnEdit}
+                  className={styles.btnEdit}
               
                 >
                   <a  style={{textDecoration:'none' ,color:'white',fontweight: 700}} href={`/edit-bookingmanagement/${posts._id}`}>
@@ -158,7 +158,7 @@ handleSearchArea =(e) =>{
             
               
                 <button
-                className={guideStyles.btnDelete}
+                className={styles.btnDelete}
                   onClick={()=>this.onDelete(posts._id)}
                 >
                   Delete
