@@ -268,7 +268,7 @@ function BookTour({ user }) {
     "Insurance 4",
   ]);
 
-  const [classList, setclassList] = useState(["Standard", "Deluxe", "Supreme"]);
+  const [classList, setclassList] = useState(["Standard", "Deluxe"]);
 
   const getItineraries = () => {
     axios.get("http://localhost:8070/itineraries").then((res) => {
