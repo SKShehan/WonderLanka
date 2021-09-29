@@ -19,6 +19,8 @@
 import React from "react";
 // nodejs library that concatenates strings
 import classnames from "classnames";
+import { ReactSession } from "react-client-session";
+import { useHistory, useLocation } from "react-router-dom";
 // reactstrap components
 import {
   Button,
@@ -34,13 +36,22 @@ import {
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
+  const history = useHistory();
 
   const toggleNavbarCollapse = () => {
     setNavbarCollapse(!navbarCollapse);
     document.documentElement.classList.toggle("nav-open");
   };
 
+  const logout = () => {
+    ReactSession.set("user", null);
+    history.push({
+      pathname: "/login",
+    });
+  };
+
   React.useEffect(() => {
+    ReactSession.setStoreType("localStorage");
     const updateNavbarColor = () => {
       if (
         document.documentElement.scrollTop > 169 ||
@@ -115,12 +126,20 @@ function IndexNavbar() {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink data-placement="bottom" href="/my-feedback" title="Feedback">
+              <NavLink
+                data-placement="bottom"
+                href="/my-feedback"
+                title="Feedback"
+              >
                 Feedback
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink data-placement="bottom" href="/my-complaint" title="Complaint">
+              <NavLink
+                data-placement="bottom"
+                href="/my-complaint"
+                title="Complaint"
+              >
                 complaint
               </NavLink>
             </NavItem>
@@ -143,7 +162,7 @@ function IndexNavbar() {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="" target="_blank">
+              <NavLink href="" onClick={logout}>
                 <i className="nc-icon nc-circle-10" /> Log Out
               </NavLink>
             </NavItem>
