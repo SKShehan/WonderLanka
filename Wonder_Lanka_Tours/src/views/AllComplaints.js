@@ -36,7 +36,6 @@ function AllComplaints () {
       if (
         window.confirm(
           "Complaint " +
-            complaint.tourID +
             " (" +
             complaint.name +
             " " +
@@ -46,7 +45,7 @@ function AllComplaints () {
         )
       )
 
-      axios.delete(`http://localhost:8070/ComplaintRoute/deleteComplaint/${complaint.tourID}`)
+      axios.delete(`http://localhost:8070/complaint/deleteComplaint/${complaint.name}`)
       .then((res) =>{
           console.log(res);
           toast.success("Complaint Deleted!", {
@@ -75,11 +74,26 @@ function AllComplaints () {
       return (
         <div className = "container">
           <h3 style = {{marginLeft:"430px"}}>Complaint History</h3>
-          <Input placeholder="Search " type="text" 
+          <Input placeholder="Search " type="text"  value={searchVal}
             onChange = {(e) =>{
               setSearchVal(e.target.value);
           }}/>
-              {complaints.map((complaint)=>(
+              {complaints
+              .filter((complaint) => {
+                let Name = complaint.name;
+                if (searchVal === "") {
+                  return complaint;
+                } else {
+                  if (Name) {
+                    if (
+                      Name.toLowerCase().includes(searchVal.toLowerCase())
+                    ) {
+                      return complaint;
+                    }
+                  }
+                }
+              })
+              .map((complaint)=>(
               <div style = {{marginLeft:"20px"}}  className = "tableContainer">
               <table className = "table table-striped">
                 <thead>
@@ -105,7 +119,7 @@ function AllComplaints () {
     
                           <Button color="danger" style = {{padding: "5px 5px 5px 5px", width : "70px", marginBottom : "8px"}}
                           onClick = {() =>
-                                complaintDelete(complaint._id)
+                                complaintDelete(complaint)
                           }
                         
                           >Remove</Button>
@@ -116,8 +130,7 @@ function AllComplaints () {
               </div>
               ))}    
         </div> 
-      )
-                      
+      )                 
   }
   
   export {

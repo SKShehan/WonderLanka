@@ -64,7 +64,7 @@ function ContactUS () {
 
     console.log(newMessage);
 
-    axios.post("http://localhost:8070/message/addMessage", newMessage).then(()=>{
+    axios.post("http://localhost:8070/contactus/addMessage", newMessage).then(()=>{
       alert("Message Sent")
       setfName("");
       setlName("");

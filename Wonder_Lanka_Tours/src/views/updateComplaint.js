@@ -147,8 +147,8 @@ function updateComplaint() {
       Submit
     </Button>
     </form>
-    <DemoFooter /> 
     </div>
+    <DemoFooter /> 
   </>
   )
 

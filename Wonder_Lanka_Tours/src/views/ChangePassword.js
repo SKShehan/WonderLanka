@@ -19,28 +19,36 @@ import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ReactSession } from "react-client-session";
+import { useHistory, useLocation } from "react-router-dom";
 
 toast.configure();
 
-function ChangePassword({ user }) {
+function ChangePassword() {
   const [currentpwd, setcurrentpwd] = useState("");
   const [newpass, setnewpass] = useState("");
   const [renewpass, setrenewpass] = useState("");
   const [alertDanger, setAlertDanger] = useState(false);
+  const history = useHistory();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (currentpwd === user.password) {
+    if (currentpwd === ReactSession.get("user").password) {
       if (renewpass === newpass) {
         const newpwd = {
           password: newpass,
         };
 
         axios
-          .put(`http://localhost:8070/users/changepwd/${user.username}`, newpwd)
+          .put(
+            `http://localhost:8070/users/changepwd/${
+              ReactSession.get("user").username
+            }`,
+            newpwd
+          )
           .then((res) => {
             console.log(res);
-            user.password = newpwd.password;
+            ReactSession.get("user").password = newpwd.password;
             toast.success(res.data, {
               position: toast.POSITION.BOTTOM_RIGHT,
               autoClose: 10000,
@@ -81,6 +89,12 @@ function ChangePassword({ user }) {
 
   useEffect(() => {
     document.body.classList.add("index");
+    ReactSession.setStoreType("localStorage");
+    if (ReactSession.get("user") === null) {
+      history.push({
+        pathname: "/login",
+      });
+    }
 
     return function cleanup() {
       document.body.classList.remove("index");
