@@ -49,7 +49,7 @@ export default class Editvehicle extends Component {
         this.setState({
           vtype: response.data.vtype,
           vname: response.data.vname,
-          vid: Number(response.data.vid),
+          vid: response.data.vid,
           date: new Date(response.data.date),
           vnumber: response.data.vnumber,
         })   
@@ -181,14 +181,14 @@ export default class Editvehicle extends Component {
         <FormGroup>
         <label> <font color ="black"><b> Vehicle ID: </b> </font> </label>
           <input 
-              pattern="[0-9]{3}"
+              pattern="[V][0-9]{3}"
               type="text" 
               className="form-control"
               value={this.state.vid}
               onChange={this.onChangeVid}
               />
               {/* <FormFeedback valid>Good! that is available</FormFeedback> */}
-              <FormText>vehicle ID Should be three numbers</FormText>
+              <FormText>enter valid vehicle ID "VXXX</FormText>
               </FormGroup>
         </div>
 
