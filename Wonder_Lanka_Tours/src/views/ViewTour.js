@@ -19,10 +19,19 @@ function ViewTour() {
   const location = useLocation();
   const history = useHistory();
   const [editing, setediting] = useState(false);
+  const [tourId, settourId] = useState();
+  const [payment, setpayment] = useState();
+  const [bookingDate, setbookingDate] = useState();
+  const [noOfAdults, setnoOfAdults] = useState();
+  const [noOfKids8, setnoOfKids8] = useState();
+  const [noOfKids18, setnoOfKids18] = useState();
+  const [iclass, seticlass] = useState();
   const [fullName, setfullName] = useState();
   const [country, setcountry] = useState();
   const [mobileNo, setmobileNo] = useState();
   const [email, setemail] = useState();
+  const [insurance, setinsurance] = useState();
+  const [itinerary, setitinerary] = useState();
   const [arrivalDate, setarrivalDate] = useState();
   const [assignedGuide, setassignedGuide] = useState("Not Yet Assigned");
   const [assignedDriver, setassignedDriver] = useState("Not Yet Assigned");
@@ -30,9 +39,28 @@ function ViewTour() {
   const doc = new jsPDF("l", "pt", "a4");
 
   const clickGenerateReport = () => {
+    const user = {
+      tourId,
+      bookingDate,
+      fullName,
+      country,
+      email,
+      mobileNo,
+      arrivalDate,
+      itinerary,
+      insurance,
+      iclass,
+      noOfAdults,
+      noOfKids18,
+      noOfKids8,
+      assignedDriver,
+      assignedGuide,
+      assignedVehicle,
+      payment,
+    };
     history.push({
       pathname: "/booking-report",
-      state: location.state,
+      state: user,
     });
   };
 
@@ -72,7 +100,15 @@ function ViewTour() {
     axios
       .get(`http://localhost:8070/assignedGuides/get/${location.state.tourId}`)
       .then((res) => {
-        if (res.data) setassignedGuide(res.data.guideId);
+        if (res.data) {
+          axios
+            .get(`http://localhost:8070/guides/get/${res.data.guideId}`)
+            .then((ress) => {
+              if (ress.data) {
+                setassignedGuide(ress.data.fName + " " + ress.data.lName);
+              }
+            });
+        }
       });
   };
   const getAssignedVehcile = () => {
@@ -81,14 +117,32 @@ function ViewTour() {
         `http://localhost:8070/assignedVehicles/get/${location.state.tourId}`
       )
       .then((res) => {
-        if (res.data) setassignedVehicle(res.data.vehicleId);
+        if (res.data) {
+          axios
+            .get(`http://localhost:8070/vehicles/${res.data.vehicleId}`)
+            .then((ress) => {
+              if (ress.data) {
+                setassignedVehicle(ress.data.vname);
+              }
+            });
+        }
       });
   };
   const getAssignedDriver = () => {
     axios
       .get(`http://localhost:8070/assignedDrivers/get/${location.state.tourId}`)
       .then((res) => {
-        if (res.data) setassignedDriver(res.data.driverId);
+        if (res.data) {
+          axios
+            .get(`http://localhost:8070/get/${res.data.driverId}`)
+            .then((ress) => {
+              if (ress.data) {
+                setassignedDriver(
+                  ress.data.firstname + " " + ress.data.lastname
+                );
+              }
+            });
+        }
       });
   };
 
@@ -314,6 +368,15 @@ function ViewTour() {
         setmobileNo(location.state.mobileNo);
         setemail(location.state.email);
         setarrivalDate(location.state.arrivalDate);
+        seticlass(location.state.iclass);
+        setbookingDate(location.state.bookingDate);
+        setnoOfAdults(location.state.noOfAdults);
+        setnoOfKids18(location.state.noOfKids18);
+        setnoOfKids8(location.state.noOfKids8);
+        settourId(location.state.tourId);
+        setpayment(location.state.payment);
+        setinsurance(location.state.insurance);
+        setitinerary(location.state.itinerary);
         getAssignedGuide();
         getAssignedDriver();
         getAssignedVehcile();
@@ -473,13 +536,11 @@ function ViewTour() {
             <Row>
               <Col>
                 <label className="tour-det-head">Booking ID :</label>
-                <label className="tour-det-text">{location.state.tourId}</label>
+                <label className="tour-det-text">{tourId}</label>
               </Col>
               <Col>
                 <label className="tour-det-head">Date :</label>
-                <label className="tour-det-text">
-                  {location.state.bookingDate}
-                </label>
+                <label className="tour-det-text">{bookingDate}</label>
               </Col>
               <Col></Col>
             </Row>
@@ -487,44 +548,34 @@ function ViewTour() {
             <Row>
               <Col>
                 <label className="tour-det-head">Tour Itinerary :</label>
-                <label className="tour-det-text">
-                  {location.state.itinerary}
-                </label>
+                <label className="tour-det-text">{itinerary}</label>
               </Col>
               <Col>
                 <label className="tour-det-head">Insurance Plan :</label>
-                <label className="tour-det-text">
-                  {location.state.insurance}
-                </label>
+                <label className="tour-det-text">{insurance}</label>
               </Col>
               <Col>
                 <label className="tour-det-head">Class :</label>
-                <label className="tour-det-text">{location.state.iclass}</label>
+                <label className="tour-det-text">{iclass}</label>
               </Col>
             </Row>
             <br></br>
             <Row>
               <Col>
                 <label className="tour-det-head">Number of Adults :</label>
-                <label className="tour-det-text">
-                  {location.state.noOfAdults}
-                </label>
+                <label className="tour-det-text">{noOfAdults}</label>
               </Col>
               <Col>
                 <label className="tour-det-head">
                   Number of Kids (Under Age of 18) :
                 </label>
-                <label className="tour-det-text">
-                  {location.state.noOfKids18}
-                </label>
+                <label className="tour-det-text">{noOfKids18}</label>
               </Col>
               <Col>
                 <label className="tour-det-head">
                   Number of Kids (Under Age of 8) :
                 </label>
-                <label className="tour-det-text">
-                  {location.state.noOfKids8}
-                </label>
+                <label className="tour-det-text">{noOfKids8}</label>
               </Col>
             </Row>
             <br></br>
@@ -548,7 +599,7 @@ function ViewTour() {
                 <label className="tour-det-head">Payment :</label>
                 <label className="tour-det-text">
                   LKR&nbsp;
-                  {location.state.payment}
+                  {payment}
                 </label>
               </Col>
             </Row>
