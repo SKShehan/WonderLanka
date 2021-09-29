@@ -1,266 +1,156 @@
-import styles from '../assets/css/UpdateDriver.module.css'
-import React, { Component } from 'react';
-
+import styles from '../assets/css/AddDriver.module.css'
+import { useState, useEffect} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { Container } from 'reactstrap';
-import {toast} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useParams } from 'react-router';
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
+import{
+    Label,
+    Input,
+    Button 
+}
+from 'reactstrap'
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { thisExpression } from '@babel/types';
+
 toast.configure();
 
- 
-  
+function DriverUpdate(){
 
-
-export default class DriverUpdate extends Component {
-  constructor(props) {
-    super(props);
-    
-    this.onChangeDriverID = this.onChangeDriverID.bind(this);
-    this.onChangeFirstname = this.onChangeFirstname.bind(this);
-    this.onChangeLastname = this.onChangeLastname.bind(this);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePhonenumber = this.onChangePhonenumber.bind(this);
-    this.onChangeLicenseid = this.onChangeLicenseid.bind(this);
-    this.onChangeLanguages = this.onChangeLanguages.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-
-    this.state = {
-      driverid:'',
-      firstname: '',
-      lastname:'',
-      email:'',
-      phonenumber: '',
-      licenseid:'',
-      languages:'',
-      drivers: []
-    }
-  }
-
-  componentDidMount() {
-    axios.get('http://localhost:8070/drivers/'+this.props.match.params.id)
-      .then(response => {
-        this.setState({
-          driverid:response.data.driverid,
-          firstname: response.data.firstname,
-          lastname: response.data.lastname,
-          email: response.data.email,
-          phonenumber: Number(response.data.phonenumber),
-          licenseid: response.data.licenseid,
-          languages: response.data.languages,
-          
-        })   
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-
-  
-
-  }
-  onChangeDriverID(e) {
-    this.setState({
-      driverid: e.target.value
-    })
-  }
-
-  onChangeFirstname(e) {
-    this.setState({
-      firstname: e.target.value
-    })
-  }
-
-  onChangeLastname(e) {
-    this.setState({
-      lastname: e.target.value
-    })
-  }
-
-  onChangeEmail(e) {
-    this.setState({
-      email: e.target.value
-    })
-  }
-
-  onChangePhonenumber(e) {
-    this.setState({
-      phonenumber:e.target.value
-    })
-  }
-
-  onChangeLicenseid(e) {
-    this.setState({
-      licenseid:e.target.value
-    })
-  }
-
-  onChangeLanguages(e) {
-    this.setState({
-      languages:e.target.value
-    })
-  }
-
- 
-  onSubmit(e) {
-    e.preventDefault();
-
-    const driver = {
-     
-      driverid:this.state.driverid,
-      firstname:this.state.firstname,
-      lastname:this.state.lastname,
-      email:this.state.email,
-      phonenumber:this.state.phonenumber,
-      licenseid:this.state.licenseid,
-      languages:this.state.languages,
-    }
-
-    console.log(driver);
-
-    axios.post('http://localhost:8070/drivers/update/' + this.props.match.params.id, driver)
-      .then(res => {console.log(res.data);
-      toast.success("Driver Edited",{
-        position: toast.POSITION.BOTTOM_RIGHT,
-          autoClose: 10000,
-          hideProgressBar: false,
-      })
-    });
-    
-    //window.location = '/';
-    
-  }
-
-  render() {
-    return (
-
-        <div
-        
-      
-        
-        >
-          <IndexHeader />
-            <IndexNavbar />
-            <div style = {{paddingTop :"50px"}} className ={styles.body}>   
-           <Container>
-          
-         
-            
-
-      <center><h1 className={styles.header}>Edit Driver</h1></center>
-      
-      
-      <div className = {styles.FormContainer}>
-      <form onSubmit={this.onSubmit} className="register-form">
-        
-
-        <br></br>
-
-        <div> 
-          <label>Driver ID: </label>
-          <input  type="text"
-              required
-              className="form-control"
-              value={this.state.driverid}
-              //onChange={this.onChangeDriverID}
-              />
-        </div>
-
-        <br></br>
-
-        <div>
-          <label>First Name: </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.firstname}
-              onChange={this.onChangeFirstname}
-              />
-        </div>
-
-        <br></br>
-
-        <div>
-          <label>Last Name: </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.lastname}
-              onChange={this.onChangeLastname}
-              />
-        </div>
-
-        <br></br>
-
-        <div >
-          <label>Email: </label>
-          <input 
-              type="email" 
-              className="form-control"
-              value={this.state.email}
-              onChange={this.onChangeEmail}
-              />
-        </div>
-
-        <br></br>
-
-        <div >
-          <label>Phone Number: </label>
-          <input 
-              type="number" 
-              className="form-control"
-              value={this.state.phonenumber}
-              onChange={this.onChangePhonenumber}
-              />
-        </div>
-
-        <br></br>
-
-        <div >
-          <label>License ID: </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.licenseid}
-              onChange={this.onChangeLicenseid}
-              />
-        </div>
-
-        <br></br>
-
-        <div >
-          <label>Fluent Languages: </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.languages}
-              onChange={this.onChangeLanguages}
-              />
-        </div>
-
-     
-
-  
-
-       <center>
-        <div className="form-group">
-        
-          <input type="submit" value="Edit Driver" className="btn btn-primary"/>
-    
-        </div>
-        </center>
-      </form>
-      </div>
-      
-      
-      
-          </Container> 
-          <DemoFooter/>
-          </div>
-    </div>
+    const [driverid , setDriverid] = useState("");
+    const [firstname , setFirstname] = useState("");
+    const [lastname , setLastname] = useState("");
+    const [email , setEmail] = useState("");
+    const [phonenumber, setPhonenumber] = useState("");
+    const [licenseid , setLicenseid] = useState("");
+    const [languages , setLanguages] = useState("");
+    const [message , setMessage] = useState("");
    
-    )
-  }
+
+    const {id} = useParams();
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8070/drivers/${id}`).then((res) =>{
+
+        console.log(res.data);
+        setDriverid(res.data.driverid);
+        setFirstname(res.data.firstname);
+        setLastname(res.data.lastname);
+        setEmail(res.data.email);
+        setPhonenumber(res.data.phonenumber);
+        setLicenseid(res.data.licenseid);
+        setLanguages(res.data.languages);
+
+        }).catch((err)=>{
+        console.log(err);
+        })
+    } , []);
+
+    function onSubmit (e){
+        e.preventDefault();
+
+        const updateDriver = {
+            driverid,
+            firstname,
+            lastname,
+            email,
+            phonenumber,
+            licenseid,
+            languages
+        }
+        axios.put(`http://localhost:8070/drivers/update/${id}` , updateDriver ).then(() =>{
+            
+            toast.success('Driver Updated!', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+                e.target.reset();
+                
+
+        }).catch((err) =>{
+            console.log(err);
+            toast.error('Something went  wrong!', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+        })
+    }
+    return(
+
+        <div>
+            <IndexHeader />
+            <IndexNavbar />
+            <br/><br/><h3 style = {{textAlign : 'center'}}>Update Driver Details</h3><br/><br/>
+            <div className = {styles.FormContainer}>
+            <form onSubmit = {onSubmit}>
+
+                <Label for = "driverid">Driver ID</Label><br/>
+                <Input type = 'text'  pattern="[D]{1}-[0-9]{3}" title = "Enter a valid Driver  ID, EX : D-001"
+                name = "driverid" value = {driverid}
+                onChange = {(e) =>{
+                    setDriverid(e.target.value);
+                }}></Input><br/>
+
+                <Label for = "firstname">First Name</Label><br/>
+                <Input type = 'text' name = "firstname" value = {firstname}
+                onChange = {(e)=>{
+                    setFirstname(e.target.value);
+                }}></Input><br/>
+
+                <Label for = "lastName">Last Name</Label><br/>
+                <Input type = 'text' name = "lastName" value = {lastname} 
+                onChange = {(e)=>{
+                    setLastname(e.target.value);
+                }}></Input><br/>
+
+                <Label for = "email">Email</Label><br/>
+                <Input type = "email" name = "Email" value = {email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title = "Enter a valid email"
+                onChange = {(e) =>{
+                    setEmail(e.target.value);
+                }}></Input><br/>
+
+                <Label for = "phonenumber">Phone number</Label><br/>
+                <Input type = "number" name = "phonenumber" value = {phonenumber} pattern = "[0-9]{10}" title = "Enter a 10 digit phone number starting with 0"
+                onChange = {(e)=>{
+                    setPhonenumber(e.target.value);
+                }}></Input><br/>
+
+                <Label for = "licenseid">License ID</Label><br/>
+                <Input type = "text" name = "licenseid" value = {licenseid} pattern="[L]{1}-[0-9]{3}" title = "Enter a valid Driver License ID, EX : L-123" 
+                onChange = {(e) =>{
+                    setLicenseid(e.target.value);
+                }}/><br/>
+
+                <Label for = "languages">Languages</Label><br/>
+                <Input type = "text" name = "languages" value = {languages}
+                onChange = {(e)=>{
+                    setLanguages(e.target.value);
+                }}/> <br/>
+
+                
+                <Button type = "submit" color = "warning" style = {{float:'right' , margin : "5px" }} 
+
+                >Edit Driver</Button>
+
+            </form>    
+            </div>
+            <DemoFooter />
+        </div>   
+
+    );
 }
+
+export default DriverUpdate;
