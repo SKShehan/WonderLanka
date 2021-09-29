@@ -36,6 +36,7 @@ function ViewTour({ user }) {
   };
 
   const onSubmit = (e) => {
+    e.preventDefault();
     const updates = {
       fullName,
       country,
@@ -54,6 +55,7 @@ function ViewTour({ user }) {
           autoClose: 10000,
           hideProgressBar: false,
         });
+        toggleEditing();
       })
       .catch((err) => {
         console.log(err);
@@ -297,10 +299,7 @@ function ViewTour({ user }) {
     "Zimbabwe",
   ];
 
-  const toggleEditing = (e) => {
-    if (e.target.value === "Save") {
-      onSubmit();
-    }
+  const toggleEditing = () => {
     setediting(!editing);
   };
 
@@ -338,7 +337,7 @@ function ViewTour({ user }) {
             <h2 align="center"> Tour Details</h2>
             <hr></hr>
             <br></br>
-            <form className="edit-booking-form">
+            <form className="edit-booking-form" onSubmit={onSubmit}>
               <label className="tour-det-label">Personal Details</label>
               <table width="100%" border="0px">
                 <tr>
@@ -353,6 +352,7 @@ function ViewTour({ user }) {
                         setfullName(e.target.value);
                       }}
                       disabled={!editing}
+                      required
                     ></input>
                   </td>
                   <td style={{ paddingRight: "10px" }}>
@@ -367,6 +367,7 @@ function ViewTour({ user }) {
                         setcountry(e.target.value);
                       }}
                       disabled={!editing}
+                      required
                     >
                       {countryList.map((i) => (
                         <option>{i}</option>
@@ -385,6 +386,7 @@ function ViewTour({ user }) {
                         setmobileNo(e.target.value);
                       }}
                       disabled={!editing}
+                      required
                     ></input>
                   </td>
                 </tr>
@@ -402,6 +404,7 @@ function ViewTour({ user }) {
                         setemail(e.target.value);
                       }}
                       disabled={!editing}
+                      required
                     ></input>
                   </td>
                   <td style={{ paddingRight: "10px" }}>
@@ -416,47 +419,44 @@ function ViewTour({ user }) {
                         setarrivalDate(e.target.value);
                       }}
                       disabled={!editing}
+                      required
                     />
                   </td>
                   <td></td>
                 </tr>
-                <br></br>
-                <tr>
-                  <td colSpan="3">
-                    {editing && (
-                      <>
-                        <input
-                          className="btn btn-primary btn-edit-booking"
-                          type="submit"
-                          value="Save"
-                          onClick={(e) => {
-                            toggleEditing(e);
-                          }}
-                        />
-                        <input
-                          className="btn btn-default btn-edit-booking"
-                          type="submit"
-                          value="Cancel"
-                          onClick={(e) => {
-                            toggleEditing(e);
-                          }}
-                        />
-                      </>
-                    )}
-                    {!editing && (
-                      <button
-                        className="btn btn-danger btn-edit-booking"
-                        onClick={(e) => {
-                          toggleEditing(e);
-                        }}
-                      >
-                        Edit
-                      </button>
-                    )}
-                  </td>
-                </tr>
               </table>
+              {editing && (
+                <>
+                  <input
+                    className="btn btn-primary btn-edit-booking"
+                    type="submit"
+                    value="Save"
+                  />
+                </>
+              )}
             </form>
+            {editing && (
+              <input
+                className="btn btn-default btn-edit-booking"
+                type="submit"
+                value="Cancel"
+                onClick={() => {
+                  toggleEditing();
+                }}
+              />
+            )}
+            {!editing && (
+              <button
+                className="btn btn-danger btn-edit-booking"
+                onClick={() => {
+                  toggleEditing();
+                }}
+              >
+                Edit
+              </button>
+            )}
+            <br></br>
+            <br></br>
             <hr></hr>
             <br></br>
             <label className="tour-det-label">Tour Details</label>
