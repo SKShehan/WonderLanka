@@ -50,7 +50,7 @@ function Homepage(){
 
       <>
       <IndexNavbar />
-      <IndexHeader />
+     
         
             <div style = {{paddingTop : "50px"}} className = {styles.body}>
             <h3 className = {styles.header}><center>Company Management</center></h3><br/><br/>
@@ -99,7 +99,7 @@ function Homepage(){
               <button className = {styles.btn_guidemng} onClick = {handleClickEmployee}>Employee Management</button>
             </div>
         </div>
-        <DemoFooter />
+      
         </>
     );
 }
