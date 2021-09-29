@@ -270,6 +270,7 @@ function BookTour({ user }) {
     "Insurance 2",
     "Insurance 3",
     "Insurance 4",
+    "Insurance 5",
   ]);
 
   const [classList, setclassList] = useState(["Standard", "Deluxe"]);
@@ -294,6 +295,18 @@ function BookTour({ user }) {
           payment +=
             itineraryList[i].itineraryPriceAdult * noOfAdults +
             itineraryList[i].itineraryPriceChild * noOfKids18;
+          if (insurance == "Insurance 1") {
+            payment += 100000;
+          } else if (insurance == "Insurance 2") {
+            payment += 50000;
+          } else if (insurance == "Insurance 3") {
+            payment += 30000;
+          } else if (insurance == "Insurance 4") {
+            payment += 130000;
+          } else if (insurance == "Insurance 5") {
+            payment += 200000;
+          }
+
           break;
         }
       }
