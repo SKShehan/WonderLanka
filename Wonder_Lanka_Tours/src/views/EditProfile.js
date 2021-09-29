@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import {
   Label,
   Input,
@@ -20,10 +20,11 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { ReactSession } from "react-client-session";
+
 toast.configure();
 
-function EditProfile({ user }) {
-  const location = useLocation();
+function EditProfile() {
   const [fullName, setfullName] = useState("");
   const [country, setcountry] = useState();
   const [email, setemail] = useState("");
@@ -32,6 +33,7 @@ function EditProfile({ user }) {
   const [nic, setnic] = useState("");
   const [username, setusername] = useState("");
   let usernameExists = false;
+  const history = useHistory();
   const countryList = [
     "Afghanistan",
     "Albania",
@@ -232,7 +234,7 @@ function EditProfile({ user }) {
   ];
 
   const updateUsername = async () => {
-    if (user.username != username) {
+    if (ReactSession.get("user").username != username) {
       await axios
         .get(`http://localhost:8070/users/check/${username}`)
         .then((res) => {
@@ -246,9 +248,14 @@ function EditProfile({ user }) {
 
   const updateBookings = () => {
     axios
-      .put(`http://localhost:8070/bookings/update/username/${user.username}`, {
-        username,
-      })
+      .put(
+        `http://localhost:8070/bookings/update/username/${
+          ReactSession.get("user").username
+        }`,
+        {
+          username,
+        }
+      )
       .then((res) => {
         console.log("Success!");
       })
@@ -272,23 +279,22 @@ function EditProfile({ user }) {
     console.log(usernameExists);
     if (usernameExists === false) {
       await axios
-        .put(`http://localhost:8070/users/update/${user.username}`, updates)
+        .put(
+          `http://localhost:8070/users/update/${
+            ReactSession.get("user").username
+          }`,
+          updates
+        )
         .then((res) => {
           updateBookings();
           console.log(res);
-          user.username = updates.username;
-          user.fullName = updates.fullName;
-          user.email = updates.email;
-          user.country = updates.country;
-          user.mobileNo = updates.mobileNo;
-          user.dateOfBirth = updates.dateOfBirth;
-          user.nic = updates.nic;
+          ReactSession.set("user", updates);
           toast.success(res.data, {
             position: toast.POSITION.BOTTOM_RIGHT,
             autoClose: 10000,
             hideProgressBar: false,
           });
-          console.log(user.username);
+          console.log(ReactSession.get("user").username);
         })
         .catch((err) => {
           console.log(err);
@@ -311,13 +317,16 @@ function EditProfile({ user }) {
 
   useEffect(() => {
     document.body.classList.add("index");
-    setusername(user.username);
-    setfullName(user.fullName);
-    setcountry(user.country);
-    setnic(user.nic);
-    setmobileNo(user.mobileNo);
-    setemail(user.email);
-    setdateOfBirth(user.dob);
+    ReactSession.setStoreType("localStorage");
+    if (ReactSession.get("user") != null) {
+      setusername(ReactSession.get("user").username);
+      setfullName(ReactSession.get("user").fullName);
+      setcountry(ReactSession.get("user").country);
+      setnic(ReactSession.get("user").nic);
+      setmobileNo(ReactSession.get("user").mobileNo);
+      setemail(ReactSession.get("user").email);
+      setdateOfBirth(ReactSession.get("user").dateOfBirth);
+    }
 
     return function cleanup() {
       document.body.classList.remove("index");

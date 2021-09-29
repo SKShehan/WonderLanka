@@ -11,6 +11,9 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { ReactSession } from "react-client-session";
+import { useHistory, useLocation } from "react-router-dom";
+
 toast.configure();
 
 function BookTour({ user }) {
@@ -30,6 +33,7 @@ function BookTour({ user }) {
   const [username, setusername] = useState("");
   let payment = 0;
   const [bookingDate, setbookingDate] = useState();
+  const history = useHistory();
 
   const countryList = [
     "Afghanistan",
@@ -341,20 +345,26 @@ function BookTour({ user }) {
 
   useEffect(() => {
     document.body.classList.add("index");
+    ReactSession.setStoreType("localStorage");
+    if (ReactSession.get("user") === null) {
+      history.push({
+        pathname: "/login",
+      });
+    } else {
+      getItineraries();
+      getGeoInfo();
+      setusername(ReactSession.get("user").username);
+      setcountry(countryList[0]);
 
-    getItineraries();
-    getGeoInfo();
-    setusername(user.username);
-    setcountry(countryList[0]);
-
-    setitinerary(itineraryList[0].itineraryName);
-    setinsurance(insuranceList[0]);
-    seticlass(classList[0]);
-    let today = new Date().toISOString().slice(0, 10);
-    setbookingDate(today);
-    return function cleanup() {
-      document.body.classList.remove("index");
-    };
+      setitinerary(itineraryList[0].itineraryName);
+      setinsurance(insuranceList[0]);
+      seticlass(classList[0]);
+      let today = new Date().toISOString().slice(0, 10);
+      setbookingDate(today);
+      return function cleanup() {
+        document.body.classList.remove("index");
+      };
+    }
   }, []);
 
   return (

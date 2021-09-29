@@ -11,10 +11,11 @@ import { Row, Col, Input, Alert, Container } from "reactstrap";
 import { jsPDF } from "jspdf";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ReactSession } from "react-client-session";
 
 toast.configure();
 
-function ViewTour({ user }) {
+function ViewTour() {
   const location = useLocation();
   const history = useHistory();
   const [editing, setediting] = useState(false);
@@ -305,15 +306,22 @@ function ViewTour({ user }) {
 
   document.documentElement.classList.remove("nav-open");
   useEffect(() => {
-    if (location.state != null) {
-      setfullName(location.state.fullName);
-      setcountry(location.state.country);
-      setmobileNo(location.state.mobileNo);
-      setemail(location.state.email);
-      setarrivalDate(location.state.arrivalDate);
-      getAssignedGuide();
-      getAssignedDriver();
-      getAssignedVehcile();
+    ReactSession.setStoreType("localStorage");
+    if (ReactSession.get("user") != null) {
+      if (location.state != null) {
+        setfullName(location.state.fullName);
+        setcountry(location.state.country);
+        setmobileNo(location.state.mobileNo);
+        setemail(location.state.email);
+        setarrivalDate(location.state.arrivalDate);
+        getAssignedGuide();
+        getAssignedDriver();
+        getAssignedVehcile();
+      }
+    } else {
+      history.push({
+        pathname: "/login",
+      });
     }
 
     document.body.classList.add("index");
