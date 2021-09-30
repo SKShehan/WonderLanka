@@ -40,14 +40,17 @@ function EmployeeManagement() {
                     >
                 View Employees
                     </button>
+                    
 
                   
 
                  
                     </div>
+                    
                 
      
       </div>
+      
   </>
   );
 }
