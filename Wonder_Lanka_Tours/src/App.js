@@ -30,6 +30,9 @@ function App() {
     ReactSession.setStoreType("localStorage");
   }, []);
   const [user, setuser] = useState({});
+  const[Complaint, setComplaint] = useState({
+
+  });
   return (
     <BrowserRouter>
       <Switch>
@@ -85,7 +88,7 @@ function App() {
           <AllComplaints user={user}></AllComplaints>
         </Route>
         <Route path="/update-complaint/:id" exact>
-          <updateComplaint user={user}></updateComplaint>
+          <updateComplaint user={Complaint}></updateComplaint>
         </Route>
 
         <Route path="/my-feedback" exact>
