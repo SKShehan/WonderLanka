@@ -21,6 +21,8 @@ import React from "react";
 import classnames from "classnames";
 import { ReactSession } from "react-client-session";
 import { useHistory, useLocation } from "react-router-dom";
+
+import { useState } from "react";
 // reactstrap components
 import {
   Button,
@@ -37,6 +39,7 @@ function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
   const history = useHistory();
+  const [loggedIn, setloggedIn] = useState(false);
 
   const toggleNavbarCollapse = () => {
     setNavbarCollapse(!navbarCollapse);
@@ -52,6 +55,11 @@ function IndexNavbar() {
 
   React.useEffect(() => {
     ReactSession.setStoreType("localStorage");
+    if (ReactSession.get("user") != null) {
+      setloggedIn(true);
+    } else {
+      setloggedIn(false);
+    }
     const updateNavbarColor = () => {
       if (
         document.documentElement.scrollTop > 169 ||
@@ -102,56 +110,75 @@ function IndexNavbar() {
           isOpen={navbarCollapse}
         >
           <Nav navbar>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="/user-dashboard"
-                title="Dashboard"
-              >
-                Dashboard
-              </NavLink>
-            </NavItem>
+            {!loggedIn && (
+              <NavItem>
+                <NavLink data-placement="bottom" href="/index" title="Home">
+                  Home
+                </NavLink>
+              </NavItem>
+            )}
+            {loggedIn && (
+              <NavItem>
+                <NavLink
+                  data-placement="bottom"
+                  href="/user-dashboard"
+                  title="Dashboard"
+                >
+                  Dashboard
+                </NavLink>
+              </NavItem>
+            )}
+
             <NavItem>
               <NavLink data-placement="bottom" href="" title="Itineraries">
                 Itineraries
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="/my-tours"
-                title="My Tours"
-              >
-                My Tours
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="/my-feedback"
-                title="Feedback"
-              >
-                Feedback
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="/my-complaint"
-                title="Complaint"
-              >
-                complaint
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="/user-profile"
-                title="User Profile"
-              >
-                User Profile
-              </NavLink>
-            </NavItem>
+            {loggedIn && (
+              <NavItem>
+                <NavLink
+                  data-placement="bottom"
+                  href="/my-tours"
+                  title="My Tours"
+                >
+                  My Tours
+                </NavLink>
+              </NavItem>
+            )}
+            {loggedIn && (
+              <NavItem>
+                <NavLink
+                  data-placement="bottom"
+                  href="/my-feedback"
+                  title="Feedback"
+                >
+                  Feedback
+                </NavLink>
+              </NavItem>
+            )}
+            {loggedIn && (
+              <NavItem>
+                <NavLink
+                  data-placement="bottom"
+                  href="/my-complaint"
+                  title="Complaint"
+                >
+                  complaint
+                </NavLink>
+              </NavItem>
+            )}
+            {loggedIn && (
+              <NavItem>
+                <NavLink
+                  data-placement="bottom"
+                  href="/user-profile"
+                  title="User Profile"
+                >
+                  User Profile
+                </NavLink>
+              </NavItem>
+            )}
+
             <NavItem>
               <NavLink
                 data-placement="bottom"
@@ -161,11 +188,25 @@ function IndexNavbar() {
                 Contact Us
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink href="" onClick={logout}>
-                <i className="nc-icon nc-circle-10" /> Log Out
-              </NavLink>
-            </NavItem>
+            {loggedIn && (
+              <NavItem>
+                <NavLink href="" onClick={logout}>
+                  <i className="nc-icon nc-circle-10" /> Log Out
+                </NavLink>
+              </NavItem>
+            )}
+            {!loggedIn && (
+              <NavItem>
+                <NavLink href="#">Sign Up</NavLink>
+              </NavItem>
+            )}
+            {!loggedIn && (
+              <NavItem>
+                <NavLink href="/login">
+                  <i className="nc-icon nc-circle-10" /> Log In
+                </NavLink>
+              </NavItem>
+            )}
           </Nav>
         </Collapse>
       </Container>
