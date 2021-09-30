@@ -34,6 +34,9 @@ function App() {
     email: "james@gmail.com",
     dob: "1969-04-01",
   });
+  const[Complaint, setComplaint] = useState({
+    
+  });
   return (
 
     <BrowserRouter>
@@ -91,7 +94,7 @@ function App() {
           <AllComplaints user={user}></AllComplaints>
         </Route>
         <Route path="/update-complaint/:id" exact>
-          <updateComplaint user={user}></updateComplaint>
+          <updateComplaint user={Complaint}></updateComplaint>
         </Route>
 
 

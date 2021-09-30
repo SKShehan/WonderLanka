@@ -21,7 +21,7 @@ import {
 
 toast.configure(); 
 
-function updateComplaint() {
+function updateComplaint({Complaint}) {
     document.documentElement.classList.remove("nav-open");
 
   React.useEffect(() => {
@@ -35,7 +35,7 @@ function updateComplaint() {
   //adding state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [contact, setContact] = useState("");
+  const [contact, setContact] = useState();
   const [select, setSelect] = useState("");
   const [complaint, setComplaint] = useState("");
 
@@ -61,7 +61,6 @@ function updateComplaint() {
     alert("Inserting New Data");
 
     const updateComplaint = {
-      tourID,
       name,
       email,
       contact,
@@ -71,7 +70,15 @@ function updateComplaint() {
 
     console.log(newComplaint);
 
-    axios.post(`http://localhost:8070/ComplaintRoute/updateComplaint/${id}`, updateComplaint).then(()=>{
+    axios.put(`http://localhost:8070/ComplaintRoute/updateComplaint/${Complaint.id}`, updateComplaint)
+    .then(()=>{
+      console.log(res);
+      Complaint.name = updateComplaint.name;
+      Complaint.email = updateComplaint.email;
+      Complaint.contact = updateComplaint.contact;
+      Complaint.select = updateComplaint.select;
+      Complaint.complaint = updateComplaint.complaint;
+
       toast.success('Complaint Edited!', {
         position: "bottom-right",
         autoClose: 5000,
@@ -96,7 +103,7 @@ function updateComplaint() {
         progress: undefined,
         });
     })
-  }
+  };
 
   return(
     <>
