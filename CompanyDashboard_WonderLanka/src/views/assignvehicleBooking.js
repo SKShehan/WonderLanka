@@ -36,8 +36,8 @@ function AssignVehicle(){
     let history = useHistory();
     var number = 1;
 
-    function VehicleAssigned(vid){
-        axios.get(`http://localhost:8070/assignedVehicle/get/${vid}`).then((res)=>{
+    function VehicleAssigned(tid){
+        axios.get(`http://localhost:8070/assignedVehicle/get/${tid}`).then((res)=>{
           console.log(res.data.vehicleID);
           setVehicle(res.data.vehicleID);
           if (typeof vehicle == 'undefined'){

@@ -37,7 +37,7 @@ function AssignVc(){
             vid
         }
         
-        axios.post("http://localhost:8070/assignedvehicle/add" , newAssignment).then(()=>{
+        axios.post("http://localhost:8070/assignedVehicle/add" , newAssignment).then(()=>{
             window.location.reload();
         }).catch((err) =>{
             console.log(err);
@@ -47,8 +47,8 @@ function AssignVc(){
     function getName(){
         axios.get(`http://localhost:8070/vehicles/getbyName/${selectedVehicle}`).then((req) =>{
             
-            console.log(req.data.guideID);
-            setvID(req.data.guideID);
+            console.log(req.data.vid);
+            setvID(req.data.vid);
         })
     }
 
@@ -93,7 +93,7 @@ function AssignVc(){
             }}>
                 {vehicles.map((names)=>{
                     return <option>
-                        {names.fName}
+                        {names.vname}
                    </option>;
                 })} 
              
@@ -102,7 +102,7 @@ function AssignVc(){
         
 
             <Label for = "GuideID">vehicle ID</Label><br/>
-            <Input type = 'gid' name = "gid"  value = {vid} disabled
+            <Input type = 'vid' name = "vid"  value = {vid} disabled
             ></Input><br/>
 
 
@@ -111,7 +111,7 @@ function AssignVc(){
     
             <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}
 
-            >Assign Guide</Button>
+            >Assign Vehicle</Button>
 
         </form>    
         </div>
