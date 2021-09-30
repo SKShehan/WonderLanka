@@ -24,12 +24,16 @@ import { ContactUS } from "views/ContactUs";
 import Itineraries from "views/Itineraries";
 import Login from "views/Login";
 import { ReactSession } from "react-client-session";
+import { UpdateComplaint } from "views/updateComplaint";
 
 function App() {
   useEffect(() => {
     ReactSession.setStoreType("localStorage");
   }, []);
   const [user, setuser] = useState({});
+  const[Complaint, setComplaint] = useState({
+
+  });
   return (
     <BrowserRouter>
       <Switch>
@@ -85,7 +89,7 @@ function App() {
           <AllComplaints user={user}></AllComplaints>
         </Route>
         <Route path="/update-complaint/:id" exact>
-          <updateComplaint user={user}></updateComplaint>
+          <UpdateComplaint user={user}></UpdateComplaint>
         </Route>
 
         <Route path="/my-feedback" exact>
