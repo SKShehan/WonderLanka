@@ -64,13 +64,14 @@ export default function AddDriver() {
                 <label for = "firstname"><h5>Driver ID</h5></label>
                   
                     
-                  <Input placeholder="Enter Driver ID" type="text" onChange={(e)=>{
+                  <Input placeholder="Enter Driver ID" type="text" pattern="[D]{1}-[0-9]{3}" title = "Enter a valid Driver  ID, EX : D-001"
+                   required onChange={(e)=>{
                   setDriverid(e.target.value);
                    }} />
                   <label for = "firstname"><h5>First Name</h5></label>
                   
                     
-                    <Input placeholder="Enter First Name" type="text" onChange={(e)=>{
+                    <Input placeholder="Enter First Name" type="text" required onChange={(e)=>{
                     setfName(e.target.value);
                      }} />
                  
@@ -78,7 +79,7 @@ export default function AddDriver() {
                   <label for = "lastname"><h5>Last Name</h5></label>
                   
                     
-                    <Input placeholder="Enter Last Name" type="text" onChange={(e)=>{
+                    <Input placeholder="Enter Last Name" type="text" required onChange={(e)=>{
                     setlName(e.target.value);
                      }} />
                  
@@ -86,14 +87,15 @@ export default function AddDriver() {
                   <label for ="email"><h5>Email</h5></label>
                  
                     
-                    <Input placeholder="Enter Email" type="email" onChange={(e)=>{
+                    <Input placeholder="Enter Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title = "Enter a valid email" required
+                    onChange={(e)=>{
                     setEmail(e.target.value);
                      }}/>
                 
 
                   <label for = "phonenumber"><h5>Phone Number</h5></label>
                  
-                    <Input placeholder="Enter Mobile Number" type="number" pattern="^\d{10}$" onChange={(e)=>{
+                    <Input placeholder="Enter Mobile Number" type="text" pattern = "[0-9]{10}" title = "Enter a 10 digit phone number starting with 0"  required onChange={(e)=>{
                     setPhonenumber(e.target.value);
                      }}/>
                  
@@ -101,7 +103,8 @@ export default function AddDriver() {
                   <label for ="licenseid"><h5>License ID</h5></label>
                   
                     
-                    <Input placeholder="Enter License ID" type="text" onChange={(e)=>{
+                    <Input placeholder="Enter License ID" type="text" pattern="[L]{1}-[0-9]{3}" title = "Enter a valid Driver License ID, EX : GTR-123" required
+                     onChange={(e)=>{
                     setLicenseid(e.target.value);
                      }}/>
                   

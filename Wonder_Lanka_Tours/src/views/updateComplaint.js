@@ -4,7 +4,11 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { useParams } from "react-router";
 
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import IndexHeader from "components/Headers/IndexHeader.js";
+import DemoFooter from "components/Footers/DemoFooter.js";
 
 // core components
 import {
@@ -13,11 +17,11 @@ import {
   Input,
   Button
 } from "reactstrap";
-import { useParams } from "react-router";
+
 
 toast.configure(); 
 
-function updateComplaint() {
+function updateComplaint({Complaint}) {
     document.documentElement.classList.remove("nav-open");
 
   React.useEffect(() => {
@@ -31,7 +35,7 @@ function updateComplaint() {
   //adding state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [contact, setContact] = useState("");
+  const [contact, setContact] = useState();
   const [select, setSelect] = useState("");
   const [complaint, setComplaint] = useState("");
 
@@ -39,7 +43,7 @@ function updateComplaint() {
 
   useEffect(()=>{
     axios.get(`http://localhost:8070/ComplaintRoute/getComplaint/${id}`)
-    .then(()=>{
+    .then((res)=>{
       console.log(res.data);
       setName(res.data.name);
       setEmail(res.data.email);
@@ -57,7 +61,6 @@ function updateComplaint() {
     alert("Inserting New Data");
 
     const updateComplaint = {
-      tourID,
       name,
       email,
       contact,
@@ -67,7 +70,15 @@ function updateComplaint() {
 
     console.log(newComplaint);
 
-    axios.post(`http://localhost:8070/ComplaintRoute/updateComplaint/${id}`, updateComplaint).then(()=>{
+    axios.put(`http://localhost:8070/ComplaintRoute/updateComplaint/${Complaint.id}`, updateComplaint)
+    .then(()=>{
+      console.log(res);
+      Complaint.name = updateComplaint.name;
+      Complaint.email = updateComplaint.email;
+      Complaint.contact = updateComplaint.contact;
+      Complaint.select = updateComplaint.select;
+      Complaint.complaint = updateComplaint.complaint;
+
       toast.success('Complaint Edited!', {
         position: "bottom-right",
         autoClose: 5000,
@@ -77,6 +88,7 @@ function updateComplaint() {
         draggable: true,
         progress: undefined,
         });
+        e.target.reset();
 
     }).catch((err)=>{
       alert(err);
@@ -91,11 +103,12 @@ function updateComplaint() {
         progress: undefined,
         });
     })
-
-  }
+  };
 
   return(
     <>
+    <IndexNavbar />
+      <IndexHeader />
     <div className="container">
       <h3 style = {{marginLeft:"440px"}}>My Complaint</h3>
     <form onSubmit={sendNewData}>
@@ -142,6 +155,7 @@ function updateComplaint() {
     </Button>
     </form>
     </div>
+    <DemoFooter /> 
   </>
   )
 

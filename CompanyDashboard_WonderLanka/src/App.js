@@ -38,6 +38,8 @@ import AddDriver from "views/AddDriver";
 import DriverDetails from "views/DriverDetails";
 import DriverManagement from "views/DriverManagement";
 import ItineraryManagement from "views/ItineraryManagement";
+import  AssignD from "views/AssignDriver";
+import AssignDriver from "views/AssignDriverBookings";
 
 import Addvehicle from "views/addvehicle";
 import Editvehicle from "views/editvehicle";
@@ -136,6 +138,10 @@ function App() {
         <Route path ="/View-Driver" exact  
           component={DriverDetails}/>
 
+          <Route path="/assign-driver/:username" exact>
+            < AssignD/>
+            </Route>
+
         {/*Setting Management Function paths */}
 
         <Route path="/guide-management" exact>
@@ -188,6 +194,7 @@ function App() {
         <Route path="/edit-driver/:id" component={DriverUpdate} />
         <Route path ="/Add-Driver" component={AddDriver}/>
         <Route path ="/View-Driver" component={DriverDetails}/>
+        <Route path="/Assign-Driver" component={AssignDriver}/>
       
 
 
