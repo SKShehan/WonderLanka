@@ -193,7 +193,7 @@ export default class Addvehicle extends Component {
               onChange={this.onChangeVid}
                />
               
-             <FormFeedback valid>Good! that is available</FormFeedback> 
+           {/*  <FormFeedback valid>Good! that is available</FormFeedback> */}
               <FormText>enter valid vehicle ID "VXXX"</FormText>
               </FormGroup>
         </div>
