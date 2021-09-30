@@ -72,7 +72,7 @@ axios.post("http://localhost:8070/guides/add" , newGuide ).then(()=>{
             <form onSubmit = {sendData}>
 
                 <Label for = "GuideID">Guide ID</Label><br/>
-                <Input type = 'text' name = "GuideID" placeholder = "Enter Guide ID" required
+                <Input type = 'text' name = "GuideID" placeholder = "Enter Guide ID" pattern = "G-[0-9]{3}" title = "Enter in the format G-234" required
                 onChange = {(e) => {
                         setGuideId(e.target.value);
                 }}></Input><br/>

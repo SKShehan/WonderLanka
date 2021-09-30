@@ -97,7 +97,7 @@ function EditGuide(){
             <form onSubmit = {onSubmit}>
 
                 <Label for = "GuideID">Guide ID</Label><br/>
-                <Input type = 'text' name = "GuideID" value = {guideID}
+                <Input type = 'text' name = "GuideID" value = {guideID} pattern = "G-[0-9]{3}" title = "Enter in the format G-234"
                 onChange = {(e) =>{
                     setGuideId(e.target.value);
                 }}></Input><br/>
