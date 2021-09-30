@@ -32,8 +32,8 @@ function App() {
   }, []);
   const [user, setuser] = useState({});
   const[Complaint, setComplaint] = useState({
-
   });
+  
   return (
     <BrowserRouter>
       <Switch>
@@ -89,7 +89,7 @@ function App() {
           <AllComplaints user={user}></AllComplaints>
         </Route>
         <Route path="/update-complaint/:id" exact>
-          <UpdateComplaint user={user}></UpdateComplaint>
+          <UpdateComplaint user={Complaint}></UpdateComplaint>
         </Route>
 
         <Route path="/my-feedback" exact>

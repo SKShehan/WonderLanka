@@ -70,14 +70,9 @@ function UpdateComplaint({Complaint}) {
 
     //console.log(newComplaint);
 
-    axios.put(`http://localhost:8070/ComplaintRoute/updateComplaint/${Complaint.id}`, updateComplaint)
+    axios.post(`http://localhost:8070/ComplaintRoute/updateComplaint/${Complaint.id}`, updateComplaint)
     .then(()=>{
   //    console.log(res);
-      Complaint.name = updateComplaint.name;
-      Complaint.email = updateComplaint.email;
-      Complaint.contact = updateComplaint.contact;
-      Complaint.select = updateComplaint.select;
-      Complaint.complaint = updateComplaint.complaint;
 
       toast.success('Complaint Edited!', {
         position: "bottom-right",
@@ -114,20 +109,20 @@ function UpdateComplaint({Complaint}) {
     <form onSubmit={sendNewData}>
     <FormGroup>
       <Label for="Name">Name</Label>
-      <Input type="text" name="name" id="idName" placeholder="A.D. Amarasekara" onChange={(e)=>{
+      <Input type="text" name="name" id="idName" placeholder="" onChange={(e)=>{
         setName(e.target.value);
       }}/>
     </FormGroup>
     <FormGroup>
       <Label for="Email">Email address</Label>
-      <Input type="text" name="email" id="idEmail" placeholder="name@gmail.com" onChange={(e)=>{
+      <Input type="text" name="email" id="idEmail" placeholder="" onChange={(e)=>{
         setEmail(e.target.value);
       }}/>
       
     </FormGroup>
     <FormGroup>
       <Label for="contact">Contact No</Label>
-      <Input type="number" name="contact" id="idContact" placeholder="94 76 564 9534" onChange={(e)=>{
+      <Input type="number" name="contact" id="idContact" placeholder="" onChange={(e)=>{
         setContact(e.target.value);
       }}/>
     </FormGroup>
