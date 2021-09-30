@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router";
-
+import { useHistory } from "react-router";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
@@ -22,6 +22,8 @@ import {
 toast.configure(); 
 
 function UpdateComplaint({Complaint}) {
+
+    let history = useHistory();
     document.documentElement.classList.remove("nav-open");
 
   React.useEffect(() => {
@@ -66,14 +68,13 @@ function UpdateComplaint({Complaint}) {
       contact,
       select,
       complaint
-    }
+    };
 
     //console.log(newComplaint);
 
-    axios.post(`http://localhost:8070/ComplaintRoute/updateComplaint/${Complaint.id}`, updateComplaint)
-    .then(()=>{
-  //    console.log(res);
-
+    axios.put(`http://localhost:8070/complaint/updateComplaint/${id}`, updateComplaint)
+    .then((res)=>{
+    console.log(res);
       toast.success('Complaint Edited!', {
         position: "bottom-right",
         autoClose: 5000,
@@ -84,6 +85,7 @@ function UpdateComplaint({Complaint}) {
         progress: undefined,
         });
         e.target.reset();
+        history.push("/my-complaint");
 
     }).catch((err)=>{
       alert(err);
@@ -105,7 +107,7 @@ function UpdateComplaint({Complaint}) {
     <IndexNavbar />
       <IndexHeader />
     <div className="container">
-      <h3 style = {{marginLeft:"440px"}}>My Complaint</h3>
+      <h3 style = {{marginLeft:"440px"}}>Edit Complaint</h3>
     <form onSubmit={sendNewData}>
     <FormGroup>
       <Label for="Name">Name</Label>
