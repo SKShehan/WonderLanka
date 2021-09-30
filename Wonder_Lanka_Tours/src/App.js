@@ -24,6 +24,7 @@ import { ContactUS } from "views/ContactUs";
 import Itineraries from "views/Itineraries";
 import Login from "views/Login";
 import { ReactSession } from "react-client-session";
+import { UpdateComplaint } from "views/updateComplaint";
 
 function App() {
   useEffect(() => {
@@ -88,7 +89,7 @@ function App() {
           <AllComplaints user={user}></AllComplaints>
         </Route>
         <Route path="/update-complaint/:id" exact>
-          <updateComplaint user={Complaint}></updateComplaint>
+          <UpdateComplaint user={Complaint}></UpdateComplaint>
         </Route>
 
         <Route path="/my-feedback" exact>
