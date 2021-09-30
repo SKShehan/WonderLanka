@@ -1,4 +1,4 @@
-import styles from '../assets/css/UpdateDriver.module.css'
+import styles from '../assets/css/UpdateEmployee.module.css'
 import React, { Component } from 'react';
 
 import axios from 'axios';
@@ -146,7 +146,7 @@ export default class EmployeeUpdate extends Component {
 
         <div>
           <label>Employee Role: </label>
-              <select>
+          <select
               type="select" 
               className="form-control"
               value={this.state.emprole}
@@ -154,11 +154,8 @@ export default class EmployeeUpdate extends Component {
               >
                <option>General Manager</option> 
                <option>Assets Manager</option>
-
-             
-
-           </select>     
-
+              </select>
+         
         </div>
 
        

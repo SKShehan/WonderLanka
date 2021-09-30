@@ -19,7 +19,7 @@ import {
   } from "reactstrap";
 import { ListFormat } from 'typescript';
 
-function AssignD(){
+function AssignDr(){
     
 
     const {username} = useParams();
@@ -121,4 +121,4 @@ function AssignD(){
 
 }
 
-export default AssignD;
+export default AssignDr;
