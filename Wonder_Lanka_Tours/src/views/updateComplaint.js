@@ -21,7 +21,7 @@ import {
 
 toast.configure(); 
 
-function updateComplaint({Complaint}) {
+function UpdateComplaint({Complaint}) {
     document.documentElement.classList.remove("nav-open");
 
   React.useEffect(() => {
@@ -68,11 +68,11 @@ function updateComplaint({Complaint}) {
       complaint
     }
 
-    console.log(newComplaint);
+    //console.log(newComplaint);
 
     axios.put(`http://localhost:8070/ComplaintRoute/updateComplaint/${Complaint.id}`, updateComplaint)
     .then(()=>{
-      console.log(res);
+  //    console.log(res);
       Complaint.name = updateComplaint.name;
       Complaint.email = updateComplaint.email;
       Complaint.contact = updateComplaint.contact;
@@ -162,5 +162,5 @@ function updateComplaint({Complaint}) {
 }
 
 export {
-    updateComplaint
+    UpdateComplaint
   }
