@@ -7,9 +7,13 @@ import Backdrop from 'components/ItineraryBackdrop';
 import styles from '../assets/css/Itinerary.module.css'
 import { useScrollToBottom} from 'react-scroll-to-bottom';
 import axios from 'axios';
-        
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import IndexHeader from "components/Headers/IndexHeader.js";
+import DemoFooter from "components/Footers/DemoFooter.js";
+import { useHistory } from 'react-router';
 function Itineraries(){
     
+    let history = useHistory();
     const scrollBottom = useScrollToBottom(); 
 
     const [itineraries , setItineraries] = useState([]);
@@ -47,6 +51,9 @@ function Itineraries(){
         setItineraryOpen(false);
     }
     return(
+        <>
+        <IndexHeader />
+        <IndexNavbar />
         <div>   
             <div className = {styles.Packages}>
                 <h3 style = {{marginLeft : "30px" , marginTop : "30px" , fontWeight :"bold" , fontSize :"25px"}}>Our Tours</h3>
@@ -78,6 +85,8 @@ function Itineraries(){
                         <Button color = "info" style = {{float : 'right'}} onClick = {() =>{
                             setClass(itinerary.itineraryClass);
                             setTitle(itinerary.itineraryName);
+                            history.push("/book-tour")
+                            
                         }}
                         >Book Tour</Button>
                     </CardBody>        
@@ -95,6 +104,8 @@ function Itineraries(){
             </div>
 
         </div>
+        <DemoFooter />
+        </>
     );
 }
 

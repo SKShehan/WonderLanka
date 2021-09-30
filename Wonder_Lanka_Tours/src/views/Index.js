@@ -56,8 +56,7 @@ function Index() {
   });
   return (
     <>
-      <IndexNavbar />
-      <IndexHeader />
+
       <div className="main">
    {/*     <SectionButtons />
         <SectionNavbars />
@@ -72,15 +71,8 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
    <SectionDownload /> */}
-
-        {/*<MyFeedbacks/>
-        <AllFeedbacks/>*/}
-
-        {/*<MyComplaints/>
-        <AllComplaints/>*/}
-
-
-        <DemoFooter /> 
+        <MyComplaints />
+     
         
       </div>
     </>
