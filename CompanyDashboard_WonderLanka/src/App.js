@@ -57,7 +57,9 @@ import EmployeeDetails from "views/EmployeeDetails";
 import AddEmployee from "views/AddEmployee";
 import EmployeeManagement from "views/EmployeeManagement";
 import Homepage from "views/Homepage";
-import AssignVc from "views/assignvehicle";
+
+import HomepageAssets from "views/HomepageAssets";
+
 function App() {
 
   return (
@@ -87,7 +89,14 @@ function App() {
           exact 
         >
           <Homepage />
-        </Route>  
+        </Route> 
+
+        <Route 
+        path = "/HomepageAssets"
+        exact
+        >
+          <HomepageAssets />
+        </Route>   
         
         <Route //Setting path for Add Itinerary view
           path="/add-itinerary"
