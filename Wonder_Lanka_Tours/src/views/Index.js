@@ -45,6 +45,7 @@ import { AllComplaints } from "./AllComplaints";
 import { MyFeedbacks } from "./MyFeedbacks";
 import { AllFeedbacks } from "./AllFeedbacks";
 import { ContactUS } from "./ContactUs";
+import BookingReport from "./BookingReport";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -71,7 +72,7 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
    <SectionDownload /> */}
-        <MyComplaints />
+        <BookingReport />
      
         
       </div>

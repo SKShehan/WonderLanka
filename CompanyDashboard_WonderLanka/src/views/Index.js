@@ -52,6 +52,7 @@ import HotelDetails from "./HotelDetails";
 import EditHotel from "./EditHotel";
 import AddHotel from "./AddHotel";
 import HotelHome from "./HotelHome";
+import GuideReport from "./GuideReport";
 
 
 
@@ -77,6 +78,8 @@ import EmployeeManagement from "./EmployeeManagement";
 import AddEmployee from "./AddEmployee";
 import AssignDriver from "./AssignDriver";
 import AssignDriverBooking from "./AssignDriverBookings"
+
+import Login from "./Login";
 
 
 
@@ -123,22 +126,7 @@ function Index() {
       <EmployeeManagement/>
       <AssignDriverBooking/>*/}
  
-      <Homepage />
-
-     
-
-
-
-      
-     
-        
-        
-         
-
- 
-
- 
-       
+       <AssignGuide />
         <DemoFooter />
       </div>
     </>
