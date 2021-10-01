@@ -142,7 +142,7 @@ function Login({ user, setuser }) {
               <br />
               <label>
                 Don't have an account?{" "}
-                <a href="#">
+                <a href="/sign-up">
                   <strong>Create an account</strong>
                 </a>
               </label>
