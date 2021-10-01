@@ -35,11 +35,7 @@ function BookingReport() {
       return function cleanup() {
         document.body.classList.remove("index");
       };
-    } else {
-      history.push({
-        pathname: "/login",
-      });
-    }
+     }
   }, []);
   if (!location.state) {
     history.push({
