@@ -32,8 +32,8 @@ function App() {
   }, []);
   const [user, setuser] = useState({});
   const[Complaint, setComplaint] = useState({
-
   });
+  
   return (
     <BrowserRouter>
       <Switch>
