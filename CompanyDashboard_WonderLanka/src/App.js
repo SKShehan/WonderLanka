@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 import IndexHeader from "components/Headers/IndexHeader";
 import IndexNavbar from "components/Navbars/IndexNavbar";
@@ -53,20 +53,29 @@ import assignVehicle from "views/assignvehicleBooking";
 
 
 import EmployeeUpdate from "views/EmployeeUpdate";
+
+import InsurenceManagement from "views/InsurenceManagement";
+import AddInsurence from "views/AddInsurence";
+import EditInsurenceForm from "views/EditInsurenceForm";
+import Editinsurence from "views/Editinsurence";
+import DeleteInsurence from "views/DeleteInsurence";
+import InsuranceReport from "views/InsuranceReport";
 import EmployeeDetails from "views/EmployeeDetails";
 import AddEmployee from "views/AddEmployee";
 import EmployeeManagement from "views/EmployeeManagement";
 import Homepage from "views/Homepage";
 
+
 import HomepageAssets from "views/HomepageAssets";
 
 function App() {
 
+
+function App() {
   return (
     <BrowserRouter>
-      
       <Switch>
-      <Route path="/index" render={(props) => <Index {...props} />} />
+        <Route path="/index" render={(props) => <Index {...props} />} />
         <Route
           path="/nucleo-icons"
           render={(props) => <NucleoIcons {...props} />}
@@ -84,11 +93,15 @@ function App() {
           render={(props) => <RegisterPage {...props} />}
         />
 
-        <Route 
+        <Route
           path = "/Homepage"
-          exact 
+          exact
         >
           <Homepage />
+
+        </Route>
+
+
         </Route> 
 
         <Route 
@@ -98,6 +111,7 @@ function App() {
           <HomepageAssets />
         </Route>   
         
+
         <Route //Setting path for Add Itinerary view
           path="/add-itinerary"
           exact
@@ -121,12 +135,12 @@ function App() {
 
         <Route path = "/CustomizedReq" exact>
           <CustomizedRequests />
-        </Route>  
+        </Route>
 
         <Route path="/edit-itinerary/:id" exact>
           <EditItinerary />
         </Route>
-        <Route path= "/edit-guide/:id" exact>
+        <Route path="/edit-guide/:id" exact>
           <EditGuide />
         </Route>
         <Route path="/add-guide" exact>
@@ -137,19 +151,19 @@ function App() {
         </Route>
         <Route path = "/assign-guide/:username" exact>
           <Assign />
-        </Route>  
+        </Route>
 
         <Route path = "/assign-guide-booking" exact>
           <AssignGuide />
-        </Route>  
+        </Route>
 
-        
-       
-        <Route path="/edit-driver/:id" exact 
+
+
+        <Route path="/edit-driver/:id" exact
           component={DriverUpdate} />
-        <Route path ="/Add-Driver" exact  
+        <Route path ="/Add-Driver" exact
           component={AddDriver}/>
-        <Route path ="/View-Driver" exact  
+        <Route path ="/View-Driver" exact
           component={DriverDetails}/>
 
           <Route path="/assign-driver/:username" exact>
@@ -161,7 +175,7 @@ function App() {
         <Route path="/guide-management" exact>
           <GuideManagement />
         </Route>
-        
+
         {/* vehicle */}
         <Route path="/add-vehicle" exact>
           <Addvehicle />
@@ -172,6 +186,15 @@ function App() {
         <Route path="/type-vehicles" exact>
           <Vtype />
         </Route>
+
+        <Route path="/edit-vehicle/:id" component={Editvehicle} />
+
+        <Route path="/assign-vehicles" component={AssignVehicle} />
+
+        <Route path="/report-vehicles" component={ReportVehicle} />
+
+        <Route path="/vehicle-management" component={VehicleDashboard} />
+
         <Route path="/edit-vehicle/:id" component={Editvehicle}/>
           
         <Route path="/assign-vehiclesBooking" component={AssignVehicleBooking}/> 
@@ -185,63 +208,94 @@ function App() {
        <Route path="/assign-vehicle/:username" component={AssignVc} />
         
 
+
         <Route path="/itinerary-management" exact>
           <ItineraryManagement />
         </Route>
 
         <Route path="/driver-management" exact>
           <DriverManagement />
-        </Route>  
+        </Route>
         <Route path="/booking-management" exact>
-          < BookingManagement/>
+          <BookingManagement />
         </Route>
 
-
-      
         <Route path="/booktable" exact>
           <Booktable />
         </Route>
-        <Route path="/edit-bookingmanagement/:id"  component={Editbookings}>
-        </Route>
-   
-      
-        <Route path="/add-cancelbooking/:id" component={Cancelbookingform} >
+        <Route
+          path="/edit-bookingmanagement/:id"
+          component={Editbookings}
+        ></Route>
+
+        <Route
+          path="/add-cancelbooking/:id"
+          component={Cancelbookingform}
+        ></Route>
+
+        <Route path="/edit-driver/:id" component={DriverUpdate} />
+        <Route path="/Add-Driver" component={AddDriver} />
+        <Route path="/View-Driver" component={DriverDetails} />
+
+        <Route //setting path to Insurence management page
+          path="/insurence-home"
+          exact
+        >
+          <InsurenceManagement />
         </Route>
 
-       
+        <Route path="/add-insurence" exact>
+          <AddInsurence />
+        </Route>
+
+        <Route path="/edit-insurence" exact>
+          <Editinsurence />
+        </Route>
+
+        <Route path="/delete-insurence" exact>
+          <DeleteInsurence />
+        </Route>
+
+        <Route path="/edit-form-insurence/:id" exact>
+          <EditInsurenceForm />
+        </Route>
+
         <Route path="/edit-driver/:id" component={DriverUpdate} />
         <Route path ="/Add-Driver" component={AddDriver}/>
         <Route path ="/View-Driver" component={DriverDetails}/>
         <Route path="/Assign-Driver" component={AssignDriver}/>
-      
 
 
-        
+        <Route path="/report-insurance" exact>
+          <InsuranceReport />
+        </Route>
+
         <Route //Setting path for hotels
-          path="/hotel-management" exact >
+          path="/hotel-management"
+          exact
+        >
           <HotelHome />
         </Route>
 
-        <Route path="/add" exact >
+        <Route path="/add" exact>
           <AddHotel />
         </Route>
 
-        <Route path="/edit/:id"  component={EditHotel}>
-        </Route>
+        <Route path="/edit/:id" component={EditHotel}></Route>
 
-        <Route path="/get" exact >
+        <Route path="/get" exact>
           <HotelDetails />
         </Route>
 
 
         <Route path="/edit-employee/:id" component = {EmployeeUpdate} />
-        
-          
+
+
 
 
         <Route path ="/View-Employee" component={EmployeeDetails}/>
         <Route path ="/Add-Employee" component={AddEmployee}/>
-        <Route path = "/employee-management" exact> 
+        <Route path = "/employee-management" exact>
           <EmployeeManagement />
         </Route>
 
