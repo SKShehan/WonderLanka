@@ -134,7 +134,7 @@ function ViewTour() {
       .then((res) => {
         if (res.data) {
           axios
-            .get(`http://localhost:8070/get/${res.data.driverId}`)
+            .get(`http://localhost:8070/${res.data.driverId}`)
             .then((ress) => {
               if (ress.data) {
                 setassignedDriver(
