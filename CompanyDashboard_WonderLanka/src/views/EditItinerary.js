@@ -111,7 +111,7 @@ function EditItinerary(){
             <form onSubmit = {updateData} encType = "multipart/form-data">
 
                 <Label for = "ItineraryID">Itinerary ID</Label><br/>
-                <Input type = 'text' name = "ItineraryID" placeholder = "Enter Itinerary ID" value = {itineraryId}
+                <Input type = 'text' name = "ItineraryID" placeholder = "Enter Itinerary ID" value = {itineraryId} pattern ="[T]-[0-9]{4}" title = "Enter in the format T-2345" required
                 onChange = {(e) =>{
                     setitineraryId(e.target.value);
                 }}

@@ -21,78 +21,43 @@ import { useHistory } from "react-router";
 
 
 
-function AssignGuide(){
+function AssignVehicle(){
 
 
 
-    
- //   const [guide , setGuide] = useState("");
-   //   const [guide , setGuide] = useState([]);
-   const [bookings , setBookings] = useState([]);
-   const [guides, setGuides] = useState({});
+    const [bookings , setBookings] = useState([]);
+    const [vehicle , setVehicle] = useState("");
 
-   useEffect(()=>{
-    axios.get("http://localhost:8070/bookings/").then((res) =>{
-        setBookings(res.data);
+    useEffect(()=>{
+        axios.get("http://localhost:8070/bookings/").then((res) =>{
+            setBookings(res.data);
+        })
     })
-}, []) 
-
     let history = useHistory();
     var number = 1;
-    
-    useEffect(() => {
-  
-      bookings.forEach(({ tourId }) => {
-        axios.get(`http://localhost:8070/assignedGuides/check/${tourId}`).then((res) =>{
-          if(res.data === true){
-            axios.get(`http://localhost:8070/assignedGuides/get/${tourId}`)
-            .then(res => {
-              setGuides(guides => ({
-                ...guides,
-                [tourId]: res.data.guideId,
-              }));
-            })
+
+    function VehicleAssigned(tid){
+        axios.get(`http://localhost:8070/assignedVehicle/get/${tid}`).then((res)=>{
+          console.log(res.data.vehicleID);
+          setVehicle(res.data.vehicleID);
+          if (typeof vehicle == 'undefined'){
+            return "Not Assigned";
           }
-
+          
+        }).catch((err)=>{
+          console.log(err);
         })
-      
-      });
-    
-    }, [bookings]);
-
-      // function  GuideAssigned(tid){
-      //     axios.get(`http://localhost:8070/assignedGuides/check/${tid}`).then((res)=>{
-     
-      //     if(res.data === true){
-      //       axios.get(`http://localhost:8070/assignedGuides/get/${tid}`).then((resp) =>{
-      //         setGuide(resp.data.guideId);
-              
-      //         console.log(guide);
-      //       })
-
-      //     }
-      //     else{
-      //       setGuide("Not Assigned");
-      //     }
-            
-            
-          
-      //     }).catch((err)=>{
-      //       console.log(err);
-      //     })
-          
         
-
-    //     return guide;
+        return vehicle;
 
         
- //     }
+    }
     return(
         
         <div>
             <IndexNavbar />
             <IndexHeader />
-            <h3 style ={{marginLeft:"40px"}}>Assigned Guides</h3><br/><br/>
+            <h3 style ={{marginLeft:"40px"}}>Assigned Vehicles</h3><br/><br/>
 
             <Row>
           <Col>
@@ -127,7 +92,7 @@ function AssignGuide(){
                         <th scope = "col">Booking Date</th>
                         <th scope = "col">Arrival Date</th>
                         <th scope = "col">Country </th>
-                        <th scope = "col">Guide Assigned </th>
+                        <th scope = "col">vehicle Assigned </th>
                         <th scope = "col">Operation</th>
 
                     </thead>
@@ -142,13 +107,12 @@ function AssignGuide(){
                                 <td>{booking.bookingDate}</td>
                                 <td>{booking.arrivalDate}</td>
                                 <td>{booking.country}</td>
-                                {/* {GuideAssigned(booking.guideId)} */}
-                                <td>{guides[booking.tourId]}</td>
+                                <td>{VehicleAssigned(booking.tourId)}</td>
                                 <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
                                 onClick = {()=>{
-                                    history.push(`/assign-guide/${booking.username}`);
+                                    history.push(`/assign-vehicle/${booking.username}`);
                                 }}
-                                >Assign Guide</Button>
+                                >Assign Vehicle</Button>
                                </td>
                             </tr>
     
@@ -165,4 +129,4 @@ function AssignGuide(){
 
 }
 
-export default AssignGuide;
+export default AssignVehicle;

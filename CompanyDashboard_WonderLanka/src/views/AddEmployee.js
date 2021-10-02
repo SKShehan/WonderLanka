@@ -1,4 +1,4 @@
-import styles from '../assets/css/AddDriver.module.css'
+import styles from '../assets/css/AddEmployee.module.css'
 import React, {useState} from "react"
 import axios from "axios";
 import IndexHeader from "components/Headers/IndexHeader";
@@ -55,20 +55,21 @@ export default function AddEmployee() {
                         <label for = "empname"><h5>User Name</h5></label>
                           
                             
-                          <Input placeholder="Enter User Name" type="text" onChange={(e)=>{
+                          <Input placeholder="Enter User Name" type="text"
+                          
+                          onChange={(e)=>{
                           setEmpname(e.target.value);
                            }} />
                           <label for = "emppwd"><h5>Password</h5></label>
-                          
-                            
-                            <Input placeholder="Enter a Password" type="text" onChange={(e)=>{
+                            <Input placeholder="Enter a Password" type="text"
+                             onChange={(e)=>{
                             setPwd(e.target.value);
                              }} />
                          
         
                             
                             <Label for = "EmployeeRole">Select Employee Role</Label><br/>
-                            <Input type = "select" name = "EmployeeRole"
+                            <Input type = "select" name = "EmployeeRole" required
                             onChange = {(e) =>{
                               setRole(e.target.value);
                             }}

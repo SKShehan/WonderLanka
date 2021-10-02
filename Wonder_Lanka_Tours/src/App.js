@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 import Index from "views/Index.js";
@@ -22,20 +22,20 @@ import { MyFeedbacks } from "views/MyFeedbacks";
 import { AllFeedbacks } from "views/AllFeedbacks";
 import { ContactUS } from "views/ContactUs";
 import Itineraries from "views/Itineraries";
+import Login from "views/Login";
+import { ReactSession } from "react-client-session";
+import { UpdateComplaint } from "views/updateComplaint";
+import SignUp from "./views/SignUp"
 
 function App() {
-  const [user, setuser] = useState({
-    username: "james",
-    password: "pass123",
-    fullName: "James Anderson",
-    country: "United Kingdom",
-    nic: "000000000",
-    mobileNo: "+94772665133",
-    email: "james@gmail.com",
-    dob: "1969-04-01",
+  useEffect(() => {
+    ReactSession.setStoreType("localStorage");
+  }, []);
+  const [user, setuser] = useState({});
+  const[Complaint, setComplaint] = useState({
   });
+  
   return (
-
     <BrowserRouter>
       <Switch>
         <Route path="/index" render={(props) => <Index {...props} />} />
@@ -59,30 +59,29 @@ function App() {
           <BookTour user={user}></BookTour>
         </Route>
         <Route path="/my-tours" exact>
-          <MyTours user={user}></MyTours>
+          <MyTours></MyTours>
         </Route>
         <Route path="/view-tour" exact>
-          <ViewTour user={user}></ViewTour>
+          <ViewTour></ViewTour>
         </Route>
         <Route path="/edit-profile" exact>
-          <EditProfile user={user}></EditProfile>
+          <EditProfile></EditProfile>
         </Route>
         <Route path="/change-password" exact>
-          <ChangePassword user={user}></ChangePassword>
+          <ChangePassword></ChangePassword>
         </Route>
         <Route path="/user-profile" exact>
-          <UserProfile user={user}></UserProfile>
+          <UserProfile></UserProfile>
         </Route>
         <Route path="/unregister" exact>
-          <Unregister user={user}></Unregister>
+          <Unregister></Unregister>
         </Route>
         <Route path="/user-dashboard" exact>
-          <Dashboard user={user}></Dashboard>
+          <Dashboard></Dashboard>
         </Route>
         <Route path="/booking-report" exact>
-          <BookingReport user={user}></BookingReport>
+          <BookingReport></BookingReport>
         </Route>
-
 
         <Route path="/my-complaint" exact>
           <MyComplaints user={user}></MyComplaints>
@@ -91,9 +90,8 @@ function App() {
           <AllComplaints user={user}></AllComplaints>
         </Route>
         <Route path="/update-complaint/:id" exact>
-          <updateComplaint user={user}></updateComplaint>
+          <UpdateComplaint user={Complaint}></UpdateComplaint>
         </Route>
-
 
         <Route path="/my-feedback" exact>
           <MyFeedbacks user={user}></MyFeedbacks>
@@ -105,8 +103,15 @@ function App() {
         <Route path="/contact-us" exact>
           <ContactUS user={user}></ContactUS>
         </Route>
+        <Route path="/login" exact>
+          <Login user={user} setuser={setuser}></Login>
+        </Route>
 
-        <Route path = "/view-itineraries" exact>
+        <Route path="/sign-up" exact>
+          <SignUp user={user} setuser={setuser}></SignUp>
+        </Route>
+
+        <Route path="/view-itineraries" exact>
           <Itineraries />
         </Route>
         <Redirect to="/index" />

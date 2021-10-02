@@ -183,16 +183,18 @@ export default class Addvehicle extends Component {
         <FormGroup>
           <label > <font color ="black"><b> Vehicle ID: </b> </font> </label>
           <input 
-              pattern="[0-9]{3}"
+          
+              pattern="[V][0-9]{3}"
+              title = "Enter a valid Vehicle ID, EX : V123"
               type="text" 
-              pattern="[0-9]{3}"
+              required
               className="form-control"
               value={this.state.vid}
               onChange={this.onChangeVid}
                />
               
-             {/* <FormFeedback valid>Good! that is available</FormFeedback> */}
-              <FormText>vehicle ID can entered three numbers</FormText>
+           
+              <FormText>enter valid vehicle ID "VXXX"</FormText>
               </FormGroup>
         </div>
 
@@ -216,6 +218,8 @@ export default class Addvehicle extends Component {
         
           <label > <font color ="black"><b> Vehicle Number: </b> </font> </label>
           <input  type="text"
+              pattern="[A-Z]{2,3}-[0-9]{3,4}"
+              title = "Enter a valid Vehicle Number Plate, EX : HKG-8765"
               required
               className="form-control"
               value={this.state.vnumber}

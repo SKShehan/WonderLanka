@@ -21,7 +21,6 @@ import { useHistory } from "react-router";
 
 
 
-
 function AssignDriver(){
 
 
@@ -39,8 +38,8 @@ function AssignDriver(){
 
     function DriverAssigned(tid){
         axios.get(`http://localhost:8070/assignedDrivers/get/${tid}`).then((res)=>{
-          console.log(res.data.driverid);
-          setDriver(res.data.driverid);
+          console.log(res.data.driverId);
+          setDriver(res.data.driverId);
           if (typeof driver == 'undefined'){
             return "Not Assigned";
           }

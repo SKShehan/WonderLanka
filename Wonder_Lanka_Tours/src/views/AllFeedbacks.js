@@ -33,7 +33,22 @@ function AllFeedbacks () {
             onChange = {(e) =>{
               setSearchVal(e.target.value);
           }}/>
-              {feedbacks.map((feedback)=>(
+              {feedbacks
+              .filter((feedback) => {
+                let Name = feedback.name;
+                if (searchVal === "") {
+                  return feedback;
+                } else {
+                  if (Name) {
+                    if (
+                      Name.toLowerCase().includes(searchVal.toLowerCase())
+                    ) {
+                      return feedback;
+                    }
+                  }
+                }
+              })
+              .map((feedback)=>(
               <div style = {{marginLeft:"20px"}}  className = "tableContainer">
               <table className = "table table-striped">
                 <thead>

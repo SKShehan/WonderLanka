@@ -46,6 +46,9 @@ import { MyFeedbacks } from "./MyFeedbacks";
 import { AllFeedbacks } from "./AllFeedbacks";
 import { ContactUS } from "./ContactUs";
 
+import Dashboard from "./Dashboard";
+
+
 function Index() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -56,8 +59,7 @@ function Index() {
   });
   return (
     <>
-      <IndexNavbar />
-      <IndexHeader />
+
       <div className="main">
    {/*     <SectionButtons />
         <SectionNavbars />
@@ -72,15 +74,8 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
    <SectionDownload /> */}
-
-        {/*<MyFeedbacks/>
-        <AllFeedbacks/>*/}
-
-        {/*<MyComplaints/>
-        <AllComplaints/>*/}
-
-
-        <DemoFooter /> 
+        <BookingReport />
+     
         
       </div>
     </>

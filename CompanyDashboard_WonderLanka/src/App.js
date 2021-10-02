@@ -45,9 +45,13 @@ import Addvehicle from "views/addvehicle";
 import Editvehicle from "views/editvehicle";
 import Vehiclelist from "views/vehiclelist";
 import Vtype from "views/vtype";
-import AssignVehicle from "views/assignvehicle";
+import AssignVehicleBooking from "views/assignvehicleBooking";
 import ReportVehicle from "views/reportvehicle";
 import VehicleDashboard from "views/vehicleDashboard";
+import assignVehicle from "views/assignvehicleBooking";
+
+
+
 import EmployeeUpdate from "views/EmployeeUpdate";
 
 import InsurenceManagement from "views/InsurenceManagement";
@@ -60,6 +64,12 @@ import EmployeeDetails from "views/EmployeeDetails";
 import AddEmployee from "views/AddEmployee";
 import EmployeeManagement from "views/EmployeeManagement";
 import Homepage from "views/Homepage";
+
+
+import HomepageAssets from "views/HomepageAssets";
+
+function App() {
+
 
 function App() {
   return (
@@ -88,7 +98,19 @@ function App() {
           exact
         >
           <Homepage />
+
         </Route>
+
+
+        </Route> 
+
+        <Route 
+        path = "/HomepageAssets"
+        exact
+        >
+          <HomepageAssets />
+        </Route>   
+        
 
         <Route //Setting path for Add Itinerary view
           path="/add-itinerary"
@@ -164,6 +186,7 @@ function App() {
         <Route path="/type-vehicles" exact>
           <Vtype />
         </Route>
+
         <Route path="/edit-vehicle/:id" component={Editvehicle} />
 
         <Route path="/assign-vehicles" component={AssignVehicle} />
@@ -171,6 +194,20 @@ function App() {
         <Route path="/report-vehicles" component={ReportVehicle} />
 
         <Route path="/vehicle-management" component={VehicleDashboard} />
+
+        <Route path="/edit-vehicle/:id" component={Editvehicle}/>
+          
+        <Route path="/assign-vehiclesBooking" component={AssignVehicleBooking}/> 
+          
+        <Route path="/report-vehicles" component={ReportVehicle}/> 
+
+        <Route path = "/vehicle-management" component = {VehicleDashboard} />
+
+
+
+       <Route path="/assign-vehicle/:username" component={AssignVc} />
+        
+
 
         <Route path="/itinerary-management" exact>
           <ItineraryManagement />

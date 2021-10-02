@@ -5,25 +5,16 @@ import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
 
-function Homepage(){
+function HomepageAssets(){
 
   let history = useHistory();
   
-    function handleClickItinerary(){
-        history.push("/itinerary-management");
-    }
+
 
     function handleClickGuide() {
         history.push("/guide-management");
     }
 
-    function handleClickBooking() {
-        history.push("/assign-guides");
-    }
-
-    function handleClickComp() {
-        history.push("/report-guides");
-    }
 
     function handleClickVehicle() {
       history.push("/vehicle-management");
@@ -33,9 +24,6 @@ function Homepage(){
       history.push("/driver-management");
     }
 
-    function handleClickInsurance() {
-      history.push("/insurence-home");
-    }
 
    function handleClickHotel() {
      history.push("/hotel-management");
@@ -50,6 +38,7 @@ function Homepage(){
 
       <>
       <IndexNavbar />
+      <IndexHeader />
      
         
             <div style = {{paddingTop : "50px"}} className = {styles.body}>
@@ -59,25 +48,11 @@ function Homepage(){
               <table className = {styles.tb}>
 
                 <tr>
-                  <td>
-                      <button className = {styles.btn_guidemng} onClick = {handleClickItinerary} >Itinerary Management</button>
-                  </td>
-                    
+   
                   <td>
                       <button className = {styles.btn_guidemng} onClick = {handleClickGuide} >Guide Management</button>
                   </td>
-
-                  <td>
-                      <button className = {styles.btn_guidemng} onClick = {handleClickBooking}>Booking Management</button>
-                  </td>
-
-                  <td>
-                      <button className = {styles.btn_guidemng} onClick = {handleClickComp}>Complaint and Feedback Management</button>
-                  </td>
-
-                </tr>
-
-                <tr>
+                  
                   <td>
                       <button className = {styles.btn_guidemng} onClick = {handleClickVehicle} >Vehicle Management</button>
                   </td>
@@ -87,21 +62,17 @@ function Homepage(){
                   </td>
 
                   <td>
-                      <button className = {styles.btn_guidemng} onClick = {handleClickInsurance}>Insurance Management</button>
-                  </td>
-
-                  <td>
                       <button className = {styles.btn_guidemng} onClick = {handleClickHotel}>Hotel and Restaraunt Management</button>
                   </td>
                 </tr>  
               </table>
 
-              <button className = {styles.btn_guidemng} onClick = {handleClickEmployee}>Employee Management</button>
+              
             </div>
         </div>
-      
+      <DemoFooter />
         </>
     );
 }
 
-export default Homepage;
+export default HomepageAssets;
