@@ -61,8 +61,6 @@ export default function AddEmployee() {
                           setEmpname(e.target.value);
                            }} />
                           <label for = "emppwd"><h5>Password</h5></label>
-                          
-                            
                             <Input placeholder="Enter a Password" type="text"
                              onChange={(e)=>{
                             setPwd(e.target.value);

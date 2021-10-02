@@ -25,6 +25,7 @@ import Itineraries from "views/Itineraries";
 import Login from "views/Login";
 import { ReactSession } from "react-client-session";
 import { UpdateComplaint } from "views/updateComplaint";
+import SignUp from "./views/SignUp"
 
 function App() {
   useEffect(() => {
@@ -104,6 +105,10 @@ function App() {
         </Route>
         <Route path="/login" exact>
           <Login user={user} setuser={setuser}></Login>
+        </Route>
+
+        <Route path="/sign-up" exact>
+          <SignUp user={user} setuser={setuser}></SignUp>
         </Route>
 
         <Route path="/view-itineraries" exact>
