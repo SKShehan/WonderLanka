@@ -32,6 +32,7 @@ function EditProfile() {
   const [dateOfBirth, setdateOfBirth] = useState("");
   const [nic, setnic] = useState("");
   const [username, setusername] = useState("");
+  const [password, setpassword] = useState("");
   let usernameExists = false;
   const history = useHistory();
   const countryList = [
@@ -274,6 +275,7 @@ function EditProfile() {
       mobileNo,
       dateOfBirth,
       nic,
+      password,
     };
     await updateUsername();
     console.log(usernameExists);
@@ -326,6 +328,7 @@ function EditProfile() {
       setmobileNo(ReactSession.get("user").mobileNo);
       setemail(ReactSession.get("user").email);
       setdateOfBirth(ReactSession.get("user").dateOfBirth);
+      setpassword(ReactSession.get("user").password);
     }
 
     return function cleanup() {
