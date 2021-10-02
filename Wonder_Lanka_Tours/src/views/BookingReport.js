@@ -64,7 +64,7 @@ function BookingReport() {
                             require("assets/img/wonder-lanka-logo.png").default
                           }
                           className="report-logo"
-                        />
+                        /><br/>
                       </Col>
                     </Row>
                     <Row>

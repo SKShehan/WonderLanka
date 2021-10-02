@@ -80,6 +80,7 @@ import AssignDriver from "./AssignDriver";
 import AssignDriverBooking from "./AssignDriverBookings"
 
 import Login from "./Login";
+import ItineraryReport from "./CustomItineraryReport";
 
 
 
@@ -124,9 +125,9 @@ function Index() {
       <BookingManagement />
       <Homepage/>
       <EmployeeManagement/>
-      <AssignDriverBooking/>*/}
- 
-       <AssignGuide />
+     <AssignGuide /> */}
+      <ItineraryReport />
+       
         <DemoFooter />
       </div>
     </>
