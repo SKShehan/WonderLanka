@@ -67,7 +67,7 @@ import Homepage from "./Homepage";
 
 import VehicleDashboard from "./vehicleDashboard";
 import Editvehicle from "./editvehicle";
-import AssignVehicle from "./assignvehicle";
+import AssignVehicle from "./assignvehicleBooking";
 import EmployeeDetails from "./EmployeeDetails";
 import EmployeeUpdate from "./EmployeeUpdate";
 
