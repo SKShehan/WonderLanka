@@ -17,120 +17,19 @@
 
 */
 import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+// styles
+import "bootstrap/scss/bootstrap.scss";
+import "assets/scss/paper-kit.scss?v=1.3.0";
+import "assets/demo/demo.css?v=1.3.0";
+// pages
 
-// reactstrap components
+// others
 
-// core components
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import IndexHeader from "components/Headers/IndexHeader.js";
-import DemoFooter from "components/Footers/DemoFooter.js";
-
-// index sections
-import SectionButtons from "views/index-sections/SectionButtons.js";
-import SectionNavbars from "views/index-sections/SectionNavbars.js";
-import SectionNavigation from "views/index-sections/SectionNavigation.js";
-import SectionProgress from "views/index-sections/SectionProgress.js";
-import SectionNotifications from "views/index-sections/SectionNotifications.js";
-import SectionTypography from "views/index-sections/SectionTypography.js";
-import SectionJavaScript from "views/index-sections/SectionJavaScript.js";
-import SectionCarousel from "views/index-sections/SectionCarousel.js";
-import SectionNucleoIcons from "views/index-sections/SectionNucleoIcons.js";
-import SectionDark from "views/index-sections/SectionDark.js";
-import SectionLogin from "views/index-sections/SectionLogin.js";
-import SectionExamples from "views/index-sections/SectionExamples.js";
-import SectionDownload from "views/index-sections/SectionDownload.js";
-import AddItinerary from "./AddItinerary";
-import ViewItineraries from "./viewItineraries";
-import ItineraryManagement from "./ItineraryManagement";
-import CustomizedRequests from "./CustomizedRequests";
-import AddGuide from "./AddGuide";
-import ViewGuides from "./ViewGuides";
-import GuideManagement from "./GuideManagement";
-import Booktable from "./booktable";
-import BookingManagement from "./BookingManagement";
-import HotelDetails from "./HotelDetails";
-import EditHotel from "./EditHotel";
-import AddHotel from "./AddHotel";
-import HotelHome from "./HotelHome";
-import GuideReport from "./GuideReport";
-
-
-
-import Home from "./booktable";
-
-import AddDriver from "./AddDriver";
-import DriverDetails from "./DriverDetails"
-import DriverManagement from "./DriverManagement";
-import Homepage from "./Homepage";
-
-
-
-import VehicleDashboard from "./vehicleDashboard";
-import Editvehicle from "./editvehicle";
-import AssignVehicle from "./assignvehicleBooking";
-import EmployeeDetails from "./EmployeeDetails";
-import EmployeeUpdate from "./EmployeeUpdate";
-
-import AssignGuide from "./AssignGuideBookings";
-
-import Assign from "./AssignGuide"
-import EmployeeManagement from "./EmployeeManagement";
-import AddEmployee from "./AddEmployee";
-import AssignDriver from "./AssignDriver";
-import AssignDriverBooking from "./AssignDriverBookings"
-
-import Login from "./Login";
-
-
-
-function Index() {
-  document.documentElement.classList.remove("nav-open");
-  React.useEffect(() => {
-    document.body.classList.add("index");
-    return function cleanup() {
-      document.body.classList.remove("index");
-    };
-  });
-  return (
-    <>
-
-      <div className="main">
-        <IndexNavbar />
-        <IndexHeader/>
-      {/*<SectionButtons />
-        <SectionNavbars />
-        <SectionNavigation />
-        <SectionProgress />
-        <SectionNotifications />
-        <SectionTypography />
-        <SectionJavaScript />
-        <SectionCarousel />
-        <SectionNucleoIcons />
-        <SectionDark />
-        <SectionLogin />
-        <SectionExamples />
-        <SectionDownload />
-        <GuideManagement /> 
-        
-        <Home/>
-
-        <SectionDownload /> 
-        <GuideManagement />
-
-        <AddDriver/>
-        <DriverDetails/>
-        <DriverManagement/>
-     <AssignGuide />
-      <BookingManagement />
-      
-      <EmployeeManagement/>
-      <AssignDriverBooking/>*/}
- <Homepage/>
-       
-        <DemoFooter />
-      </div>
-    </>
-  );
-}
-
-export default Index;
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);

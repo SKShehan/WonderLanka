@@ -34,7 +34,7 @@ function Homepage(){
     }
 
     function handleClickInsurance() {
-      history.push("/report-guides");
+      history.push("/insurence-home");
     }
 
    function handleClickHotel() {
