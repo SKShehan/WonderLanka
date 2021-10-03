@@ -120,13 +120,13 @@ function Index() {
         <AddDriver/>
         <DriverDetails/>
         <DriverManagement/>
-     
+     <AssignGuide />
       <BookingManagement />
-      <Homepage/>
+      
       <EmployeeManagement/>
       <AssignDriverBooking/>*/}
- 
-       <AssignGuide />
+ <Homepage/>
+       
         <DemoFooter />
       </div>
     </>

@@ -19,7 +19,7 @@ import {
   } from "reactstrap";
 import { ListFormat } from 'typescript';
 
-function AssignVc(){
+function AssVehicle(){
     
 
     const {username} = useParams();
@@ -121,4 +121,4 @@ function AssignVc(){
 
 }
 
-export default AssignVc;
+export default AssVehicle;

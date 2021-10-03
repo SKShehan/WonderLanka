@@ -48,8 +48,8 @@ import Vtype from "views/vtype";
 import AssignVehicleBooking from "views/assignvehicleBooking";
 import ReportVehicle from "views/reportvehicle";
 import VehicleDashboard from "views/vehicleDashboard";
-import assignVehicle from "views/assignvehicleBooking";
-
+//import assignVehicle from "views/assignvehicleBooking";
+import AssVehicle from "views/AssignVehicle"
 
 
 import EmployeeUpdate from "views/EmployeeUpdate";
@@ -182,8 +182,13 @@ function App() {
 
 
 
-       <Route path="/assign-vehicle/:username" component={AssignVc} />
-        
+      <Route path="/assign-vehicle/:username" component={AssVehicle} /> 
+
+      
+ 
+     {/*   <Route path="/assign-vehicle/:username" exact>
+          <AssignVehicle />
+        </Route>  */}
 
         <Route path="/itinerary-management" exact>
           <ItineraryManagement />
