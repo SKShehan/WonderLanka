@@ -121,7 +121,7 @@ function Index() {
         <AddDriver/>
         <DriverDetails/>
         <DriverManagement/>
-     
+     <AssignGuide />
       <BookingManagement />
      
       <EmployeeManagement/>
