@@ -197,7 +197,7 @@ function IndexNavbar() {
             )}
             {!loggedIn && (
               <NavItem>
-                <NavLink href="#">Sign Up</NavLink>
+                <NavLink href="/sign-up">Sign Up</NavLink>
               </NavItem>
             )}
             {!loggedIn && (
