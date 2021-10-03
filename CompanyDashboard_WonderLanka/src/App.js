@@ -173,7 +173,7 @@ function App() {
         </Route>
         <Route path="/edit-vehicle/:id" component={Editvehicle}/>
           
-        <Route path="/assign-vehiclesBooking" component={AssignVehicleBooking}/> 
+        <Route path="/assign-vehiclesBooking" component={AssignVehicle}/> 
           
         <Route path="/report-vehicles" component={ReportVehicle}/> 
 
