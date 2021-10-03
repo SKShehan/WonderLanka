@@ -65,6 +65,7 @@ import Homepage from "views/Homepage";
 
 import HomepageAssets from "views/HomepageAssets";
 import AssignVc from "views/assignvehicle";
+import DriverReport from "views/DriverReport";
 
 function App() {
   return (
@@ -211,6 +212,7 @@ function App() {
         <Route path="/edit-driver/:id" component={DriverUpdate} />
         <Route path="/Add-Driver" component={AddDriver} />
         <Route path="/View-Driver" component={DriverDetails} />
+        <Route path="/Report-Driver" component={DriverReport} />
 
         <Route //setting path to Insurence management page
           path="/insurence-home"
