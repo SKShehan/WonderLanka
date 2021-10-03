@@ -64,6 +64,7 @@ import EmployeeManagement from "views/EmployeeManagement";
 import Homepage from "views/Homepage";
 
 import HomepageAssets from "views/HomepageAssets";
+import AssignVc from "views/assignvehicle";
 
 function App() {
   return (
