@@ -48,7 +48,6 @@ import { ContactUS } from "./ContactUs";
 
 import Dashboard from "./Dashboard";
 
-
 function Index() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -59,9 +58,8 @@ function Index() {
   });
   return (
     <>
-
       <div className="main">
-   {/*     <SectionButtons />
+        {/*     <SectionButtons />
         <SectionNavbars />
         <SectionNavigation />
         <SectionProgress />
@@ -74,9 +72,6 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
    <SectionDownload /> */}
-        <BookingReport />
-     
-        
       </div>
     </>
   );
