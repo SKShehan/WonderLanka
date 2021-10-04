@@ -17,6 +17,9 @@ function DriverManagement() {
     function handleClick3(){
       history.push("/Assign-Driver")
   }
+  function handleClick4(){
+    history.push("/Report-Driver")
+}
   return (
         <>
       <IndexHeader />
@@ -56,6 +59,7 @@ function DriverManagement() {
                     </button>
 
                     <button
+                    onClick={handleClick4}
                                         
                     className={styles.btn_drivermng}
                   

@@ -116,6 +116,9 @@ function Unregister() {
             autoClose: 10000,
             hideProgressBar: false,
           });
+          history.push({
+            pathname: "/login",
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -129,7 +132,7 @@ function Unregister() {
   };
 
   const demo = () => {
-    setpassword("pass123");
+    setpassword(ReactSession.get("user").password);
   };
 
   document.documentElement.classList.remove("nav-open");
@@ -143,6 +146,7 @@ function Unregister() {
       });
     }
     setreason1(true);
+    setreason("Not satisfied with the service");
     return function cleanup() {
       document.body.classList.remove("index");
     };
