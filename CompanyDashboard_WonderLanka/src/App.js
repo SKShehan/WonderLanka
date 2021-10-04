@@ -15,6 +15,7 @@ import ViewItineraries from "views/viewItineraries";
 import EditItinerary from "views/EditItinerary";
 import CustomizedRequests from "views/CustomizedRequests";
 import ItinerarySend from "views/ItinerarySend";
+import ItineraryReport from "views/CustomItineraryReport";
 
 import EditGuide from "views/EditGuide";
 import AddGuide from "views/AddGuide";
@@ -23,6 +24,7 @@ import GuideManagement from "views/GuideManagement";
 import BookingManagement from "views/BookingManagement";
 import Assign from "views/AssignGuide";
 import AssignGuide from "views/AssignGuideBookings";
+import GuideReport from "views/GuideReport";
 
 import AddHotel from "views/AddHotel";
 import HotelDetails from "views/HotelDetails";
@@ -48,7 +50,7 @@ import Vtype from "views/vtype";
 import AssignVehicleBooking from "views/assignvehicleBooking";
 import ReportVehicle from "views/reportvehicle";
 import VehicleDashboard from "views/vehicleDashboard";
-import assignVehicle from "views/assignvehicleBooking";
+import AssignVc from "views/assignvehicle";
 
 
 
@@ -59,6 +61,7 @@ import EmployeeManagement from "views/EmployeeManagement";
 import Homepage from "views/Homepage";
 
 import HomepageAssets from "views/HomepageAssets";
+import Login from "views/Login";
 
 function App() {
 
@@ -126,6 +129,13 @@ function App() {
         <Route path="/edit-itinerary/:id" exact>
           <EditItinerary />
         </Route>
+
+        <Route path="/Itinerary-report" exact>
+          <ItineraryReport />
+        </Route>
+
+
+
         <Route path= "/edit-guide/:id" exact>
           <EditGuide />
         </Route>
@@ -141,6 +151,10 @@ function App() {
 
         <Route path = "/assign-guide-booking" exact>
           <AssignGuide />
+        </Route>  
+
+        <Route path = "/guide-report" exact>
+          <GuideReport />
         </Route>  
 
         
@@ -244,6 +258,10 @@ function App() {
         <Route path = "/employee-management" exact> 
           <EmployeeManagement />
         </Route>
+
+        <Route path = "/login" exact>
+          <Login />
+        </Route>  
 
 
 

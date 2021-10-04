@@ -55,7 +55,7 @@ useEffect(() => {
 }, [bookings]);
 
 const downloadPDF = () => {
- // doc = new jsPDF("p", "pt", [1000, 600]);
+ 
   doc = new jsPDF({
     orientation : "landscape",
     unit :"pt",

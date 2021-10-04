@@ -22,7 +22,7 @@ function ItineraryReport(){
 
     const [bookings , setBookings] = useState ([]);
     const [date, setdate] = useState();
-    const [selectedDate , filteredDate] = useState("01"); 
+    const [selectedDate , filteredDate] = useState(); 
 
     useEffect(()=>{
             axios.get("http://localhost:8070/bookings/").then((res) =>{

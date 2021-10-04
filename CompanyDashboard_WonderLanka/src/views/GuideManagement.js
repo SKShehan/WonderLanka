@@ -20,7 +20,7 @@ function GuideManagement(){
     }
 
     function handleClickReport() {
-        history.push("/report-guides");
+        history.push("/guide-report");
     }
 
 
