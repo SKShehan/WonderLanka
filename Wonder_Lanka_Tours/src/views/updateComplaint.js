@@ -148,7 +148,7 @@ function UpdateComplaint({Complaint}) {
       }}/>
     </FormGroup>
     <Button color="primary" type="submit">
-      Submit
+      Update
     </Button>
     </form>
     </div>

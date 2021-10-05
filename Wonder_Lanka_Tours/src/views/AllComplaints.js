@@ -4,6 +4,7 @@ import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from 'react-toastify';
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router";
 
 // core components
 import {
@@ -29,9 +30,10 @@ function AllComplaints () {
     },[]);
 
     let history = useHistory();
+    const {id} = useParams();
 
     
-    const complaintDelete = (complaint) => {
+    function complaintDelete(complaint) {
       
       if (
         window.confirm(
@@ -45,7 +47,7 @@ function AllComplaints () {
         )
       )
 
-      axios.delete(`http://localhost:8070/complaint/deleteComplaint/${complaint.name}`)
+      axios.delete(`http://localhost:8070/complaint/deleteComplaint/${complaint._id}`)
       .then((res) =>{
           console.log(res);
           toast.success("Complaint Deleted!", {
