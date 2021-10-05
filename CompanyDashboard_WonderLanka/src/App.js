@@ -67,6 +67,8 @@ import HomepageAssets from "views/HomepageAssets";
 import AssignVc from "views/assignvehicle";
 import DriverReport from "views/DriverReport";
 
+import CFRetrieve from "views/CFRetrieve";
+
 function App() {
   return (
     <BrowserRouter>
@@ -269,6 +271,10 @@ function App() {
         <Route path="/Add-Employee" component={AddEmployee} />
         <Route path="/employee-management" exact>
           <EmployeeManagement />
+        </Route>
+
+        <Route path = "/view-cf" exact>
+          <CFRetrieve/>
         </Route>
 
         <Redirect to="/index" />
