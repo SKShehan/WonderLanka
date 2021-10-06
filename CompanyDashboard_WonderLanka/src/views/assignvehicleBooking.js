@@ -32,26 +32,32 @@ function AssignVehicle(){
         axios.get("http://localhost:8070/bookings/").then((res) =>{
             setBookings(res.data);
         })
-    })
+    }, [])
+
     let history = useHistory();
     var number = 1;
 
-    function VehicleAssigned(tid){
-        axios.get(`http://localhost:8070/assignedVehicle/get/${tid}`).then((res)=>{
-          console.log(res.data.vehicleID);
-          setVehicle(res.data.vehicleID);
-          if (typeof vehicle == 'undefined'){
-            return "Not Assigned";
+    useEffect(() => {
+  
+      bookings.forEach(({ tourId }) => {
+        axios.get(`http://localhost:8070/assignedVehicle/check/${tourId}`).then((res) =>{
+          if(res.data === true){
+            axios.get(`http://localhost:8070/assignedVehicle/get/${tourId}`)
+            .then(res => {
+              setVehicle(vehicle => ({
+                ...vehicle,
+                [tourId]: res.data.vehicleID,
+              }));
+            })
           }
-          
-        }).catch((err)=>{
-          console.log(err);
-        })
-        
-        return vehicle;
 
-        
-    }
+        })
+      
+      });
+    
+    }, [bookings]);
+
+
     return(
         
         <div>
@@ -107,7 +113,7 @@ function AssignVehicle(){
                                 <td>{booking.bookingDate}</td>
                                 <td>{booking.arrivalDate}</td>
                                 <td>{booking.country}</td>
-                                <td>{VehicleAssigned(booking.tourId)}</td>
+                                <td>{vehicle[booking.tourId]}</td>
                                 <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
                                 onClick = {()=>{
                                     history.push(`/assign-vehicle/${booking.username}`);

@@ -127,10 +127,13 @@ function Index() {
       <EmployeeManagement/>
 
       <AssignDriverBooking/>
-       <AssignGuide />*/}
+       <AssignGuide />
+       
+       <GuideReport/>
+       */}
  
-       <Homepage/>
-
+ <Homepage/>
+        
 
         <DemoFooter />
       </div>

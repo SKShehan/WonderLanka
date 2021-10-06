@@ -23,7 +23,7 @@ function AssVehicle(){
     
 
     const {username} = useParams();
-    const [vehicles , setVehicles] = useState([]);
+    const [vehicle , setVehicle] = useState([]);
     const [tid , setID] = useState();
     const [vid , setvID] = useState();
     const [selectedVehicle , setSelection] = useState("");
@@ -54,7 +54,7 @@ function AssVehicle(){
 
     useEffect(()=>{
         axios.get("http://localhost:8070/vehicles/").then((req)=>{
-            setVehicles(req.data)
+            setVehicle(req.data)
             console.log(req.data)
         }).catch((err)=>{
             console.log(err);
@@ -91,7 +91,7 @@ function AssVehicle(){
                     setSelection(e.target.value);
                     getName();
             }}>
-                {vehicles.map((names)=>{
+                {vehicle.map((names)=>{
                     return <option>
                         {names.vname}
                    </option>;
@@ -101,7 +101,7 @@ function AssVehicle(){
 
         
 
-            <Label for = "GuideID">vehicle ID</Label><br/>
+            <Label for = "vehicleID">vehicle ID</Label><br/>
             <Input type = 'vid' name = "vid"  value = {vid} disabled
             ></Input><br/>
 
