@@ -50,7 +50,7 @@ import Vtype from "views/vtype";
 import AssignVehicleBooking from "views/assignvehicleBooking";
 import ReportVehicle from "views/reportvehicle";
 import VehicleDashboard from "views/vehicleDashboard";
-import AssignVc from "views/assignvehicle";
+// import AssignVc from "views/assignvehicle";
 
 import EmployeeUpdate from "views/EmployeeUpdate";
 
@@ -67,7 +67,7 @@ import Homepage from "views/Homepage";
 
 import HomepageAssets from "views/HomepageAssets";
 import Login from "views/Login";
-import AssignVc from "views/assignvehicle";
+//import AssignVc from "views/assignvehicle";
 import DriverReport from "views/DriverReport";
 
 function App() {

@@ -127,7 +127,7 @@ function Index() {
      
       <EmployeeManagement/>
      <AssignGuide /> */}
-      <Homepage />
+      <GuideReport />
        
         <DemoFooter />
 
