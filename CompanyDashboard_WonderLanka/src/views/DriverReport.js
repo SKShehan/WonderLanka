@@ -1,4 +1,4 @@
-import { Row, Col, Card , Container } from "reactstrap";
+import { Row, Col, Card, Container } from "reactstrap";
 import { jsPDF } from "jspdf";
 import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
@@ -13,13 +13,12 @@ import {
   
 } from "reactstrap";
 
-function GuideReport(){
+function DriverReport(){
 
   const [bookings , setBookings] = useState([]);
-  const [guides, setGuides] = useState({});
+  const [drivers, setDrivers] = useState({});
   const [selectedDate , filteredDate] = useState("01"); 
   const [date, setdate] = useState();
-  const [selectedYear , filteredYear] = useState("2021");
 
   let history = useHistory();
   var number = 1;
@@ -38,13 +37,13 @@ function GuideReport(){
 useEffect(() => {
   
   bookings.forEach(({ tourId }) => {
-    axios.get(`http://localhost:8070/assignedGuides/check/${tourId}`).then((res) =>{
+    axios.get(`http://localhost:8070/assignedDrivers/check/${tourId}`).then((res) =>{
       if(res.data === true){
-        axios.get(`http://localhost:8070/assignedGuides/get/${tourId}`)
+        axios.get(`http://localhost:8070/assignedDrivers/get/${tourId}`)
         .then(res => {
-          setGuides(guides => ({
-            ...guides,
-            [tourId]: res.data.guideId,
+          setDrivers(drivers => ({
+            ...drivers,
+            [tourId]: res.data.driverId,
           }));
         })
       }
@@ -56,7 +55,7 @@ useEffect(() => {
 }, [bookings]);
 
 const downloadPDF = () => {
- 
+ // doc = new jsPDF("p", "pt", [1000, 600]);
   doc = new jsPDF({
     orientation : "landscape",
     unit :"pt",
@@ -64,7 +63,7 @@ const downloadPDF = () => {
   })
   doc.html(document.getElementById("report-cont"), {
     callback: function (pdf) {
-      pdf.save("AssignedGuideReport.pdf");
+      pdf.save("AssignedDriverReport.pdf");
     },
   });
 };
@@ -73,9 +72,10 @@ const downloadPDF = () => {
 
 
     return (
-        <>  
-          <Container>
-                <h2 align="center">Assigned Guide Report</h2>
+    
+        <>
+        <Container>
+                <h2 align="center">Assigned Driver Report</h2>
                 {/* <UncontrolledDropdown className="btn-group">
                 <DropdownToggle
                       aria-expanded={false}
@@ -142,7 +142,6 @@ const downloadPDF = () => {
         </UncontrolledDropdown> */}
             <br/><br/>
             <div style = {{marginLeft : "40px" , marginRight : "40px" }}>
-              <div style = {{display : "flex" , flexDirection : "row" }}>                   { /*For Date Selection  */}
               <div style = {{width : "30%" }}>
               <h5>Select Month</h5>  
               <Input type = "select" name = "FilteringDate"
@@ -164,23 +163,6 @@ const downloadPDF = () => {
                     <option>12</option>
                 </Input>
                 </div>
-                <div style = {{width : "30%" , marginLeft : "20px" }}>
-                <h5>Select Year</h5>  
-                <Input type = "select" name = "FilteringYear"
-                  onChange = {(e)=>{
-                    filteredYear(e.target.value);
-                  }}>
-                    <option>2021</option>
-                    <option>2022</option>
-                    <option>2023</option>
-                    <option>2024</option>
-                    <option>2025</option>
-                    <option>2026</option>
-                    <option>2027</option>
-
-                </Input>
-                </div>
-               </div>
                 <hr></hr>
                 <div id ="report-cont" >
                 <Card className="report-card" id="report" style = {{padding : "20px"}}>
@@ -210,7 +192,7 @@ const downloadPDF = () => {
                     <Row>
                       <Col>
                         <label style={{ float: "right", fontSize : "14px" }}>
-                          <i>Date : {date}</i>
+                          <h6><i>Date : {date}</i></h6>
                         </label> <br/>
 
                         <hr></hr>
@@ -220,14 +202,14 @@ const downloadPDF = () => {
                     <br/><br/>
 
                     <div style = {{marginLeft:"20px"}}  className = "tableContainer">
-                <table className = "table table-striped">
+                <table className = "table">
                     <thead>
-                        <th scope = "col">#</th>
-                        <th scope = "col">Tour ID</th>
-                        <th scope = "col">Booking Date</th>
-                        <th scope = "col">Arrival Date</th>
-                        <th scope = "col">Country </th>
-                        <th scope = "col">Guide Assigned </th>
+                        <th class="table-danger" scope = "col">#</th>
+                        <th class="table-danger" scope = "col">Tour ID</th>
+                        <th class="table-danger" scope = "col">Booking Date</th>
+                        <th class="table-danger" scope = "col">Arrival Date</th>
+                        <th class="table-danger" scope = "col">Country </th>
+                        <th class="table-danger" scope = "col">Driver Assigned </th>
                        
 
                     </thead>
@@ -235,16 +217,10 @@ const downloadPDF = () => {
                     <tbody>
                         
                         {bookings.filter((val) =>{
-                            if(selectedYear === '' && selectedDate === ''){
+                            if(date === ''){
                               return val;
                             }
-                            else if(val.bookingDate.substring(5, 7).includes(selectedDate) && val.bookingDate.substring(0,4).includes(selectedYear)){
-                              return val;
-                            }
-                            else if(val.bookingDate.substring(5,7).includes(selectedDate) && selectedYear === ''){
-                              return val;
-                            }
-                            else if (val.bookingDate.substring(0,4).includes(selectedYear) && selectedDate === ''){
+                            else if(val.bookingDate.substring(5, 7).includes(selectedDate)){
                               return val;
                             }
             
@@ -253,12 +229,12 @@ const downloadPDF = () => {
                             
                             <tr>
                               {console.log(booking.bookingDate.substring(5, 7))}
-                                <th scope = "row">{number++}</th>
-                                <td>{booking.tourId}</td>
-                                <td>{booking.bookingDate}</td>
-                                <td>{booking.arrivalDate}</td>
-                                <td>{booking.country}</td>
-                                <td>{guides[booking.tourId]}</td>
+                                <th  class="table-primary" scope = "row">{number++}</th>
+                                <td class="table-primary">{booking.tourId}</td>
+                                <td class="table-primary">{booking.bookingDate}</td>
+                                <td class="table-primary">{booking.arrivalDate}</td>
+                                <td class="table-primary">{booking.country}</td>
+                                <td class="table-primary">{drivers[booking.tourId]}</td>
                               
                             </tr>
     
@@ -273,19 +249,22 @@ const downloadPDF = () => {
           <div className="report-download">
               <Row>
                 <Col>
+                <center>
                   <button
                     className="btn btn-info"
                     onClick={downloadPDF}
                   >
                     Download PDF
                   </button>
+                  </center>
                 </Col>
               </Row>
             </div>
           </div>
-         </Container>    
+          </Container>
+             
         </>
     );
 }
 
-export default GuideReport;
+export default DriverReport;

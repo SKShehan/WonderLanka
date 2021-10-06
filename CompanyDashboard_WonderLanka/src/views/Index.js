@@ -81,6 +81,7 @@ import AssignDriverBooking from "./AssignDriverBookings"
 
 import Login from "./Login";
 import ItineraryReport from "./CustomItineraryReport";
+import DriverReport from "./DriverReport";
 
 
 
@@ -113,7 +114,7 @@ function Index() {
         <SectionDownload />
         <GuideManagement /> 
         
-        <Home/>
+        
 
         <SectionDownload /> 
         <GuideManagement />
@@ -123,19 +124,14 @@ function Index() {
         <DriverManagement/>
      <AssignGuide />
       <BookingManagement />
-     
+     <GuideReport />
       <EmployeeManagement/>
-
-      <AssignDriverBooking/>
-       <AssignGuide />
-       
-       <GuideReport/>
-       */}
- 
- <Homepage/>
-        
-
+     <AssignGuide /> */}
+      
+      <Home/>
         <DemoFooter />
+
+
       </div>
     </>
   );
