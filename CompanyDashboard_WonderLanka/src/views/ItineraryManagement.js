@@ -19,6 +19,10 @@ function ItineraryManagement(){
         history.push("/CustomizedReq");
     }
 
+    function handleClickReport(){
+        history.push("/Itinerary-report");
+    }
+
     return(
         <>
         <IndexNavbar />
@@ -34,7 +38,7 @@ function ItineraryManagement(){
                 <button className = {styles.btn_guidemng} onClick = {handleClickView}>View Tour Iteneraries</button>
              
     
-                <button className = {styles.btn_guidemng} >Custom Itinerary Report</button>
+                <button className = {styles.btn_guidemng} onClick = {handleClickReport} >Custom Itinerary Report</button>
         
             
                 <button className = {styles.btn_guidemng} onClick = {handleClickCust}>Custom Itinerary Requests</button>

@@ -31,6 +31,11 @@ import {
   Container,
 } from "reactstrap";
 
+
+import { useEffect } from "react";
+import { ReactSession } from "react-client-session";
+import { useHistory } from "react-router";
+
 import { Link } from "react-router-dom";
 
 function IndexNavbar() {
@@ -63,6 +68,21 @@ function IndexNavbar() {
       window.removeEventListener("scroll", updateNavbarColor);
     };
   });
+
+  let history = useHistory();
+
+  useEffect(() =>{
+    ReactSession.setStoreType("localStorage");
+    if(ReactSession.get("employee") === null){
+      history.push("/login")
+    }
+  })
+
+  function logout(){
+    window.localStorage.clear();
+    history.push("/login");
+  }
+
   return (
     <Navbar className={classnames("fixed-top", navbarColor)} expand="lg">
       <Container>
@@ -153,9 +173,22 @@ function IndexNavbar() {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="" target="_blank">
-                <i className="nc-icon nc-circle-10" /> Log Out
+
+                <NavLink data-placement="bottom"  onClick = {logout}>
+
+              <NavLink
+                data-placement="bottom"
+                href="/view-cf"
+                title="CF Report"
+              >
+                CF Report
               </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="" target="_blank">
+
+                <i className="nc-icon nc-circle-10" /> Log Out
+                </NavLink>
             </NavItem>
           </Nav>
         </Collapse>
