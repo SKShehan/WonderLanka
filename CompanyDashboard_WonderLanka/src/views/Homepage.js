@@ -22,7 +22,7 @@ function Homepage(){
     }
 
     function handleClickComp() {
-        history.push("/view-cf");
+        history.push("/cf-management");
     }
 
     function handleClickVehicle() {
