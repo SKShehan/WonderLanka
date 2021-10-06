@@ -15,6 +15,7 @@ import ViewItineraries from "views/viewItineraries";
 import EditItinerary from "views/EditItinerary";
 import CustomizedRequests from "views/CustomizedRequests";
 import ItinerarySend from "views/ItinerarySend";
+import ItineraryReport from "views/CustomItineraryReport";
 
 import EditGuide from "views/EditGuide";
 import AddGuide from "views/AddGuide";
@@ -23,6 +24,7 @@ import GuideManagement from "views/GuideManagement";
 import BookingManagement from "views/BookingManagement";
 import Assign from "views/AssignGuide";
 import AssignGuide from "views/AssignGuideBookings";
+import GuideReport from "views/GuideReport";
 
 import AddHotel from "views/AddHotel";
 import HotelDetails from "views/HotelDetails";
@@ -48,7 +50,7 @@ import Vtype from "views/vtype";
 import AssignVehicleBooking from "views/assignvehicleBooking";
 import ReportVehicle from "views/reportvehicle";
 import VehicleDashboard from "views/vehicleDashboard";
-import assignVehicle from "views/assignvehicleBooking";
+// import AssignVc from "views/assignvehicle";
 
 import EmployeeUpdate from "views/EmployeeUpdate";
 
@@ -64,7 +66,8 @@ import EmployeeManagement from "views/EmployeeManagement";
 import Homepage from "views/Homepage";
 
 import HomepageAssets from "views/HomepageAssets";
-import AssignVc from "views/assignvehicle";
+import Login from "views/Login";
+//import AssignVc from "views/assignvehicle";
 import DriverReport from "views/DriverReport";
 
 import CFRetrieve from "views/CFRetrieve";
@@ -124,7 +127,14 @@ function App() {
         <Route path="/edit-itinerary/:id" exact>
           <EditItinerary />
         </Route>
-        <Route path="/edit-guide/:id" exact>
+
+        <Route path="/Itinerary-report" exact>
+          <ItineraryReport />
+        </Route>
+
+
+
+        <Route path= "/edit-guide/:id" exact>
           <EditGuide />
         </Route>
         <Route path="/add-guide" exact>
@@ -141,9 +151,18 @@ function App() {
           <AssignGuide />
         </Route>
 
-        <Route path="/edit-driver/:id" exact component={DriverUpdate} />
-        <Route path="/Add-Driver" exact component={AddDriver} />
-        <Route path="/View-Driver" exact component={DriverDetails} />
+        <Route path = "/guide-report" exact>
+          <GuideReport />
+        </Route>  
+
+        
+       
+        <Route path="/edit-driver/:id" exact 
+          component={DriverUpdate} />
+        <Route path ="/Add-Driver" exact  
+          component={AddDriver}/>
+        <Route path ="/View-Driver" exact  
+          component={DriverDetails}/>
 
         <Route path="/assign-driver/:username" exact>
           <AssignD />
@@ -273,9 +292,17 @@ function App() {
           <EmployeeManagement />
         </Route>
 
+
+        <Route path = "/login" exact>
+          <Login />
+        </Route>  
+
+
+
         <Route path = "/view-cf" exact>
           <CFRetrieve/>
         </Route>
+
 
         <Redirect to="/index" />
       </Switch>

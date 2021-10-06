@@ -126,12 +126,9 @@ function Index() {
       <BookingManagement />
      
       <EmployeeManagement/>
-
-      <AssignDriverBooking/>
-       <AssignGuide />*/}
-       <Homepage/>
-
-
+     <AssignGuide /> */}
+      <GuideReport />
+       
         <DemoFooter />
 
 
