@@ -173,7 +173,20 @@ function IndexNavbar() {
               </NavLink>
             </NavItem>
             <NavItem>
+
                 <NavLink data-placement="bottom"  onClick = {logout}>
+
+              <NavLink
+                data-placement="bottom"
+                href="/view-cf"
+                title="CF Report"
+              >
+                CF Report
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="" target="_blank">
+
                 <i className="nc-icon nc-circle-10" /> Log Out
                 </NavLink>
             </NavItem>

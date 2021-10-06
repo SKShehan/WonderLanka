@@ -70,6 +70,8 @@ import Login from "views/Login";
 //import AssignVc from "views/assignvehicle";
 import DriverReport from "views/DriverReport";
 
+import CFRetrieve from "views/CFRetrieve";
+
 function App() {
   return (
     <BrowserRouter>
@@ -290,10 +292,16 @@ function App() {
           <EmployeeManagement />
         </Route>
 
+
         <Route path = "/login" exact>
           <Login />
         </Route>  
 
+
+
+        <Route path = "/view-cf" exact>
+          <CFRetrieve/>
+        </Route>
 
 
         <Redirect to="/index" />

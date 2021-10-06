@@ -4,6 +4,7 @@ import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from 'react-toastify';
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router";
 
 // core components
 import {
@@ -29,9 +30,10 @@ function AllComplaints () {
     },[]);
 
     let history = useHistory();
+    const {id} = useParams();
 
     
-    const complaintDelete = (complaint) => {
+    function complaintDelete(complaint) {
       
       if (
         window.confirm(
@@ -45,7 +47,7 @@ function AllComplaints () {
         )
       )
 
-      axios.delete(`http://localhost:8070/complaint/deleteComplaint/${complaint.name}`)
+      axios.delete(`http://localhost:8070/complaint/deleteComplaint/${complaint._id}`)
       .then((res) =>{
           console.log(res);
           toast.success("Complaint Deleted!", {
@@ -97,19 +99,27 @@ function AllComplaints () {
               <div style = {{marginLeft:"20px"}}  className = "tableContainer">
               <table className = "table table-striped">
                 <thead>
+                <th scope = "col"> No </th>
+                <th scope = "col"> Name </th>
+                <th scope = "col"> Email </th>
+                <th scope = "col"> Contact </th>
+                <th scope = "col"> Reason </th>
+                <th scope = "col"> Complaint </th>
+                <th scope = "col"> Actions </th>
                 </thead>
                 <tbody>
-                  <div>
+                  
+                    <tr>
                     <th scope = "row">{number++}</th>
-                    <th scope = "col"> Name </th>
+                    
                     <td>{complaint.name}</td>
-                    <th scope = "col"> Email </th>
+                    
                     <td>{complaint.email}</td>
-                    <th scope = "col"> Contact </th>
+                    
                     <td>{complaint.contact}</td>
-                    <th scope = "col"> Reason </th>
+                    
                     <td>{complaint.select}</td>
-                    <th scope = "col"> Complaint </th>
+                    
                     <td>{complaint.complaint}</td>
                     <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "60px" , marginBottom : "8px"}}
                           onClick = {()=>{
@@ -124,7 +134,8 @@ function AllComplaints () {
                         
                           >Remove</Button>
                         </td>
-                  </div>
+                        </tr>
+                
                 </tbody>
               </table>
               </div>
