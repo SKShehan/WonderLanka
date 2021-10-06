@@ -1,4 +1,4 @@
-import { Row, Col, Card } from "reactstrap";
+import { Row, Col, Card , Container } from "reactstrap";
 import { jsPDF } from "jspdf";
 import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
@@ -19,6 +19,7 @@ function GuideReport(){
   const [guides, setGuides] = useState({});
   const [selectedDate , filteredDate] = useState("01"); 
   const [date, setdate] = useState();
+  const [selectedYear , filteredYear] = useState("2021");
 
   let history = useHistory();
   var number = 1;
@@ -55,7 +56,7 @@ useEffect(() => {
 }, [bookings]);
 
 const downloadPDF = () => {
- // doc = new jsPDF("p", "pt", [1000, 600]);
+ 
   doc = new jsPDF({
     orientation : "landscape",
     unit :"pt",
@@ -72,7 +73,8 @@ const downloadPDF = () => {
 
 
     return (
-        <>
+        <>  
+          <Container>
                 <h2 align="center">Assigned Guide Report</h2>
                 {/* <UncontrolledDropdown className="btn-group">
                 <DropdownToggle
@@ -140,6 +142,7 @@ const downloadPDF = () => {
         </UncontrolledDropdown> */}
             <br/><br/>
             <div style = {{marginLeft : "40px" , marginRight : "40px" }}>
+              <div style = {{display : "flex" , flexDirection : "row" }}>                   { /*For Date Selection  */}
               <div style = {{width : "30%" }}>
               <h5>Select Month</h5>  
               <Input type = "select" name = "FilteringDate"
@@ -161,6 +164,23 @@ const downloadPDF = () => {
                     <option>12</option>
                 </Input>
                 </div>
+                <div style = {{width : "30%" , marginLeft : "20px" }}>
+                <h5>Select Year</h5>  
+                <Input type = "select" name = "FilteringYear"
+                  onChange = {(e)=>{
+                    filteredYear(e.target.value);
+                  }}>
+                    <option>2021</option>
+                    <option>2022</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+
+                </Input>
+                </div>
+               </div>
                 <hr></hr>
                 <div id ="report-cont" >
                 <Card className="report-card" id="report" style = {{padding : "20px"}}>
@@ -179,10 +199,11 @@ const downloadPDF = () => {
                     <Row>
                       <Col>
                         <br></br>
-                        <p className="report-contact">
+                        <p className="report-contact"><h6>
                           100/77 City Gate, Temple Junction, Katana North,{" "}
                           <br></br>Katana, Negombo 11500<br></br>
                           Tel No. : +94 77 614 0895
+                          </h6>
                         </p>
                       </Col>
                     </Row>
@@ -214,10 +235,16 @@ const downloadPDF = () => {
                     <tbody>
                         
                         {bookings.filter((val) =>{
-                            if(date === ''){
+                            if(selectedYear === '' && selectedDate === ''){
                               return val;
                             }
-                            else if(val.bookingDate.substring(5, 7).includes(selectedDate)){
+                            else if(val.bookingDate.substring(5, 7).includes(selectedDate) && val.bookingDate.substring(0,4).includes(selectedYear)){
+                              return val;
+                            }
+                            else if(val.bookingDate.substring(5,7).includes(selectedDate) && selectedYear === ''){
+                              return val;
+                            }
+                            else if (val.bookingDate.substring(0,4).includes(selectedYear) && selectedDate === ''){
                               return val;
                             }
             
@@ -256,7 +283,7 @@ const downloadPDF = () => {
               </Row>
             </div>
           </div>
-             
+         </Container>    
         </>
     );
 }

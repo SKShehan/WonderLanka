@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
-import { Row, Col, Card } from "reactstrap";
+import { Row, Col, Card , Container } from "reactstrap";
 import { jsPDF } from "jspdf";
 import {
     UncontrolledDropdown,
@@ -23,6 +23,7 @@ function ItineraryReport(){
     const [bookings , setBookings] = useState ([]);
     const [date, setdate] = useState();
     const [selectedDate , filteredDate] = useState("01"); 
+    const [selectedYear , filteredYear] = useState("2021");
 
     useEffect(()=>{
             axios.get("http://localhost:8070/bookings/").then((res) =>{
@@ -49,10 +50,10 @@ function ItineraryReport(){
 
     return(
         <>
-
+          <Container>
             <div>
                 <h3>Customized Itinerary Report</h3><br/><br/>
-
+                <div style = {{display : "flex" , flexDirection : "row" }}>
                 <div style = {{width : "30%" }}>
                     <h5>Select Month</h5>  
                         <Input type = "select" name = "FilteringDate"
@@ -75,6 +76,24 @@ function ItineraryReport(){
                             </Input>
                         </div>
 
+                        <div style = {{width : "30%" , marginLeft : "20px" }}>
+                          <h5>Select Year</h5>  
+                          <Input type = "select" name = "FilteringYear"
+                            onChange = {(e)=>{
+                              filteredYear(e.target.value);
+                            }}>
+                              <option>2021</option>
+                              <option>2022</option>
+                              <option>2023</option>
+                              <option>2024</option>
+                              <option>2025</option>
+                              <option>2026</option>
+                              <option>2027</option>
+
+                          </Input>
+                        </div>
+                    </div>  
+                    <hr></hr>        
                 <div id ="report-cont" >
                 <Card className="report-card" id="report" style = {{padding : "20px"}}>
                     <Row>
@@ -124,11 +143,17 @@ function ItineraryReport(){
 
                             <tbody>
                                 {bookings.filter((val) =>{
-                                    if(date === ''){
+                                    if(selectedYear === '' && selectedDate === ''){
                                     return val;
                                     }
-                                    else if(val.bookingDate.substring(5, 7).includes(selectedDate)){
+                                    else if(val.bookingDate.substring(5, 7).includes(selectedDate) && val.bookingDate.substring(0,4).includes(selectedYear)){
                                     return val;
+                                    }
+                                    else if(val.bookingDate.substring(5,7).includes(selectedDate) && selectedYear === ''){
+                                      return val;
+                                    }
+                                    else if (val.bookingDate.substring(0,4).includes(selectedYear) && selectedDate === ''){
+                                      return val;
                                     }
             
 
@@ -160,8 +185,9 @@ function ItineraryReport(){
                     </button>
                     </Col>
                 </Row>
-            </div>
+              </div>
             </div>  
+          </Container>  
         </>
     );
 
