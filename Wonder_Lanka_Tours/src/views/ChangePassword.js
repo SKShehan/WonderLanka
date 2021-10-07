@@ -19,28 +19,51 @@ import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ReactSession } from "react-client-session";
+import { useHistory, useLocation } from "react-router-dom";
 
 toast.configure();
 
-function ChangePassword({ user }) {
+function ChangePassword() {
   const [currentpwd, setcurrentpwd] = useState("");
   const [newpass, setnewpass] = useState("");
   const [renewpass, setrenewpass] = useState("");
   const [alertDanger, setAlertDanger] = useState(false);
+  const [fullName, setfullName] = useState("");
+  const [country, setcountry] = useState();
+  const [email, setemail] = useState("");
+  const [mobileNo, setmobileNo] = useState("");
+  const [dateOfBirth, setdateOfBirth] = useState("");
+  const [nic, setnic] = useState("");
+  const [username, setusername] = useState("");
+  const [password, setpassword] = useState("");
+  const history = useHistory();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (currentpwd === user.password) {
+    if (currentpwd === ReactSession.get("user").password) {
       if (renewpass === newpass) {
-        const newpwd = {
+        const user = {
+          username,
+          fullName,
+          email,
+          country,
+          mobileNo,
+          dateOfBirth,
+          nic,
           password: newpass,
         };
 
         axios
-          .put(`http://localhost:8070/users/changepwd/${user.username}`, newpwd)
+          .put(
+            `http://localhost:8070/users/update/${
+              ReactSession.get("user").username
+            }`,
+            user
+          )
           .then((res) => {
             console.log(res);
-            user.password = newpwd.password;
+            ReactSession.set("user", user);
             toast.success(res.data, {
               position: toast.POSITION.BOTTOM_RIGHT,
               autoClose: 10000,
@@ -63,7 +86,8 @@ function ChangePassword({ user }) {
         });
       }
     } else {
-      toast.error("Please check your current passowrd!", {
+      console.log(ReactSession.get("user"));
+      toast.error("Please check your current password!", {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 10000,
         hideProgressBar: false,
@@ -72,7 +96,7 @@ function ChangePassword({ user }) {
   };
 
   const demo = () => {
-    setcurrentpwd("pass123");
+    setcurrentpwd(password);
     setnewpass("abc123");
     setrenewpass("abc123");
   };
@@ -81,6 +105,21 @@ function ChangePassword({ user }) {
 
   useEffect(() => {
     document.body.classList.add("index");
+    ReactSession.setStoreType("localStorage");
+    if (ReactSession.get("user") === null) {
+      history.push({
+        pathname: "/login",
+      });
+    } else {
+      setusername(ReactSession.get("user").username);
+      setfullName(ReactSession.get("user").fullName);
+      setcountry(ReactSession.get("user").country);
+      setnic(ReactSession.get("user").nic);
+      setmobileNo(ReactSession.get("user").mobileNo);
+      setemail(ReactSession.get("user").email);
+      setdateOfBirth(ReactSession.get("user").dateOfBirth);
+      setpassword(ReactSession.get("user").password);
+    }
 
     return function cleanup() {
       document.body.classList.remove("index");
@@ -136,7 +175,7 @@ function ChangePassword({ user }) {
                   <Col>
                     <FormGroup>
                       <Label for="newpwd">
-                        New Password (Must contain at least 8 characters)*
+                        New Password (Must contain at least 6 characters)*
                       </Label>
                       <Input
                         type="password"

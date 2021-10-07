@@ -4,7 +4,11 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-
+import { useParams } from "react-router";
+import { useHistory } from "react-router";
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import IndexHeader from "components/Headers/IndexHeader.js";
+import DemoFooter from "components/Footers/DemoFooter.js";
 
 // core components
 import {
@@ -13,11 +17,13 @@ import {
   Input,
   Button
 } from "reactstrap";
-import { useParams } from "react-router";
+
 
 toast.configure(); 
 
-function updateComplaint() {
+function UpdateComplaint({Complaint}) {
+
+    let history = useHistory();
     document.documentElement.classList.remove("nav-open");
 
   React.useEffect(() => {
@@ -31,7 +37,7 @@ function updateComplaint() {
   //adding state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [contact, setContact] = useState("");
+  const [contact, setContact] = useState();
   const [select, setSelect] = useState("");
   const [complaint, setComplaint] = useState("");
 
@@ -39,7 +45,7 @@ function updateComplaint() {
 
   useEffect(()=>{
     axios.get(`http://localhost:8070/ComplaintRoute/getComplaint/${id}`)
-    .then(()=>{
+    .then((res)=>{
       console.log(res.data);
       setName(res.data.name);
       setEmail(res.data.email);
@@ -57,17 +63,18 @@ function updateComplaint() {
     alert("Inserting New Data");
 
     const updateComplaint = {
-      tourID,
       name,
       email,
       contact,
       select,
       complaint
-    }
+    };
 
-    console.log(newComplaint);
+    //console.log(newComplaint);
 
-    axios.post(`http://localhost:8070/ComplaintRoute/updateComplaint/${id}`, updateComplaint).then(()=>{
+    axios.put(`http://localhost:8070/complaint/updateComplaint/${id}`, updateComplaint)
+    .then((res)=>{
+    console.log(res);
       toast.success('Complaint Edited!', {
         position: "bottom-right",
         autoClose: 5000,
@@ -77,6 +84,8 @@ function updateComplaint() {
         draggable: true,
         progress: undefined,
         });
+        e.target.reset();
+        history.push("/my-complaint");
 
     }).catch((err)=>{
       alert(err);
@@ -91,30 +100,31 @@ function updateComplaint() {
         progress: undefined,
         });
     })
-
-  }
+  };
 
   return(
     <>
+    <IndexNavbar />
+      <IndexHeader />
     <div className="container">
-      <h3 style = {{marginLeft:"440px"}}>My Complaint</h3>
+      <h3 style = {{marginLeft:"440px"}}>Edit Complaint</h3>
     <form onSubmit={sendNewData}>
     <FormGroup>
       <Label for="Name">Name</Label>
-      <Input type="text" name="name" id="idName" placeholder="A.D. Amarasekara" onChange={(e)=>{
+      <Input type="text" name="name" id="idName" placeholder="" onChange={(e)=>{
         setName(e.target.value);
       }}/>
     </FormGroup>
     <FormGroup>
       <Label for="Email">Email address</Label>
-      <Input type="text" name="email" id="idEmail" placeholder="name@gmail.com" onChange={(e)=>{
+      <Input type="text" name="email" id="idEmail" placeholder="" onChange={(e)=>{
         setEmail(e.target.value);
       }}/>
       
     </FormGroup>
     <FormGroup>
       <Label for="contact">Contact No</Label>
-      <Input type="number" name="contact" id="idContact" placeholder="94 76 564 9534" onChange={(e)=>{
+      <Input type="number" name="contact" id="idContact" placeholder="" onChange={(e)=>{
         setContact(e.target.value);
       }}/>
     </FormGroup>
@@ -142,11 +152,12 @@ function updateComplaint() {
     </Button>
     </form>
     </div>
+    <DemoFooter /> 
   </>
   )
 
 }
 
 export {
-    updateComplaint
+    UpdateComplaint
   }

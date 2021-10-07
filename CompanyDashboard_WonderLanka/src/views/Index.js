@@ -55,6 +55,7 @@ import HotelHome from "./HotelHome";
 import AddRestaurant from "./AddRestaurant";
 import ViewHotelsAndRestaurant from "./ViewHotelsAndRestaurant";
 import EditRestaurant from "./EditRestaurant";
+import GuideReport from "./GuideReport";
 
 
 
@@ -69,13 +70,20 @@ import Homepage from "./Homepage";
 
 import VehicleDashboard from "./vehicleDashboard";
 import Editvehicle from "./editvehicle";
-import AssignVehicle from "./assignvehicle";
+import AssignVehicle from "./assignvehicleBooking";
 import EmployeeDetails from "./EmployeeDetails";
 import EmployeeUpdate from "./EmployeeUpdate";
 
 import AssignGuide from "./AssignGuideBookings";
 
 import Assign from "./AssignGuide"
+import EmployeeManagement from "./EmployeeManagement";
+import AddEmployee from "./AddEmployee";
+import AssignDriver from "./AssignDriver";
+import AssignDriverBooking from "./AssignDriverBookings"
+
+import Login from "./Login";
+import ItineraryReport from "./CustomItineraryReport";
 
 
 
@@ -126,13 +134,18 @@ function Index() {
         
          
  
- <GuideManagement />*/}
- 
+ <GuideManagement />
 
 <Homepage />
  
 
  
+     
+      <BookingManagement />
+      <Homepage/>
+      <EmployeeManagement/>
+     <AssignGuide /> */}
+      <ItineraryReport />
        
         <DemoFooter />
       </div>

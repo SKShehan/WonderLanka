@@ -18,9 +18,11 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import UserProfile from "./UserProfile";
+import { ReactSession } from "react-client-session";
 
 function Dashboard() {
   const history = useHistory();
+
   document.documentElement.classList.remove("nav-open");
 
   const clickMyTours = () => {
@@ -34,22 +36,33 @@ function Dashboard() {
     });
   };
   const clickTourItineraries = () => {
-    alert("Kohe yannada hutto");
+    history.push({
+      pathname: "view-itineraries",
+    });
   };
   const clickComplaintFeedaback = () => {
-    alert("Yo");
+    history.push({
+      pathname: "/my-complaint",
+    });
   };
 
   useEffect(() => {
-    document.body.classList.add("index");
-    document.getElementById("card1").classList.remove("card");
-    document.getElementById("card2").classList.remove("card");
-    document.getElementById("card3").classList.remove("card");
-    document.getElementById("card4").classList.remove("card");
+    ReactSession.setStoreType("localStorage");
+    if (ReactSession.get("user") != null) {
+      document.body.classList.add("index");
+      document.getElementById("card1").classList.remove("card");
+      document.getElementById("card2").classList.remove("card");
+      document.getElementById("card3").classList.remove("card");
+      document.getElementById("card4").classList.remove("card");
 
-    return function cleanup() {
-      document.body.classList.remove("index");
-    };
+      return function cleanup() {
+        document.body.classList.remove("index");
+      };
+    } else {
+      history.push({
+        pathname: "/login",
+      });
+    }
   }, []);
 
   return (

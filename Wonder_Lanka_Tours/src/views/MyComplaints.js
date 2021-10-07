@@ -4,7 +4,13 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import validator from 'validator';
 
+// core components
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import IndexHeader from "components/Headers/IndexHeader.js";
+import DemoFooter from "components/Footers/DemoFooter.js";
+import { AllComplaints } from "./AllComplaints";
 
 // core components
 import {
@@ -28,6 +34,18 @@ function MyComplaints() {
   }, []);
 
   const {handleSubmit, register} = useForm();
+  const [emailError, setEmailError] = useState('');
+  const [isError, setIsError] = useState(false);
+
+  const validateEmail = (e) => {
+    var email = e.target.value;
+  
+    if (validator.isEmail(email)) {
+      setEmailError('Valid Email');
+    } else {
+      setEmailError('Enter valid Email!');
+    }
+  }
 
   //adding state
   const [name, setName] = useState("");
@@ -65,6 +83,8 @@ function MyComplaints() {
 
   return (
     <>
+    <IndexNavbar />
+      <IndexHeader />
       <div className="container">
         <h3 style = {{marginLeft:"440px"}}>My Complaint</h3>
       <form onSubmit={sendData}>
@@ -77,15 +97,30 @@ function MyComplaints() {
       <FormGroup>
         <Label for="Email">Email address</Label>
         <Input type="text" name="email" id="idEmail" placeholder="name@gmail.com" onChange={(e)=>{
+          validateEmail(e);
           setEmail(e.target.value);
-        }}/>
-        
+        }}></Input>
+        <span style={{
+          fontWeight: 'bold',
+          color: 'red',
+        }}>{emailError}</span>
       </FormGroup>
       <FormGroup>
         <Label for="contact">Contact No</Label>
-        <Input type="number" name="contact" id="idContact" placeholder="94 76 564 9534" onChange={(e)=>{
+        <Input type="number" name="contact" id="idContact" placeholder="94 76 564 9534" error={isError}
+        value={contact} onChange={(e)=>{
           setContact(e.target.value);
+          if (e.target.value.length > 10) {
+            setIsError(true);
+          }
+          else if (e.target.value.length < 10){
+            setIsError(true);
+          }
         }}/>
+        <span style={{
+          fontWeight: 'bold',
+          color: 'red',
+        }}>{isError}</span>
       </FormGroup>
       <FormGroup>
         <Label for="typeSelect">Type of complaint</Label>
@@ -101,7 +136,7 @@ function MyComplaints() {
         </Input>
       </FormGroup>
       <FormGroup>
-        <Label for="exampleText">Any other custom complaint</Label>
+        <Label for="exampleText">Custom complaints</Label>
         <Input type="text" name="complaint" id="idText" onChange={(e)=>{
           setComplaint(e.target.value);
         }}/>
@@ -110,7 +145,9 @@ function MyComplaints() {
         Submit
       </Button>
       </form>
+      <AllComplaints/>
       </div>
+      <DemoFooter /> 
     </>
   )
 }
