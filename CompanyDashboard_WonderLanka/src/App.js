@@ -217,7 +217,12 @@ function App() {
 
         <Route path="/driver-management" exact>
           <DriverManagement />
+        </Route> 
+
+
+
         </Route>
+
         <Route path="/booking-management" exact>
           <BookingManagement />
         </Route>
@@ -246,6 +251,9 @@ function App() {
         >
           <InsurenceManagement />
         </Route>
+
+        <Route path="/add-cancelbooking/:id" component={Cancelbookingform} >
+
 
         <Route path="/add-insurence" exact>
           <AddInsurence />
