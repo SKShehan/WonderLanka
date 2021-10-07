@@ -14,6 +14,12 @@ function DriverManagement() {
     function handleClick2(){
         history.push("/View-Driver")
     }
+    function handleClick3(){
+      history.push("/Assign-Driver")
+  }
+  function handleClick4(){
+    history.push("/Report-Driver")
+}
   return (
         <>
       <IndexHeader />
@@ -44,7 +50,7 @@ function DriverManagement() {
                     </button>
 
                     <button
-                                        
+                     onClick={handleClick3}                   
                     className={styles.btn_drivermng}
                    
                     type="button"
@@ -53,6 +59,7 @@ function DriverManagement() {
                     </button>
 
                     <button
+                    onClick={handleClick4}
                                         
                     className={styles.btn_drivermng}
                   

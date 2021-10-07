@@ -40,21 +40,17 @@ function EmployeeManagement() {
                     >
                 View Employees
                     </button>
+                    
 
                   
 
-                    <button
-                                        
-                    className={styles.btn_empmng}
-                  
-                    type="button"
-                    >
-                 Employees Report
-                    </button>
+                 
                     </div>
+                    
                 
      
       </div>
+      
   </>
   );
 }

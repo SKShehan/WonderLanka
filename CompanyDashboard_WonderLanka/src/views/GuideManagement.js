@@ -16,11 +16,11 @@ function GuideManagement(){
     }
 
     function handleClickAssign() {
-        history.push("/assign-guides");
+        history.push("/assign-guide-booking");
     }
 
     function handleClickReport() {
-        history.push("/report-guides");
+        history.push("/guide-report");
     }
 
 

@@ -11,6 +11,9 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { ReactSession } from "react-client-session";
+import { useHistory, useLocation } from "react-router-dom";
+
 toast.configure();
 
 function BookTour({ user }) {
@@ -30,6 +33,7 @@ function BookTour({ user }) {
   const [username, setusername] = useState("");
   let payment = 0;
   const [bookingDate, setbookingDate] = useState();
+  const history = useHistory();
 
   const countryList = [
     "Afghanistan",
@@ -266,9 +270,10 @@ function BookTour({ user }) {
     "Insurance 2",
     "Insurance 3",
     "Insurance 4",
+    "Insurance 5",
   ]);
 
-  const [classList, setclassList] = useState(["Standard", "Deluxe", "Supreme"]);
+  const [classList, setclassList] = useState(["Standard", "Deluxe"]);
 
   const getItineraries = () => {
     axios.get("http://localhost:8070/itineraries").then((res) => {
@@ -290,6 +295,18 @@ function BookTour({ user }) {
           payment +=
             itineraryList[i].itineraryPriceAdult * noOfAdults +
             itineraryList[i].itineraryPriceChild * noOfKids18;
+          if (insurance == "Insurance 1") {
+            payment += 100000;
+          } else if (insurance == "Insurance 2") {
+            payment += 50000;
+          } else if (insurance == "Insurance 3") {
+            payment += 30000;
+          } else if (insurance == "Insurance 4") {
+            payment += 130000;
+          } else if (insurance == "Insurance 5") {
+            payment += 200000;
+          }
+
           break;
         }
       }
@@ -341,20 +358,26 @@ function BookTour({ user }) {
 
   useEffect(() => {
     document.body.classList.add("index");
+    ReactSession.setStoreType("localStorage");
+    if (ReactSession.get("user") === null) {
+      history.push({
+        pathname: "/login",
+      });
+    } else {
+      getItineraries();
+      getGeoInfo();
+      setusername(ReactSession.get("user").username);
+      setcountry(countryList[0]);
 
-    getItineraries();
-    getGeoInfo();
-    setusername(user.username);
-    setcountry(countryList[0]);
-
-    setitinerary(itineraryList[0].itineraryName);
-    setinsurance(insuranceList[0]);
-    seticlass(classList[0]);
-    let today = new Date().toISOString().slice(0, 10);
-    setbookingDate(today);
-    return function cleanup() {
-      document.body.classList.remove("index");
-    };
+      setitinerary(itineraryList[0].itineraryName);
+      setinsurance(insuranceList[0]);
+      seticlass(classList[0]);
+      let today = new Date().toISOString().slice(0, 10);
+      setbookingDate(today);
+      return function cleanup() {
+        document.body.classList.remove("index");
+      };
+    }
   }, []);
 
   return (

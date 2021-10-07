@@ -19,13 +19,13 @@ import {
   } from "reactstrap";
 import { ListFormat } from 'typescript';
 
-function AssignD(){
+function AssignDr(){
     
 
     const {username} = useParams();
     const [drivers , setDrivers] = useState([]);
     const [tid , setID] = useState();
-    const [gid , setgID] = useState();
+    const [did , setdID] = useState();
     const [selectedDriver , setSelection] = useState("");
     
 
@@ -34,7 +34,7 @@ function AssignD(){
 
         const newAssignment = {
             tid,
-            gid
+            did
         }
         
         axios.post("http://localhost:8070/assignedDrivers/add" , newAssignment).then(()=>{
@@ -48,7 +48,7 @@ function AssignD(){
         axios.get(`http://localhost:8070/drivers/getbyName/${selectedDriver}`).then((req) =>{
             
             console.log(req.data.driverid);
-            setgID(req.data.driverid);
+            setdID(req.data.driverid);
         })
     }
 
@@ -102,7 +102,7 @@ function AssignD(){
         
 
             <Label for = "GuideID">Driver ID</Label><br/>
-            <Input type = 'gid' name = "gid"  value = {gid} disabled
+            <Input type = 'did' name = "did"  value = {did} disabled
             ></Input><br/>
 
 
@@ -121,4 +121,4 @@ function AssignD(){
 
 }
 
-export default AssignD;
+export default AssignDr;

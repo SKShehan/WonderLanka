@@ -20,16 +20,19 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ReactSession } from "react-client-session";
+import { useHistory, useLocation } from "react-router-dom";
 
 toast.configure();
 
-function Unregister({ user }) {
+function Unregister() {
   const [reason, setreason] = useState("");
   const [password, setpassword] = useState("");
   const [other, setother] = useState(false);
   const [reason1, setreason1] = useState(false);
   const [reason2, setreason2] = useState(false);
   const [reason3, setreason3] = useState(false);
+  const history = useHistory();
 
   const selectReason1 = () => {
     setother(false);
@@ -61,7 +64,7 @@ function Unregister({ user }) {
 
   const unregReason = () => {
     const unreg = {
-      fullName: user.fullName,
+      fullName: ReactSession.get("user").fullName,
       unregisteredDate: new Date().toISOString().slice(0, 10),
       reason,
     };
@@ -77,7 +80,11 @@ function Unregister({ user }) {
 
   const deleteBookings = () => {
     axios
-      .delete(`http://localhost:8070/bookings/delete/${user.username}`)
+      .delete(
+        `http://localhost:8070/bookings/delete/${
+          ReactSession.get("user").username
+        }`
+      )
       .then((res) => {
         console.log(res.data);
       })
@@ -88,7 +95,7 @@ function Unregister({ user }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (password != user.password) {
+    if (password != ReactSession.get("user").password) {
       toast.error("Incorrect Password!", {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 10000,
@@ -96,7 +103,11 @@ function Unregister({ user }) {
       });
     } else {
       axios
-        .delete(`http://localhost:8070/users/delete/${user.username}`)
+        .delete(
+          `http://localhost:8070/users/delete/${
+            ReactSession.get("user").username
+          }`
+        )
         .then(() => {
           unregReason();
           deleteBookings();
@@ -104,6 +115,9 @@ function Unregister({ user }) {
             position: toast.POSITION.BOTTOM_RIGHT,
             autoClose: 10000,
             hideProgressBar: false,
+          });
+          history.push({
+            pathname: "/login",
           });
         })
         .catch((err) => {
@@ -118,14 +132,21 @@ function Unregister({ user }) {
   };
 
   const demo = () => {
-    setpassword("pass123");
+    setpassword(ReactSession.get("user").password);
   };
 
   document.documentElement.classList.remove("nav-open");
 
   useEffect(() => {
     document.body.classList.add("index");
+    ReactSession.setStoreType("localStorage");
+    if (ReactSession.get("user") === null) {
+      history.push({
+        pathname: "/login",
+      });
+    }
     setreason1(true);
+    setreason("Not satisfied with the service");
     return function cleanup() {
       document.body.classList.remove("index");
     };
