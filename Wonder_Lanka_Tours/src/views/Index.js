@@ -68,9 +68,11 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
-   <SectionDownload /> */}
+   <SectionDownload /> 
         <MyComplaints />
-        <AllComplaints />
+        <AllComplaints />*/}
+        <Itineraries />
+        
         <DemoFooter /> 
         
       </div>

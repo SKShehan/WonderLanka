@@ -52,6 +52,9 @@ import HotelDetails from "./HotelDetails";
 import EditHotel from "./EditHotel";
 import AddHotel from "./AddHotel";
 import HotelHome from "./HotelHome";
+import AddRestaurant from "./AddRestaurant";
+import ViewHotelsAndRestaurant from "./ViewHotelsAndRestaurant";
+import EditRestaurant from "./EditRestaurant";
 
 
 
@@ -105,7 +108,7 @@ function Index() {
         <SectionDownload />
         <GuideManagement /> 
         
-        <Home/>
+        
         <SectionDownload /> 
         <GuideManagement />
         <AddDriver/>
@@ -114,7 +117,8 @@ function Index() {
         <HotelHome />
      
         <DriverManagement/>
-      <BookingManagement />*/}
+      <BookingManagement />
+      
 
         
 
@@ -122,7 +126,10 @@ function Index() {
         
          
  
- <GuideManagement />
+ <GuideManagement />*/}
+ 
+
+<Homepage />
  
 
  

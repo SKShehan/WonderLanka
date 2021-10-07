@@ -98,13 +98,13 @@ onDelete = (id) =>{
       <table width="100%" border="2px" className={hotelStyles.tbldata}>
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Hotel Registraion No</th>
-            <th scope="col">Hotel Name</th>
-            <th scope="col">Hotel Location</th>
-            <th scope="col">Telephone Number</th>
-            <th scope="col">Description</th>
-            <th scope="col">Action</th>
+            <th className={hotelStyles.tbldata}>#</th>
+            <th className={hotelStyles.tbldata}>Hotel Registraion No</th>
+            <th className={hotelStyles.tbldata} >Hotel Name</th>
+            <th className={hotelStyles.tbldata}>Hotel Location</th>
+            <th className={hotelStyles.tbldata}>Telephone Number</th>
+         <th className={hotelStyles.tbldata}>Description</th>
+            <th className={hotelStyles.tbldata}>Action</th>
           </tr>
         </thead>
 
@@ -113,16 +113,12 @@ onDelete = (id) =>{
                   <tr>
                     <th scope="row">{index+1}</th>
                     
-                    <td>
-                      
-                        {posts.hotelNum}
-                       
-                    </td>
-
-                    <td>{posts.hotelname}</td>
-                    <td>{posts.location}</td>
-                    <td>{posts.hotelTele}</td>
-                    <td>{posts.description}</td> 
+                    <td className={hotelStyles.tbldata}><b>{posts.hotelNum}</b></td>
+                    <td className={hotelStyles.tbldata}><b>{posts.hotelname}</b></td>
+                    <td className={hotelStyles.tbldata}><b>{posts.location}</b></td>
+                    <td className={hotelStyles.tbldata}><b>{posts.hotelTele}</b></td>
+                    
+                    <td ><b>{posts.description}</b></td> 
                     <td>
                       <a className={hotelStyles.btnEdit} href={`/edit-hotel/${posts._id}`}>
                         <i className="fas fa-edit"></i>&nbsp;Edit

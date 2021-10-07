@@ -24,10 +24,14 @@ import BookingManagement from "views/BookingManagement";
 import Assign from "views/AssignGuide";
 import AssignGuide from "views/AssignGuideBookings";
 
+import HotelHome from "views/HotelHome";
+import ViewHotelsAndRestaurant from "views/ViewHotelsAndRestaurant";
 import AddHotel from "views/AddHotel";
+import AddRestaurant from "views/AddRestaurant";
+import EditRestaurant from "views/EditRestaurant";
 import HotelDetails from "views/HotelDetails";
 import EditHotel from "views/EditHotel";
-import HotelHome from "views/HotelHome";
+
 import Booktable from "views/booktable";
 import Bookingdetails from "views/bookingdetails";
 import Editbookings from "views/editbookings";
@@ -47,6 +51,8 @@ import AssignVehicle from "views/assignvehicle";
 import ReportVehicle from "views/reportvehicle";
 import VehicleDashboard from "views/vehicleDashboard";
 import EmployeeUpdate from "views/EmployeeUpdate";
+
+
 
 function App() {
 
@@ -194,6 +200,19 @@ function App() {
         <Route path="/get-hotel" exact >
           <HotelDetails />
         </Route>
+
+        <Route path ="/add-Restaurant" component={AddRestaurant}/>
+        <Route path ="/View-Restaurant" component={ViewHotelsAndRestaurant}/>
+        <Route path="/edit-Restaurant/:id" component={EditRestaurant} />
+       
+
+        
+
+        <Route path="/edit-restaurant/:id" exact>
+          <EditRestaurant />
+        </Route>
+
+        
 
 
         <Route path="/edit-employee/:id" exact 
