@@ -72,7 +72,7 @@ import AssignVc from "views/assignvehicle";
 import DriverReport from "views/DriverReport";
 
 import CFRetrieve from "views/CFRetrieve";
-//import AssignVehicle from "views/assignvehicleBooking";
+
 
 function App() {
   return (
