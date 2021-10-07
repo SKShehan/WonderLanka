@@ -1,6 +1,9 @@
 
 import styles from "../assets/css/Home.module.css"
 import { useHistory } from "react-router";
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
+import DemoFooter from 'components/Footers/DemoFooter';
 
 function Homepage(){
 
@@ -19,7 +22,7 @@ function Homepage(){
     }
 
     function handleClickComp() {
-        history.push("/report-guides");
+        history.push("/cf-management");
     }
 
     function handleClickVehicle() {
@@ -31,7 +34,7 @@ function Homepage(){
     }
 
     function handleClickInsurance() {
-      history.push("/report-guides");
+      history.push("/insurence-home");
     }
 
    function handleClickHotel() {
@@ -44,6 +47,10 @@ function Homepage(){
 
 
     return(
+
+      <>
+      <IndexNavbar />
+     
         
             <div style = {{paddingTop : "50px"}} className = {styles.body}>
             <h3 className = {styles.header}><center>Company Management</center></h3><br/><br/>
@@ -92,7 +99,7 @@ function Homepage(){
               <button className = {styles.btn_guidemng} onClick = {handleClickEmployee}>Employee Management</button>
             </div>
         </div>
-        
+        </>
     );
 }
 

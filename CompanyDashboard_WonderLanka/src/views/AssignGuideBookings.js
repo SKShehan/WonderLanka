@@ -25,33 +25,68 @@ function AssignGuide(){
 
 
 
-    const [bookings , setBookings] = useState([]);
-    const [guide , setGuide] = useState("");
+    
+ //   const [guide , setGuide] = useState("");
+   //   const [guide , setGuide] = useState([]);
+   const [bookings , setBookings] = useState([]);
+   const [guides, setGuides] = useState({});
 
-    useEffect(()=>{
-        axios.get("http://localhost:8070/bookings/").then((res) =>{
-            setBookings(res.data);
-        })
+   useEffect(()=>{
+    axios.get("http://localhost:8070/bookings/").then((res) =>{
+        setBookings(res.data);
     })
+}, []) 
+
     let history = useHistory();
     var number = 1;
-
-    function GuideAssigned(tid){
-        axios.get(`http://localhost:8070/assignedGuides/get/${tid}`).then((res)=>{
-          console.log(res.data.guideId);
-          setGuide(res.data.guideId);
-          if (typeof guide == 'undefined'){
-            return "Not Assigned";
+    
+    useEffect(() => {
+  
+      bookings.forEach(({ tourId }) => {
+        axios.get(`http://localhost:8070/assignedGuides/check/${tourId}`).then((res) =>{
+          if(res.data === true){
+            axios.get(`http://localhost:8070/assignedGuides/get/${tourId}`)
+            .then(res => {
+              setGuides(guides => ({
+                ...guides,
+                [tourId]: res.data.guideId,
+              }));
+            })
           }
-          
-        }).catch((err)=>{
-          console.log(err);
+
         })
+      
+      });
+    
+    }, [bookings]);
+
+      // function  GuideAssigned(tid){
+      //     axios.get(`http://localhost:8070/assignedGuides/check/${tid}`).then((res)=>{
+     
+      //     if(res.data === true){
+      //       axios.get(`http://localhost:8070/assignedGuides/get/${tid}`).then((resp) =>{
+      //         setGuide(resp.data.guideId);
+              
+      //         console.log(guide);
+      //       })
+
+      //     }
+      //     else{
+      //       setGuide("Not Assigned");
+      //     }
+            
+            
+          
+      //     }).catch((err)=>{
+      //       console.log(err);
+      //     })
+          
         
-        return guide;
+
+    //     return guide;
 
         
-    }
+ //     }
     return(
         
         <div>
@@ -107,7 +142,8 @@ function AssignGuide(){
                                 <td>{booking.bookingDate}</td>
                                 <td>{booking.arrivalDate}</td>
                                 <td>{booking.country}</td>
-                                <td>{GuideAssigned(booking.tourId)}</td>
+                                {/* {GuideAssigned(booking.guideId)} */}
+                                <td>{guides[booking.tourId]}</td>
                                 <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
                                 onClick = {()=>{
                                     history.push(`/assign-guide/${booking.username}`);

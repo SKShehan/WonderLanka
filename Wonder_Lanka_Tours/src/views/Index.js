@@ -42,6 +42,11 @@ import SectionDownload from "views/index-sections/SectionDownload.js";
 import Itineraries from "./Itineraries";
 import { MyComplaints } from "./MyComplaints";
 import { AllComplaints } from "./AllComplaints";
+import { MyFeedbacks } from "./MyFeedbacks";
+import { AllFeedbacks } from "./AllFeedbacks";
+import { ContactUS } from "./ContactUs";
+
+import Dashboard from "./Dashboard";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -53,10 +58,8 @@ function Index() {
   });
   return (
     <>
-      <IndexNavbar />
-      <IndexHeader />
       <div className="main">
-   {/*     <SectionButtons />
+        {/*     <SectionButtons />
         <SectionNavbars />
         <SectionNavigation />
         <SectionProgress />
@@ -69,10 +72,6 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
    <SectionDownload /> */}
-        <MyComplaints />
-        <AllComplaints />
-        <DemoFooter /> 
-        
       </div>
     </>
   );

@@ -21,7 +21,7 @@ function CustomIt(){
     function sendEmail(e){
         e.preventDefault();
 
-        emailjs.sendForm('gmail','template_4d97w88',e.target,'user_syKuxOzzyHhIQ1AhOxJ1V').then((result) =>{
+        emailjs.sendForm('service_ybzjfen','template_4d97w88',e.target,'user_syKuxOzzyHhIQ1AhOxJ1V').then((result) =>{
             console.log(result.text);
 
         }).catch((err) =>{

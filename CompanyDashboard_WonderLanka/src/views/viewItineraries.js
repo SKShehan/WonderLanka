@@ -94,14 +94,14 @@ function ViewItineraries(){
                     <i className="nc-icon nc-zoom-split" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input placeholder="Search " type="text" 
+                <Input placeholder="Search by Itineray Name" type="text" 
                     onChange = {(e) =>{
                                 setSearchVal(e.target.value);
                     }}/>
               </InputGroup>
             </FormGroup>
           </Col>
-          <Col>
+          {/* <Col>
             <div>
               <Label style = {{marginLeft : "40px"}} check>
                 <Input type="checkbox"/>{" "} 
@@ -118,7 +118,7 @@ function ViewItineraries(){
                 <label style ={{marginRight : "40px"}}>Class</label>
               </Label>
             </div>
-          </Col>
+          </Col> */}
           <Col></Col>
         </Row>
 

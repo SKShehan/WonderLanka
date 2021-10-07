@@ -22,7 +22,7 @@ function VehicleDashboard(){
     }
 
     function handleClickAssign() {
-        history.push("/assign-vehicles");
+        history.push("/assign-vehiclesBooking");
     }
 
     function handleClickReport() {

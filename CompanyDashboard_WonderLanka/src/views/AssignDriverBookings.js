@@ -21,13 +21,12 @@ import { useHistory } from "react-router";
 
 
 
-
 function AssignDriver(){
 
 
 
     const [bookings , setBookings] = useState([]);
-    const [driver , setDriver] = useState("");
+    const [drivers , setDrivers] = useState("");
 
     useEffect(()=>{
         axios.get("http://localhost:8070/bookings/").then((res) =>{
@@ -37,10 +36,32 @@ function AssignDriver(){
     let history = useHistory();
     var number = 1;
 
-    function DriverAssigned(tid){
+
+
+    useEffect(() => {
+  
+      bookings.forEach(({ tourId }) => {
+        axios.get(`http://localhost:8070/assignedDrivers/check/${tourId}`).then((res) =>{
+          if(res.data === true){
+            axios.get(`http://localhost:8070/assignedDrivers/get/${tourId}`)
+            .then(res => {
+              setDrivers(drivers => ({
+                ...drivers,
+                [tourId]: res.data.driverId,
+              }));
+            })
+          }
+
+        })
+      
+      });
+    
+    }, [bookings]);
+
+   {/* function DriverAssigned(tid){
         axios.get(`http://localhost:8070/assignedDrivers/get/${tid}`).then((res)=>{
-          console.log(res.data.driverid);
-          setDriver(res.data.driverid);
+          console.log(res.data.driverId);
+          setDriver(res.data.driverId);
           if (typeof driver == 'undefined'){
             return "Not Assigned";
           }
@@ -52,7 +73,7 @@ function AssignDriver(){
         return driver;
 
         
-    }
+    }*/}
     return(
         
         <div>
@@ -108,7 +129,7 @@ function AssignDriver(){
                                 <td>{booking.bookingDate}</td>
                                 <td>{booking.arrivalDate}</td>
                                 <td>{booking.country}</td>
-                                <td>{DriverAssigned(booking.tourId)}</td>
+                               <td>{drivers[booking.tourId]}</td>
                                 <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
                                 onClick = {()=>{
                                     history.push(`/assign-driver/${booking.username}`);
