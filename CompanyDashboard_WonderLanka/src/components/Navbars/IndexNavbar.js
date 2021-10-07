@@ -174,7 +174,7 @@ function IndexNavbar() {
             </NavItem>
             <NavItem>
 
-                <NavLink data-placement="bottom"  onClick = {logout}>
+                <NavLink data-placement="bottom"  onClick = {logout}/>
 
               <NavLink
                 data-placement="bottom"
