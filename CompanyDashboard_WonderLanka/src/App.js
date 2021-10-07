@@ -207,9 +207,9 @@ function App() {
 
         <Route path="/vehicle-management" component={VehicleDashboard} />
         
-        <Route path="/assign-vehicle" component={AssignVc} />
+        
 
-        {/*<Route path="/assign-vehicle/:username" component={AssignVc} />*/}
+        <Route path="/assign-vehicle/:username" component={AssignVc} />
 
         <Route path="/itinerary-management" exact>
           <ItineraryManagement />
