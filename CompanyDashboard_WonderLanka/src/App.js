@@ -71,6 +71,7 @@ import Login from "views/Login";
 import DriverReport from "views/DriverReport";
 
 import CFRetrieve from "views/CFRetrieve";
+import CFManagement from "views/CFManagement";
 
 function App() {
   return (
@@ -303,6 +304,9 @@ function App() {
           <CFRetrieve/>
         </Route>
 
+        <Route path = "/cf-management" exact>
+          <CFManagement/>
+        </Route>
 
         <Redirect to="/index" />
       </Switch>

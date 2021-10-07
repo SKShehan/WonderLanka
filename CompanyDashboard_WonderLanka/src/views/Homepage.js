@@ -22,7 +22,7 @@ function Homepage(){
     }
 
     function handleClickComp() {
-        history.push("/report-guides");
+        history.push("/cf-management");
     }
 
     function handleClickVehicle() {
@@ -99,7 +99,6 @@ function Homepage(){
               <button className = {styles.btn_guidemng} onClick = {handleClickEmployee}>Employee Management</button>
             </div>
         </div>
-      
         </>
     );
 }
