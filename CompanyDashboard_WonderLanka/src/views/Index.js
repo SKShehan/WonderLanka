@@ -125,10 +125,12 @@ function Index() {
      <AssignGuide />
       <BookingManagement />
      <GuideReport />
+     <Home/>
       <EmployeeManagement/>
      <AssignGuide /> */}
       
-      <Home/>
+      <Homepage/>
+      
         <DemoFooter />
 
 

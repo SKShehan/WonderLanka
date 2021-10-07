@@ -50,7 +50,7 @@ import Vtype from "views/vtype";
 import AssignVehicleBooking from "views/assignvehicleBooking";
 import ReportVehicle from "views/reportvehicle";
 import VehicleDashboard from "views/vehicleDashboard";
-// import AssignVc from "views/assignvehicle";
+import AssVehicle from "views/assignvehicle";
 
 import EmployeeUpdate from "views/EmployeeUpdate";
 
@@ -65,12 +65,14 @@ import AddEmployee from "views/AddEmployee";
 import EmployeeManagement from "views/EmployeeManagement";
 import Homepage from "views/Homepage";
 
+
 import HomepageAssets from "views/HomepageAssets";
 import Login from "views/Login";
-//import AssignVc from "views/assignvehicle";
+import AssignVc from "views/assignvehicle";
 import DriverReport from "views/DriverReport";
 
 import CFRetrieve from "views/CFRetrieve";
+//import AssignVehicle from "views/assignvehicleBooking";
 
 function App() {
   return (
@@ -203,6 +205,8 @@ function App() {
         <Route path="/report-vehicles" component={ReportVehicle} />
 
         <Route path="/vehicle-management" component={VehicleDashboard} />
+        
+        <Route path="/assign-vehicle" component={AssignVc} />
 
         {/*<Route path="/assign-vehicle/:username" component={AssignVc} />*/}
 

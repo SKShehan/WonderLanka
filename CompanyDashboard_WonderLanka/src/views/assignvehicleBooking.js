@@ -25,18 +25,20 @@ function AssignVehicle(){
 
 
 
-    const [bookings , setBookings] = useState([]);
-    const [vehicle , setVehicle] = useState("");
+    
+ 
+   const [bookings , setBookings] = useState([]);
+   const [vehicle, setVehicle] = useState({});
 
-    useEffect(()=>{
-        axios.get("http://localhost:8070/bookings/").then((res) =>{
-            setBookings(res.data);
-        })
-    }, [])
+   useEffect(()=>{
+    axios.get("http://localhost:8070/bookings/").then((res) =>{
+        setBookings(res.data);
+    })
+}, []) 
 
     let history = useHistory();
     var number = 1;
-
+    
     useEffect(() => {
   
       bookings.forEach(({ tourId }) => {
@@ -57,7 +59,7 @@ function AssignVehicle(){
     
     }, [bookings]);
 
-
+      
     return(
         
         <div>
@@ -98,7 +100,7 @@ function AssignVehicle(){
                         <th scope = "col">Booking Date</th>
                         <th scope = "col">Arrival Date</th>
                         <th scope = "col">Country </th>
-                        <th scope = "col">vehicle Assigned </th>
+                        <th scope = "col">Vehicle Assigned </th>
                         <th scope = "col">Operation</th>
 
                     </thead>
@@ -113,6 +115,7 @@ function AssignVehicle(){
                                 <td>{booking.bookingDate}</td>
                                 <td>{booking.arrivalDate}</td>
                                 <td>{booking.country}</td>
+                                
                                 <td>{vehicle[booking.tourId]}</td>
                                 <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
                                 onClick = {()=>{

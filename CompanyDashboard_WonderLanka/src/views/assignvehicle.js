@@ -19,7 +19,7 @@ import {
   } from "reactstrap";
 import { ListFormat } from 'typescript';
 
-function AssVehicle(){
+function AssignVc(){
     
 
     const {username} = useParams();
@@ -47,8 +47,8 @@ function AssVehicle(){
     function getName(){
         axios.get(`http://localhost:8070/vehicles/getbyName/${selectedVehicle}`).then((req) =>{
             
-            console.log(req.data.vid);
-            setvID(req.data.vid);
+            console.log(req.data.vehicleID);
+            setvID(req.data.vehicleID);
         })
     }
 
@@ -75,7 +75,7 @@ function AssVehicle(){
         
     return (
         <div style = {{paddingTop : "50px"}} className = {styles.body}>
-        <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Assign Vehicle</h3><br/><br/>
+        <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Assign Guide</h3><br/><br/>
         <div className = {styles.FormContainer}>
         <form onSubmit = {onSubmitForm}>
 
@@ -85,7 +85,7 @@ function AssVehicle(){
             <Input type = 'tid' name = "tid"  value = {tid} disabled
             ></Input><br/>
 
-            <Label for = "Guide Name">vehicle Name</Label><br/>
+            <Label for = "Guide Name">Guide Name</Label><br/>
            
             <select className="form-control" onChange = {(e) =>{
                     setSelection(e.target.value);
@@ -101,8 +101,8 @@ function AssVehicle(){
 
         
 
-            <Label for = "vehicleID">vehicle ID</Label><br/>
-            <Input type = 'vid' name = "vid"  value = {vid} disabled
+            <Label for = "GuideID">Guide ID</Label><br/>
+            <Input type = 'gid' name = "gid"  value = {vid} disabled
             ></Input><br/>
 
 
@@ -111,7 +111,7 @@ function AssVehicle(){
     
             <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}
 
-            >Assign Vehicle</Button>
+            >Assign Guide</Button>
 
         </form>    
         </div>
@@ -121,4 +121,4 @@ function AssVehicle(){
 
 }
 
-export default AssVehicle;
+export default AssignVc;
