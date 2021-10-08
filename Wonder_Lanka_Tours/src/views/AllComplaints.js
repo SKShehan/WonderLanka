@@ -83,19 +83,27 @@ function AllComplaints () {
               <div style = {{marginLeft:"20px"}}  className = "tableContainer">
               <table className = "table table-striped">
                 <thead>
+                <th scope = "col"> No </th>
+                    <th scope = "col"> Name </th>
+                    <th scope = "col"> Email </th>
+                    <th scope = "col"> Contact </th>
+                    <th scope = "col"> Reason </th>
+                    <th scope = "col"> Complaint </th>
+                    <th scope = "col"> Date </th>
                 </thead>
                 <tbody>
-                  <div>
+                  
+                    <tr>
                     <th scope = "row">{number++}</th>
-                    <th scope = "col"> Name </th>
+                    
                     <td>{complaint.name}</td>
-                    <th scope = "col"> Email </th>
+                    
                     <td>{complaint.email}</td>
-                    <th scope = "col"> Contact </th>
+                    
                     <td>{complaint.contact}</td>
-                    <th scope = "col"> Reason </th>
+                    
                     <td>{complaint.select}</td>
-                    <th scope = "col"> Complaint </th>
+                    
                     <td>{complaint.complaint}</td>
                     <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "60px" , marginBottom : "8px"}}
                           onClick = {()=>{
@@ -110,7 +118,8 @@ function AllComplaints () {
                         
                           >Remove</Button>
                         </td>
-                  </div>
+                        </tr>
+                  
                 </tbody>
               </table>
               </div>
