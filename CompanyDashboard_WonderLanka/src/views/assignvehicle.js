@@ -46,13 +46,14 @@ function AssignVc(){
     
     function getName(){
         axios.get(`http://localhost:8070/vehicles/getbyName/${selectedVehicle}`).then((req) =>{
-            
-            console.log(req.data.vehicleID);
-            setvID(req.data.vehicleID);
+            console.log(selectedVehicle);
+            console.log(req.data.vid);
+            setvID(req.data.vid);
         })
     }
 
     useEffect(()=>{
+        console.log(username);
         axios.get("http://localhost:8070/vehicles/").then((req)=>{
             setVehicle(req.data)
             console.log(req.data)
@@ -63,9 +64,11 @@ function AssignVc(){
         axios.get(`http://localhost:8070/bookings/get/${username}`).then((req) =>{
             
             setID(req.data[0].tourId);
+            console.log(tid);
 
-        }).catch(() =>{
+        }).catch((e) =>{
             console.log("Error in fetching data!");
+            console.log(e);
         })
 
         
