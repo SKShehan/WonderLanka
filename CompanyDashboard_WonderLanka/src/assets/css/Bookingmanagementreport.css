@@ -1,0 +1,41 @@
+.my-tour-content {
+    justify-content: center;
+    padding: 20px 80px 20px 80px;
+  }
+  
+
+.report-card {
+    margin: auto;
+  
+    width: 600px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+      rgba(0, 0, 0, 0.06) 0px 2px 3px 0px;
+    border: 1px solid rgb(207, 206, 206);
+    border-radius: 10px;
+  }
+  
+  .report-logo {
+    height: 80px;
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+  }
+  .report-title {
+    text-align: center;
+    font-weight: bold;
+  }
+  .report-download {
+    margin: auto;
+    width: 600px;
+  }
+  
+  .report-contact {
+    text-align: center;
+    font-size: x-small;
+  }
+  
+  #report-cont {
+    padding: 20px 20px 20px 20px;
+  }
+  

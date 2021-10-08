@@ -114,7 +114,7 @@ function Index() {
         <SectionDownload />
         <GuideManagement /> 
         
-        <Home/>
+        
 
         <SectionDownload /> 
         <GuideManagement />
@@ -124,11 +124,14 @@ function Index() {
         <DriverManagement/>
      <AssignGuide />
       <BookingManagement />
-     
+     <GuideReport />
+     <Home/>
       <EmployeeManagement/>
      <AssignGuide /> */}
-      <GuideReport />
-       
+      <Homepage/>
+      
+   
+      
         <DemoFooter />
 
 
