@@ -128,8 +128,9 @@ function Index() {
      <Home/>
       <EmployeeManagement/>
      <AssignGuide /> */}
-      
       <Homepage/>
+      
+   
       
         <DemoFooter />
 
