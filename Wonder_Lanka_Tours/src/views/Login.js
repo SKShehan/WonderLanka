@@ -132,9 +132,9 @@ function Login({ user, setuser }) {
                   />
                 </InputGroup>
               </FormGroup>
-              <a href="#" style={{ float: "right" }}>
+              {/*<a href="#" style={{ float: "right" }}>
                 <strong>Forgot password?</strong>
-              </a>
+  </a>*/}
               <br />
               <br />
               <Button className="btn btn-info" style={{ width: "100%" }}>
