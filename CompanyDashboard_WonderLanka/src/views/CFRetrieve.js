@@ -85,6 +85,7 @@ function CF () {
                     <th scope = "col"> Contact </th>
                     <th scope = "col"> Reason </th>
                     <th scope = "col"> Complaint </th>
+                    <th scope = "col"> Date </th>
 
                     </thead>
                     <tbody>
@@ -100,6 +101,8 @@ function CF () {
                         <td>{complaint.select}</td>
                         
                         <td>{complaint.complaint}</td>
+
+                        <td>{complaint.date}</td>
                         </tr>
                     </tbody>
                   </table>

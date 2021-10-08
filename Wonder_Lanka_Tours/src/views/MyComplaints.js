@@ -35,7 +35,6 @@ function MyComplaints() {
 
   const {handleSubmit, register} = useForm();
   const [emailError, setEmailError] = useState('');
-  const [isError, setIsError] = useState(false);
 
   const validateEmail = (e) => {
     var email = e.target.value;
@@ -107,20 +106,9 @@ function MyComplaints() {
       </FormGroup>
       <FormGroup>
         <Label for="contact">Contact No</Label>
-        <Input type="number" name="contact" id="idContact" placeholder="94 76 564 9534" error={isError}
-        value={contact} onChange={(e)=>{
+        <Input type="number" name="contact" id="idContact" placeholder="94 76 564 9534" onChange={(e)=>{
           setContact(e.target.value);
-          if (e.target.value.length > 10) {
-            setIsError(true);
-          }
-          else if (e.target.value.length < 10){
-            setIsError(true);
-          }
         }}/>
-        <span style={{
-          fontWeight: 'bold',
-          color: 'red',
-        }}>{isError}</span>
       </FormGroup>
       <FormGroup>
         <Label for="typeSelect">Type of complaint</Label>

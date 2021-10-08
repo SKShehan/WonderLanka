@@ -4,6 +4,11 @@ import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import { useHistory } from "react-router";
 import axios from "axios";
+
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import IndexHeader from "components/Headers/IndexHeader.js";
+import DemoFooter from "components/Footers/DemoFooter.js";
+
 import {
   Input,
   
@@ -11,50 +16,26 @@ import {
 
   function CFReport () {
     const [complaints, setComplaints] = useState([]);
-    const [bookings , setBookings] = useState([]);
-    const [guides, setGuides] = useState({});
     const [selectedDate , filteredDate] = useState("01"); 
-    const [date, setdate] = useState();
     const [selectedYear , filteredYear] = useState("2021");
+    const [date, setdate] = useState();
 
     let history = useHistory();
     var number = 1;
     let doc;
 
-    useEffect(()=>{
-      let today = new Date().toISOString().slice(0, 10);
-      setdate(today);
-      function getComplaints() {
-      axios.get("http://localhost:8070/complaint/").then((res) => {
-              setComplaints(res.data);
-              console.log(res);
-      }).catch((err)=>{
-        alert("Something went wrong :(");
-          alert(err.message);
-      });
-    };
-    getComplaints();
-    },[]);
-
     useEffect(() => {
-  
-      bookings.forEach(({ tourId }) => {
-        axios.get(`http://localhost:8070/assignedGuides/check/${tourId}`).then((res) =>{
-          if(res.data === true){
-            axios.get(`http://localhost:8070/assignedGuides/get/${tourId}`)
-            .then(res => {
-              setGuides(guides => ({
-                ...guides,
-                [tourId]: res.data.guideId,
-              }));
-            })
-          }
-    
-        })
-      
-      });
-    
-    }, [bookings]);
+      function getComplaints() {
+        axios.get("http://localhost:8070/complaint/").then((res) => {
+          setComplaints(res.data);
+          console.log(res);
+        }).catch((err) => {
+          alert("Something went wrong :(");
+          alert(err.message);
+        });
+      };
+      getComplaints();
+    },[]);
 
   const downloadPDF = () => {
  
@@ -72,6 +53,8 @@ import {
 
   return (
     <>
+    <IndexNavbar />
+    <IndexHeader/>
       <Container>
       <h2 align="center">Complaint Report</h2>
       <br/><br/>
@@ -164,18 +147,28 @@ import {
                         <th scope = "col">Contact</th>
                         <th scope = "col">Reason </th>
                         <th scope = "col">Complaint </th>
+                        <th scope = "col">Date </th>
                        
 
                     </thead>
 
                     <tbody>
                         
-                        {complaints.filter((complaint) =>{
+                        {complaints.filter((val) =>{
                             if(selectedYear === '' && selectedDate === ''){
-                              return complaint;
+                              return val;
+                            }
+                            else if(val.date.substring(5, 7).includes(selectedDate) && val.date.substring(0,4).includes(selectedYear)){
+                              return val;
+                            }
+                            else if(val.date.substring(5,7).includes(selectedDate) && selectedYear === ''){
+                              return val;
+                            }
+                            else if (val.date.substring(0,4).includes(selectedYear) && selectedDate === ''){
+                              return val;
                             }
             
-
+                            
                         }).map((complaint) =>(
                             
                             <tr>
@@ -185,6 +178,7 @@ import {
                                 <td>{complaint.contact}</td>
                                 <td>{complaint.select}</td>
                                 <td>{complaint.complaint}</td>
+                                <td>{complaint.date}</td>
                               
                             </tr>
     
@@ -211,6 +205,8 @@ import {
       </div>
 
       </Container>
+
+      <DemoFooter />
     </>
 
   );
