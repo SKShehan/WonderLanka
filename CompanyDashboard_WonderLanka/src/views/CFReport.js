@@ -18,13 +18,15 @@ import {
     const [complaints, setComplaints] = useState([]);
     const [selectedDate , filteredDate] = useState("01"); 
     const [selectedYear , filteredYear] = useState("2021");
-    const [date, setdate] = useState();
+    const [date1, setdate] = useState();
 
     let history = useHistory();
     var number = 1;
     let doc;
 
     useEffect(() => {
+      let today = new Date().toISOString().slice(0, 10);
+    setdate(today);
       function getComplaints() {
         axios.get("http://localhost:8070/complaint/").then((res) => {
           setComplaints(res.data);
@@ -129,7 +131,7 @@ import {
                     <Row>
                       <Col>
                         <label style={{ float: "right", fontSize : "14px" }}>
-                          <i>Date : {date}</i>
+                          <i>Date : {date1}</i>
                         </label> <br/>
 
                         <hr></hr>
@@ -158,31 +160,44 @@ import {
                             if(selectedYear === '' && selectedDate === ''){
                               return val;
                             }
-                            else if(val.date.substring(5, 7).includes(selectedDate) && val.date.substring(0,4).includes(selectedYear)){
-                              return val;
-                            }
-                            else if(val.date.substring(5,7).includes(selectedDate) && selectedYear === ''){
-                              return val;
-                            }
-                            else if (val.date.substring(0,4).includes(selectedYear) && selectedDate === ''){
-                              return val;
-                            }
+                            
             
                             
-                        }).map((complaint) =>(
-                            
-                            <tr>
-                                <th scope = "row">{number++}</th>
-                                <td>{complaint.name}</td>
-                                <td>{complaint.email}</td>
-                                <td>{complaint.contact}</td>
-                                <td>{complaint.select}</td>
-                                <td>{complaint.complaint}</td>
-                                <td>{complaint.date}</td>
+                        }).map((complaint)=>(
+                          <div style = {{marginLeft:"20px"}}  className = "tableContainer">
+                          <table className = "table table-striped">
+                            <thead>
+                                <th scope = "col"> No </th>
+                                <th scope = "col"> Name </th>
+                                <th scope = "col"> Email </th>
+                                <th scope = "col"> Contact </th>
+                                <th scope = "col"> Reason </th>
+                                <th scope = "col"> Complaint </th>
+                                <th scope = "col"> Date </th>
+                                <th scope = "col"> Action </th>
+                            </thead>
+                            <tbody>
                               
-                            </tr>
-    
-                        ))}
+                                <tr>
+                                <th scope = "row">{number++}</th>
+                                
+                                <td>{complaint.name}</td>
+                                
+                                <td>{complaint.email}</td>
+                                
+                                <td>{complaint.contact}</td>
+                                
+                                <td>{complaint.select}</td>
+                                
+                                <td>{complaint.complaint}</td>
+            
+                                <td>{complaint.date}</td>
+                                </tr>
+                              
+                            </tbody>
+                          </table>
+                          </div>
+                          ))}
                     </tbody>    
 
 
