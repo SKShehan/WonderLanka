@@ -84,6 +84,7 @@ function DriverDetails(){
     return(
         
         <div>
+       
             <IndexNavbar />
             <IndexHeader />
             
@@ -201,8 +202,9 @@ function DriverDetails(){
             
             <span style = {{textAlign:"left" , color : "red"}}>{message}</span> <br/><br/>
             <DemoFooter />
-           
+      
         </div>   
+        
     );
 
 

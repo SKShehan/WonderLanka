@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import driverStyles from "../assets/css/DriverDetails.module.css";
 import IndexHeader from "components/Headers/IndexHeader";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 import DemoFooter from "components/Footers/DemoFooter";
@@ -77,9 +78,13 @@ function AssignDriver(){
     return(
         
         <div>
+          
             <IndexNavbar />
             <IndexHeader />
-            <h3 style ={{marginLeft:"40px"}}>Assigned Drivers</h3><br/><br/>
+            <Container>
+            
+            <center><h1 style ={{marginLeft:"40px"}}>Assigned Drivers</h1></center>
+            <br/><br/>
 
             <Row>
           <Col>
@@ -106,16 +111,16 @@ function AssignDriver(){
           <Col></Col>
         </Row>
 
-            <div style = {{marginLeft:"20px"}}  className = "tableContainer">
-                <table className = "table table-striped">
+            <div style = {{marginLeft:"30px"}}  className = "tableContainer">
+                <table className="table" >
                     <thead>
-                        <th scope = "col">#</th>
-                        <th scope = "col">Tour ID</th>
-                        <th scope = "col">Booking Date</th>
-                        <th scope = "col">Arrival Date</th>
-                        <th scope = "col">Country </th>
-                        <th scope = "col">Driver Assigned </th>
-                        <th scope = "col">Operation</th>
+                        <th class="table-danger" scope = "col">#</th>
+                        <th class="table-danger" scope = "col">Tour ID</th>
+                        <th class="table-danger" scope = "col">Booking Date</th>
+                        <th class="table-danger" scope = "col">Arrival Date</th>
+                        <th class="table-danger" scope = "col">Country </th>
+                        <th class="table-danger" scope = "col">Driver Assigned </th>
+                        <th class="table-danger" scope = "col">Operation</th>
 
                     </thead>
 
@@ -124,17 +129,17 @@ function AssignDriver(){
                         {bookings.map((booking) =>(
                             
                             <tr>
-                                <th scope = "row">{number++}</th>
-                                <td>{booking.tourId}</td>
-                                <td>{booking.bookingDate}</td>
-                                <td>{booking.arrivalDate}</td>
-                                <td>{booking.country}</td>
-                               <td>{drivers[booking.tourId]}</td>
-                                <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
+                                <th  class="table-primary" scope = "row">{number++}</th>
+                                <td  class="table-primary">{booking.tourId}</td>
+                                <td  class="table-primary">{booking.bookingDate}</td>
+                                <td  class="table-primary">{booking.arrivalDate}</td>
+                                <td  class="table-primary">{booking.country}</td>
+                               <td  class="table-primary"> {drivers[booking.tourId]}</td>
+                                <td  class="table-primary"><button  className={driverStyles.btnAssign} style = {{padding: "5px 5px 5px 5px" , width : "90px" , marginBottom : "8px"}}
                                 onClick = {()=>{
                                     history.push(`/assign-driver/${booking.username}`);
                                 }}
-                                >Assign Driver</Button>
+                                >Assign</button>
                                </td>
                             </tr>
     
@@ -143,9 +148,11 @@ function AssignDriver(){
 
 
                 </table>
-            </div>   
+            </div>  
+            </Container> 
             
             <DemoFooter />
+         
         </div>    
     );
 
