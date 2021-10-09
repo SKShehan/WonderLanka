@@ -79,7 +79,22 @@ function AllComplaints () {
             onChange = {(e) =>{
               setSearchVal(e.target.value);
           }}/>
-              {complaints.map((complaint)=>(
+              {complaints
+                .filter((complaint) => {
+                  let Name = complaint.name;
+                  if (searchVal === "") {
+                    return complaint;
+                  } else {
+                    if (Name) {
+                      if (
+                        Name.toLowerCase().includes(searchVal.toLowerCase())
+                      ) {
+                        return complaint;
+                      }
+                    }
+                  }
+                })
+              .map((complaint)=>(
               <div style = {{marginLeft:"20px"}}  className = "tableContainer">
               <table className = "table table-striped">
                 <thead>
@@ -90,6 +105,7 @@ function AllComplaints () {
                     <th scope = "col"> Reason </th>
                     <th scope = "col"> Complaint </th>
                     <th scope = "col"> Date </th>
+                    <th scope = "col"> Action </th>
                 </thead>
                 <tbody>
                   
@@ -105,6 +121,9 @@ function AllComplaints () {
                     <td>{complaint.select}</td>
                     
                     <td>{complaint.complaint}</td>
+
+                    <td>{complaint.date}</td>
+
                     <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "60px" , marginBottom : "8px"}}
                           onClick = {()=>{
                             history.push(`/update-complaint/${complaint._id}`);
