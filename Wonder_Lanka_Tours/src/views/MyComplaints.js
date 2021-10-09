@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import validator from 'validator';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
@@ -52,6 +55,7 @@ function MyComplaints() {
   const [contact, setContact] = useState("");
   const [select, setSelect] = useState("");
   const [complaint, setComplaint] = useState("");
+  const [date, setDate] = useState(new Date());
 
   function sendData(e){
     e.preventDefault();
@@ -61,18 +65,20 @@ function MyComplaints() {
       email,
       contact,
       select,
-      complaint
+      complaint,
+      date
     }
 
     console.log(newComplaint);
 
     axios.post("http://localhost:8070/complaint/addComplaint", newComplaint).then(()=>{
-      alert("Complaint Added")
+      alert("Complaint Added");
       setName("");
       setEmail("");
       setContact("");
       setSelect("");
       setComplaint("");
+      setDate("");
 
     }).catch((err)=>{
       alert(err);
@@ -111,6 +117,12 @@ function MyComplaints() {
         }}/>
       </FormGroup>
       <FormGroup>
+      <Label for="date">Date</Label>
+        <DatePicker selected={date} onChange={(date) => {
+          setDate(date);
+        }} />
+      </FormGroup>
+      <FormGroup>
         <Label for="typeSelect">Type of complaint</Label>
         <Input type="text" name="select" id="typeSelect" onChange={(e)=>{
           setSelect(e.target.value);
@@ -129,7 +141,9 @@ function MyComplaints() {
           setComplaint(e.target.value);
         }}/>
       </FormGroup>
-      <Button color="primary" type="submit">
+      <Button color="primary" type="submit" onChange={(e)=>{
+          setDate(date);
+        }}>
         Submit
       </Button>
       </form>
