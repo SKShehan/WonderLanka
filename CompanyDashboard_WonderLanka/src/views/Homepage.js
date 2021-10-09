@@ -4,10 +4,19 @@ import { useHistory } from "react-router";
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
+import { useEffect } from "react";
+import ReactSession from "react-client-session/dist/ReactSession";
 
 function Homepage(){
 
   let history = useHistory();
+
+  useEffect(() =>{
+    ReactSession.setStoreType("localStorage");
+    if(ReactSession.get("employee") === null){
+      history.push("/login")
+    }
+  })
   
     function handleClickItinerary(){
         history.push("/itinerary-management");

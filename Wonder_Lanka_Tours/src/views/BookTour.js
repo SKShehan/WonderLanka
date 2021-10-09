@@ -34,6 +34,7 @@ function BookTour({ user }) {
   let payment = 0;
   const [bookingDate, setbookingDate] = useState();
   const history = useHistory();
+  const location = useLocation();
 
   const countryList = [
     "Afghanistan",
@@ -357,6 +358,8 @@ function BookTour({ user }) {
   document.documentElement.classList.remove("nav-open");
 
   useEffect(() => {
+    console.log(location.state.itineraryClass);
+    console.log(location.state.itineraryTitle);
     document.body.classList.add("index");
     ReactSession.setStoreType("localStorage");
     if (ReactSession.get("user") === null) {
