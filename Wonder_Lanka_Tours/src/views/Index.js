@@ -59,7 +59,7 @@ function Index() {
   return (
     <>
       <div className="main">
-        {/*     <SectionButtons />
+        {/*<SectionButtons />
         <SectionNavbars />
         <SectionNavigation />
         <SectionProgress />
@@ -71,7 +71,8 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
-   <SectionDownload /> */}
+        <SectionDownload /> */}
+      <Dashboard/>
       </div>
     </>
   );

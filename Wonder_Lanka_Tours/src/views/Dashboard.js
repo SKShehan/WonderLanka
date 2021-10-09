@@ -40,9 +40,14 @@ function Dashboard() {
       pathname: "view-itineraries",
     });
   };
-  const clickComplaintFeedaback = () => {
+  const clickComplaint = () => {
     history.push({
       pathname: "/my-complaint",
+    });
+  };
+  const clickFeedaback = () => {
+    history.push({
+      pathname: "/my-feedback",
     });
   };
 
@@ -109,11 +114,23 @@ function Dashboard() {
                 <Card
                   className="dashboard-card"
                   id="card3"
-                  onClick={clickComplaintFeedaback}
+                  onClick={clickComplaint}
                 >
-                  Complaints & Feedbacks
+                  My Complaints
                   <label className="dashboard-card-subtitle">
-                    Raise complaints, provide feedback.
+                    Raise a complaint.
+                  </label>
+                </Card>
+              </Col>
+              <Col>
+                <Card
+                  className="dashboard-card"
+                  id="card3"
+                  onClick={clickFeedaback}
+                >
+                  My Feedbacks
+                  <label className="dashboard-card-subtitle">
+                    Provide a feedback.
                   </label>
                 </Card>
               </Col>
