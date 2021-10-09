@@ -71,7 +71,10 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
-   <SectionDownload /> */}
+   <SectionDownload /> 
+   */}
+   <Itineraries />
+
       </div>
     </>
   );

@@ -175,7 +175,7 @@ function IndexNavbar() {
 
              <NavItem>
               <NavLink href="" target="_blank">
-                
+
                 <i className="nc-icon nc-circle-10" /> Log Out
                 </NavLink>
             </NavItem>

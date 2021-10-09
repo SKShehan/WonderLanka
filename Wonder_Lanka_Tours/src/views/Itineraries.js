@@ -1,4 +1,4 @@
-import {Card , CardImg , CardBody , CardTitle , CardText , Button } from 'reactstrap';
+import {Card , CardImg , CardBody , CardTitle , CardText , Button, NavLink } from 'reactstrap';
 import {useState} from 'react';
 import { useEffect } from 'react';
 import ItineraryContainer from 'components/ItineraryContainer';
@@ -14,12 +14,11 @@ import { useHistory } from 'react-router';
 function Itineraries(){
     
     let history = useHistory();
-    const scrollBottom = useScrollToBottom(); 
+
 
     const [itineraries , setItineraries] = useState([]);
     const [itineraryCovImage , setCovImage] = useState (); 
-    const [itineraryClass , setClass] = useState();
-    const [itineraryTitle , setTitle] = useState();
+
 
     useEffect(() =>{
         axios.get("http://localhost:8070/itineraries/").then((res)=>{
@@ -32,15 +31,9 @@ function Itineraries(){
 
 
 
-    const [BookisClicked , setClicked] = useState(false);
-
-    function BookClick(){
-        setClicked(true);
-    }
-
 
     const [ItineraryisOpen , setItineraryOpen] = useState(false);
-    const [scrolled , setScroll] = useState(false);
+
     function ViewItinerary(){
             setItineraryOpen(true);
              
@@ -51,7 +44,9 @@ function Itineraries(){
         setItineraryOpen(false);
     }
     return(
+        
         <>
+               
         <IndexHeader />
         <IndexNavbar />
         <div>   
@@ -76,32 +71,39 @@ function Itineraries(){
 
                         <Button color = "primary" onClick = {() =>{
                               setCovImage(`http://localhost:8070/itineraries/getCovImage/${itinerary._id}`)
-                              setScroll(true);
+                              
                               ViewItinerary();  
                               
                              
                         }} 
                         >View Itinerary</Button>
                         <Button color = "info" style = {{float : 'right'}} onClick = {() =>{
-                            setClass(itinerary.itineraryClass);
-                            setTitle(itinerary.itineraryName);
-                            history.push("/book-tour")
+                  
+                           history.push({
+
+                                pathname : "/book-tour",
+                                state: {itineraryClass : itinerary.itineraryClass  , itineraryTitle : itinerary.itineraryName}
+                           })
                             
                         }}
                         >Book Tour</Button>
                     </CardBody>        
 
                     </Card>
+                    
                  
                 ))}
+
+
                 </div>
                
-                {ItineraryisOpen ? <ItineraryContainer onCancel = {ItineraryisClosed} image = {itineraryCovImage}  /> : null}
-                {ItineraryisOpen && <Backdrop onCancel = {ItineraryisClosed}/>}
-                {BookisClicked   && <BookTour itineraryClass = {itineraryClass} itineraryTitle = {itineraryTitle} />}
+               
                 
                 
             </div>
+                {ItineraryisOpen ? <ItineraryContainer onCancel = {ItineraryisClosed} image = {itineraryCovImage}  /> : null}
+                {ItineraryisOpen ? <Backdrop onCancel = {ItineraryisClosed}/> : null}
+           
 
         </div>
         <DemoFooter />
