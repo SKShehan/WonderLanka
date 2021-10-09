@@ -108,7 +108,7 @@ function CF () {
                   </table>
                   </div>
                   ))}
-                <h6 style = {{textAlign:"left"}}>Generate Complaint Report</h6>
+                <h6 style = {{textAlign:"left"}}>To Generate Complaint Report go to complaints report</h6>
 
                <h3 style = {{textAlign:"center"}}>Feedback List</h3>
 
@@ -151,8 +151,7 @@ function CF () {
                 </div>
                 
                 ))} 
-                
-                <h6 style = {{textAlign:"left"}}>Generate Feedback Report</h6>
+              
             </div> 
             <DemoFooter />
             </>
