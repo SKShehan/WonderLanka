@@ -48,7 +48,7 @@ import {
     })
     doc.html(document.getElementById("report-cont"), {
       callback: function (pdf) {
-        pdf.save("ComplaintReport.pdf");
+        pdf.save("MonthlyComplaintReport.pdf");
       },
     });
   };
@@ -154,7 +154,22 @@ import {
 
                     <tbody>
                         
-                        {complaints.map((complaint)=>(
+                        {complaints.filter((val) =>{
+                            if(selectedYear === '' && selectedDate === ''){
+                              return val;
+                            }
+                            else if(val.date.substring(5, 7).includes(selectedDate) && val.date.substring(0,4).includes(selectedYear)){
+                              return val;
+                            }
+                            else if(val.date.substring(5,7).includes(selectedDate) && selectedYear === ''){
+                              return val;
+                            }
+                            else if (val.date.substring(0,4).includes(selectedYear) && selectedDate === ''){
+                              return val;
+                            }
+            
+
+                        }).map((complaint)=>(
                                 <tr>
                                 <th scope = "row">{number++}</th>
                                 
