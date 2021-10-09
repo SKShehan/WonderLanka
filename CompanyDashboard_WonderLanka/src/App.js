@@ -73,6 +73,7 @@ import DriverReport from "views/DriverReport";
 import CFRetrieve from "views/CFRetrieve";
 import CFManagement from "views/CFManagement";
 import CFReport from "views/CFReport";
+import ViewMessages from "views/VIewMessages";
 
 function App() {
   return (
@@ -304,6 +305,10 @@ function App() {
 
         <Route path = "/cf-report" exact>
         <CFReport/>
+        </Route>
+
+        <Route path = "/view-messages" exact>
+          <ViewMessages/>
         </Route>
 
         <Redirect to="/index" />

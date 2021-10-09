@@ -16,6 +16,10 @@ function CFManagement(){
         history.push("/cf-report");
     }
 
+    function handleClickViewMessages() {
+        history.push("/view-messages");
+    }
+
 
     return(
             <>
@@ -32,6 +36,8 @@ function CFManagement(){
         
             
                 <button className = {styles.btn_guidemng} onClick = {handleClickCFReport}>Complaints Report</button>
+
+                <button className = {styles.btn_guidemng} onClick = {handleClickViewMessages}>View Messages</button>
             
             </div>
             </div>
