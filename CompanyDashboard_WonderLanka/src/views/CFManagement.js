@@ -2,6 +2,7 @@
 import styles from "../assets/css/CF.module.css"
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
+import DemoFooter from 'components/Footers/DemoFooter';
 import { useHistory } from "react-router";
 function CFManagement(){
 
@@ -33,7 +34,8 @@ function CFManagement(){
                 <button className = {styles.btn_guidemng} onClick = {handleClickCFReport}>Complaints Report</button>
             
             </div>
-        </div>
+            </div>
+            <DemoFooter/>
         </>
     );
 }

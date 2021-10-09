@@ -52,17 +52,21 @@ function AllFeedbacks () {
               <div style = {{marginLeft:"20px"}}  className = "tableContainer">
               <table className = "table table-striped">
                 <thead>
+                <th scope = "col"> No </th>
+                <th scope = "col"> Name </th>
+                <th scope = "col"> Satisfactory </th>
+                <th scope = "col"> Feedback </th>
                 </thead>
                 <tbody>
-                  <div>
+                  <tr>
                     <th scope = "row">{number++}</th>
-                    <th scope = "col"> Name </th>
+                    
                     <td>{feedback.name}</td>
-                    <th scope = "col"> Satisfactory </th>
+                    
                     <td>{feedback.stat}</td>
-                    <th scope = "col"> Feedback </th>
+                    
                     <td>{feedback.feedback}</td>
-                  </div>
+                  </tr>
                 </tbody>
               </table>
               </div>
