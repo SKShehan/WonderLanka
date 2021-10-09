@@ -104,7 +104,7 @@ import {
       <hr></hr>
 
       <div id ="report-cont" >
-                <Card className="report-card" id="report" style = {{padding : "20px"}}>
+                <Card className="" id="report" style = {{padding : "20px"}}>
                     <Row>
                       <Col>
                         {" "}
@@ -150,34 +150,11 @@ import {
                         <th scope = "col">Reason </th>
                         <th scope = "col">Complaint </th>
                         <th scope = "col">Date </th>
-                       
-
                     </thead>
 
                     <tbody>
                         
-                        {complaints.filter((val) =>{
-                            if(selectedYear === '' && selectedDate === ''){
-                              return val;
-                            }
-                            
-            
-                            
-                        }).map((complaint)=>(
-                          <div style = {{marginLeft:"20px"}}  className = "tableContainer">
-                          <table className = "table table-striped">
-                            <thead>
-                                <th scope = "col"> No </th>
-                                <th scope = "col"> Name </th>
-                                <th scope = "col"> Email </th>
-                                <th scope = "col"> Contact </th>
-                                <th scope = "col"> Reason </th>
-                                <th scope = "col"> Complaint </th>
-                                <th scope = "col"> Date </th>
-                                <th scope = "col"> Action </th>
-                            </thead>
-                            <tbody>
-                              
+                        {complaints.map((complaint)=>(
                                 <tr>
                                 <th scope = "row">{number++}</th>
                                 
@@ -193,10 +170,7 @@ import {
             
                                 <td>{complaint.date}</td>
                                 </tr>
-                              
-                            </tbody>
-                          </table>
-                          </div>
+
                           ))}
                     </tbody>    
 
@@ -216,7 +190,7 @@ import {
                   </button>
                 </Col>
               </Row>
-            </div>
+          </div>
       </div>
 
       </Container>
