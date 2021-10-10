@@ -3,9 +3,21 @@ import { useHistory } from "react-router-dom";
 import styles from "../assets/css/EmployeeHome.module.css";
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
+import { useEffect } from "react";
+import ReactSession from "react-client-session/dist/ReactSession";
+
 
 function EmployeeManagement() {
     let history=useHistory();
+
+
+    useEffect(() =>{
+      ReactSession.setStoreType("localStorage");
+      if(ReactSession.get("employee") === null){
+       
+        history.push("/login")
+      }
+    })
     function handleClick(){
         history.push("/Add-Employee")
     }

@@ -1,4 +1,4 @@
-import driverStyles from "../assets/css/DriverDetails.module.css";
+import driverStyles from "../assets/css/EmployeeDetails.module.css";
 import{Button} from 'reactstrap'
 import{ useHistory } from "react-router-dom"
 import { useState } from 'react';
@@ -84,7 +84,7 @@ function EmployeeDetails(){
         <div>
             <IndexNavbar />
             <IndexHeader />
-            
+            <Container>
             <center><h1>Employee Details</h1><br/><br/></center>
 
             <Row>
@@ -169,7 +169,7 @@ function EmployeeDetails(){
             
             <span style = {{textAlign:"left" , color : "red"}}>{message}</span> <br/><br/>
  
-           
+           </Container>
         </div>   
     );
 
