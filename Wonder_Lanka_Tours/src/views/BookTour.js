@@ -358,8 +358,6 @@ function BookTour({ user }) {
   document.documentElement.classList.remove("nav-open");
 
   useEffect(() => {
-    console.log(location.state.itineraryClass);
-    console.log(location.state.itineraryTitle);
     document.body.classList.add("index");
     ReactSession.setStoreType("localStorage");
     if (ReactSession.get("user") === null) {
@@ -372,9 +370,22 @@ function BookTour({ user }) {
       setusername(ReactSession.get("user").username);
       setcountry(countryList[0]);
 
-      setitinerary(itineraryList[0].itineraryName);
+      if (location.state == null) {
+        setitinerary(itineraryList[0].itineraryName);
+      } else {
+        setitinerary(location.state.itineraryTitle);
+        console.log(location.state.itineraryTitle);
+      }
+
+      if (location.state == null) {
+        seticlass(classList[0]);
+      } else {
+        seticlass(location.state.itineraryClass);
+        console.log(location.state.itineraryClass);
+      }
+
       setinsurance(insuranceList[0]);
-      seticlass(classList[0]);
+
       let today = new Date().toISOString().slice(0, 10);
       setbookingDate(today);
       return function cleanup() {

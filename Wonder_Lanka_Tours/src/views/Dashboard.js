@@ -59,6 +59,7 @@ function Dashboard() {
       document.getElementById("card2").classList.remove("card");
       document.getElementById("card3").classList.remove("card");
       document.getElementById("card4").classList.remove("card");
+      document.getElementById("card5").classList.remove("card");
 
       return function cleanup() {
         document.body.classList.remove("index");
@@ -125,7 +126,7 @@ function Dashboard() {
               <Col>
                 <Card
                   className="dashboard-card"
-                  id="card3"
+                  id="card4"
                   onClick={clickFeedaback}
                 >
                   My Feedbacks
@@ -137,7 +138,7 @@ function Dashboard() {
               <Col>
                 <Card
                   className="dashboard-card"
-                  id="card4"
+                  id="card5"
                   onClick={clickUserProfile}
                 >
                   User Profile
