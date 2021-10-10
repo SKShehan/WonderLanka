@@ -3,6 +3,13 @@
     padding: 20px 80px 20px 80px;
   }
   
+  .Post{
+    max-width: 800px;
+    width:100%;
+    display:table;
+    margin: 0 auto;
+    padding: 20px 50px;
+  }
 
 .report-card {
     margin: auto;
@@ -25,17 +32,29 @@
     text-align: center;
     font-weight: bold;
   }
-  .report-download {
+  .reportdownload {
     margin: auto;
     width: 600px;
+    font-size:12px;
+    color: rgba(5, 0, 0, 0.658);
   }
   
   .report-contact {
     text-align: center;
     font-size: x-small;
+    color: rgba(5, 0, 0, 0.658);
+    font-weight: 501;
+    font-size:12px;
+    
   }
   
   #report-cont {
     padding: 20px 20px 20px 20px;
+    color: rgba(5, 0, 0, 0.658);
+    font-weight: 501;
+    font-size:12px;
+    
   }
-  
+.custom{
+  width: 150px !important;
+}

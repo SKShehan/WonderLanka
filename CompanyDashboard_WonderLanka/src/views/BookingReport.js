@@ -1,17 +1,27 @@
 import React from 'react';
 import Pdf from "react-to-pdf";
-import { Row, Col, Card, Container } from "reactstrap";
+import { useState, useEffect } from "react";
+import { Row, Col, Card, Container, Button } from "reactstrap";
 import styles from '../assets/css/Bookingmanagementreport.css'
+import { Link } from 'react-router-dom';
 const ref = React.createRef();
 
 const PDF = (props) =>{
+  
+  const [date, setdate] = useState();
+  useEffect(() => {
+      let today = new Date().toISOString().slice(0, 10);
+      setdate(today);
+  }, []);
+
+  
     return(
         <>
        
-        <div className="main">
+       
         <div className="my-tour-content">
        
-          <h2 align="center">Report</h2>
+          <h2  align="center">Booking Cancellation Report</h2>
           <hr></hr>
           <br></br>
         
@@ -45,7 +55,7 @@ const PDF = (props) =>{
                   <Row>
                     <Col>
                       <label style={{ float: "right", fontSize: "x-small" }}>
-                        <i>Date : </i>
+                        <i>Date : {date}</i>
                       </label>
 
                       <hr></hr>
@@ -84,30 +94,28 @@ const PDF = (props) =>{
             </Col>
           </Row>
           <br></br>
-         
-          <div className="report-download">
+          <Container>
+          <div className="reportdownload">
             <Row>
               <Col>
-              <Container>
                 <Pdf targetRef={ref} filename="post.pdf">
                 {({ toPdf }) => 
-                 
-                <button  className="btn btn-info btn-edit-booking" onClick={toPdf}
+                <button style={{float:"right"}}  className="btn btn-info btn-edit-booking custom" onClick={toPdf}
             > Capture as Pdf</button>}
-                
                 </Pdf>
-                </Container>
               </Col>
+              <Link to="/booktable">
+              <Col>
+                    <Button className="btn btn-info btn-edit-booking custom" onClick="ViewTable">View Table</Button>
+              </Col>
+              </Link>
             </Row>
             </div>
+          </Container>
+            <br/>
           </div>
-        </div>
-       
-     
-    
-
         </>
-
+        
     );
 }
 
