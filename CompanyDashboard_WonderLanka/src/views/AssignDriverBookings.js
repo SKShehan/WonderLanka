@@ -59,22 +59,7 @@ function AssignDriver(){
     
     }, [bookings]);
 
-   {/* function DriverAssigned(tid){
-        axios.get(`http://localhost:8070/assignedDrivers/get/${tid}`).then((res)=>{
-          console.log(res.data.driverId);
-          setDriver(res.data.driverId);
-          if (typeof driver == 'undefined'){
-            return "Not Assigned";
-          }
-          
-        }).catch((err)=>{
-          console.log(err);
-        })
-        
-        return driver;
-
-        
-    }*/}
+  
     return(
         
         <div>
