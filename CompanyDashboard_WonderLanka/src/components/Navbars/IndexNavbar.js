@@ -79,8 +79,10 @@ function IndexNavbar() {
   })
 
   function logout(){
-    window.localStorage.clear();
-    history.push("/login");
+    ReactSession.set("employee", null);
+    history.push({
+      pathname: "/login",
+    });
   }
 
   return (
@@ -174,7 +176,7 @@ function IndexNavbar() {
             </NavItem>
 
              <NavItem>
-              <NavLink href="" target="_blank">
+              <NavLink onClick = {logout}>
                 
                 <i className="nc-icon nc-circle-10" /> Log Out
                 </NavLink>

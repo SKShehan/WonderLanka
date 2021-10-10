@@ -71,8 +71,10 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
+
         <SectionDownload /> */}
       <Dashboard/>
+
       </div>
     </>
   );

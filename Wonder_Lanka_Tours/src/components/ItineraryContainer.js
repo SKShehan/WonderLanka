@@ -9,7 +9,7 @@ function ItineraryContainer(props){
     }
 
     return(
-        <div>
+        <div className = {styles.modal}>
             <Card className = {styles.CardComponent}>
                 <CardImg top src = {props.image} alt = "Itinerary"/>
                 <Button color = "primary" style = {{float : "right"}} onClick = {CloseItinerary}>Close</Button>

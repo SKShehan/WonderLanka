@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-
+import { useEffect } from "react";
+import ReactSession from "react-client-session/dist/ReactSession";
 import IndexHeader from "components/Headers/IndexHeader";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 
@@ -76,6 +77,10 @@ import CFReport from "views/CFReport";
 import ViewMessages from "views/VIewMessages";
 
 function App() {
+
+  useEffect(() => {
+    ReactSession.setStoreType("localStorage");
+  }, []);
   return (
     <BrowserRouter>
       <Switch>
