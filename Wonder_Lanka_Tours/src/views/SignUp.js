@@ -26,8 +26,9 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import styles from "../assets/css/Style-signin.module.css";
+import { toast } from "react-toastify";
 
-
+toast.configure();
 
 export default function SignUp(){
   const [country, setCountry]= useState("");
@@ -38,6 +39,8 @@ export default function SignUp(){
   const [nic, setNic]= useState("");
   const [dateOfBirth, setDateOfBirth]= useState("");
   const [password, setPassword]= useState("");
+  const [usernameError , setError] = useState("");
+
   const countryList = [
     "Afghanistan",
     "Albania",
@@ -239,27 +242,44 @@ export default function SignUp(){
 
   function sendData(e){
     e.preventDefault();
+    //Checking whether username already exists
 
-    const user={
+    axios.get(`http://localhost:8070/users/check/${username}`).then((res) =>{
+      if (res.data === true){
+        setError("Please use a different username!");
+        toast.error("Username already exists!", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 10000,
+          hideProgressBar: false,
+        });
+        setUsername("");
+      }
+      else{
+
+        const user={
       
     
-    fullName,
-    email,
-    mobileNo,
-    country,
-    dateOfBirth,
-    nic,
-    username,
-    password
-    
-    }
-    axios.post("http://localhost:8070/users/add", user).then(()=>{
-            alert("SignUp Details Added");
-            window.location.reload();
-      
-          }).catch((err)=>{
-            alert(err)
-          })
+          fullName,
+          email,
+          mobileNo,
+          country,
+          dateOfBirth,
+          nic,
+          username,
+          password
+          
+          }
+          axios.post("http://localhost:8070/users/add", user).then(()=>{
+                  alert("SignUp Details Added");
+                  window.location.reload();
+            
+                }).catch((err)=>{
+                  alert(err)
+                })
+
+      }
+    })
+
   }
   
   
@@ -272,7 +292,7 @@ export default function SignUp(){
         </Col>
         <Col>
           <div className={styles.loginForm}>
-            <h2><b>SIGN IN</b></h2>
+            <h2><b>SIGN UP</b></h2>
             <br />
            
 
@@ -284,6 +304,7 @@ export default function SignUp(){
       setFullName(e.target.value);
      }} />
 
+      <br/>
      <Label for="email"><b>Email</b></Label>
      <Input placeholder="Enter Email" type="email"
      title = "Enter a valid email"
@@ -292,6 +313,7 @@ export default function SignUp(){
       setEmail(e.target.value);
      }} />
 
+    <br/>
      <Label for="mobileNo"><b>Mobile Number</b></Label>
      <Input placeholder="Enter Mobile Number" type="text"
      
@@ -301,48 +323,28 @@ export default function SignUp(){
       setMobileNo(e.target.value);
      }} />
 
-     {/* <Label for="country"><b>Country</b></Label>
-     <Input placeholder="Enter Your country" 
- 
+     <br/>
+     <Label for="country"><b>Country</b></Label>
+     
+     
+     <Input  
      type="select"
+     
      onChange={(e)=>{
       setCountry(e.target.value);
      }} >
-      
-       <option>America</option><option>Afganistan</option><option>Australia</option><option>Brazil</option>
-       <option>Canada</option><option>China</option><option>Denmark</option><option>Greenland</option>
-       <option>Hawaii</option><option>India</option><option>Italy</option><option>Malaysia</option>
-       <option>Mexico</option><option>Morocco</option><option>New Zealand</option><option>Russia</option>
-       <option>Sri Lanka</option><option>Swaziland</option><option>Thailand</option><option>Turkey</option>
-      <option>Vietnam</option><option>United Kingdom</option><option>Spain</option><option>Singapore</option> 
+       {countryList.map((c) =>(
+         <option>{c}</option>
+       ))}
        
-    </Input>  */}
-
-
-<Label for="country"><b>Country</b></Label>
-                      <Input
-                        type="select"
-                        id="country"
-                        name="country"
-                        value={country}
-                        placeholder="Country"
-                        onChange={(e) => {
-                          setCountry(e.target.value);
-                        }}
-                      >
-                        {countryList.map((i) => (
-                          <option value={i}>{i}</option>
-                        ))}
-                      </Input>
-
-
-
+    </Input> 
+     <br/>
      <Label for="dateOfBirth"><b>Date Of Birth</b></Label>
      <Input placeholder="Enter Date Of Birth" type="date"
      onChange={(e)=>{
       setDateOfBirth(e.target.value);
      }} />
-
+     <br/>
      <Label for="nic"><b>NIC</b></Label>
      <Input placeholder="Enter NIC Number" type="text"
      pattern = "[0-9]{9}[V]"
@@ -350,13 +352,14 @@ export default function SignUp(){
      onChange={(e)=>{
       setNic(e.target.value);
      }} />
-
+     <br/>
      <Label for="username"><b>Username</b></Label>
      <Input placeholder="Enter username" type="text"
      onChange={(e)=>{
       setUsername(e.target.value);
      }} />
-
+     <span><p style = {{color : "red"}}>{usernameError}</p></span>
+     <br/>
      <Label for="password"><b>Password</b></Label>
      <Input placeholder="Enter password" type="text"
      
@@ -367,7 +370,7 @@ export default function SignUp(){
 
 
      <br />
-     <h9> By clicking Sign Up, you agree to our Terms, Data Policy and Cookie Policy.</h9>
+     <h9> By clicking Sign Up, you agree to our Terms, Data Policy and Cookie Policy.</h9><br/>
 
      <center>
        <Button type="submit" className="btn btn-primary">Submit</Button> { }

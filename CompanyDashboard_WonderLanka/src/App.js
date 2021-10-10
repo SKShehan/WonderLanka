@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-
+import { useEffect } from "react";
+import ReactSession from "react-client-session/dist/ReactSession";
 import IndexHeader from "components/Headers/IndexHeader";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 
@@ -65,7 +66,6 @@ import AddEmployee from "views/AddEmployee";
 import EmployeeManagement from "views/EmployeeManagement";
 import Homepage from "views/Homepage";
 
-
 import HomepageAssets from "views/HomepageAssets";
 import Login from "views/Login";
 import AssignVc from "views/assignvehicle";
@@ -73,9 +73,14 @@ import DriverReport from "views/DriverReport";
 
 import CFRetrieve from "views/CFRetrieve";
 import CFManagement from "views/CFManagement";
-
+import CFReport from "views/CFReport";
+import ViewMessages from "views/VIewMessages";
 
 function App() {
+
+  useEffect(() => {
+    ReactSession.setStoreType("localStorage");
+  }, []);
   return (
     <BrowserRouter>
       <Switch>
@@ -135,9 +140,7 @@ function App() {
           <ItineraryReport />
         </Route>
 
-
-
-        <Route path= "/edit-guide/:id" exact>
+        <Route path="/edit-guide/:id" exact>
           <EditGuide />
         </Route>
         <Route path="/add-guide" exact>
@@ -154,18 +157,13 @@ function App() {
           <AssignGuide />
         </Route>
 
-        <Route path = "/guide-report" exact>
+        <Route path="/guide-report" exact>
           <GuideReport />
-        </Route>  
+        </Route>
 
-        
-       
-        <Route path="/edit-driver/:id" exact 
-          component={DriverUpdate} />
-        <Route path ="/Add-Driver" exact  
-          component={AddDriver}/>
-        <Route path ="/View-Driver" exact  
-          component={DriverDetails}/>
+        <Route path="/edit-driver/:id" exact component={DriverUpdate} />
+        <Route path="/Add-Driver" exact component={AddDriver} />
+        <Route path="/View-Driver" exact component={DriverDetails} />
 
         <Route path="/assign-driver/:username" exact>
           <AssignD />
@@ -206,8 +204,6 @@ function App() {
         <Route path="/report-vehicles" component={ReportVehicle} />
 
         <Route path="/vehicle-management" component={VehicleDashboard} />
-        
-        
 
         <Route path="/assign-vehicle/:username" component={AssignVc} />
 
@@ -218,6 +214,7 @@ function App() {
         <Route path="/driver-management" exact>
           <DriverManagement />
         </Route>
+
         <Route path="/booking-management" exact>
           <BookingManagement />
         </Route>
@@ -246,6 +243,8 @@ function App() {
         >
           <InsurenceManagement />
         </Route>
+
+        <Route path="/add-cancelbooking/:id" component={Cancelbookingform} />
 
         <Route path="/add-insurence" exact>
           <AddInsurence />
@@ -297,19 +296,24 @@ function App() {
           <EmployeeManagement />
         </Route>
 
-
-        <Route path = "/login" exact>
+        <Route path="/login" exact>
           <Login />
-        </Route>  
-
-
-
-        <Route path = "/view-cf" exact>
-          <CFRetrieve/>
         </Route>
 
-        <Route path = "/cf-management" exact>
-          <CFManagement/>
+        <Route path="/view-cf" exact>
+          <CFRetrieve />
+        </Route>
+
+        <Route path="/cf-management" exact>
+          <CFManagement />
+        </Route>
+
+        <Route path = "/cf-report" exact>
+        <CFReport/>
+        </Route>
+
+        <Route path = "/view-messages" exact>
+          <ViewMessages/>
         </Route>
 
         <Redirect to="/index" />

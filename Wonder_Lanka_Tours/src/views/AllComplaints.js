@@ -4,7 +4,6 @@ import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from 'react-toastify';
 import { useHistory } from "react-router-dom";
-import { useParams } from "react-router";
 
 // core components
 import {
@@ -30,14 +29,14 @@ function AllComplaints () {
     },[]);
 
     let history = useHistory();
-    const {id} = useParams();
 
     
-    function complaintDelete(complaint) {
+    const complaintDelete = (complaint) => {
       
       if (
         window.confirm(
           "Complaint " +
+            complaint.tourID +
             " (" +
             complaint.name +
             " " +
@@ -47,7 +46,7 @@ function AllComplaints () {
         )
       )
 
-      axios.delete(`http://localhost:8070/complaint/deleteComplaint/${complaint._id}`)
+      axios.delete(`http://localhost:8070/ComplaintRoute/deleteComplaint/${complaint.tourID}`)
       .then((res) =>{
           console.log(res);
           toast.success("Complaint Deleted!", {
@@ -76,36 +75,37 @@ function AllComplaints () {
       return (
         <div className = "container">
           <h3 style = {{marginLeft:"430px"}}>Complaint History</h3>
-          <Input placeholder="Search " type="text"  value={searchVal}
+          <Input placeholder="Search " type="text" 
             onChange = {(e) =>{
               setSearchVal(e.target.value);
           }}/>
               {complaints
-              .filter((complaint) => {
-                let Name = complaint.name;
-                if (searchVal === "") {
-                  return complaint;
-                } else {
-                  if (Name) {
-                    if (
-                      Name.toLowerCase().includes(searchVal.toLowerCase())
-                    ) {
-                      return complaint;
+                .filter((complaint) => {
+                  let Name = complaint.name;
+                  if (searchVal === "") {
+                    return complaint;
+                  } else {
+                    if (Name) {
+                      if (
+                        Name.toLowerCase().includes(searchVal.toLowerCase())
+                      ) {
+                        return complaint;
+                      }
                     }
                   }
-                }
-              })
+                })
               .map((complaint)=>(
               <div style = {{marginLeft:"20px"}}  className = "tableContainer">
               <table className = "table table-striped">
                 <thead>
                 <th scope = "col"> No </th>
-                <th scope = "col"> Name </th>
-                <th scope = "col"> Email </th>
-                <th scope = "col"> Contact </th>
-                <th scope = "col"> Reason </th>
-                <th scope = "col"> Complaint </th>
-                <th scope = "col"> Actions </th>
+                    <th scope = "col"> Name </th>
+                    <th scope = "col"> Email </th>
+                    <th scope = "col"> Contact </th>
+                    <th scope = "col"> Reason </th>
+                    <th scope = "col"> Complaint </th>
+                    <th scope = "col"> Date </th>
+                    <th scope = "col"> Action </th>
                 </thead>
                 <tbody>
                   
@@ -121,6 +121,9 @@ function AllComplaints () {
                     <td>{complaint.select}</td>
                     
                     <td>{complaint.complaint}</td>
+
+                    <td>{complaint.date}</td>
+
                     <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "60px" , marginBottom : "8px"}}
                           onClick = {()=>{
                             history.push(`/update-complaint/${complaint._id}`);
@@ -129,13 +132,13 @@ function AllComplaints () {
     
                           <Button color="danger" style = {{padding: "5px 5px 5px 5px", width : "70px", marginBottom : "8px"}}
                           onClick = {() =>
-                                complaintDelete(complaint)
+                                complaintDelete(complaint._id)
                           }
                         
                           >Remove</Button>
                         </td>
                         </tr>
-                
+                  
                 </tbody>
               </table>
               </div>

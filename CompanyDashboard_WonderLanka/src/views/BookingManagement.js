@@ -1,6 +1,8 @@
 
 import styles from "../assets/css/BookingmanagementHome.module.css";
-
+import IndexHeader from 'components/Headers/IndexHeader';
+import IndexNavbar from 'components/Navbars/IndexNavbar';
+import DemoFooter from 'components/Footers/DemoFooter';
 import { useHistory } from "react-router";
 function BookingManagement(){
 
@@ -19,6 +21,10 @@ function BookingManagement(){
 
     return(
         
+        <div>
+            <IndexHeader/>
+            <IndexNavbar/>
+
             <div style = {{paddingTop : "30px"}} className = {styles.body}>
             <h3 className = {styles.header}><center>Booking Management</center></h3><br/><br/>
 
@@ -29,7 +35,8 @@ function BookingManagement(){
             
             </div>
         </div>
-        
+        <DemoFooter/>
+        </div>
     );
 }
 

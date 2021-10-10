@@ -2,10 +2,21 @@
 import styles from "../assets/css/CF.module.css"
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
+import DemoFooter from 'components/Footers/DemoFooter';
 import { useHistory } from "react-router";
+import React, { useState, useEffect } from "react";
+import { ReactSession } from "react-client-session";
+
 function CFManagement(){
 
     let history = useHistory();
+
+    useEffect(() => {
+        ReactSession.setStoreType("localStorage");
+          if(ReactSession.get("employee") == null){
+            history.push("/login")
+          }
+      })
 
     function handleClickAssignCF() {
         history.push("/view-cf");
@@ -13,6 +24,10 @@ function CFManagement(){
 
     function handleClickCFReport() {
         history.push("/cf-report");
+    }
+
+    function handleClickViewMessages() {
+        history.push("/view-messages");
     }
 
 
@@ -31,9 +46,12 @@ function CFManagement(){
         
             
                 <button className = {styles.btn_guidemng} onClick = {handleClickCFReport}>Complaints Report</button>
+
+                <button className = {styles.btn_guidemng} onClick = {handleClickViewMessages}>View Messages</button>
             
             </div>
-        </div>
+            </div>
+            <DemoFooter/>
         </>
     );
 }

@@ -5,6 +5,13 @@ import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import validator from 'validator';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
+
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
@@ -53,6 +60,7 @@ function MyComplaints() {
   const [contact, setContact] = useState("");
   const [select, setSelect] = useState("");
   const [complaint, setComplaint] = useState("");
+  const [date, setDate] = useState(new Date());
 
   function sendData(e){
     e.preventDefault();
@@ -62,18 +70,20 @@ function MyComplaints() {
       email,
       contact,
       select,
-      complaint
+      complaint,
+      date
     }
 
     console.log(newComplaint);
 
     axios.post("http://localhost:8070/complaint/addComplaint", newComplaint).then(()=>{
-      alert("Complaint Added")
+      alert("Complaint Added");
       setName("");
       setEmail("");
       setContact("");
       setSelect("");
       setComplaint("");
+      setDate("");
 
     }).catch((err)=>{
       alert(err);
@@ -90,13 +100,13 @@ function MyComplaints() {
       <form onSubmit={sendData}>
       <FormGroup>
         <Label for="Name">Name</Label>
-        <Input type="text" name="name" id="idName" placeholder="A.D. Amarasekara" onChange={(e)=>{
+        <Input type="text" name="name" id="idName" placeholder="John Cena" onChange={(e)=>{
           setName(e.target.value);
         }}/>
       </FormGroup>
       <FormGroup>
         <Label for="Email">Email address</Label>
-        <Input type="text" name="email" id="idEmail" placeholder="name@gmail.com" onChange={(e)=>{
+        <Input type="text" name="email" id="idEmail" placeholder="john@gmail.com" onChange={(e)=>{
           validateEmail(e);
           setEmail(e.target.value);
         }}></Input>
@@ -106,21 +116,17 @@ function MyComplaints() {
         }}>{emailError}</span>
       </FormGroup>
       <FormGroup>
-        <Label for="contact">Contact No</Label>
-        <Input type="number" name="contact" id="idContact" placeholder="94 76 564 9534" error={isError}
-        value={contact} onChange={(e)=>{
-          setContact(e.target.value);
-          if (e.target.value.length > 10) {
-            setIsError(true);
-          }
-          else if (e.target.value.length < 10){
-            setIsError(true);
-          }
-        }}/>
-        <span style={{
-          fontWeight: 'bold',
-          color: 'red',
-        }}>{isError}</span>
+      <Label for="date">Contact Number</Label>
+      <br></br>
+        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number" pattern="[+0-9]+" error={isError} value={contact} onChange=
+          {setContact}
+        />
+      </FormGroup>
+      <FormGroup>
+      <Label for="date">Date</Label>
+        <DatePicker selected={date} onChange={(date) => {
+          setDate(date);
+        }} required />
       </FormGroup>
       <FormGroup>
         <Label for="typeSelect">Type of complaint</Label>
@@ -141,7 +147,9 @@ function MyComplaints() {
           setComplaint(e.target.value);
         }}/>
       </FormGroup>
-      <Button color="primary" type="submit">
+      <Button color="primary" type="submit" onChange={(e)=>{
+          setDate(date);
+        }}>
         Submit
       </Button>
       </form>

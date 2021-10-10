@@ -6,6 +6,10 @@ import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router";
 import { useHistory } from "react-router";
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
@@ -40,6 +44,7 @@ function UpdateComplaint({Complaint}) {
   const [contact, setContact] = useState();
   const [select, setSelect] = useState("");
   const [complaint, setComplaint] = useState("");
+  const [date, setDate] = useState(new Date());
 
   const {id} = useParams();
 
@@ -52,6 +57,7 @@ function UpdateComplaint({Complaint}) {
       setContact(res.data.contact);
       setSelect(res.data.select);
       setComplaint(res.data.complaint);
+      setDate(res.data.date);
 
     }).catch((err)=>{
       console.log(err);
@@ -67,7 +73,8 @@ function UpdateComplaint({Complaint}) {
       email,
       contact,
       select,
-      complaint
+      complaint,
+      date
     };
 
     //console.log(newComplaint);
@@ -128,6 +135,12 @@ function UpdateComplaint({Complaint}) {
         setContact(e.target.value);
       }}/>
     </FormGroup>
+    <FormGroup>
+      <Label for="date">Date</Label>
+        <DatePicker selected={date} onChange={(date) => {
+          setDate(date);
+        }} />
+      </FormGroup>
     <FormGroup>
       <Label for="typeSelect">Type of complaint</Label>
       <Input type="text" name="select" id="typeSelect" onChange={(e)=>{
