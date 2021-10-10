@@ -1,9 +1,9 @@
 import React from "react";
-
 import driverStyles from "../assets/css/DriverDetails.module.css";
 import IndexHeader from "components/Headers/IndexHeader";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 import DemoFooter from "components/Footers/DemoFooter";
+import ReactSession from "react-client-session/dist/ReactSession";
 import {
   Label,
   Input,
@@ -92,8 +92,9 @@ function DriverDetails() {
     <>
       <IndexHeader />
       <IndexNavbar />
+      <Container>
       <div className={driverStyles.viewdriverDiv}>
-        <center><h1>Driver Details</h1></center>
+        <center><h3 className={driverStyles.header}>Driver Details</h3></center>
         <br />
         <br />
         <Row>
@@ -163,7 +164,7 @@ function DriverDetails() {
             <th className={driverStyles.tbldata}>E-Mail</th>
             <th className={driverStyles.tbldata}>License ID</th>
             <th className={driverStyles.tbldata}>Foreign Languages</th>
-            <th className={driverStyles.tbldata}>Actions</th>
+            <th className={driverStyles.tbldata2}>Actions</th>
           </tr>
           {drivers
             .filter((driver) => {
@@ -231,6 +232,7 @@ function DriverDetails() {
             ))}
         </table>
       </div>
+      </Container>
       <DemoFooter />
     </>
   );
