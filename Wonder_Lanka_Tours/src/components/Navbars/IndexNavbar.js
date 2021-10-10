@@ -149,28 +149,6 @@ function IndexNavbar() {
               <NavItem>
                 <NavLink
                   data-placement="bottom"
-                  href="/my-feedback"
-                  title="Feedback"
-                >
-                  Feedback
-                </NavLink>
-              </NavItem>
-            )}
-            {loggedIn && (
-              <NavItem>
-                <NavLink
-                  data-placement="bottom"
-                  href="/my-complaint"
-                  title="Complaint"
-                >
-                  complaint
-                </NavLink>
-              </NavItem>
-            )}
-            {loggedIn && (
-              <NavItem>
-                <NavLink
-                  data-placement="bottom"
                   href="/user-profile"
                   title="User Profile"
                 >

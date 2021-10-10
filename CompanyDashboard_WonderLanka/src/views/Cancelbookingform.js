@@ -5,6 +5,8 @@ import axios from 'axios';
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
+import validator from 'validator'
+
 // reactstrap components
 
 
@@ -14,6 +16,7 @@ import{
   Button
 }
 from 'reactstrap'
+import PDF from './BookingReport';
 
 
 
@@ -26,17 +29,19 @@ class Cancelbookingform extends Component {
     this.state={
       tourId:"",
       cancellationdate:"",
-      reason:"",
+      reason:"Company Reason",
       amount:"",
       dateerror:"",
-      amounterror:""
+      tourIderror:"",
+      amounterror:"",
+      postSubmitted:false
     }
   }
   
 
 
   handleInputChange =(e) =>{
-     const {name,value} = e.target;
+     const {name,value} = e.target;//get user inputed values and destructure
      this.setState({
          ...this.state,
         [name]:value
@@ -45,15 +50,32 @@ class Cancelbookingform extends Component {
  
   validate =() =>{
     let dateerror = "";
-    let amounterror= "";
+    let amounterror = "";
+    let tourIderror = "";
+    
+
+    if(!validator.isDate(this.state.cancellationdate)){
+      dateerror = "Please enter valid date format "
+    }
+
+    if(!this.state.tourId){
+      tourIderror = "TourId cannt be blank";
+    }
     if(!this.state.cancellationdate){
-      dateerror = "date cannt be blank";
+      dateerror = "date cannot be blank";
+    }
+    if(!this.state.cancellationdate){
+      dateerror = "date cannot be blank";
     }
     if(!this.state.amount){
-      amounterror = "amount cannt be blank";
+      amounterror = "amount cannot be blank";
     }
-    if(dateerror||amounterror){
-      this.setState({dateerror,amounterror});
+    if(this.state.amount<0){
+      amounterror = "amount cannot be negative";   
+    }
+
+    if(tourIderror||dateerror||amounterror){
+      this.setState({dateerror,amounterror,tourIderror});
       return false;
     }
     return true;
@@ -64,9 +86,8 @@ class Cancelbookingform extends Component {
     const isValid = this.validate();
     if(isValid){
       console.log(this.state);
-    } 
-
-    const {tourId,cancellationdate,reason,amount} = this.state;
+      this.setState()
+      const {tourId,cancellationdate,reason,amount} = this.state;
     const data ={
        tourId:tourId,
        cancellationdate:cancellationdate,
@@ -79,17 +100,16 @@ class Cancelbookingform extends Component {
       if(res.data.success){
          this.setState(
               {
-                tourId:"",
-                cancellationdate:"",
-                reason:"",
-                amount:"" ,
-                dateerror:"" ,
-                amounterror:""  
+               postSubmitted:true
               }
           )
        }
-       window.location = '/booktable';
+       
       })
+   
+    } 
+    
+    
       
 }
 
@@ -111,15 +131,19 @@ componentDidMount(){
   render(){
     return(
       <>
+
+      
       <IndexHeader />
       <IndexNavbar />
+      { !this.state.postSubmitted ?(
       <div style = {{paddingTop : "50px"}} className = {styles.body}>
           <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Insert Booking Cancellation Details</h3><br/><br/>
           <div className = {styles.FormContainer}>
           <form >
           
         <Label for="exampleEmail">Tour ID</Label>
-        <Input type="text" value={this.state.tourId} onChange={this.handleInputChange} name="tourId" id="exampleEmail" placeholder="Enter Booking ID" />
+        <Input type="text" value={this.state.tourId} onChange={this.handleInputChange} name="tourId" id="exampleEmail"  />
+        <div style={{color:'red'}}>{this.state.tourIderror}</div>
         <br/>
         
         <Label for="examplePassword">Cancellation Date</Label>
@@ -136,7 +160,7 @@ componentDidMount(){
       
       
         <Label for="examplePassword">Amount</Label>
-        <Input type="number" value={this.state.amount} onChange={this.handleInputChange} name="amount" id="examplePassword" placeholder="Enter amount" />
+        <Input type="number"  value={this.state.amount}  onChange={this.handleInputChange} name="amount" id="examplePassword" placeholder="Enter amount" />
         <div style={{color:'red'}}>{this.state.amounterror}</div>
         <br/>
                 
@@ -145,7 +169,10 @@ componentDidMount(){
         >Submit</Button>
           </form>    
           </div>
-      </div>   
+      </div>): (
+          <PDF  tourId={this.state.tourId} cancellationdate={this.state.cancellationdate} reason={this.state.reason} amount={this.state.amount} />
+      )
+  }
       <DemoFooter />
      </>     
   );
