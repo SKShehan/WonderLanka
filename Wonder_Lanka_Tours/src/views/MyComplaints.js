@@ -7,6 +7,10 @@ import "react-toastify/dist/ReactToastify.css";
 import validator from 'validator';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 
 // core components
@@ -38,6 +42,7 @@ function MyComplaints() {
 
   const {handleSubmit, register} = useForm();
   const [emailError, setEmailError] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const validateEmail = (e) => {
     var email = e.target.value;
@@ -95,13 +100,13 @@ function MyComplaints() {
       <form onSubmit={sendData}>
       <FormGroup>
         <Label for="Name">Name</Label>
-        <Input type="text" name="name" id="idName" placeholder="A.D. Amarasekara" onChange={(e)=>{
+        <Input type="text" name="name" id="idName" placeholder="John Cena" onChange={(e)=>{
           setName(e.target.value);
         }}/>
       </FormGroup>
       <FormGroup>
         <Label for="Email">Email address</Label>
-        <Input type="text" name="email" id="idEmail" placeholder="name@gmail.com" onChange={(e)=>{
+        <Input type="text" name="email" id="idEmail" placeholder="john@gmail.com" onChange={(e)=>{
           validateEmail(e);
           setEmail(e.target.value);
         }}></Input>
@@ -111,16 +116,17 @@ function MyComplaints() {
         }}>{emailError}</span>
       </FormGroup>
       <FormGroup>
-        <Label for="contact">Contact No</Label>
-        <Input type="number" name="contact" id="idContact" placeholder="94 76 564 9534" onChange={(e)=>{
-          setContact(e.target.value);
-        }}/>
+      <Label for="date">Contact Number</Label>
+      <br></br>
+        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number" pattern="[+0-9]+" error={isError} value={contact} onChange=
+          {setContact}
+        />
       </FormGroup>
       <FormGroup>
       <Label for="date">Date</Label>
         <DatePicker selected={date} onChange={(date) => {
           setDate(date);
-        }} />
+        }} required />
       </FormGroup>
       <FormGroup>
         <Label for="typeSelect">Type of complaint</Label>
