@@ -130,7 +130,11 @@ function IndexNavbar() {
             )}
 
             <NavItem>
-              <NavLink data-placement="bottom" href="" title="Itineraries">
+              <NavLink
+                data-placement="bottom"
+                href="/view-itineraries"
+                title="Itineraries"
+              >
                 Itineraries
               </NavLink>
             </NavItem>

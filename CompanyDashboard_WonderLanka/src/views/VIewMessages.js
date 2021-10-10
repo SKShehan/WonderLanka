@@ -9,10 +9,14 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 import {
     Input
   } from "reactstrap";
+import { ReactSession } from "react-client-session";
+import { useHistory } from "react-router";
 
   function ViewMessages() {
     const [messages, setMessages] = useState([]);
     const [searchVal , setSearchVal] = useState("");
+
+    let history = useHistory();
 
     useEffect(() => {
         function getMessages() {

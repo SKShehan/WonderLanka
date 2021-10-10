@@ -83,7 +83,9 @@ function UserProfile({}) {
                         <CardBody>
                           <CardTitle>
                             <img
-                              src={require("assets/img/profile.png").default}
+                              src={
+                                require("assets/img/userprofile.png").default
+                              }
                               className="profile-img"
                             ></img>
                           </CardTitle>
