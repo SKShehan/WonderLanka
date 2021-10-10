@@ -54,6 +54,9 @@ function Homepage(){
     function handleClickEmployee(){
       history.push("/employee-management");
     }
+    function handleClickRUsers(){
+      history.push("/registered-user");
+    }
 
 
     return(
@@ -104,9 +107,16 @@ function Homepage(){
                       <button className = {styles.btn_guidemng} onClick = {handleClickHotel}>Hotel and Restaraunt Management</button>
                   </td>
                 </tr>  
-              </table>
-
+             
+              <tr>
+                <td>
               <button className = {styles.btn_guidemng} onClick = {handleClickEmployee}>Employee Management</button>
+               </td>
+               <td>
+              <button className = {styles.btn_guidemng} onClick = {handleClickRUsers}>Registered Users</button>
+              </td>
+              </tr>
+              </table>
             </div>
         </div>
         </>

@@ -76,6 +76,8 @@ import CFManagement from "views/CFManagement";
 import CFReport from "views/CFReport";
 import ViewMessages from "views/VIewMessages";
 
+import RegisteredUsers from "views/RegisteredUsers";
+
 function App() {
 
   useEffect(() => {
@@ -207,6 +209,10 @@ function App() {
 
         <Route path="/assign-vehicle/:username" component={AssignVc} />
 
+        {/*registered user path*/}
+
+        <Route path="/registered-user" component={RegisteredUsers} />
+
         <Route path="/itinerary-management" exact>
           <ItineraryManagement />
         </Route>
@@ -295,6 +301,8 @@ function App() {
         <Route path="/employee-management" exact>
           <EmployeeManagement />
         </Route>
+
+        
 
         <Route path="/login" exact>
           <Login />

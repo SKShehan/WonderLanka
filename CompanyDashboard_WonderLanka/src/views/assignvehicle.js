@@ -1,4 +1,6 @@
-import styles from '../assets/css/AddGuide.module.css'
+import styles from '../assets/css/AssignVv.module.css'
+
+import DemoFooter from "components/Footers/DemoFooter";
 
 import { useState } from "react";
 import { useEffect } from "react";
@@ -77,8 +79,8 @@ function AssignVc(){
 
         
     return (
-        <div style = {{paddingTop : "50px"}} className = {styles.body}>
-        <br/><br/><h3 className = {styles.header} style = {{textAlign : 'center'}}>Assign Guide</h3><br/><br/>
+        <div style = {{paddingTop : "75px"}} className = {styles.body}>
+        <br/><h3 className = {styles.header} style = {{textAlign : 'center'}}><b>Assign Vehicles</b></h3><br/><br/>
         <div className = {styles.FormContainer}>
         <form onSubmit = {onSubmitForm}>
 
@@ -88,7 +90,7 @@ function AssignVc(){
             <Input type = 'tid' name = "tid"  value = {tid} disabled
             ></Input><br/>
 
-            <Label for = "Guide Name">Guide Name</Label><br/>
+            <Label for = "vehicle Name">Vehicle Name</Label><br/>
            
             <select className="form-control" onChange = {(e) =>{
                     setSelection(e.target.value);
@@ -104,7 +106,7 @@ function AssignVc(){
 
         
 
-            <Label for = "GuideID">Guide ID</Label><br/>
+            <Label for = "VehicleID">Vehicle ID</Label><br/>
             <Input type = 'gid' name = "gid"  value = {vid} disabled
             ></Input><br/>
 
@@ -114,10 +116,11 @@ function AssignVc(){
     
             <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}
 
-            >Assign Guide</Button>
+            >Assign Vehicle</Button>
 
         </form>    
         </div>
+        <DemoFooter />
     </div>   
     );
 

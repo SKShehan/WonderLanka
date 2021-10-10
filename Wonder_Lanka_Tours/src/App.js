@@ -103,6 +103,13 @@ function App() {
         <Route path="/contact-us" exact>
           <ContactUS user={user}></ContactUS>
         </Route>
+        
+        {/*About us page */}
+        <Route path="/about-us" exact>
+          <ContactUS user={user}></ContactUS>
+        </Route>
+
+
         <Route path="/login" exact>
           <Login user={user} setuser={setuser}></Login>
         </Route>
