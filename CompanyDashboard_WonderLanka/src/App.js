@@ -218,9 +218,11 @@ function App() {
         <Route path="/driver-management" exact>
           <DriverManagement />
         </Route>
+       
         <Route path="/booking-management" exact>
           <BookingManagement />
         </Route>
+
         <Route path="/booktable" exact>
           <Booktable />
         </Route>
