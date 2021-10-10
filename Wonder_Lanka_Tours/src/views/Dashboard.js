@@ -89,6 +89,10 @@ function Dashboard() {
                   id="card1"
                   onClick={clickTourItineraries}
                 >
+                  <img
+                    src={require("assets/img/beach.png").default}
+                    className="dashboard-icon"
+                  />
                   Tour Itineraries
                   <label className="dashboard-card-subtitle">
                     View all the tour itineraries we offer.
@@ -101,6 +105,10 @@ function Dashboard() {
                   id="card2"
                   onClick={clickMyTours}
                 >
+                  <img
+                    src={require("assets/img/calendar.png").default}
+                    className="dashboard-icon"
+                  />
                   My Tours
                   <label className="dashboard-card-subtitle">
                     View & manage all your bookings.
@@ -117,6 +125,10 @@ function Dashboard() {
                   id="card3"
                   onClick={clickComplaint}
                 >
+                  <img
+                    src={require("assets/img/question.png").default}
+                    className="dashboard-icon"
+                  />
                   My Complaints
                   <label className="dashboard-card-subtitle">
                     Raise a complaint.
@@ -129,6 +141,10 @@ function Dashboard() {
                   id="card4"
                   onClick={clickFeedaback}
                 >
+                  <img
+                    src={require("assets/img/rating.png").default}
+                    className="dashboard-icon"
+                  />
                   My Feedbacks
                   <label className="dashboard-card-subtitle">
                     Provide a feedback.
@@ -141,6 +157,10 @@ function Dashboard() {
                   id="card5"
                   onClick={clickUserProfile}
                 >
+                  <img
+                    src={require("assets/img/userprofile.png").default}
+                    className="dashboard-icon"
+                  />
                   User Profile
                   <label className="dashboard-card-subtitle">
                     Manage your user profile.

@@ -289,3 +289,10 @@
 #report-cont {
   padding: 20px 20px 20px 20px;
 }
+
+.dashboard-icon {
+  height: 50px;
+  width: 50px;
+  margin-right: auto;
+  margin-left: auto;
+}
