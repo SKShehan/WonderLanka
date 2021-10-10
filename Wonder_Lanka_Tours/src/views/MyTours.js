@@ -38,7 +38,7 @@ function MyTours({}) {
       });
     }
   }, []);
-  if (tours === null) {
+  if (tours.length == 0) {
     return (
       <>
         <ProfilePageHeader></ProfilePageHeader>
@@ -48,7 +48,16 @@ function MyTours({}) {
             <h2 align="center"> My Tours</h2>
             <hr></hr>
             <br></br>
-            <div style={{ textAlign: "center" }}>Nothing to see here.</div>
+
+            <div style={{ textAlign: "center" }}>
+              <img
+                src={require("assets/img/empty.png").default}
+                className="mytours-empty-icon"
+              />
+              <br />
+              <br />
+              <strong>Nothing to see here.</strong>
+            </div>
           </div>
 
           <DemoFooter />
