@@ -347,8 +347,8 @@ export default function SignUp(){
      <br/>
      <Label for="nic"><b>NIC</b></Label>
      <Input placeholder="Enter NIC Number" type="text"
-     pattern = "[0-9]{9}[V]"
-     title = "Enter valid ID number 'xxxxxxxxxV'"  required
+     
+     
      onChange={(e)=>{
       setNic(e.target.value);
      }} />
