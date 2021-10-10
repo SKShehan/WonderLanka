@@ -249,8 +249,8 @@ function BookTour({ user }) {
     setnoOfKids8(0);
   };
 
-  const getGeoInfo = () => {
-    axios
+  const getGeoInfo = async () => {
+    await axios
       .get("https://ipapi.co/json/")
       .then((response) => {
         let data = response.data;
@@ -366,9 +366,13 @@ function BookTour({ user }) {
       });
     } else {
       getItineraries();
-      getGeoInfo();
-      setusername(ReactSession.get("user").username);
       setcountry(countryList[0]);
+      setusername(ReactSession.get("user").username);
+      setfullName(ReactSession.get("user").fullName);
+      setcountry(ReactSession.get("user").country);
+      setemail(ReactSession.get("user").email);
+      setmobileNo(ReactSession.get("user").mobileNo);
+      setcountry(ReactSession.get("user").country);
 
       if (location.state == null) {
         setitinerary(itineraryList[0].itineraryName);
