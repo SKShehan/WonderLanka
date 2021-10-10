@@ -5,11 +5,21 @@ import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
 
+import { useEffect } from "react";
+import ReactSession from "react-client-session/dist/ReactSession";
+
 function HomepageAssets(){
 
   let history = useHistory();
-  
 
+  useEffect(() =>{
+    ReactSession.setStoreType("localStorage");
+    if(ReactSession.get("employee") === null){
+     
+      history.push("/login")
+    }
+  })
+  
 
     function handleClickGuide() {
         history.push("/guide-management");
