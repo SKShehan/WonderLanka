@@ -73,7 +73,7 @@ function Index() {
         <SectionExamples />
    <SectionDownload /> 
    */}
-   <Itineraries />
+   
 
       </div>
     </>
