@@ -72,6 +72,9 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
    <SectionDownload /> */}
+
+          <Dashboard/>
+
       </div>
     </>
   );

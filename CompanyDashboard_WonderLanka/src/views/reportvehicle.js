@@ -12,6 +12,8 @@ import {
   Input,
   
 } from "reactstrap";
+import styles from '../assets/css/AssignVv.module.css'
+import DemoFooter from "components/Footers/DemoFooter";
 
 function VehicleReport(){
 
@@ -74,14 +76,18 @@ const downloadPDF = () => {
 
     return (
         <>  
+
+        <div style = {{paddingTop : "100px"}} className = {styles.body}>
+        <h3 className = {styles.header} style = {{textAlign : 'center'}}><b>Vehicle Assigned Report</b></h3><br/>
           <Container>
-                <h2 align="center"><b>Vehicle Assigned Report</b></h2>
+               {/* <h1 align="center"><b>Vehicle Assigned Report</b></h1> */}
+               
                 
-            <br/><br/>
+            
             <div style = {{marginLeft : "40px" , marginRight : "40px" }}>
               <div style = {{display : "flex" , flexDirection : "row" }}>                   { /*For Date Selection  */}
               <div style = {{width : "30%" }}>
-              <h5>Select Month</h5>  
+              <h5 className= {styles.textT}>Select Month</h5>  
               <Input type = "select" name = "FilteringDate"
                 onChange = {(e) =>{
                     filteredDate(e.target.value);
@@ -102,7 +108,7 @@ const downloadPDF = () => {
                 </Input>
                 </div>
                 <div style = {{width : "30%" , marginLeft : "20px" }}>
-                <h5>Select Year</h5>  
+                <h5 className= {styles.textT}>Select Year</h5>  
                 <Input type = "select" name = "FilteringYear"
                   onChange = {(e)=>{
                     filteredYear(e.target.value);
@@ -217,11 +223,16 @@ const downloadPDF = () => {
                   >
                     Download PDF
                   </button>
+                  
                 </Col>
               </Row>
+              <br/>
             </div>
           </div>
-         </Container>    
+          
+         </Container> 
+         <DemoFooter /> 
+         </div>  
         </>
     );
 }
