@@ -14,6 +14,7 @@ function Homepage(){
   useEffect(() =>{
     ReactSession.setStoreType("localStorage");
     if(ReactSession.get("employee") === null){
+     
       history.push("/login")
     }
   })
