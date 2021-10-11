@@ -22,7 +22,7 @@ import { ListFormat } from 'typescript';
 function Assign(){
     
 
-    const {username} = useParams();
+    const {tide} = useParams();
     const [guides , setGuides] = useState([]);
     const [tid , setID] = useState();
     const [gid , setgID] = useState();
@@ -60,13 +60,13 @@ function Assign(){
             console.log(err);
         })
       
-        axios.get(`http://localhost:8070/bookings/get/${username}`).then((req) =>{
+        // axios.get(`http://localhost:8070/bookings/get/${username}`).then((req) =>{
             
-            setID(req.data[0].tourId);
+        //     setID(req.data[0].tourId);
 
-        }).catch(() =>{
-            console.log("Error in fetching data!");
-        })
+        // }).catch(() =>{
+        //     console.log("Error in fetching data!");
+        // })
 
         
     } , []);
@@ -82,7 +82,7 @@ function Assign(){
 
 
             <Label for = "TourID">Tour ID</Label><br/>
-            <Input type = 'tid' name = "tid"  value = {tid} disabled
+            <Input type = 'tid' name = "tid"  value = {tide} disabled
             ></Input><br/>
 
             <Label for = "Guide Name">Guide Name</Label><br/>

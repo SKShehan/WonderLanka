@@ -149,7 +149,7 @@ function App() {
         <Route path="/view-guides" exact>
           <ViewGuides />
         </Route>
-        <Route path="/assign-guide/:username" exact>
+        <Route path="/assign-guide/:tide" exact>
           <Assign />
         </Route>
 
