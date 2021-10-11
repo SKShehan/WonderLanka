@@ -146,7 +146,7 @@ function AssignGuide(){
                                 <td>{guides[booking.tourId]}</td>
                                 <td><Button color="warning"  style = {{padding: "5px 5px 5px 5px" , width : "80px" , marginBottom : "8px"}}
                                 onClick = {()=>{
-                                    history.push(`/assign-guide/${booking.username}`);
+                                    history.push(`/assign-guide/${booking.tourId}`);
                                 }}
                                 >Assign Guide</Button>
                                </td>
