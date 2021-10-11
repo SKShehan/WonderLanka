@@ -31,16 +31,16 @@ function AllComplaints () {
 
     let history = useHistory();
     
-    const complaintDelete = (complaint) => {
+    const complaintDelete = (del) => {
 
       if (
         window.confirm(
-          "Complaint " + complaint.id + " will be removed from the database"
+          "Complaint " + del.id + " will be removed from the database"
         )
       )
 
       axios.delete(`http://localhost:8070/complaint/deleteComplaint/${
-       complaint._id}`
+       del._id}`
       )
       .then((res) =>{
           console.log(res);
