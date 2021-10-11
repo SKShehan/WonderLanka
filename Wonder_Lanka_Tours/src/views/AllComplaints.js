@@ -35,7 +35,7 @@ function AllComplaints () {
 
       if (
         window.confirm(
-          "Complaint " + del.id + " will be removed from the database"
+          "Confirm to remove?"
         )
       )
 
@@ -127,7 +127,7 @@ function AllComplaints () {
     
                           <Button color="danger" style = {{padding: "5px 5px 5px 5px", width : "70px", marginBottom : "8px"}}
                           onClick = {() =>
-                                complaintDelete(complaint._id)
+                                complaintDelete(complaint)
                           } 
                         
                           >Remove</Button>
