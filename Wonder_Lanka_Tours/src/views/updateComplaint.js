@@ -136,7 +136,7 @@ function UpdateComplaint({Complaint}) {
     <FormGroup>
       <Label for="date">Contact Number</Label>
       <br></br>
-        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number" pattern="" value={contact} onChange=
+        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number" value={contact} onChange=
           {setContact}
         />
       </FormGroup>
