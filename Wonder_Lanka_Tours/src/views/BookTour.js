@@ -238,7 +238,7 @@ function BookTour({ user }) {
   const demo = () => {
     setfullName("James Anderson");
     setcountry("United Kingdom");
-    setmobileNo("2028836088");
+    setmobileNo("94772665133");
     setemail("james@gmail.com");
     setarrivalDate("2021-10-21");
     setitinerary("Polonnaruwa");
