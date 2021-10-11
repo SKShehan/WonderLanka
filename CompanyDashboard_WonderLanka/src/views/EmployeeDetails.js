@@ -59,15 +59,12 @@ function EmployeeDetails(){
         axios.delete(`http://localhost:8070/employees/delete${employee._id}`).then((res) =>{
             console.log(res);
             
-            setMessage("Employee Deleted!");
-            toast.error('Employee Deleted!', {
+            
+            toast.success('Employee Deleted!', {
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
+               
                 });
             
         }).catch((err) =>{

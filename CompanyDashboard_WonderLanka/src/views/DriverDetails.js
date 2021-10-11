@@ -52,7 +52,7 @@ function DriverDetails() {
           console.log(res);
           toast.success("Driver deleted!", {
             position: toast.POSITION.BOTTOM_RIGHT,
-            autoClose: 10000,
+            autoClose: 5000,
             hideProgressBar: false,
           });
         })
