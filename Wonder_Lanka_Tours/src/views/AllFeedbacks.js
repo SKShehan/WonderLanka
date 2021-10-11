@@ -28,7 +28,7 @@ function AllFeedbacks () {
   
     return (
         <div className = "container">
-          <h3 style = {{textAlign:"center"}}>Feedback History</h3>
+          <h3 style = {{textAlign:"center"}}><b>Feedback History</b></h3>
           <Input placeholder="Search " type="text" 
             onChange = {(e) =>{
               setSearchVal(e.target.value);

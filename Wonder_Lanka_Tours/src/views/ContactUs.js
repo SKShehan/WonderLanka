@@ -85,7 +85,7 @@ function ContactUS () {
     <IndexNavbar />
       <IndexHeader />
       <div className="container">
-        <h3 style = {{marginLeft:"440px"}}>Contact Us</h3>
+        <h3 style = {{marginLeft:"440px"}}><b>Contact Us</b></h3>
       <form onSubmit={sendData}>
       <FormGroup>
         <Label for="Name">First Name</Label>

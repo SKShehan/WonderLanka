@@ -67,7 +67,7 @@ function MyFeedbacks() {
 
         <FormGroup>
           <h2 style={{textAlign:"center"}}>We value your feedback</h2><br></br>
-          <p style={{textAlign:"center"}}>Please complete the following form and help us improve our customer experience</p>
+          <p style={{textAlign:"center"}}><b>Please complete the following form and help us improve our customer experience</b></p>
         </FormGroup>
         <FormGroup>
         <Label for="name">Name</Label>
