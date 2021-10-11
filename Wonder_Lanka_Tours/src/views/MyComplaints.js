@@ -19,6 +19,8 @@ import IndexHeader from "components/Headers/IndexHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import { AllComplaints } from "./AllComplaints";
 
+
+
 // core components
 import {
   FormGroup,
@@ -55,6 +57,7 @@ function MyComplaints() {
   }
 
   //adding state
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
@@ -66,6 +69,7 @@ function MyComplaints() {
     e.preventDefault();
 
     const newComplaint = {
+
       name,
       email,
       contact,
@@ -102,14 +106,14 @@ function MyComplaints() {
         <Label for="Name">Name</Label>
         <Input type="text" name="name" id="idName" placeholder="John Cena" onChange={(e)=>{
           setName(e.target.value);
-        }}/>
+        }}required/>
       </FormGroup>
       <FormGroup>
         <Label for="Email">Email address</Label>
         <Input type="text" name="email" id="idEmail" placeholder="john@gmail.com" onChange={(e)=>{
           validateEmail(e);
           setEmail(e.target.value);
-        }}></Input>
+        }}required></Input>
         <span style={{
           fontWeight: 'bold',
           color: 'red',
@@ -118,21 +122,21 @@ function MyComplaints() {
       <FormGroup>
       <Label for="date">Contact Number</Label>
       <br></br>
-        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number" pattern="[+0-9]+" error={isError} value={contact} onChange=
+        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number" error={isError} value={contact} onChange=
           {setContact}
-        />
+          />
       </FormGroup>
       <FormGroup>
       <Label for="date">Date</Label>
         <DatePicker selected={date} onChange={(date) => {
           setDate(date);
-        }} required />
+        }}  required/>
       </FormGroup>
       <FormGroup>
         <Label for="typeSelect">Type of complaint</Label>
         <Input type="text" name="select" id="typeSelect" onChange={(e)=>{
           setSelect(e.target.value);
-        }}>
+        }}required>
           <option>There's no free WI-FI in my room?</option>
           <option>here's no free Hot water in my room?</option>
           <option>The attitudes and behaviours of your staff are unacceptable</option>
@@ -145,11 +149,9 @@ function MyComplaints() {
         <Label for="exampleText">Custom complaints</Label>
         <Input type="text" name="complaint" id="idText" onChange={(e)=>{
           setComplaint(e.target.value);
-        }}/>
+        }}required/>
       </FormGroup>
-      <Button color="primary" type="submit" onChange={(e)=>{
-          setDate(date);
-        }}>
+      <Button color="primary" type="submit">
         Submit
       </Button>
       </form>

@@ -3,8 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from 'react-toastify';
-import { useHistory, useParams } from "react-router-dom";
-import { ReactSession } from "react-client-session";
+import { useHistory } from "react-router-dom";
 
 // core components
 import {
@@ -30,7 +29,8 @@ function AllComplaints () {
     },[]);
 
     let history = useHistory();
-    
+
+  
     const complaintDelete = (del) => {
 
       if (
@@ -127,6 +127,7 @@ function AllComplaints () {
     
                           <Button color="danger" style = {{padding: "5px 5px 5px 5px", width : "70px", marginBottom : "8px"}}
                           onClick = {() =>
+
                                 complaintDelete(complaint)
                           } 
                         
