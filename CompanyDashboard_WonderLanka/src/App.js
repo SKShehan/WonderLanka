@@ -102,8 +102,7 @@ function App() {
         </Route>
 
 
-        </Route> 
-
+        
         <Route 
         path = "/HomepageAssets"
         exact
@@ -305,6 +304,6 @@ function App() {
       </Switch>
     </BrowserRouter>
   );
-}
+}}
 
 export default App;

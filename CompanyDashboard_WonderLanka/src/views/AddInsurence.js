@@ -59,7 +59,8 @@ axios.post("http://localhost:8070/insurences/add-package" , newInsurence ).then(
             <form onSubmit = {sendData}>
 
                 <Label for = "InsurenceID">Insurance Plan ID</Label><br/>
-                <Input type = 'text' name = "InsurenceID" placeholder = "Enter Plan ID" 
+                <Input type = 'text' name = "InsurenceID" placeholder = "Enter Plan ID" pattern="[IP][0-9]{3}"
+		               title="Invalid Insurence ID pattern! Ex:IPxxx"
                 onChange = {(e) => {
                     setInsurenceId(e.target.value);
                 }}></Input><br/>
