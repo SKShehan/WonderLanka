@@ -32,6 +32,7 @@ function AllComplaints () {
 
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     const complaintDelete = (del) => {
 
       if (
@@ -43,6 +44,24 @@ function AllComplaints () {
       axios.delete(`http://localhost:8070/complaint/deleteComplaint/${
        del._id}`
       )
+=======
+    const complaintDelete = (complaint) => {
+      
+      if (
+        window.confirm(
+          "Complaint " +
+            complaint.tourID +
+            " (" +
+            complaint.name +
+            " " +
+            complaint.email +
+            ") " +
+            "will be removed from the database"
+        )
+      )
+
+      axios.delete(`http://localhost:8070/ComplaintRoute/deleteComplaint/${complaint.tourID}`)
+>>>>>>> parent of 00e06e1 (Merge branch 'Oshan_Functions')
 =======
     const complaintDelete = (complaint) => {
       
@@ -147,8 +166,13 @@ function AllComplaints () {
                           <Button color="danger" style = {{padding: "5px 5px 5px 5px", width : "70px", marginBottom : "8px"}}
                           onClick = {() =>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 complaintDelete(complaint)
                           } 
+=======
+                                complaintDelete(complaint._id)
+                          }
+>>>>>>> parent of 00e06e1 (Merge branch 'Oshan_Functions')
 =======
                                 complaintDelete(complaint._id)
                           }
