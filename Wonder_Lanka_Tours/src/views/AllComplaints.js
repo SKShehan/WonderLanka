@@ -3,8 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from 'react-toastify';
-import { useHistory, useParams } from "react-router-dom";
-import { ReactSession } from "react-client-session";
+import { useHistory } from "react-router-dom";
 
 // core components
 import {
@@ -30,7 +29,9 @@ function AllComplaints () {
     },[]);
 
     let history = useHistory();
+
     
+<<<<<<< HEAD
     const complaintDelete = (del) => {
 
       if (
@@ -42,6 +43,24 @@ function AllComplaints () {
       axios.delete(`http://localhost:8070/complaint/deleteComplaint/${
        del._id}`
       )
+=======
+    const complaintDelete = (complaint) => {
+      
+      if (
+        window.confirm(
+          "Complaint " +
+            complaint.tourID +
+            " (" +
+            complaint.name +
+            " " +
+            complaint.email +
+            ") " +
+            "will be removed from the database"
+        )
+      )
+
+      axios.delete(`http://localhost:8070/ComplaintRoute/deleteComplaint/${complaint.tourID}`)
+>>>>>>> parent of 00e06e1 (Merge branch 'Oshan_Functions')
       .then((res) =>{
           console.log(res);
           toast.success("Complaint Deleted!", {
@@ -127,8 +146,13 @@ function AllComplaints () {
     
                           <Button color="danger" style = {{padding: "5px 5px 5px 5px", width : "70px", marginBottom : "8px"}}
                           onClick = {() =>
+<<<<<<< HEAD
                                 complaintDelete(complaint)
                           } 
+=======
+                                complaintDelete(complaint._id)
+                          }
+>>>>>>> parent of 00e06e1 (Merge branch 'Oshan_Functions')
                         
                           >Remove</Button>
                         </td>

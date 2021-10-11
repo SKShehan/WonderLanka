@@ -126,7 +126,7 @@ function MyComplaints() {
       <Label for="date">Date</Label>
         <DatePicker selected={date} onChange={(date) => {
           setDate(date);
-        }} required />
+        }}/>
       </FormGroup>
       <FormGroup>
         <Label for="typeSelect">Type of complaint</Label>
@@ -147,9 +147,7 @@ function MyComplaints() {
           setComplaint(e.target.value);
         }}/>
       </FormGroup>
-      <Button color="primary" type="submit" onChange={(e)=>{
-          setDate(date);
-        }}>
+      <Button color="primary" type="submit">
         Submit
       </Button>
       </form>
