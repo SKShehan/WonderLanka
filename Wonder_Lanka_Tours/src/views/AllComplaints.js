@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from 'react-toastify';
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import { ReactSession } from "react-client-session";
 
 // core components
 import {
@@ -29,24 +30,18 @@ function AllComplaints () {
     },[]);
 
     let history = useHistory();
-
     
-    const complaintDelete = (complaint) => {
-      
+    const complaintDelete = (del) => {
+
       if (
         window.confirm(
-          "Complaint " +
-            complaint.tourID +
-            " (" +
-            complaint.name +
-            " " +
-            complaint.email +
-            ") " +
-            "will be removed from the database"
+          "Complaint " + del.id + " will be removed from the database"
         )
       )
 
-      axios.delete(`http://localhost:8070/ComplaintRoute/deleteComplaint/${complaint.tourID}`)
+      axios.delete(`http://localhost:8070/complaint/deleteComplaint/${
+       del._id}`
+      )
       .then((res) =>{
           console.log(res);
           toast.success("Complaint Deleted!", {
@@ -133,7 +128,7 @@ function AllComplaints () {
                           <Button color="danger" style = {{padding: "5px 5px 5px 5px", width : "70px", marginBottom : "8px"}}
                           onClick = {() =>
                                 complaintDelete(complaint._id)
-                          }
+                          } 
                         
                           >Remove</Button>
                         </td>
