@@ -140,7 +140,7 @@ function MyComplaints() {
       </FormGroup>
       <FormGroup>
         <Label for="typeSelect">Type of complaint</Label>
-        <Input type="text" name="select" id="typeSelect" onChange={(e)=>{
+        <Input type="text" name="select" id="typeSelect" placeholder="About tour" onChange={(e)=>{
           setSelect(e.target.value);
         }}required>
           <option>There's no free WI-FI in my room?</option>
@@ -153,7 +153,7 @@ function MyComplaints() {
       </FormGroup>
       <FormGroup>
         <Label for="exampleText">Custom complaints</Label>
-        <Input type="text" name="complaint" id="idText" onChange={(e)=>{
+        <Input type="text" name="complaint" id="idText" placeholder="Vehicle Issues" onChange={(e)=>{
           setComplaint(e.target.value);
         }}required/>
       </FormGroup>
