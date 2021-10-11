@@ -4,11 +4,15 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+
 import validator from 'validator';
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
+
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 
@@ -94,6 +98,7 @@ function MyComplaints() {
     })
 
   }
+  
 
   return (
     <>
@@ -110,7 +115,7 @@ function MyComplaints() {
       </FormGroup>
       <FormGroup>
         <Label for="Email">Email address</Label>
-        <Input type="text" name="email" id="idEmail" placeholder="john@gmail.com" onChange={(e)=>{
+        <Input type="text" name="email" id="idEmail" pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="john@gmail.com" onChange={(e)=>{
           validateEmail(e);
           setEmail(e.target.value);
         }}required></Input>
@@ -122,9 +127,10 @@ function MyComplaints() {
       <FormGroup>
       <Label for="date">Contact Number</Label>
       <br></br>
-        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number" error={isError} value={contact} onChange=
-          {setContact}
-          />
+        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number"
+        rules={{ required: true }} error={isError}  value={contact} 
+        onChange = {setContact}
+        required/>
       </FormGroup>
       <FormGroup>
       <Label for="date">Date</Label>

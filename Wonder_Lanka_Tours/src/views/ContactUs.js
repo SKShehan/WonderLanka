@@ -91,18 +91,18 @@ function ContactUS () {
         <Label for="Name">First Name</Label>
         <Input type="text" name="fname" id="idfName" placeholder="John" onChange={(e)=>{
           setfName(e.target.value);
-        }}/>
+        }}required/>
         <Label for="Name">Last Name</Label>
         <Input type="text" name="lname" id="idlName" placeholder="Cena" onChange={(e)=>{
           setlName(e.target.value);
-        }}/>
+        }}required/>
       </FormGroup>
       <FormGroup>
         <Label for="Email">Email address</Label>
-        <Input type="text" name="email" id="idEmail" placeholder="john@gmail.com" onChange={(e)=>{
+        <Input type="text" name="email" id="idEmail" pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="john@gmail.com" onChange={(e)=>{
           validateEmail(e);
           setEmail(e.target.value);
-        }}></Input>
+        }}required></Input>
         <span style={{
           fontWeight: 'bold',
           color: 'red',
@@ -111,15 +111,16 @@ function ContactUS () {
       <FormGroup>
       <Label for="date">Contact Number</Label>
       <br></br>
-        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number" pattern="[+0-9]+" error={isError} value={contact} onChange=
-          {setContact}
-        />
+        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number"
+        rules={{ required: true }} error={isError}  value={contact} 
+        onChange = {setContact}
+        required/>
       </FormGroup>
       <FormGroup>
         <Label for="message">Message</Label>
         <Input type="text" name="complaint" id="idText" onChange={(e)=>{
           setMessage(e.target.value);
-        }}/>
+        }}required/>
       </FormGroup>
       <Button color="primary" type="submit">
         Send
