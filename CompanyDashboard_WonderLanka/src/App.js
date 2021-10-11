@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-
+import { useEffect } from "react";
+import ReactSession from "react-client-session/dist/ReactSession";
 import IndexHeader from "components/Headers/IndexHeader";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 
@@ -15,6 +16,7 @@ import ViewItineraries from "views/viewItineraries";
 import EditItinerary from "views/EditItinerary";
 import CustomizedRequests from "views/CustomizedRequests";
 import ItinerarySend from "views/ItinerarySend";
+import ItineraryReport from "views/CustomItineraryReport";
 
 import EditGuide from "views/EditGuide";
 import AddGuide from "views/AddGuide";
@@ -23,6 +25,7 @@ import GuideManagement from "views/GuideManagement";
 import BookingManagement from "views/BookingManagement";
 import Assign from "views/AssignGuide";
 import AssignGuide from "views/AssignGuideBookings";
+import GuideReport from "views/GuideReport";
 
 import AddHotel from "views/AddHotel";
 import HotelDetails from "views/HotelDetails";
@@ -38,7 +41,7 @@ import AddDriver from "views/AddDriver";
 import DriverDetails from "views/DriverDetails";
 import DriverManagement from "views/DriverManagement";
 import ItineraryManagement from "views/ItineraryManagement";
-import  AssignD from "views/AssignDriver";
+import AssignD from "views/AssignDriver";
 import AssignDriver from "views/AssignDriverBookings";
 
 import Addvehicle from "views/addvehicle";
@@ -48,9 +51,7 @@ import Vtype from "views/vtype";
 import AssignVehicleBooking from "views/assignvehicleBooking";
 import ReportVehicle from "views/reportvehicle";
 import VehicleDashboard from "views/vehicleDashboard";
-import assignVehicle from "views/assignvehicleBooking";
-
-
+import AssVehicle from "views/assignvehicle";
 
 import EmployeeUpdate from "views/EmployeeUpdate";
 
@@ -65,13 +66,23 @@ import AddEmployee from "views/AddEmployee";
 import EmployeeManagement from "views/EmployeeManagement";
 import Homepage from "views/Homepage";
 
-
 import HomepageAssets from "views/HomepageAssets";
+import Login from "views/Login";
+import AssignVc from "views/assignvehicle";
+import DriverReport from "views/DriverReport";
+
+import CFRetrieve from "views/CFRetrieve";
+import CFManagement from "views/CFManagement";
+import CFReport from "views/CFReport";
+import ViewMessages from "views/VIewMessages";
+
+import RegisteredUsers from "views/RegisteredUsers";
 
 function App() {
 
-
-function App() {
+  useEffect(() => {
+    ReactSession.setStoreType("localStorage");
+  }, []);
   return (
     <BrowserRouter>
       <Switch>
@@ -93,23 +104,13 @@ function App() {
           render={(props) => <RegisterPage {...props} />}
         />
 
-        <Route
-          path = "/Homepage"
-          exact
-        >
+        <Route path="/Homepage" exact>
           <Homepage />
-
         </Route>
 
-
-        
-        <Route 
-        path = "/HomepageAssets"
-        exact
-        >
+        <Route path="/HomepageAssets" exact>
           <HomepageAssets />
-        </Route>   
-        
+        </Route>
 
         <Route //Setting path for Add Itinerary view
           path="/add-itinerary"
@@ -125,20 +126,22 @@ function App() {
           <ViewItineraries />
         </Route>
 
-        <Route
-          path = "/sendItinerary/:username"
-          exact
-        >
+        <Route path="/sendItinerary/:username" exact>
           <ItinerarySend />
         </Route>
 
-        <Route path = "/CustomizedReq" exact>
+        <Route path="/CustomizedReq" exact>
           <CustomizedRequests />
         </Route>
 
         <Route path="/edit-itinerary/:id" exact>
           <EditItinerary />
         </Route>
+
+        <Route path="/Itinerary-report" exact>
+          <ItineraryReport />
+        </Route>
+
         <Route path="/edit-guide/:id" exact>
           <EditGuide />
         </Route>
@@ -148,26 +151,25 @@ function App() {
         <Route path="/view-guides" exact>
           <ViewGuides />
         </Route>
-        <Route path = "/assign-guide/:username" exact>
+        <Route path="/assign-guide/:username" exact>
           <Assign />
         </Route>
 
-        <Route path = "/assign-guide-booking" exact>
+        <Route path="/assign-guide-booking" exact>
           <AssignGuide />
         </Route>
 
+        <Route path="/guide-report" exact>
+          <GuideReport />
+        </Route>
 
+        <Route path="/edit-driver/:id" exact component={DriverUpdate} />
+        <Route path="/Add-Driver" exact component={AddDriver} />
+        <Route path="/View-Driver" exact component={DriverDetails} />
 
-        <Route path="/edit-driver/:id" exact
-          component={DriverUpdate} />
-        <Route path ="/Add-Driver" exact
-          component={AddDriver}/>
-        <Route path ="/View-Driver" exact
-          component={DriverDetails}/>
-
-          <Route path="/assign-driver/:username" exact>
-            < AssignD/>
-            </Route>
+        <Route path="/assign-driver/:username" exact>
+          <AssignD />
+        </Route>
 
         {/*Setting Management Function paths */}
 
@@ -188,25 +190,28 @@ function App() {
 
         <Route path="/edit-vehicle/:id" component={Editvehicle} />
 
-        <Route path="/assign-vehicles" component={AssignVehicle} />
+        {/*<Route path="/assign-vehicles" component={AssignVehicle} />*/}
 
         <Route path="/report-vehicles" component={ReportVehicle} />
 
         <Route path="/vehicle-management" component={VehicleDashboard} />
 
-        <Route path="/edit-vehicle/:id" component={Editvehicle}/>
-          
-        <Route path="/assign-vehiclesBooking" component={AssignVehicleBooking}/> 
-          
-        <Route path="/report-vehicles" component={ReportVehicle}/> 
+        <Route path="/edit-vehicle/:id" component={Editvehicle} />
 
-        <Route path = "/vehicle-management" component = {VehicleDashboard} />
+        <Route
+          path="/assign-vehiclesBooking"
+          component={AssignVehicleBooking}
+        />
 
+        <Route path="/report-vehicles" component={ReportVehicle} />
 
+        <Route path="/vehicle-management" component={VehicleDashboard} />
 
-       <Route path="/assign-vehicle/:username" component={AssignVc} />
-        
+        <Route path="/assign-vehicle/:username" component={AssignVc} />
 
+        {/*registered user path*/}
+
+        <Route path="/registered-user" component={RegisteredUsers} />
 
         <Route path="/itinerary-management" exact>
           <ItineraryManagement />
@@ -215,6 +220,7 @@ function App() {
         <Route path="/driver-management" exact>
           <DriverManagement />
         </Route>
+
         <Route path="/booking-management" exact>
           <BookingManagement />
         </Route>
@@ -235,6 +241,7 @@ function App() {
         <Route path="/edit-driver/:id" component={DriverUpdate} />
         <Route path="/Add-Driver" component={AddDriver} />
         <Route path="/View-Driver" component={DriverDetails} />
+        <Route path="/Report-Driver" component={DriverReport} />
 
         <Route //setting path to Insurence management page
           path="/insurence-home"
@@ -242,6 +249,8 @@ function App() {
         >
           <InsurenceManagement />
         </Route>
+
+        <Route path="/add-cancelbooking/:id" component={Cancelbookingform} />
 
         <Route path="/add-insurence" exact>
           <AddInsurence />
@@ -260,10 +269,9 @@ function App() {
         </Route>
 
         <Route path="/edit-driver/:id" component={DriverUpdate} />
-        <Route path ="/Add-Driver" component={AddDriver}/>
-        <Route path ="/View-Driver" component={DriverDetails}/>
-        <Route path="/Assign-Driver" component={AssignDriver}/>
-
+        <Route path="/Add-Driver" component={AddDriver} />
+        <Route path="/View-Driver" component={DriverDetails} />
+        <Route path="/Assign-Driver" component={AssignDriver} />
 
         <Route path="/report-insurance" exact>
           <InsuranceReport />
@@ -286,19 +294,35 @@ function App() {
           <HotelDetails />
         </Route>
 
+        <Route path="/edit-employee/:id" component={EmployeeUpdate} />
 
-        <Route path="/edit-employee/:id" component = {EmployeeUpdate} />
-
-
-
-
-        <Route path ="/View-Employee" component={EmployeeDetails}/>
-        <Route path ="/Add-Employee" component={AddEmployee}/>
-        <Route path = "/employee-management" exact>
+        <Route path="/View-Employee" component={EmployeeDetails} />
+        <Route path="/Add-Employee" component={AddEmployee} />
+        <Route path="/employee-management" exact>
           <EmployeeManagement />
         </Route>
 
 
+
+        <Route path="/login" exact>
+          <Login />
+        </Route>
+
+        <Route path="/view-cf" exact>
+          <CFRetrieve />
+        </Route>
+
+        <Route path="/cf-management" exact>
+          <CFManagement />
+        </Route>
+
+        <Route path = "/cf-report" exact>
+        <CFReport/>
+        </Route>
+
+        <Route path = "/view-messages" exact>
+          <ViewMessages/>
+        </Route>
 
         <Redirect to="/index" />
       </Switch>

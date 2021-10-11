@@ -130,7 +130,11 @@ function IndexNavbar() {
             )}
 
             <NavItem>
-              <NavLink data-placement="bottom" href="" title="Itineraries">
+              <NavLink
+                data-placement="bottom"
+                href="/view-itineraries"
+                title="Itineraries"
+              >
                 Itineraries
               </NavLink>
             </NavItem>
@@ -142,28 +146,6 @@ function IndexNavbar() {
                   title="My Tours"
                 >
                   My Tours
-                </NavLink>
-              </NavItem>
-            )}
-            {loggedIn && (
-              <NavItem>
-                <NavLink
-                  data-placement="bottom"
-                  href="/my-feedback"
-                  title="Feedback"
-                >
-                  Feedback
-                </NavLink>
-              </NavItem>
-            )}
-            {loggedIn && (
-              <NavItem>
-                <NavLink
-                  data-placement="bottom"
-                  href="/my-complaint"
-                  title="Complaint"
-                >
-                  complaint
                 </NavLink>
               </NavItem>
             )}
@@ -188,6 +170,18 @@ function IndexNavbar() {
                 Contact Us
               </NavLink>
             </NavItem>
+
+            <NavItem>
+              <NavLink
+                data-placement="bottom"
+                href="/about-us"
+                title="About Us"
+              >
+                About Us
+              </NavLink>
+            </NavItem>
+
+
             {loggedIn && (
               <NavItem>
                 <NavLink href="" onClick={logout}>

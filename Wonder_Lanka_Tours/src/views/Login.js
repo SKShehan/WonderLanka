@@ -38,10 +38,12 @@ function Login({ user, setuser }) {
       if (res.data === true) {
         axios.get(`http://localhost:8070/users/get/${username}`).then((res) => {
           if (password != res.data.password) {
-            setmessage("Incoreect password!");
+            setmessage("Incorrect password!");
             setAlertDanger(true);
           } else {
             ReactSession.set("user", res.data);
+            console.log(res.data);
+            console.log(ReactSession.get("user"));
             dashboard();
             setAlertDanger(false);
           }
@@ -130,9 +132,9 @@ function Login({ user, setuser }) {
                   />
                 </InputGroup>
               </FormGroup>
-              <a href="#" style={{ float: "right" }}>
+              {/*<a href="#" style={{ float: "right" }}>
                 <strong>Forgot password?</strong>
-              </a>
+  </a>*/}
               <br />
               <br />
               <Button className="btn btn-info" style={{ width: "100%" }}>

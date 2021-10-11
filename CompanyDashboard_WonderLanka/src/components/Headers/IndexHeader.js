@@ -22,9 +22,12 @@ import React from "react";
 // reactstrap components
 import { Container } from "reactstrap";
 
-// core components
 
 function IndexHeader() {
+
+
+
+
   return (
     <>
       <div
@@ -38,7 +41,7 @@ function IndexHeader() {
         <div className="content-center">
           <Container>
             <div className="title-brand">
-              <h1 className="presentation-title">WonderLanka Tours</h1>
+              <h1 className="presentation-title">Wonder Lanka Tours</h1>
               <div className="fog-low">
                 <img
                   alt="..."

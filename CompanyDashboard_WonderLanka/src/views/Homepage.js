@@ -4,10 +4,20 @@ import { useHistory } from "react-router";
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import DemoFooter from 'components/Footers/DemoFooter';
+import { useEffect } from "react";
+import ReactSession from "react-client-session/dist/ReactSession";
 
 function Homepage(){
 
   let history = useHistory();
+
+  useEffect(() =>{
+    ReactSession.setStoreType("localStorage");
+    if(ReactSession.get("employee") === null){
+     
+      history.push("/login")
+    }
+  })
   
     function handleClickItinerary(){
         history.push("/itinerary-management");
@@ -18,11 +28,11 @@ function Homepage(){
     }
 
     function handleClickBooking() {
-        history.push("/assign-guides");
+        history.push("/booking-management");
     }
 
     function handleClickComp() {
-        history.push("/report-guides");
+        history.push("/cf-management");
     }
 
     function handleClickVehicle() {
@@ -43,6 +53,9 @@ function Homepage(){
 
     function handleClickEmployee(){
       history.push("/employee-management");
+    }
+    function handleClickRUsers(){
+      history.push("/registered-user");
     }
 
 
@@ -94,12 +107,18 @@ function Homepage(){
                       <button className = {styles.btn_guidemng} onClick = {handleClickHotel}>Hotel and Restaraunt Management</button>
                   </td>
                 </tr>  
-              </table>
-
+             
+              <tr>
+                <td>
               <button className = {styles.btn_guidemng} onClick = {handleClickEmployee}>Employee Management</button>
+               </td>
+               <td>
+              <button className = {styles.btn_guidemng} onClick = {handleClickRUsers}>Registered Users</button>
+              </td>
+              </tr>
+              </table>
             </div>
         </div>
-      
         </>
     );
 }

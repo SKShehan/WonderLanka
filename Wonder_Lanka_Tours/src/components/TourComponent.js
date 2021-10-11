@@ -12,6 +12,12 @@ function TourComponent({ tour }) {
     });
   };
 
+  const clickFeedback = () => {
+    history.push({
+      pathname: "/my-feedback",
+    });
+  };
+
   document.documentElement.classList.remove("nav-open");
 
   useEffect(() => {
@@ -48,7 +54,10 @@ function TourComponent({ tour }) {
             <br></br>
             <tr>
               <td>
-                <button className="btn btn-success tour-btn">
+                <button
+                  className="btn btn-success tour-btn"
+                  onClick={clickFeedback}
+                >
                   Give Feedback
                 </button>
                 <button

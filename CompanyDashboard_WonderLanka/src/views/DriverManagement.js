@@ -3,11 +3,24 @@ import { useHistory } from "react-router-dom";
 import styles from "../assets/css/DriverHome.module.css";
 import IndexHeader from 'components/Headers/IndexHeader';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
+import { useEffect } from "react";
+import ReactSession from "react-client-session/dist/ReactSession";
 
 
 
 function DriverManagement() {
     let history=useHistory();
+
+
+    useEffect(() =>{
+      ReactSession.setStoreType("localStorage");
+      if(ReactSession.get("employee") === null){
+       
+        history.push("/login")
+      }
+    })
+  
+    
     function handleClick(){
         history.push("/Add-Driver")
     }
@@ -17,6 +30,9 @@ function DriverManagement() {
     function handleClick3(){
       history.push("/Assign-Driver")
   }
+  function handleClick4(){
+    history.push("/Report-Driver")
+}
   return (
         <>
       <IndexHeader />
@@ -26,7 +42,7 @@ function DriverManagement() {
       
        
         <center><h1 className={styles.header}>Driver Management </h1></center>
-       
+       <br/>  <br/>  <br/>  <br/>   <br/>
         <div style = {{paddingTop : "50px"}} className = {styles.btn_group2}>
                     <button
                     onClick={handleClick}
@@ -56,6 +72,7 @@ function DriverManagement() {
                     </button>
 
                     <button
+                    onClick={handleClick4}
                                         
                     className={styles.btn_drivermng}
                   
