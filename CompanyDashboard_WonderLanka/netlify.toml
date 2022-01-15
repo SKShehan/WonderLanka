@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/itinerary-management"
   status = 200
