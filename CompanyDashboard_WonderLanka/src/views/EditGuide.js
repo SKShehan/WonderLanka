@@ -32,7 +32,7 @@ function EditGuide(){
     const {id} = useParams();
 
     useEffect(()=>{
-        axios.get(`http://localhost:8070/guides/get/${id}`).then((res) =>{
+        axios.get(`http://localhost:8070/guides/getById/${id}`).then((res) =>{
 
         console.log(res.data);
         setGuideId(res.data.guideID);

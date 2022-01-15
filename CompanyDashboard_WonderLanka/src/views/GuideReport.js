@@ -183,7 +183,7 @@ const downloadPDF = () => {
                </div>
                 <hr></hr>
                 <div id ="report-cont" >
-                <Card className="report-card" id="report" style = {{padding : "20px"}}>
+                <Card  id="report" style = {{padding : "20px"}}>
                     <Row>
                       <Col>
                         {" "}
@@ -220,7 +220,7 @@ const downloadPDF = () => {
                     <br/><br/>
 
                     <div style = {{marginLeft:"20px"}}  className = "tableContainer">
-                <table className = "table table-striped">
+                <table className = "table">
                     <thead>
                         <th scope = "col">#</th>
                         <th scope = "col">Tour ID</th>

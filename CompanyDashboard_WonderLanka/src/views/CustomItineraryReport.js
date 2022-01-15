@@ -95,7 +95,7 @@ function ItineraryReport(){
                     </div>  
                     <hr></hr>        
                 <div id ="report-cont" >
-                <Card className="report-card" id="report" style = {{padding : "20px"}}>
+                <Card id="report" style = {{padding : "20px"}}>
                     <Row>
                       <Col>
                         {" "}
@@ -131,7 +131,7 @@ function ItineraryReport(){
                     <br/><br/>
                     
                     <div className = "tableContainer">
-                        <table className = "table table-striped">
+                        <table className = "table">
                             <thead>
                                 <th scope = "row">#</th>
                                 <th scope = "col">Booking ID</th>

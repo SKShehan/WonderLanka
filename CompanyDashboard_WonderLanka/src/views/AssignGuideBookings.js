@@ -60,33 +60,7 @@ function AssignGuide(){
     
     }, [bookings]);
 
-      // function  GuideAssigned(tid){
-      //     axios.get(`http://localhost:8070/assignedGuides/check/${tid}`).then((res)=>{
-     
-      //     if(res.data === true){
-      //       axios.get(`http://localhost:8070/assignedGuides/get/${tid}`).then((resp) =>{
-      //         setGuide(resp.data.guideId);
-              
-      //         console.log(guide);
-      //       })
 
-      //     }
-      //     else{
-      //       setGuide("Not Assigned");
-      //     }
-            
-            
-          
-      //     }).catch((err)=>{
-      //       console.log(err);
-      //     })
-          
-        
-
-    //     return guide;
-
-        
- //     }
     return(
         
         <div>
@@ -94,30 +68,6 @@ function AssignGuide(){
             <IndexHeader />
             <h3 style ={{marginLeft:"40px"}}>Assigned Guides</h3><br/><br/>
 
-            <Row>
-          <Col>
-            <FormGroup>
-              <InputGroup style = {{marginLeft : "40px"}} className="form-group-no-border">
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText>
-                    <i className="nc-icon nc-zoom-split" />
-                  </InputGroupText>
-                </InputGroupAddon>
-                <Input placeholder="Search " type="text" 
-/>
-              </InputGroup>
-            </FormGroup>
-          </Col>
-          <Col>
-            <div>
-              <Label style = {{marginLeft : "40px"}} check>
-                <Input type="checkbox"/>{" "} 
-                <label style ={{marginRight : "40px"}}>Tour ID</label>
-              </Label>
-            </div>
-          </Col>
-          <Col></Col>
-        </Row>
 
             <div style = {{marginLeft:"20px"}}  className = "tableContainer">
                 <table className = "table table-striped">

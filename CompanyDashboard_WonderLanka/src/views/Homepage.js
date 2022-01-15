@@ -59,6 +59,7 @@ function Homepage(){
     return(
 
       <>
+     
       <IndexNavbar />
      
         
@@ -109,7 +110,9 @@ function Homepage(){
               <button className = {styles.btn_guidemng} onClick = {handleClickEmployee}>Employee Management</button>
             </div>
         </div>
+        
         </>
+        
     );
 }
 

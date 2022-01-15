@@ -66,11 +66,11 @@ function CustomIt(){
             <form onSubmit = {sendEmail}>
 
                 <Label for = "CustomerName">Customer Name</Label><br/>
-                <Input type = "text" name = "name" placeholder = "Enter Customer Name" value = {name} disabled
+                <Input type = "text" name = "name" placeholder = "Enter Customer Name" value = {name} 
                 /> <br/>
 
                 <Label for = "cusEmail">Customer Email</Label><br/>
-                <Input type = 'email' name = "email" placeholder = "Enter Customer Email" value = {email} disabled
+                <Input type = 'email' name = "email" placeholder = "Enter Customer Email" value = {email} 
                 ></Input><br/>
 
 
