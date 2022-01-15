@@ -43,7 +43,11 @@ function CustomizedRequests(){
                     </thead>
 
                     <tbody>
-                        {bookings.map((booking) => (
+                        {bookings.filter((val) =>{
+                            if(val.customziedItinerary != null){
+                                return val;
+                            }
+                        }).map((booking) => (
                             <tr>
                                 <th scope = "row">{number++}</th>
                                 <td>{booking.tourId}</td>

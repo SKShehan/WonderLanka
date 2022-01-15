@@ -33,6 +33,16 @@ function AddItinerary(){
     const onChangeFile2 = e =>{
         setitineraryCoverImage(e.target.files[0]);
     }
+
+    const demo = () => {
+        setitineraryId("T-6878");
+        setitineraryDays("10");
+        setitineraryName("Leisure Plus");
+        setitineraryDesc("Have a good Leisure time");
+        setitineraryPriceChild("100000");
+        setitineraryPriceAdult("150000");
+      };
+    
     function sendData(e){
         e.preventDefault();
 
@@ -80,28 +90,28 @@ function AddItinerary(){
             <form  onSubmit = {sendData} encType = "multipart/form-data">
 
                 <Label for = "ItineraryID">Itinerary ID</Label><br/>
-                <Input type = 'text' name = "ItineraryID" placeholder = "Enter Itinerary ID" pattern ="[T]-[0-9]{4}" title = "Enter in the format T-2345" required 
+                <Input type = 'text' name = "ItineraryID" placeholder = "Enter Itinerary ID" pattern ="[T]-[0-9]{4}" title = "Enter in the format T-2345" value = {itineraryId} required 
                 onChange = {(e) =>{
                     setitineraryId(e.target.value);
                 }}
                 ></Input><br/>
 
                 <Label for = "ItineraryName">Itinerary Name</Label><br/>
-                <Input type = 'text' name = "ItineraryName" placeholder = "Enter Itinerary Name" required
+                <Input type = 'text' name = "ItineraryName" placeholder = "Enter Itinerary Name" value = {itineraryName} required
                 onChange = {(e) =>{
                     setitineraryName(e.target.value);
                 }}
                 ></Input><br/>
 
                 <Label for = "ItineraryDays">Itinerary Days</Label><br/>
-                <Input type = 'number' name = "ItineraryDays" placeholder = "Enter Duration of the Itinerary" required
+                <Input type = 'number' name = "ItineraryDays" placeholder = "Enter Duration of the Itinerary" value = {itineraryDays} required
                 onChange = {(e)=>{
                     setitineraryDays(e.target.value);
                 }}
                 ></Input><br/>
 
                 <Label for = "ItineraryDescription">Itinerary Description</Label><br/>
-                <Input type = "text" name = "ItineraryDescription" placeholder = "Enter Itinerary Description" required
+                <Input type = "text" name = "ItineraryDescription" placeholder = "Enter Itinerary Description" value = {itineraryDesc} required
                 onChange = {(e) =>{
                     setitineraryDesc(e.target.value);
                 }}
@@ -129,14 +139,14 @@ function AddItinerary(){
                 </Input>
 
                 <Label for = "ItineraryPriceA">Itinerary Price for Adults</Label><br/>
-                <Input type = "number" name = "ItineraryPriceA" placeholder = "Enter Itinerary Price for Adults"  required
+                <Input type = "number" name = "ItineraryPriceA" placeholder = "Enter Itinerary Price for Adults" value = {itineraryPriceAdult}  required
                 onChange = {(e) =>{
                     setitineraryPriceAdult(e.target.value);
                 }}
                 />
 
                 <Label for = "ItineraryPriceC">Itinerary Price for Children</Label><br/>
-                <Input type = "number" name = "ItineraryPriceC" placeholder = "Enter Itinerary Price for Children" required
+                <Input type = "number" name = "ItineraryPriceC" placeholder = "Enter Itinerary Price for Children" value = {itineraryPriceChild} required
                 onChange = {(e) =>{
                     setitineraryPriceChild(e.target.value);
                 }}
@@ -145,7 +155,9 @@ function AddItinerary(){
                 <Button color = "primary" type = "submit" style = {{float:'right' , margin : "5px" }}>Add Itinerary</Button>
             </form>    
             </div>
-        </div>   
+            <Button className = "btn btn-danger" onClick = {demo} > Demo </Button> 
+        </div>  
+        
       </>          
     );
 }

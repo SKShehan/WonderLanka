@@ -57,7 +57,8 @@ function Itineraries(){
                 {itineraries.map((itinerary) =>(
                         
                     <Card style = {{width: '20rem' , margin : '50px'}}>
-                    <CardImg  top src = {`http://localhost:8070/itineraries/getImage/${itinerary._id}`} alt = "TourImage" />
+                    {/* <CardImg  top src = {`http://localhost:8070/itineraries/getImage/${itinerary._id}`} alt = "TourImage" /> */}
+                    <CardImg  top src = {`http://localhost:8070/itineraries/getCovImage/${itinerary._id}`} alt = "TourImage" />
                     <CardBody>
                         <CardTitle style = {{fontWeight :"bold", fontSize : "18px"}}>{itinerary.itineraryName}</CardTitle><br />
                         <CardText style = {{ fontSize : "17px" , fontWeight : "bolder"}}>
@@ -70,8 +71,8 @@ function Itineraries(){
                         </CardText>
 
                         <Button color = "primary" onClick = {() =>{
-                              setCovImage(`http://localhost:8070/itineraries/getCovImage/${itinerary._id}`)
-                              
+                        //      setCovImage(`http://localhost:8070/itineraries/getCovImage/${itinerary._id}`)
+                             setCovImage(`http://localhost:8070/itineraries/getImage/${itinerary._id}`)
                               ViewItinerary();  
                               
                              

@@ -33,7 +33,7 @@ function Assign(){
         e.preventDefault();
 
         const newAssignment = {
-            tid,
+            tide,
             gid
         }
         

@@ -23,6 +23,10 @@ function GuideManagement(){
         history.push("/guide-report");
     }
 
+    function handleClickAssigned(){
+        history.push("/assigned-guides");
+    }
+
 
     return(
             <>
@@ -44,7 +48,8 @@ function GuideManagement(){
         
             
                 <button className = {styles.btn_guidemng} onClick = {handleClickReport}>Tour Guide Report</button>
-            
+
+                <button className = {styles.btn_guidemng} onClick = {handleClickAssigned}> Assigned Guides </button>
             </div>
         </div>
         </>

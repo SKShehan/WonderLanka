@@ -29,6 +29,16 @@ const [telNo , setTelno] = useState("");
 const [licenseID , setLicenseId] = useState("");
 const [foreignLang , setForeignLang] = useState("");
 
+const demo = () => {
+    setGuideId("G-123");
+    setFname("Lahiru");
+    setLname("Kumara");
+    setEmail("lahi@gmail.com");
+    setTelno("0777899321");
+    setLicenseId("ABC-543");
+    setForeignLang("French");
+  };
+
 
 function sendData(e){
     e.preventDefault();
@@ -72,43 +82,43 @@ axios.post("http://localhost:8070/guides/add" , newGuide ).then(()=>{
             <form onSubmit = {sendData}>
 
                 <Label for = "GuideID">Guide ID</Label><br/>
-                <Input type = 'text' name = "GuideID" placeholder = "Enter Guide ID" pattern = "G-[0-9]{3}" title = "Enter in the format G-234" required
+                <Input type = 'text' name = "GuideID" placeholder = "Enter Guide ID" pattern = "G-[0-9]{3}" title = "Enter in the format G-234" value = {guideID} required
                 onChange = {(e) => {
                         setGuideId(e.target.value);
                 }}></Input><br/>
 
                 <Label for = "FirstName">First Name</Label><br/>
-                <Input type = 'text' name = "FirstName" placeholder = "Enter First Name" required
+                <Input type = 'text' name = "FirstName" placeholder = "Enter First Name" value = {fName} required
                 onChange = {(e) =>{
                         setFname(e.target.value);
                 }}></Input><br/>
 
                 <Label for = "LastName">Last Name</Label><br/>
-                <Input type = 'text' name = "LastName" placeholder = "Enter Last Name" required
+                <Input type = 'text' name = "LastName" placeholder = "Enter Last Name" value = {lName} required
                 onChange = {(e)=>{
                         setLname(e.target.value);
                 }}></Input><br/>
 
                 <Label for = "Email">Email</Label><br/>
-                <Input type = "email" name = "Email" placeholder = "Enter Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title = "Enter a valid email" required
+                <Input type = "email" name = "Email" placeholder = "Enter Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title = "Enter a valid email" value = {email} required
                 onChange = {(e)=>{
                         setEmail(e.target.value);
                 }}></Input><br/>
 
                 <Label for = "TelNo">Telephone number</Label><br/>
-                <Input type = "text" name = "TelNo" placeholder = "Enter Telephone Number" pattern = "[0-9]{10}" title = "Enter a 10 digit phone number starting with 0"  required
+                <Input type = "text" name = "TelNo" placeholder = "Enter Telephone Number" pattern = "[0-9]{10}" title = "Enter a 10 digit phone number starting with 0" value = {telNo}  required
                 onChange = {(e)=>{
                         setTelno(e.target.value);
                 }}></Input><br/>
 
                 <Label for = "GuideLicense">Guide License ID</Label><br/>
-                <Input type = "text" name = "GuideLicense" placeholder = "Enter Guide License ID" pattern="[A-Za-z]{3}-[0-9]{3}" title = "Enter a valid Guide License ID, EX : GTR-123" required
+                <Input type = "text" name = "GuideLicense" placeholder = "Enter Guide License ID" pattern="[A-Za-z]{3}-[0-9]{3}" title = "Enter a valid Guide License ID, EX : GTR-123" value = {licenseID} required
                 onChange= {(e)=>{
                         setLicenseId(e.target.value);
                 }}/><br/>
 
                 <Label for = "ForeignLanguage">Main Foreign ForeignLanguage</Label><br/>
-                <Input type = "text" name = "ForeignLanguage" placeholder = "Enter Main Foreign Language" required
+                <Input type = "text" name = "ForeignLanguage" placeholder = "Enter Main Foreign Language" value = {foreignLang} required
                 onChange = {(e)=>{
                         setForeignLang(e.target.value);
                 }}/> <br/>
@@ -118,6 +128,7 @@ axios.post("http://localhost:8070/guides/add" , newGuide ).then(()=>{
 
             </form>    
             </div>
+            <Button className = "btn btn-danger" onClick = {demo} > Demo </Button> 
         </div>   
         <DemoFooter />
        </>     

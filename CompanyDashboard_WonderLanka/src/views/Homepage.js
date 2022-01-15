@@ -62,6 +62,7 @@ function Homepage(){
     return(
 
       <>
+     
       <IndexNavbar />
      
         
@@ -119,7 +120,9 @@ function Homepage(){
               </table>
             </div>
         </div>
+        
         </>
+        
     );
 }
 

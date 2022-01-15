@@ -9,6 +9,7 @@ import{
     Button
 }
 from 'reactstrap'
+import DemoFooter from 'components/Footers/DemoFooter';
 
 
 
@@ -73,7 +74,7 @@ function Login(){
             </form>    
             </div>
         </div>   
-
+            <DemoFooter />
         </>
     );
 
