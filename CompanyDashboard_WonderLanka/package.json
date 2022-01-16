@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "bootstrap": "4.6.0",
-    "gulp": "4.0.2",
+    "gulp": "^4.0.2",
     "gulp-append-prepend": "1.0.8",
     "http-proxy-middleware": "^2.0.1"
   },
