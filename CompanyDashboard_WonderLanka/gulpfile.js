@@ -1,2 +1,2 @@
-var gulp = require('gulp');
-gulp.task('default', function () { console.log('Hello Gulp!') });
+import { task } from 'gulp';
+task('default', function () { console.log('Hello Gulp!') });
