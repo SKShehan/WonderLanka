@@ -7,6 +7,7 @@ import DemoFooter from 'components/Footers/DemoFooter';
 import { useEffect } from "react";
 import ReactSession from "react-client-session/dist/ReactSession";
 
+
 function Homepage(){
 
   let history = useHistory();
