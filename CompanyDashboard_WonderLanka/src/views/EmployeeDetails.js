@@ -1,4 +1,4 @@
-import driverStyles from "../assets/css/DriverDetails.module.css";
+import driverStyles from "../assets/css/EmployeeDetails.module.css";
 import{Button} from 'reactstrap'
 import{ useHistory } from "react-router-dom"
 import { useState } from 'react';
@@ -59,15 +59,12 @@ function EmployeeDetails(){
         axios.delete(`https://wonderlanka-backend.herokuapp.com/employees/delete${employee._id}`).then((res) =>{
             console.log(res);
             
-            setMessage("Employee Deleted!");
-            toast.error('Employee Deleted!', {
+            
+            toast.success('Employee Deleted!', {
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
+               
                 });
             
         }).catch((err) =>{
@@ -84,7 +81,7 @@ function EmployeeDetails(){
         <div>
             <IndexNavbar />
             <IndexHeader />
-            
+            <Container>
             <center><h1>Employee Details</h1><br/><br/></center>
 
             <Row>
@@ -169,7 +166,7 @@ function EmployeeDetails(){
             
             <span style = {{textAlign:"left" , color : "red"}}>{message}</span> <br/><br/>
  
-           
+           </Container>
         </div>   
     );
 

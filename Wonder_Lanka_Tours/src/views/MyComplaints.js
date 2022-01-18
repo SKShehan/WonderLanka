@@ -4,9 +4,17 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+
 import validator from 'validator';
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 
 // core components
@@ -14,6 +22,8 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import { AllComplaints } from "./AllComplaints";
+
+
 
 // core components
 import {
@@ -38,6 +48,7 @@ function MyComplaints() {
 
   const {handleSubmit, register} = useForm();
   const [emailError, setEmailError] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const validateEmail = (e) => {
     var email = e.target.value;
@@ -50,6 +61,7 @@ function MyComplaints() {
   }
 
   //adding state
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
@@ -61,6 +73,7 @@ function MyComplaints() {
     e.preventDefault();
 
     const newComplaint = {
+
       name,
       email,
       contact,
@@ -85,48 +98,51 @@ function MyComplaints() {
     })
 
   }
+  
 
   return (
     <>
     <IndexNavbar />
       <IndexHeader />
       <div className="container">
-        <h3 style = {{marginLeft:"440px"}}>My Complaint</h3>
+        <h3 style = {{marginLeft:"440px"}}><b>My Complaint</b></h3>
       <form onSubmit={sendData}>
       <FormGroup>
         <Label for="Name">Name</Label>
-        <Input type="text" name="name" id="idName" placeholder="A.D. Amarasekara" onChange={(e)=>{
+        <Input type="text" name="name" id="idName" placeholder="John Cena" onChange={(e)=>{
           setName(e.target.value);
-        }}/>
+        }}required/>
       </FormGroup>
       <FormGroup>
         <Label for="Email">Email address</Label>
-        <Input type="text" name="email" id="idEmail" placeholder="name@gmail.com" onChange={(e)=>{
+        <Input type="text" name="email" id="idEmail" pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="john@gmail.com" onChange={(e)=>{
           validateEmail(e);
           setEmail(e.target.value);
-        }}></Input>
+        }}required></Input>
         <span style={{
           fontWeight: 'bold',
           color: 'red',
         }}>{emailError}</span>
       </FormGroup>
       <FormGroup>
-        <Label for="contact">Contact No</Label>
-        <Input type="number" name="contact" id="idContact" placeholder="94 76 564 9534" onChange={(e)=>{
-          setContact(e.target.value);
-        }}/>
+      <Label for="date">Contact Number</Label>
+      <br></br>
+        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number"
+        rules={{ required: true }} error={isError}  value={contact} 
+        onChange = {setContact}
+        required/>
       </FormGroup>
       <FormGroup>
       <Label for="date">Date</Label>
         <DatePicker selected={date} onChange={(date) => {
           setDate(date);
-        }} />
+        }}  required/>
       </FormGroup>
       <FormGroup>
         <Label for="typeSelect">Type of complaint</Label>
-        <Input type="text" name="select" id="typeSelect" onChange={(e)=>{
+        <Input type="text" name="select" id="typeSelect" placeholder="About tour" onChange={(e)=>{
           setSelect(e.target.value);
-        }}>
+        }}required>
           <option>There's no free WI-FI in my room?</option>
           <option>here's no free Hot water in my room?</option>
           <option>The attitudes and behaviours of your staff are unacceptable</option>
@@ -137,13 +153,11 @@ function MyComplaints() {
       </FormGroup>
       <FormGroup>
         <Label for="exampleText">Custom complaints</Label>
-        <Input type="text" name="complaint" id="idText" onChange={(e)=>{
+        <Input type="text" name="complaint" id="idText" placeholder="Vehicle Issues" onChange={(e)=>{
           setComplaint(e.target.value);
-        }}/>
+        }}required/>
       </FormGroup>
-      <Button color="primary" type="submit" onChange={(e)=>{
-          setDate(date);
-        }}>
+      <Button color="primary" type="submit">
         Submit
       </Button>
       </form>

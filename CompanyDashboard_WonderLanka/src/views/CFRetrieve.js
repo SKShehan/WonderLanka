@@ -54,7 +54,7 @@ function CF () {
             <IndexHeader/>
             <div style = {{paddingTop : "50px"}} className = "container">
 
-              <h3 style = {{marginLeft:"430px"}}>Complaint List</h3>
+              <h3 style = {{marginLeft:"430px"}}><b>Complaint List</b></h3>
               <Input placeholder="Search " type="text"  value={searchVal}
                 onChange = {(e) =>{
                   setSearchVal(e.target.value);
@@ -110,7 +110,7 @@ function CF () {
                   ))}
                 <h6 style = {{textAlign:"left"}}>To Generate Complaint Report go to complaints report</h6>
 
-               <h3 style = {{textAlign:"center"}}>Feedback List</h3>
+               <h3 style = {{textAlign:"center"}}><b>Feedback List</b></h3>
 
                 {feedbacks
                 .filter((feedback) => {

@@ -76,6 +76,8 @@ import CFManagement from "views/CFManagement";
 import CFReport from "views/CFReport";
 import ViewMessages from "views/VIewMessages";
 
+import RegisteredUsers from "views/RegisteredUsers";
+
 function App() {
 
   useEffect(() => {
@@ -164,7 +166,7 @@ function App() {
         <Route path="/edit-driver/:id" exact component={DriverUpdate} />
         <Route path="/Add-Driver" exact component={AddDriver} />
         <Route path="/View-Driver" exact component={DriverDetails} />
-
+       
         <Route path="/assign-driver/:username" exact>
           <AssignD />
         </Route>
@@ -206,6 +208,10 @@ function App() {
         <Route path="/vehicle-management" component={VehicleDashboard} />
 
         <Route path="/assign-vehicle/:username" component={AssignVc} />
+
+        {/*registered user path*/}
+
+        <Route path="/registered-user" component={RegisteredUsers} />
 
         <Route path="/itinerary-management" exact>
           <ItineraryManagement />
@@ -295,6 +301,8 @@ function App() {
         <Route path="/employee-management" exact>
           <EmployeeManagement />
         </Route>
+
+        
 
         <Route path="/login" exact>
           <Login />

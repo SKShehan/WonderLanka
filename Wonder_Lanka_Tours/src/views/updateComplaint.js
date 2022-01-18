@@ -9,6 +9,8 @@ import { useHistory } from "react-router";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
@@ -45,6 +47,8 @@ function UpdateComplaint({Complaint}) {
   const [select, setSelect] = useState("");
   const [complaint, setComplaint] = useState("");
   const [date, setDate] = useState(new Date());
+
+  const [isError, setIsError] = useState(false);
 
   const {id} = useParams();
 
@@ -130,11 +134,12 @@ function UpdateComplaint({Complaint}) {
       
     </FormGroup>
     <FormGroup>
-      <Label for="contact">Contact No</Label>
-      <Input type="number" name="contact" id="idContact" placeholder="" onChange={(e)=>{
-        setContact(e.target.value);
-      }}/>
-    </FormGroup>
+      <Label for="date">Contact Number</Label>
+      <br></br>
+        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number" value={contact} onChange=
+          {setContact}
+        />
+      </FormGroup>
     <FormGroup>
       <Label for="date">Date</Label>
         <DatePicker selected={date} onChange={(date) => {
@@ -143,7 +148,7 @@ function UpdateComplaint({Complaint}) {
       </FormGroup>
     <FormGroup>
       <Label for="typeSelect">Type of complaint</Label>
-      <Input type="text" name="select" id="typeSelect" onChange={(e)=>{
+      <Input type="text" name="select" id="typeSelect" placeholder="About tour" onChange={(e)=>{
         setSelect(e.target.value);
       }}>
         <option>There's no free WI-FI in my room?</option>
@@ -156,7 +161,7 @@ function UpdateComplaint({Complaint}) {
     </FormGroup>
     <FormGroup>
       <Label for="exampleText">Any other custom complaint</Label>
-      <Input type="text" name="complaint" id="idText" onChange={(e)=>{
+      <Input type="text" name="complaint" id="idText" placeholder="Vehicle Issues" onChange={(e)=>{
         setComplaint(e.target.value);
       }}/>
     </FormGroup>

@@ -162,9 +162,9 @@
 
 .profile-card-blue {
   height: 100%;
-  background-color: blue;
+  background-color: #a2d2ff;
   border-radius: 4px;
-  color: aliceblue;
+  color: white;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -225,8 +225,8 @@
 }
 
 .dashboard-card:hover {
-  color: blue;
-  border: 2px solid blue;
+  color: #a2d2ff;
+  border: 2px solid #a2d2ff;
   box-shadow: rgba(96, 128, 216, 0.932) 0px 1px 3px 0px,
     rgba(96, 128, 216, 0.932) 0px 1px 2px 0px;
 }
@@ -288,4 +288,16 @@
 
 #report-cont {
   padding: 20px 20px 20px 20px;
+}
+
+.dashboard-icon {
+  height: 50px;
+  width: 50px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.mytours-empty-icon {
+  height: 50px;
+  width: 50px;
 }

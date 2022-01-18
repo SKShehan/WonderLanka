@@ -4,6 +4,10 @@ import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import { useHistory } from "react-router";
 import axios from "axios";
+
+
+
+
 import {
   UncontrolledDropdown,
   DropdownToggle,
@@ -19,6 +23,8 @@ function DriverReport(){
   const [drivers, setDrivers] = useState({});
   const [selectedDate , filteredDate] = useState("01"); 
   const [date, setdate] = useState();
+  const [selectedYear , filteredYear] = useState("2021");
+
 
   let history = useHistory();
   var number = 1;
@@ -74,74 +80,13 @@ const downloadPDF = () => {
     return (
     
         <>
+       
         <Container>
                 <h2 align="center">Assigned Driver Report</h2>
-                {/* <UncontrolledDropdown className="btn-group">
-                <DropdownToggle
-                      aria-expanded={false}
-                      aria-haspopup={true}
-                      caret
-                      color="primary"
-                      data-toggle="dropdown"
-                      type="button"
-     
-                    >
-                     {selectedDate}
-                </DropdownToggle>
-        <DropdownMenu >
-              <DropdownItem >
-                01
-              </DropdownItem>
-
-              <DropdownItem>
-                02
-              </DropdownItem>
-
-              <DropdownItem>
-                03
-              </DropdownItem>
-
-              <DropdownItem >  
-                04
-              </DropdownItem>
-
-              <DropdownItem>
-                05
-              </DropdownItem>
-
-              <DropdownItem>
-                06
-              </DropdownItem>
-
-              <DropdownItem>
-                07
-              </DropdownItem>
-
-              <DropdownItem>
-                08
-              </DropdownItem>
-
-              <DropdownItem>
-                09
-              </DropdownItem>
-
-              <DropdownItem>
-                10
-              </DropdownItem>
-
-              <DropdownItem>
-                11
-              </DropdownItem>
-
-              <DropdownItem>
-                12
-              </DropdownItem>
-          
-
-        </DropdownMenu>  
-        </UncontrolledDropdown> */}
+             
             <br/><br/>
             <div style = {{marginLeft : "40px" , marginRight : "40px" }}>
+            <div style = {{display : "flex" , flexDirection : "row" }}>
               <div style = {{width : "30%" }}>
               <h5>Select Month</h5>  
               <Input type = "select" name = "FilteringDate"
@@ -163,6 +108,25 @@ const downloadPDF = () => {
                     <option>12</option>
                 </Input>
                 </div>
+
+                <div style = {{width : "30%" , marginLeft : "20px" }}>
+                <h5>Select Year</h5>  
+                <Input type = "select" name = "FilteringYear"
+                  onChange = {(e)=>{
+                    filteredYear(e.target.value);
+                  }}>
+                    <option>2021</option>
+                    <option>2022</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+
+                </Input>
+                </div>
+               </div>
+
                 <hr></hr>
                 <div id ="report-cont" >
                 <Card className="report-card" id="report" style = {{padding : "20px"}}>
@@ -217,12 +181,18 @@ const downloadPDF = () => {
                     <tbody>
                         
                         {bookings.filter((val) =>{
-                            if(date === ''){
-                              return val;
-                            }
-                            else if(val.bookingDate.substring(5, 7).includes(selectedDate)){
-                              return val;
-                            }
+                           if(selectedYear === '' && selectedDate === ''){
+                            return val;
+                          }
+                          else if(val.bookingDate.substring(5, 7).includes(selectedDate) && val.bookingDate.substring(0,4).includes(selectedYear)){
+                            return val;
+                          }
+                          else if(val.bookingDate.substring(5,7).includes(selectedDate) && selectedYear === ''){
+                            return val;
+                          }
+                          else if (val.bookingDate.substring(0,4).includes(selectedYear) && selectedDate === ''){
+                            return val;
+                          }
             
 
                         }).map((booking) =>(
@@ -249,19 +219,20 @@ const downloadPDF = () => {
           <div className="report-download">
               <Row>
                 <Col>
-                <center>
+               
                   <button
                     className="btn btn-info"
                     onClick={downloadPDF}
                   >
                     Download PDF
                   </button>
-                  </center>
+                  
                 </Col>
               </Row>
             </div>
           </div>
           </Container>
+       
              
         </>
     );

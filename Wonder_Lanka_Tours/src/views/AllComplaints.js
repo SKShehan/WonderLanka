@@ -30,23 +30,18 @@ function AllComplaints () {
 
     let history = useHistory();
 
-    
-    const complaintDelete = (complaint) => {
-      
+  
+    const complaintDelete = (del) => {
+
       if (
         window.confirm(
-          "Complaint " +
-            complaint.tourID +
-            " (" +
-            complaint.name +
-            " " +
-            complaint.email +
-            ") " +
-            "will be removed from the database"
+          "Confirm to remove?"
         )
       )
 
+
       axios.delete(`https://wonderlanka-backend.herokuapp.com/ComplaintRoute/deleteComplaint/${complaint.tourID}`)
+
       .then((res) =>{
           console.log(res);
           toast.success("Complaint Deleted!", {
@@ -74,7 +69,7 @@ function AllComplaints () {
 
       return (
         <div className = "container">
-          <h3 style = {{marginLeft:"430px"}}>Complaint History</h3>
+          <h3 style = {{marginLeft:"430px"}}><b>Complaint History</b></h3>
           <Input placeholder="Search " type="text" 
             onChange = {(e) =>{
               setSearchVal(e.target.value);
@@ -132,8 +127,9 @@ function AllComplaints () {
     
                           <Button color="danger" style = {{padding: "5px 5px 5px 5px", width : "70px", marginBottom : "8px"}}
                           onClick = {() =>
-                                complaintDelete(complaint._id)
-                          }
+
+                                complaintDelete(complaint)
+                          } 
                         
                           >Remove</Button>
                         </td>

@@ -103,7 +103,7 @@ export default function AddDriver() {
                   <label for ="licenseid"><h5>License ID</h5></label>
                   
                     
-                    <Input placeholder="Enter License ID" type="text" pattern="[L]{1}-[0-9]{3}" title = "Enter a valid Driver License ID, EX : GTR-123" required
+                    <Input placeholder="Enter License ID" type="text" pattern="[L]{1}-[0-9]{3}" title = "Enter a valid Driver License ID, EX : L-001" required
                      onChange={(e)=>{
                     setLicenseid(e.target.value);
                      }}/>
