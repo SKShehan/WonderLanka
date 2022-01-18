@@ -65,7 +65,7 @@ function AssignVehicle(){
         <div>
             <IndexNavbar />
             <IndexHeader />
-            <h3 style ={{marginLeft:"40px"}}>Assigned Vehicles</h3><br/><br/>
+            <center><h1 style ={{marginLeft:"40px"}}><b>Assigned Vehicles</b></h1><br/><br/></center>
 
             <Row>
           <Col>

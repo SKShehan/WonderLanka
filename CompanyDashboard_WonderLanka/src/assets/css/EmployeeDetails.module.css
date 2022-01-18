@@ -43,7 +43,7 @@
     color: rgb(8, 8, 8);
     font-weight: bold;
     
-    width: 100px;
+    width: 80px;
   }
   td.tbldata2 {
     color: rgb(8, 8, 8);
@@ -126,8 +126,4 @@
     background-size: 100% 100%;
     
 }
-.header{
-  font-size: 60px;
-  color: rgb(117, 107, 107);
-  font-weight: 500;
-}
+  

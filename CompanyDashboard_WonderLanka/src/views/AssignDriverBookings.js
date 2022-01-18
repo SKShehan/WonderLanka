@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import driverStyles from "../assets/css/DriverDetails.module.css";
+import driverStyles from "../assets/css/DriverAssign.module.css";
 import IndexHeader from "components/Headers/IndexHeader";
 import IndexNavbar from "components/Navbars/IndexNavbar";
 import DemoFooter from "components/Footers/DemoFooter";
@@ -33,7 +33,7 @@ function AssignDriver(){
         axios.get("https://wonderlanka-backend.herokuapp.com/bookings/").then((res) =>{
             setBookings(res.data);
         })
-    })
+    },[])
     let history = useHistory();
     var number = 1;
 
@@ -59,22 +59,7 @@ function AssignDriver(){
     
     }, [bookings]);
 
-   {/* function DriverAssigned(tid){
-        axios.get(`http://localhost:8070/assignedDrivers/get/${tid}`).then((res)=>{
-          console.log(res.data.driverId);
-          setDriver(res.data.driverId);
-          if (typeof driver == 'undefined'){
-            return "Not Assigned";
-          }
-          
-        }).catch((err)=>{
-          console.log(err);
-        })
-        
-        return driver;
-
-        
-    }*/}
+  
     return(
         
         <div>
@@ -114,13 +99,13 @@ function AssignDriver(){
             <div style = {{marginLeft:"30px"}}  className = "tableContainer">
                 <table className="table" >
                     <thead>
-                        <th class="table-danger" scope = "col">#</th>
-                        <th class="table-danger" scope = "col">Tour ID</th>
-                        <th class="table-danger" scope = "col">Booking Date</th>
-                        <th class="table-danger" scope = "col">Arrival Date</th>
-                        <th class="table-danger" scope = "col">Country </th>
-                        <th class="table-danger" scope = "col">Driver Assigned </th>
-                        <th class="table-danger" scope = "col">Operation</th>
+                       
+                        <th className={driverStyles.tbldata} scope = "col">Tour ID</th>
+                        <th className={driverStyles.tbldata} scope = "col">Booking Date</th>
+                        <th className={driverStyles.tbldata} scope = "col">Arrival Date</th>
+                        <th className={driverStyles.tbldata} scope = "col">Country </th>
+                        <th className={driverStyles.tbldata} scope = "col">Driver Assigned </th>
+                        <th className={driverStyles.tbldata} scope = "col">Operation</th>
 
                     </thead>
 
@@ -129,13 +114,13 @@ function AssignDriver(){
                         {bookings.map((booking) =>(
                             
                             <tr>
-                                <th  class="table-primary" scope = "row">{number++}</th>
-                                <td  class="table-primary">{booking.tourId}</td>
-                                <td  class="table-primary">{booking.bookingDate}</td>
-                                <td  class="table-primary">{booking.arrivalDate}</td>
-                                <td  class="table-primary">{booking.country}</td>
-                               <td  class="table-primary"> {drivers[booking.tourId]}</td>
-                                <td  class="table-primary"><button  className={driverStyles.btnAssign} style = {{padding: "5px 5px 5px 5px" , width : "90px" , marginBottom : "8px"}}
+                               
+                                <td  className={driverStyles.tbldata}>{booking.tourId}</td>
+                                <td  className={driverStyles.tbldata}>{booking.bookingDate}</td>
+                                <td  className={driverStyles.tbldata}>{booking.arrivalDate}</td>
+                                <td  className={driverStyles.tbldata}>{booking.country}</td>
+                               <td  className={driverStyles.tbldata}> {drivers[booking.tourId]}</td>
+                                <td  className={driverStyles.tbldata}><button  className={driverStyles.btnAssign} style = {{padding: "5px 5px 5px 5px" , width : "90px" , marginBottom : "8px"}}
                                 onClick = {()=>{
                                     history.push(`/assign-driver/${booking.username}`);
                                 }}

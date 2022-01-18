@@ -67,25 +67,25 @@ function MyFeedbacks() {
 
         <FormGroup>
           <h2 style={{textAlign:"center"}}>We value your feedback</h2><br></br>
-          <p style={{textAlign:"center"}}>Please complete the following form and help us improve our customer experience</p>
+          <p style={{textAlign:"center"}}><b>Please complete the following form and help us improve our customer experience</b></p>
         </FormGroup>
         <FormGroup>
         <Label for="name">Name</Label>
           <Input type="text" name="name" id="name" placeholder="A.D Kure" onChange={(e)=>{
             setName(e.target.value);
-          }}/>  
+          }}required/>  
         </FormGroup>
         <FormGroup>
         <Label for="feedback">How much satisfied?</Label>
         <Input type="text" name="satisfactory" id="stat" placeholder="Very Satisfied/ Satisfied/ Neutral/ Unsatisfied" onChange={(e)=>{
             setStat(e.target.value);
-          }}/> 
+          }}required/> 
         </FormGroup>
         <FormGroup>
         <Label for="feedback">Give us your feedback here</Label>
           <Input type="text" name="feedback" id="feedbackContent" placeholder="type here" onChange={(e)=>{
             setFeedback(e.target.value);
-          }}/>  
+          }}required/>  
         </FormGroup>
         <Button color="primary" type="submit">
           Submit

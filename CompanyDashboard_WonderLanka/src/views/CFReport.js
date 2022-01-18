@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import { useHistory } from "react-router";
 import axios from "axios";
+import styles from "../assets/css/Viewbooking.module.css";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
@@ -141,7 +142,7 @@ import {
                     <br/><br/>
 
                     <div style = {{marginLeft:"20px"}}  className = "tableContainer">
-                <table className = "table table-striped">
+                <table width="920px" border="5px" className={styles.tbldata}>
                     <thead>
                         <th scope = "col">No</th>
                         <th scope = "col">Name</th>

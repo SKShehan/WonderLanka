@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import validator from 'validator';
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
@@ -33,6 +35,7 @@ function ContactUS () {
 
 
   const [emailError, setEmailError] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const validateEmail = (e) => {
     var email = e.target.value;
@@ -82,40 +85,42 @@ function ContactUS () {
     <IndexNavbar />
       <IndexHeader />
       <div className="container">
-        <h3 style = {{marginLeft:"440px"}}>Contact Us</h3>
+        <h3 style = {{marginLeft:"440px"}}><b>Contact Us</b></h3>
       <form onSubmit={sendData}>
       <FormGroup>
         <Label for="Name">First Name</Label>
-        <Input type="text" name="fname" id="idfName" placeholder="Amaya" onChange={(e)=>{
+        <Input type="text" name="fname" id="idfName" placeholder="John" onChange={(e)=>{
           setfName(e.target.value);
-        }}/>
+        }}required/>
         <Label for="Name">Last Name</Label>
-        <Input type="text" name="lname" id="idlName" placeholder="Amarasekara" onChange={(e)=>{
+        <Input type="text" name="lname" id="idlName" placeholder="Cena" onChange={(e)=>{
           setlName(e.target.value);
-        }}/>
+        }}required/>
       </FormGroup>
       <FormGroup>
         <Label for="Email">Email address</Label>
-        <Input type="text" name="email" id="idEmail" placeholder="name@gmail.com" onChange={(e)=>{
+        <Input type="text" name="email" id="idEmail" pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="john@gmail.com" onChange={(e)=>{
           validateEmail(e);
           setEmail(e.target.value);
-        }}></Input>
+        }}required></Input>
         <span style={{
           fontWeight: 'bold',
           color: 'red',
         }}>{emailError}</span>
       </FormGroup>
       <FormGroup>
-        <Label for="contact">Contact No</Label>
-        <Input type="number" name="contact" id="idContact" placeholder="94 76 564 9534" onChange={(e)=>{
-          setContact(e.target.value);
-        }}/>
+      <Label for="date">Contact Number</Label>
+      <br></br>
+        <PhoneInput type="tel" name="contact" id="idContact" placeholder="Enter phone number"
+        rules={{ required: true }} error={isError}  value={contact} 
+        onChange = {setContact}
+        required/>
       </FormGroup>
       <FormGroup>
         <Label for="message">Message</Label>
         <Input type="text" name="complaint" id="idText" onChange={(e)=>{
           setMessage(e.target.value);
-        }}/>
+        }}required/>
       </FormGroup>
       <Button color="primary" type="submit">
         Send
