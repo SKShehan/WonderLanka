@@ -32,7 +32,7 @@ function DeleteInsurence() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8070/insurences/")
+      .get("https://wonderlanka-backend.herokuapp.com/insurences/")
       .then((res) => {
         setinsurencePlans(res.data);
         console.log(res.data);
@@ -51,7 +51,7 @@ function DeleteInsurence() {
       )
     )
       axios
-        .delete(`http://localhost:8070/insurences/delete-package/${insurence._id}`)
+        .delete(`https://wonderlanka-backend.herokuapp.com/insurences/delete-package/${insurence._id}`)
         .then((res) => {
           console.log(res);
 

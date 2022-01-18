@@ -34,7 +34,7 @@ function EditInsurenceForm(){
     const {id} = useParams();
 
     useEffect(()=>{
-        axios.get(`http://localhost:8070/insurences/get_onepackage/${id}}`).then((res) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/insurences/get_onepackage/${id}}`).then((res) =>{
 
         console.log(res.data);
         setInsurenceId(res.data.InsurenceID);
@@ -63,7 +63,7 @@ function EditInsurenceForm(){
             InsurenceDetails,
             
         }
-        axios.put(`http://localhost:8070/insurences/update/${id}` , updateInsurans ).then(() =>{
+        axios.put(`https://wonderlanka-backend.herokuapp.com/insurences/update/${id}` , updateInsurans ).then(() =>{
             
             toast.success('Plan Edited!', {
                 position: "bottom-right",

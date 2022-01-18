@@ -277,7 +277,7 @@ function BookTour({ user }) {
   const [classList, setclassList] = useState(["Standard", "Deluxe"]);
 
   const getItineraries = () => {
-    axios.get("http://localhost:8070/itineraries").then((res) => {
+    axios.get("https://wonderlanka-backend.herokuapp.com/itineraries").then((res) => {
       console.log(res.data);
       setitineraryList([...res.data, ...itineraryList]);
     });
@@ -344,7 +344,7 @@ function BookTour({ user }) {
     console.log(bookingDetails);
 
     axios
-      .post("http://localhost:8070/bookings/add", { bookingDetails })
+      .post("https://wonderlanka-backend.herokuapp.com/bookings/add", { bookingDetails })
       .then((res) => {
         console.log(res);
         toast.success(res.data, {

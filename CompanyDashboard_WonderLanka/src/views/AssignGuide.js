@@ -37,7 +37,7 @@ function Assign(){
             gid
         }
         
-        axios.post("http://localhost:8070/assignedGuides/add" , newAssignment).then(()=>{
+        axios.post("https://wonderlanka-backend.herokuapp.com/assignedGuides/add" , newAssignment).then(()=>{
             window.location.reload();
         }).catch((err) =>{
             console.log(err);
@@ -45,7 +45,7 @@ function Assign(){
     }
     
     function getName(){
-        axios.get(`http://localhost:8070/guides/getbyName/${selectedGuide}`).then((req) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/guides/getbyName/${selectedGuide}`).then((req) =>{
             
             console.log(req.data.guideID);
             setgID(req.data.guideID);
@@ -53,7 +53,7 @@ function Assign(){
     }
     
     useEffect(()=>{
-        axios.get("http://localhost:8070/guides/").then((req)=>{
+        axios.get("https://wonderlanka-backend.herokuapp.com/guides/").then((req)=>{
             setGuides(req.data)
             console.log(req.data)
         }).catch((err)=>{

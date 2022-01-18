@@ -19,7 +19,7 @@ function CustomizedRequests(){
     const [bookings , setBookings] = useState ([]);
     
     useEffect(()=>{
-        axios.get("http://localhost:8070/bookings/").then((res) =>{
+        axios.get("https://wonderlanka-backend.herokuapp.com/bookings/").then((res) =>{
             setBookings(res.data);
         })
     })

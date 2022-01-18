@@ -33,7 +33,7 @@ componentDidMount(){
 }
 
   retriveHotels(){
-    axios.get("http://localhost:8070/posts").then(res =>{
+    axios.get("https://wonderlanka-backend.herokuapp.com/posts").then(res =>{
       if(res.data.success){
         this.setState({
           hotels:res.data.existingHotels
@@ -46,7 +46,7 @@ componentDidMount(){
 
 
 onDelete = (id) =>{
-    axios.delete(`http://localhost:8070/post/delete/${id}`).then((res) =>{
+    axios.delete(`https://wonderlanka-backend.herokuapp.com/post/delete/${id}`).then((res) =>{
         alert("Hotel Deleted Successfully");
         this.retriveHotels();
     })

@@ -38,7 +38,7 @@ function ViewItineraries(){
     
 
     useEffect(() => {
-        axios.get("http://localhost:8070/itineraries/").then((res) =>{
+        axios.get("https://wonderlanka-backend.herokuapp.com/itineraries/").then((res) =>{
             setItineraries(res.data);
             console.log(res.data);
         }).catch((err) =>{
@@ -55,7 +55,7 @@ function ViewItineraries(){
               "Itinerary " + itinerary.itineraryId + " will be removed from the database"
             )
         )
-        axios.delete(`http://localhost:8070/itineraries/delete/${itinerary._id}`).then((res) =>{
+        axios.delete(`https://wonderlanka-backend.herokuapp.com/itineraries/delete/${itinerary._id}`).then((res) =>{
             console.log(res);
             
             setMessage("Itinerary Deleted!");

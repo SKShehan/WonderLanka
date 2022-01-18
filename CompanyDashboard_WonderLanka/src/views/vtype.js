@@ -47,7 +47,7 @@ export default class vtype extends Component {
         }
         console.log(type);
 
-        axios.post('http://localhost:8070/types/add', type)
+        axios.post('https://wonderlanka-backend.herokuapp.com/types/add', type)
         .then(res => console.log(res.data));
         
         toast.success('Vehicle Added!', {

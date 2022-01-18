@@ -17,7 +17,7 @@ function AllComplaints () {
   
     useEffect(() => {
       function getComplaints() {
-        axios.get("http://localhost:8070/complaint/").then((res) => {
+        axios.get("https://wonderlanka-backend.herokuapp.com/complaint/").then((res) => {
           setComplaints(res.data);
           console.log(res);
         }).catch((err) => {
@@ -39,9 +39,9 @@ function AllComplaints () {
         )
       )
 
-      axios.delete(`http://localhost:8070/complaint/deleteComplaint/${
-       del._id}`
-      )
+
+      axios.delete(`https://wonderlanka-backend.herokuapp.com/ComplaintRoute/deleteComplaint/${complaint.tourID}`)
+
       .then((res) =>{
           console.log(res);
           toast.success("Complaint Deleted!", {

@@ -244,7 +244,7 @@ export default function SignUp(){
     e.preventDefault();
     //Checking whether username already exists
 
-    axios.get(`http://localhost:8070/users/check/${username}`).then((res) =>{
+    axios.get(`https://wonderlanka-backend.herokuapp.com/users/check/${username}`).then((res) =>{
       if (res.data === true){
         setError("Please use a different username!");
         toast.error("Username already exists!", {
@@ -269,7 +269,7 @@ export default function SignUp(){
           password
           
           }
-          axios.post("http://localhost:8070/users/add", user).then(()=>{
+          axios.post("https://wonderlanka-backend.herokuapp.com/users/add", user).then(()=>{
                   alert("SignUp Details Added");
                   window.location.reload();
             

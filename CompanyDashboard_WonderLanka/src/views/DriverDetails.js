@@ -26,35 +26,57 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 
-function DriverDetails() {
-  const [drivers, setdrivers] = useState([]);
-  const [checkFirstname, setcheckFirstname] = useState(true);
-  const [checkLicenseid, setcheckLicenseid] = useState(false);
-  const [checkDriverid, setcheckDriverid] = useState(false);
-  const [searchText, setsearchText] = useState("");
+function DriverDetails(){
+    
+    let history = useHistory();
 
-  const deleteDriver = (driver) => {
-    if (
-      window.confirm(
-        "Driver " +
-          driver.driverid +
-          " (" +
-          driver.firstname +
-          " " +
-          driver.lastname +
-          ") " +
-          "will be removed from the database"
-      )
-    ) {
-      axios
-        .delete(`http://localhost:8070/drivers/delete/${driver.driverid}`)
-        .then((res) => {
-          console.log(res);
-          toast.success("Driver deleted!", {
-            position: toast.POSITION.BOTTOM_RIGHT,
-            autoClose: 5000,
-            hideProgressBar: false,
-          });
+    const [drivers , setDrivers] = useState([]);
+    const [message , setMessage] = useState("");
+    const [searchVal , setSearchVal] = useState("");
+
+  
+
+
+
+
+    
+
+    useEffect(() => {
+        axios.get("https://wonderlanka-backend.herokuapp.com/drivers/details").then((res) =>{
+            setDrivers(res.data);
+            console.log(res.data);
+        }).catch((err) =>{
+            console.log(err);
+        })
+    
+      }, []);
+
+    
+
+    function onDelete(driver)  {
+        if (
+            window.confirm(
+              "Driver " + driver.driverid + " will be removed from the database"
+            )
+        )
+        axios.delete(`https://wonderlanka-backend.herokuapp.com/drivers/delete${driver._id}`).then((res) =>{
+            console.log(res);
+            
+            setMessage("Driver Deleted!");
+            toast.error('Driver Deleted!', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+            
+        }).catch((err) =>{
+            console.log(err);
+            alert("Error!");
+
         })
         .catch((err) => {
           console.log(err);
@@ -69,21 +91,7 @@ function DriverDetails() {
     }
   };
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:8070/drivers/details")
-      .then((res) => {
-        setdrivers(res.data);
-      })
-      .catch((err) => {
-        alert("Something went wrong :(");
-        console.log(err);
-      });
 
-    return () => {
-      // cleanup
-    };
-  }, []);
 
   let history = useHistory();
 
@@ -222,7 +230,7 @@ function DriverDetails() {
                   <button
                     className={driverStyles.btnDelete}
                     onClick={() => {
-                      deleteDriver(driver);
+                      onDelete(driver);
                     }}
                   >
                     Delete

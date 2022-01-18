@@ -29,7 +29,7 @@ import {
       let today = new Date().toISOString().slice(0, 10);
     setdate(today);
       function getComplaints() {
-        axios.get("http://localhost:8070/complaint/").then((res) => {
+        axios.get("https://wonderlanka-backend.herokuapp.com/complaint/").then((res) => {
           setComplaints(res.data);
           console.log(res);
         }).catch((err) => {

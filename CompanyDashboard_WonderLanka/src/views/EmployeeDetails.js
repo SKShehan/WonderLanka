@@ -39,7 +39,7 @@ function EmployeeDetails(){
     
 
     useEffect(() => {
-        axios.get("http://localhost:8070/employees/details").then((res) =>{
+        axios.get("https://wonderlanka-backend.herokuapp.com/employees/details").then((res) =>{
             setEmployees(res.data);
             console.log(res.data);
         }).catch((err) =>{
@@ -56,7 +56,7 @@ function EmployeeDetails(){
               "Employee " + employee.employeeid + " will be removed from the database"
             )
         )
-        axios.delete(`http://localhost:8070/employees/delete${employee._id}`).then((res) =>{
+        axios.delete(`https://wonderlanka-backend.herokuapp.com/employees/delete${employee._id}`).then((res) =>{
             console.log(res);
             
             

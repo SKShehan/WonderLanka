@@ -46,7 +46,7 @@ export default class editHotels extends Component{
     
         console.log(data)
     
-        axios.put(`http://localhost:8070/post/update/${id}`,data).then((res)=>{
+        axios.put(`https://wonderlanka-backend.herokuapp.com/post/update/${id}`,data).then((res)=>{
             if(res.data.success){
                 alert("Updated Successfully")
                 this.setState({
@@ -64,7 +64,7 @@ export default class editHotels extends Component{
     componentDidMount(){
         const id = this.props.match.params.id;
     
-        axios.get(`http://localhost:8070/post/${id}`).then((res) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/post/${id}`).then((res) =>{
             if(res.data.success){
                 this.setState({
                     hotelNum:res.data.post.hotelNum,

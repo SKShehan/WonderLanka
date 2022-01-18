@@ -237,7 +237,7 @@ function EditProfile() {
   const updateUsername = async () => {
     if (ReactSession.get("user").username != username) {
       await axios
-        .get(`http://localhost:8070/users/check/${username}`)
+        .get(`https://wonderlanka-backend.herokuapp.com/users/check/${username}`)
         .then((res) => {
           usernameExists = res.data;
           console.log(res.data);
@@ -250,7 +250,7 @@ function EditProfile() {
   const updateBookings = () => {
     axios
       .put(
-        `http://localhost:8070/bookings/update/username/${
+        `https://wonderlanka-backend.herokuapp.com/bookings/update/username/${
           ReactSession.get("user").username
         }`,
         {
@@ -282,7 +282,7 @@ function EditProfile() {
     if (usernameExists === false) {
       await axios
         .put(
-          `http://localhost:8070/users/update/${
+          `https://wonderlanka-backend.herokuapp.com/users/update/${
             ReactSession.get("user").username
           }`,
           updates

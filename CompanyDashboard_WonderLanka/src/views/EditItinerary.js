@@ -44,7 +44,7 @@ function EditItinerary(){
     }
 
     useEffect(()=>{
-        axios.get(`http://localhost:8070/itineraries/get/${id}`).then((res) =>[
+        axios.get(`https://wonderlanka-backend.herokuapp.com/itineraries/get/${id}`).then((res) =>[
 
         console.log(res.data),
         setitineraryId(res.data.itineraryId),
@@ -81,7 +81,7 @@ function EditItinerary(){
         formData.append("itineraryPriceAdult" , itineraryPriceAdult);
         formData.append("itineraryPriceChild" , itineraryPriceChild);
 
-        axios.put(`http://localhost:8070/itineraries/update/${id}` , formData , {headers: {'Content-Type': 'multipart/form-data'}}).then(() =>{
+        axios.put(`https://wonderlanka-backend.herokuapp.com/itineraries/update/${id}` , formData , {headers: {'Content-Type': 'multipart/form-data'}}).then(() =>{
             toast.success('Itinerary Edited!', {
                 position: "bottom-right",
                 autoClose: 5000,

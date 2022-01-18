@@ -20,7 +20,7 @@ import { useHistory } from "react-router";
 
     useEffect(() => {
         function getMessages() {
-          axios.get("http://localhost:8070/contactus/").then((res) => {
+          axios.get("https://wonderlanka-backend.herokuapp.com/contactus/").then((res) => {
             setMessages(res.data);
             console.log(res);
           }).catch((err) => {

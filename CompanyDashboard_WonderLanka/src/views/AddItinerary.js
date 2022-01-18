@@ -62,7 +62,7 @@ function AddItinerary(){
 
 
 
-        axios.post("http://localhost:8070/itineraries/add" , formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(()=>{
+        axios.post("https://wonderlanka-backend.herokuapp.com/itineraries/add" , formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(()=>{
             
             
             toast.success('Itinerary Added!', {

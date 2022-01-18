@@ -20,7 +20,7 @@ function CF () {
 
     useEffect(() => {
         function getComplaints() {
-          axios.get("http://localhost:8070/complaint/").then((res) => {
+          axios.get("https://wonderlanka-backend.herokuapp.com/complaint/").then((res) => {
             setComplaints(res.data);
             console.log(res);
           }).catch((err) => {
@@ -33,7 +33,7 @@ function CF () {
 
     useEffect(() => {
         function getFeedbacks() {
-          axios.get("http://localhost:8070/feedback/").then((res) => {
+          axios.get("https://wonderlanka-backend.herokuapp.com/feedback/").then((res) => {
             setFeedbacks(res.data);  
             console.log(res);
           }).catch((err) => {

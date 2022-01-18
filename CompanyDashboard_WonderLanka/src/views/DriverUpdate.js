@@ -38,7 +38,7 @@ function DriverUpdate(){
     const {id} = useParams();
 
     useEffect(()=>{
-        axios.get(`http://localhost:8070/drivers/${id}`).then((res) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/drivers/${id}`).then((res) =>{
 
         console.log(res.data);
         setDriverid(res.data.driverid);
@@ -66,7 +66,7 @@ function DriverUpdate(){
             licenseid,
             languages
         }
-        axios.put(`http://localhost:8070/drivers/update/${id}` , updateDriver ).then(() =>{
+        axios.put(`https://wonderlanka-backend.herokuapp.com/drivers/update/${id}` , updateDriver ).then(() =>{
             
             toast.success('Driver Updated!', {
                 position: "bottom-right",

@@ -28,7 +28,7 @@ function GuideReport(){
   useEffect(()=>{
     let today = new Date().toISOString().slice(0, 10);
     setdate(today);
-   axios.get("http://localhost:8070/bookings/").then((res) =>{
+   axios.get("https://wonderlanka-backend.herokuapp.com/bookings/").then((res) =>{
        setBookings(res.data);
    })
 }, []) 
@@ -38,9 +38,9 @@ function GuideReport(){
 useEffect(() => {
   
   bookings.forEach(({ tourId }) => {
-    axios.get(`http://localhost:8070/assignedGuides/check/${tourId}`).then((res) =>{
+    axios.get(`https://wonderlanka-backend.herokuapp.com/assignedGuides/check/${tourId}`).then((res) =>{
       if(res.data === true){
-        axios.get(`http://localhost:8070/assignedGuides/get/${tourId}`)
+        axios.get(`https://wonderlanka-backend.herokuapp.com/assignedGuides/get/${tourId}`)
         .then(res => {
           setGuides(guides => ({
             ...guides,

@@ -34,9 +34,9 @@ function Login({ user, setuser }) {
 
   const login = (e) => {
     e.preventDefault();
-    axios.get(`http://localhost:8070/users/check/${username}`).then((res) => {
+    axios.get(`https://wonderlanka-backend.herokuapp.com/users/check/${username}`).then((res) => {
       if (res.data === true) {
-        axios.get(`http://localhost:8070/users/get/${username}`).then((res) => {
+        axios.get(`https://wonderlanka-backend.herokuapp.com/users/get/${username}`).then((res) => {
           if (password != res.data.password) {
             setmessage("Incorrect password!");
             setAlertDanger(true);

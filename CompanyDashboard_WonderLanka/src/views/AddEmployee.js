@@ -28,7 +28,7 @@ export default function AddEmployee() {
          emprole
         }
 
-        axios.post("http://localhost:8070/employees/add", newEmployee).then(()=>{
+        axios.post("https://wonderlanka-backend.herokuapp.com/employees/add", newEmployee).then(()=>{
             alert("Employee Added");
             window.location.reload();
       

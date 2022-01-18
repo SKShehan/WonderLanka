@@ -56,7 +56,7 @@ function ChangePassword() {
 
         axios
           .put(
-            `http://localhost:8070/users/update/${
+            `https://wonderlanka-backend.herokuapp.com/users/update/${
               ReactSession.get("user").username
             }`,
             user

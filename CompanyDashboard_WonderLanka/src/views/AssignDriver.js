@@ -37,7 +37,7 @@ function AssignDr(){
             did
         }
         
-        axios.post("http://localhost:8070/assignedDrivers/add" , newAssignment).then(()=>{
+        axios.post("https://wonderlanka-backend.herokuapp.com/assignedDrivers/add" , newAssignment).then(()=>{
             window.location.reload();
         }).catch((err) =>{
             console.log(err);
@@ -45,7 +45,7 @@ function AssignDr(){
     }
     
     function getName(){
-        axios.get(`http://localhost:8070/drivers/getbyName/${selectedDriver}`).then((req) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/drivers/getbyName/${selectedDriver}`).then((req) =>{
             
             console.log(req.data.driverid);
             setdID(req.data.driverid);
@@ -53,14 +53,14 @@ function AssignDr(){
     }
 
     useEffect(()=>{
-        axios.get("http://localhost:8070/drivers/details").then((req)=>{
+        axios.get("https://wonderlanka-backend.herokuapp.com/drivers/details").then((req)=>{
             setDrivers(req.data)
             console.log(req.data)
         }).catch((err)=>{
             console.log(err);
         })
       
-        axios.get(`http://localhost:8070/bookings/get/${username}`).then((req) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/bookings/get/${username}`).then((req) =>{
             
             setID(req.data[0].tourId);
 

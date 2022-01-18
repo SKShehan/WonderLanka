@@ -44,7 +44,7 @@ function Vehiclelist(){
     
 
     useEffect(() => {
-        axios.get("http://localhost:8070/vehicles/").then((res) =>{
+        axios.get("https://wonderlanka-backend.herokuapp.com/vehicles/").then((res) =>{
             setVehicles(res.data);
             console.log(res.data);
         }).catch((err) =>{
@@ -61,7 +61,7 @@ function Vehiclelist(){
               "Vehicle " + vehicle.vid + " will be removed from the database"
             )
         )
-        axios.delete(`http://localhost:8070/vehicles/${vehicle._id}`).then((res) =>{
+        axios.delete(`https://wonderlanka-backend.herokuapp.com/vehicles/${vehicle._id}`).then((res) =>{
             console.log(res);
             
            // setMessage("Vehicle Deleted!");

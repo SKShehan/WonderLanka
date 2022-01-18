@@ -29,7 +29,7 @@ function EmployeeUpdate(){
     const {id} = useParams();
 
     useEffect(()=>{
-        axios.get(`http://localhost:8070/employees/${id}`).then((res) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/employees/${id}`).then((res) =>{
 
         console.log(res.data);
         setEmpname(res.data.empname);
@@ -50,7 +50,7 @@ function EmployeeUpdate(){
             emppwd,
             emprole
         }
-        axios.put(`http://localhost:8070/employees/update/${id}` , updateEmployee ).then(() =>{
+        axios.put(`https://wonderlanka-backend.herokuapp.com/employees/update/${id}` , updateEmployee ).then(() =>{
             
             toast.success('Employee Updated!', {
                 position: "bottom-right",

@@ -31,7 +31,7 @@ function AssignVehicle(){
    const [vehicle, setVehicle] = useState({});
 
    useEffect(()=>{
-    axios.get("http://localhost:8070/bookings/").then((res) =>{
+    axios.get("https://wonderlanka-backend.herokuapp.com/bookings/").then((res) =>{
         setBookings(res.data);
     })
 }, []) 
@@ -42,9 +42,9 @@ function AssignVehicle(){
     useEffect(() => {
   
       bookings.forEach(({ tourId }) => {
-        axios.get(`http://localhost:8070/assignedVehicle/check/${tourId}`).then((res) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/assignedVehicle/check/${tourId}`).then((res) =>{
           if(res.data === true){
-            axios.get(`http://localhost:8070/assignedVehicle/get/${tourId}`)
+            axios.get(`https://wonderlanka-backend.herokuapp.com/assignedVehicle/get/${tourId}`)
             .then(res => {
               setVehicle(vehicle => ({
                 ...vehicle,

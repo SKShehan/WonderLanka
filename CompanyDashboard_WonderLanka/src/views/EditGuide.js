@@ -32,7 +32,7 @@ function EditGuide(){
     const {id} = useParams();
 
     useEffect(()=>{
-        axios.get(`http://localhost:8070/guides/getById/${id}`).then((res) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/guides/getById/${id}`).then((res) =>{
 
         console.log(res.data);
         setGuideId(res.data.guideID);
@@ -60,7 +60,7 @@ function EditGuide(){
             licenseID,
             foreignLang
         }
-        axios.put(`http://localhost:8070/guides/update/${id}` , updateGuide ).then(() =>{
+        axios.put(`https://wonderlanka-backend.herokuapp.com/guides/update/${id}` , updateGuide ).then(() =>{
             
             toast.success('Guide Updated!', {
                 position: "bottom-right",
