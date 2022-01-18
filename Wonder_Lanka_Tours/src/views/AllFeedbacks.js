@@ -14,7 +14,7 @@ function AllFeedbacks () {
   
     useEffect(() => {
       function getFeedbacks() {
-        axios.get("http://localhost:8070/feedback/").then((res) => {
+        axios.get("https://wonderlanka-backend.herokuapp.com/feedback/").then((res) => {
           setFeedbacks(res.data);  
           console.log(res);
         }).catch((err) => {

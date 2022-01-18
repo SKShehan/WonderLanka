@@ -20,7 +20,7 @@ function MyTours({}) {
     if (ReactSession.get("user") != null) {
       axios
         .get(
-          `http://localhost:8070/bookings/get/${
+          `https://wonderlanka-backend.herokuapp.com/bookings/get/${
             ReactSession.get("user").username
           }`
         )

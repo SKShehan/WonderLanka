@@ -33,7 +33,7 @@ function Editinsurence(){
 
 
     useEffect(() => {
-        axios.get('http://localhost:8070/insurences/').then((res) =>{
+        axios.get('https://wonderlanka-backend.herokuapp.com/insurences/').then((res) =>{
           setinsurencePlans(res.data);
             console.log(res.data);
         }).catch((err) =>{

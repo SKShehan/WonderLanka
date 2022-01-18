@@ -39,7 +39,7 @@ export default function AddDriver() {
      languages
     }
     
-    axios.post("http://localhost:8070/drivers/add", newDriver).then(()=>{
+    axios.post("https://wonderlanka-backend.herokuapp.com/drivers/add", newDriver).then(()=>{
       alert("Driver Added");
       window.location.reload();
 

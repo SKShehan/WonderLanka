@@ -51,7 +51,7 @@ export default class Addvehicle extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8070/types/')
+        axios.get('https://wonderlanka-backend.herokuapp.com/types/')
         .then(response => {
           if (response.data.length > 0) {
             this.setState({
@@ -109,7 +109,7 @@ export default class Addvehicle extends Component {
           }
           console.log(vehicle);
 
-          axios.post('http://localhost:8070/vehicles/add', vehicle)
+          axios.post('https://wonderlanka-backend.herokuapp.com/vehicles/add', vehicle)
       .then(res => console.log(res.data));
       toast.success('Vehicle Type Added!', {
         position: "bottom-right",

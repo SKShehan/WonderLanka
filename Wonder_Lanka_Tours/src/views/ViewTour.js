@@ -74,7 +74,7 @@ function ViewTour() {
       arrivalDate,
     };
     axios
-      .put(`http://localhost:8070/bookings/update/${location.state.tourId}`, {
+      .put(`https://wonderlanka-backend.herokuapp.com/bookings/update/${location.state.tourId}`, {
         updates,
       })
       .then((res) => {
@@ -98,11 +98,11 @@ function ViewTour() {
 
   const getAssignedGuide = () => {
     axios
-      .get(`http://localhost:8070/assignedGuides/get/${location.state.tourId}`)
+      .get(`https://wonderlanka-backend.herokuapp.com/assignedGuides/get/${location.state.tourId}`)
       .then((res) => {
         if (res.data) {
           axios
-            .get(`http://localhost:8070/guides/get/${res.data.guideId}`)
+            .get(`https://wonderlanka-backend.herokuapp.com/guides/get/${res.data.guideId}`)
             .then((ress) => {
               if (ress.data) {
                 setassignedGuide(ress.data.fName + " " + ress.data.lName);
@@ -114,12 +114,12 @@ function ViewTour() {
   const getAssignedVehcile = () => {
     axios
       .get(
-        `http://localhost:8070/assignedVehicles/get/${location.state.tourId}`
+        `https://wonderlanka-backend.herokuapp.com/assignedVehicles/get/${location.state.tourId}`
       )
       .then((res) => {
         if (res.data) {
           axios
-            .get(`http://localhost:8070/vehicles/${res.data.vehicleId}`)
+            .get(`https://wonderlanka-backend.herokuapp.com/vehicles/${res.data.vehicleId}`)
             .then((ress) => {
               if (ress.data) {
                 setassignedVehicle(ress.data.vname);
@@ -130,11 +130,11 @@ function ViewTour() {
   };
   const getAssignedDriver = () => {
     axios
-      .get(`http://localhost:8070/assignedDrivers/get/${location.state.tourId}`)
+      .get(`https://wonderlanka-backend.herokuapp.com/assignedDrivers/get/${location.state.tourId}`)
       .then((res) => {
         if (res.data) {
           axios
-            .get(`http://localhost:8070/${res.data.driverId}`)
+            .get(`https://wonderlanka-backend.herokuapp.com/${res.data.driverId}`)
             .then((ress) => {
               if (ress.data) {
                 setassignedDriver(

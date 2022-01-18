@@ -49,7 +49,7 @@ function UpdateComplaint({Complaint}) {
   const {id} = useParams();
 
   useEffect(()=>{
-    axios.get(`http://localhost:8070/ComplaintRoute/getComplaint/${id}`)
+    axios.get(`https://wonderlanka-backend.herokuapp.com/ComplaintRoute/getComplaint/${id}`)
     .then((res)=>{
       console.log(res.data);
       setName(res.data.name);
@@ -79,7 +79,7 @@ function UpdateComplaint({Complaint}) {
 
     //console.log(newComplaint);
 
-    axios.put(`http://localhost:8070/complaint/updateComplaint/${id}`, updateComplaint)
+    axios.put(`https://wonderlanka-backend.herokuapp.com/complaint/updateComplaint/${id}`, updateComplaint)
     .then((res)=>{
     console.log(res);
       toast.success('Complaint Edited!', {

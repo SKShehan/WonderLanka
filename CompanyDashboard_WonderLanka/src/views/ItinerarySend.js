@@ -47,7 +47,7 @@ function CustomIt(){
     
     useEffect(()=>{
         
-        axios.get(`http://localhost:8070/bookings/get/${username}`).then((req) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/bookings/get/${username}`).then((req) =>{
             console.log(req.data);
             setName(req.data[0].fullName);
             setEmail(req.data[0].email);

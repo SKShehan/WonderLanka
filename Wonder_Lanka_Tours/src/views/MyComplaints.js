@@ -71,7 +71,7 @@ function MyComplaints() {
 
     console.log(newComplaint);
 
-    axios.post("http://localhost:8070/complaint/addComplaint", newComplaint).then(()=>{
+    axios.post("https://wonderlanka-backend.herokuapp.com/complaint/addComplaint", newComplaint).then(()=>{
       alert("Complaint Added");
       setName("");
       setEmail("");

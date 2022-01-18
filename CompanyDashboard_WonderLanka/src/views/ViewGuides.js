@@ -47,7 +47,7 @@ function ViewGuides() {
       )
     ) {
       axios
-        .delete(`http://localhost:8070/guides/delete/${guide.guideID}`)
+        .delete(`https://wonderlanka-backend.herokuapp.com/guides/delete/${guide.guideID}`)
         .then((res) => {
           console.log(res);
           toast.success("Guide deleted!", {
@@ -71,7 +71,7 @@ function ViewGuides() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8070/guides")
+      .get("https://wonderlanka-backend.herokuapp.com/guides")
       .then((res) => {
         setguides(res.data);
       })

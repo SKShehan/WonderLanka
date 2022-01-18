@@ -41,7 +41,7 @@ function sendData(e){
     }
 
 
-axios.post("http://localhost:8070/insurences/add-package" , newInsurence ).then(()=>{
+axios.post("https://wonderlanka-backend.herokuapp.com/insurences/add-package" , newInsurence ).then(()=>{
     window.location.reload();
 }).catch((err)=>{
     alert(err);

@@ -54,7 +54,7 @@ function sendData(e){
     }
 
 
-axios.post("http://localhost:8070/guides/add" , newGuide ).then(()=>{
+axios.post("https://wonderlanka-backend.herokuapp.com/guides/add" , newGuide ).then(()=>{
     
     toast.success('Guide Added!', {
         position: "bottom-right",

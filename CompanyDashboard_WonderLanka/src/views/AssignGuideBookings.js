@@ -43,9 +43,9 @@ function AssignGuide(){
     useEffect(() => {
   
       bookings.forEach(({ tourId }) => {
-        axios.get(`http://localhost:8070/assignedGuides/check/${tourId}`).then((res) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/assignedGuides/check/${tourId}`).then((res) =>{
           if(res.data === true){
-            axios.get(`http://localhost:8070/assignedGuides/get/${tourId}`)
+            axios.get(`https://wonderlanka-backend.herokuapp.com/assignedGuides/get/${tourId}`)
             .then(res => {
               setGuides(guides => ({
                 ...guides,

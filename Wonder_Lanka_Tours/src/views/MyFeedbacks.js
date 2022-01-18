@@ -47,7 +47,7 @@ function MyFeedbacks() {
     }
 
     console.log(newFeedback);
-    axios.post("http://localhost:8070/feedback/addFeedback", newFeedback).then(()=>{
+    axios.post("https://wonderlanka-backend.herokuapp.com/feedback/addFeedback", newFeedback).then(()=>{
       alert("Feedback Added");
       setName("");
       setStat("");

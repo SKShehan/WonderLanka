@@ -69,7 +69,7 @@ function Unregister() {
       reason,
     };
     axios
-      .post(`http://localhost:8070/unregUser/add`, unreg)
+      .post(`https://wonderlanka-backend.herokuapp.com/unregUser/add`, unreg)
       .then((res) => {
         console.log(res.data);
       })
@@ -81,7 +81,7 @@ function Unregister() {
   const deleteBookings = () => {
     axios
       .delete(
-        `http://localhost:8070/bookings/delete/${
+        `https://wonderlanka-backend.herokuapp.com/bookings/delete/${
           ReactSession.get("user").username
         }`
       )
@@ -104,7 +104,7 @@ function Unregister() {
     } else {
       axios
         .delete(
-          `http://localhost:8070/users/delete/${
+          `https://wonderlanka-backend.herokuapp.com/users/delete/${
             ReactSession.get("user").username
           }`
         )

@@ -37,7 +37,7 @@ function AssignVc(){
             vid
         }
         
-        axios.post("http://localhost:8070/assignedVehicle/add" , newAssignment).then(()=>{
+        axios.post("https://wonderlanka-backend.herokuapp.com/assignedVehicle/add" , newAssignment).then(()=>{
             window.location.reload();
         }).catch((err) =>{
             console.log(err);
@@ -45,7 +45,7 @@ function AssignVc(){
     }
     
     function getName(){
-        axios.get(`http://localhost:8070/vehicles/getbyName/${selectedVehicle}`).then((req) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/vehicles/getbyName/${selectedVehicle}`).then((req) =>{
             console.log(selectedVehicle);
             console.log(req.data.vid);
             setvID(req.data.vid);
@@ -54,14 +54,14 @@ function AssignVc(){
 
     useEffect(()=>{
         console.log(username);
-        axios.get("http://localhost:8070/vehicles/").then((req)=>{
+        axios.get("https://wonderlanka-backend.herokuapp.com/vehicles/").then((req)=>{
             setVehicle(req.data)
             console.log(req.data)
         }).catch((err)=>{
             console.log(err);
         })
       
-        axios.get(`http://localhost:8070/bookings/get/${username}`).then((req) =>{
+        axios.get(`https://wonderlanka-backend.herokuapp.com/bookings/get/${username}`).then((req) =>{
             
             setID(req.data[0].tourId);
             console.log(tid);

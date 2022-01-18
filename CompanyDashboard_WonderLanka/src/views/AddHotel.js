@@ -45,7 +45,7 @@ onSubmit =(e) =>{
 
     console.log(data)
 
-    axios.post("http://localhost:8070/post/save",data).then((res)=>{
+    axios.post("https://wonderlanka-backend.herokuapp.com/post/save",data).then((res)=>{
         if(res.data.success){
             this.setState({
                 hotelNum:"",

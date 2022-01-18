@@ -3,7 +3,7 @@
  module.exports = function(app) {   app.use(
      `/bookings`,
      createProxyMiddleware({
-       target: 'http://localhost:8070/bookingmanagement',
+       target: 'https://wonderlanka-backend.herokuapp.com/bookingmanagement',
        changeOrigin: true,
      })
    );
@@ -11,7 +11,7 @@
    app.use(
      '/book',
      createProxyMiddleware({
-       target: 'http://localhost:8070/bookingmanagement',
+       target: 'https://wonderlanka-backend.herokuapp.com/bookingmanagement',
        changeOrigin: true,
      })
    );
@@ -19,14 +19,14 @@
 
    app.use(
      '/post/delete',
-     createProxyMiddleware({       target: 'http://localhost:8070/bookingmanagement',
+     createProxyMiddleware({       target: 'https://wonderlanka-backend.herokuapp.com/bookingmanagement',
        changeOrigin: true,
      })
    );
    app.use(
     '/post/update',
      createProxyMiddleware({
-       target: 'http://localhost:8070/bookingmanagement',
+       target: 'https://wonderlanka-backend.herokuapp.com/bookingmanagement',
        changeOrigin: true,
      })
    );
@@ -34,7 +34,7 @@
    app.use(
      '/cancel/save',
      createProxyMiddleware({
-       target: 'http://localhost:8070/cancelbookings',
+       target: 'https://wonderlanka-backend.herokuapp.com/cancelbookings',
        changeOrigin: true,
     })
    );

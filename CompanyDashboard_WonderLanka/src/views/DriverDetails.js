@@ -41,7 +41,7 @@ function DriverDetails(){
     
 
     useEffect(() => {
-        axios.get("http://localhost:8070/drivers/details").then((res) =>{
+        axios.get("https://wonderlanka-backend.herokuapp.com/drivers/details").then((res) =>{
             setDrivers(res.data);
             console.log(res.data);
         }).catch((err) =>{
@@ -58,7 +58,7 @@ function DriverDetails(){
               "Driver " + driver.driverid + " will be removed from the database"
             )
         )
-        axios.delete(`http://localhost:8070/drivers/delete${driver._id}`).then((res) =>{
+        axios.delete(`https://wonderlanka-backend.herokuapp.com/drivers/delete${driver._id}`).then((res) =>{
             console.log(res);
             
             setMessage("Driver Deleted!");

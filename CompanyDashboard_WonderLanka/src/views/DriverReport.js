@@ -27,7 +27,7 @@ function DriverReport(){
   useEffect(()=>{
     let today = new Date().toISOString().slice(0, 10);
     setdate(today);
-   axios.get("http://localhost:8070/bookings/").then((res) =>{
+   axios.get("https://wonderlanka-backend.herokuapp.com/bookings/").then((res) =>{
        setBookings(res.data);
    })
 }, []) 
@@ -37,9 +37,9 @@ function DriverReport(){
 useEffect(() => {
   
   bookings.forEach(({ tourId }) => {
-    axios.get(`http://localhost:8070/assignedDrivers/check/${tourId}`).then((res) =>{
+    axios.get(`https://wonderlanka-backend.herokuapp.com/assignedDrivers/check/${tourId}`).then((res) =>{
       if(res.data === true){
-        axios.get(`http://localhost:8070/assignedDrivers/get/${tourId}`)
+        axios.get(`https://wonderlanka-backend.herokuapp.com/assignedDrivers/get/${tourId}`)
         .then(res => {
           setDrivers(drivers => ({
             ...drivers,
