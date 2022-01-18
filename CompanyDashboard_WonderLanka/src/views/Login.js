@@ -24,7 +24,7 @@ function Login(){
     function submit(e){
 
             e.preventDefault();
-            axios.get(`http://localhost:8070/employees/find/${username}`).then((res)=>{
+            axios.get(`https://wonderlanka-backend.herokuapp.com//employees/find/${username}`).then((res)=>{
                 if(res.data === true){
                     axios.get(`http://localhost:8070/employees/get/${username}`).then((res) =>{
                         if(password != res.data.emppwd){
